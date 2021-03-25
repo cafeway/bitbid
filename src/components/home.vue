@@ -1,37 +1,43 @@
 <template>
- <div>
+ <div class="container-fluid">
+ <link rel="stylesheet" href="../assets/nav.css">
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand disabled" href="">BITBID-P2P</a>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1 class="navbar-brand" href="#">BITBID</h1>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="/">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"><router-link to="/payment">Payment</router-link></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About us</a>
       </li>
-     <li class="nav-item">
-        <a class="nav-link " href="#howitworks">How it works</a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">Refferal</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link " href="#address">Address</a>
+        <a class="nav-link " href="#howitworks">How it works</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    <router-link class="nav-link" to="/login">Login</router-link>
+       <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User <i class="fa fa-user" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"><router-link to="/login">login</router-link></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"><router-link to="/register">Register</router-link></a>
+        </div>
+      </div>
     </form>
-      <router-link class="nav-link" to="/register">register</router-link>
   </div>
 </nav>
-<hr>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -40,14 +46,25 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="../assets/p2p.jpg" alt="First slide">
-      <p>Investments via Your Peers</p>
+      <img class="d-block w-100" src="../assets/pay.jpg" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Earn Incentives </h5>
+        <p>Get profits by sending your peers your bid tickets.</p>
+      </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/p2p.jpg" alt="Second slide">
+      <img class="d-block w-100" src="../assets/blockchain.jpg" alt="Second slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Crypto</h5>
+        <p>Buy Crypto using your profits.</p>
+      </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/p2p.jpg" alt="Third slide">
+      <img class="d-block w-100" src="../assets/bkg.jpg" alt="Third slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Get Instant profits</h5>
+        <p>Get Pain in over 10 payment methods.</p>
+      </div>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -59,6 +76,13 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+<!--- ignore the code below-->
+
+<div class="link-area">
+  <a href="https://www.youtube.com/channel/UCki4IDK86E6_pDtptmsslow" target="_blank">Click for More</a>
+</div>
+<hr>
 <!--how it works-->
 <!-- details card section starts from here -->
 <section class="details-card">

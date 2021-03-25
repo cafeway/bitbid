@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container-fluid">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand disabled" href="">BITBID-P2P</a>
@@ -7,7 +7,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="/">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
@@ -23,16 +23,35 @@
  <div class="text-center text-secondary">
     DONT FORGET TO REFFER FRIENDS
     </div>
-<div class="container h-80">
-<div class="row align-items-center h-100">
-    <div class="col-3 mx-auto">
+<div class="container">
+<div class="row align-items-center ">
+    <div class="col-md-12">
         <div class="text-center">
             <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
             <p id="profile-name" class="profile-name-card"></p>
+            <div v-if="error" class="alert alert-danger">{{error}}</div>
             <form  class="form-signin">
-                <input type="text" name="username" id="username" class="form-control form-group" placeholder="username" required autofocus>
-                <input type="password" name="password" id="inputPassword" class="form-control form-group" placeholder="password" required autofocus>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
+                <input
+                 type="email"
+                 name="email"
+                 id="email"
+                 class="form-control form-group"
+                 placeholder="ninja@gmail.com"
+                 required
+                  autofocus
+                  v-model="form.email"
+                 />
+                <input
+                 type="password"
+                 name="password"
+                 id="Password"
+                 class="form-control form-group"
+                  placeholder="password"
+                  required
+                  autofocus
+                  v-model="form.Password"
+                  >
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" @click="submit()">Login</button>
             </form><!-- /form -->
         </div>
     </div>
@@ -40,6 +59,32 @@
 </div>
 </div>
 </template>
+<script>
+import firebase from 'firebase'
+export default {
+  data () {
+    return {
+      form: {
+        email: '',
+        Password: ''
+      },
+      error: null
+    }
+  },
+  methods: {
+    submit () {
+      firebase.auth()
+        .signInWithEmailAndPassword(this.form.email, this.form.Password)
+        .then(data => {
+          alert('welcome')
+        })
+        .catch(err => {
+          this.error = err.message
+        })
+    }
+  }
+}
+</script>
 <style scoped>
 @import '../assets/auth.css'
 </style>

@@ -23,5 +23,20 @@ status = 200
   to = "/register"
   status = 200
   edge_handler = "filterRequests"
+  [[redirects]]
+  from = "/"
+  to = "/register"
+  status = 200
+  edge_handler = "filterRequests"
+  [[redirects]]
+  from = "/"
+  to = "/register"
+  status = 200
+  edge_handler = "filterRequests"
+  [[redirects]]
+  from = "/"
+  to = "/payment"
+  status = 200
+  edge_handler = "filterRequests"
  
   

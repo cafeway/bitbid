@@ -9,14 +9,17 @@ import 'vue-material/dist/theme/default.css'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap'
+import VueSwal from 'vue-swal'
 import LoadScript from 'vue-plugin-load-script'
 Vue.use(LoadScript)
 // Import Bootstrap an BootstrapVue CSS files (order is important)
-
+Vue.use(VueMaterial)
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
-
+Vue.use(VueSwal)
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 
