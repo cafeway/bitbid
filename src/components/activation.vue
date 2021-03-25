@@ -27,8 +27,8 @@
   </div>
 </nav>
 <hr>
-<div class="alert alert-primary" role="alert">
-  Make your first Payment Here
+<div class="alert alert-danger" role="alert">
+  Pay an activation fee of $2.5
 </div>
 <hr>
   <div>
@@ -40,7 +40,6 @@
             <p id="profile-name" class="profile-name-card"></p>
             <div v-if="error" class="alert alert-danger">{{error}}</div>
             <form  class="form-signin">
-                <label for="email"> Email address</label>
                 <input
                  type="email"
                  name="email"
@@ -77,7 +76,7 @@
                  name="amount"
                  id="amount"
                  class="form-control form-group"
-                  placeholder="250ksh"
+                  placeholder="$2.50 or ksh 250....."
                   required
                   autofocus
                   value=250

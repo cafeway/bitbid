@@ -13,9 +13,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">Home</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link"><router-link to="/payment">Payment</router-link></a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About us</a>
       </li>

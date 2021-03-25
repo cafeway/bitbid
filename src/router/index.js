@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import home from '../components/home.vue'
 import login from '../components/login.vue'
 import reg from '../components/register.vue'
-import payment from '../components/payment.vue'
+import activate from '../components/activation.vue'
+import dash from '../components/dashboard.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -24,9 +25,14 @@ export default new Router({
       component: login
     },
     {
-      path: '/payment',
-      name: 'payment',
-      component: payment
+      path: '/activate',
+      name: 'activate',
+      component: activate
+    },
+    {
+      path: '/dash',
+      name: 'dash',
+      component: dash
     }
   ]
 })

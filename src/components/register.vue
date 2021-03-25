@@ -140,9 +140,7 @@ export default {
             email: this.form.email,
             phonenumber: this.form.phone,
             username: this.form.name,
-            shares: 0,
-            MaturedShares: 0,
-            balance: 0,
+            walletbalance: 0,
             verified: 'no',
             activated: false,
             role: 'user'
