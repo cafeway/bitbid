@@ -114,10 +114,10 @@ export default {
   methods: {
     pay: function () {
       window.FlutterwaveCheckout({
-        public_key: 'FLWPUBK_TEST-51ca022e8a64b1ff7a3e67ab623cc585-X',
+        public_key: 'FLWPUBK-2ae06f9b946b02f21797f85e6cd8f80f-X',
         tx_ref: 'registration fees' + new Date(),
         amount: this.form.amount,
-        currency: 'USD',
+        currency: 'KES',
         country: 'KE',
         payment_option: 'mobilemoney',
         customer: {
@@ -138,7 +138,7 @@ export default {
       })
     },
     redirectToMpesa: function () {
-      window.location.href = 'https://ravesandbox.flutterwave.com/pay/3weo3ps0qjxk'
+      window.location.href = 'https://flutterwave.com/pay/4cb6328plnky'
     }
   }
 }
