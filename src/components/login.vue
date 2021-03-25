@@ -68,7 +68,8 @@ export default {
         email: '',
         Password: ''
       },
-      error: null
+      error: null,
+      activated: false
     }
   },
   methods: {
@@ -77,11 +78,13 @@ export default {
       firebase.auth()
         .signInWithEmailAndPassword(this.form.email, this.form.Password)
         .then(data => {
-          db.collection('users').doc(this.form.email).get().then(snapshot => {
-            if (snapshot.data.activated === false) {
-              this.$router.push('/activate')
-            } else {
+          db.collection('users').doc(firebase.auth().currentUser.email).get().then(snapshot => {
+            let activated = snapshot.data().activated
+            this.activated = activated
+            if (activated) {
               this.$router.push('/dash')
+            } else {
+              this.$router.push('/activate')
             }
           })
         })
