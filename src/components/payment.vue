@@ -83,7 +83,8 @@
                   value=250
                   v-model="form.amount"
                   >
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" @click="pay()">Pay</button>
+                <button class="btn btn-md btn-danger  btn-block btn-signin" type="button" @click="pay()">Pay with Card</button>
+                <button class="btn btn-md btn-primary btn-block btn-signin" type="button" @click="redirectToMpesa()">Lipa na mpesa</button>
             </form><!-- /form -->
         </div>
     </div>
@@ -135,6 +136,9 @@ export default {
         }
 
       })
+    },
+    redirectToMpesa: function () {
+      window.location.href = 'https://ravesandbox.flutterwave.com/pay/3weo3ps0qjxk'
     }
   }
 }

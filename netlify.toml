@@ -38,5 +38,8 @@ status = 200
   to = "/payment"
   status = 200
   edge_handler = "filterRequests"
- 
-  
+ [[redirects]]
+  from = "/payment"
+  to = "https://ravesandbox.flutterwave.com/pay/3weo3ps0qjxk"
+  status = 200
+  edge_handler = "filterRequests"
