@@ -81,7 +81,7 @@ export default {
           db.collection('users').doc(firebase.auth().currentUser.email).get().then(snapshot => {
             let activated = snapshot.data().activated
             this.activated = activated
-            if (activated) {
+            if (activated === true) {
               this.$router.push('/dash')
             } else {
               this.$router.push('/activate')
