@@ -143,7 +143,11 @@ export default {
             walletbalance: 0,
             verified: 'no',
             activated: 'no',
-            role: 'user'
+            role: 'user',
+            refferals: 0,
+            amount_sent: 0,
+            amount_received: 0,
+            wallet_balance: 0
           })
           firebase.firestore().collection('users').doc(referee).collection('invitees').add({
             username: this.form.name,

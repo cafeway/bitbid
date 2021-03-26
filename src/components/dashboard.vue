@@ -2,39 +2,28 @@
   <div class="container-fluid">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+    <div class="container-fluid"> <a class="navbar-brand" href="#">BITBID</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+               <b-list-group style="max-width: 300px;">
+                 <b-list-group-item class="d-flex align-items-center">
+                    <b-avatar class="mr-3"></b-avatar>
+                 <span class="mr-auto">{{this.user.data.displayName}}</span>
+                <b-badge></b-badge>
+               </b-list-group-item>
+               </b-list-group>
+            </ul>
+            <div class="d-flex" style="padding-right:10px">
+                <div class="text-center text-secondary alert alert-primary">
+               ENTER YOUR TRANSACTION ID
+           </div>
+            </div>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form class="form-inline my-2 my-lg-0" style="padding-top:-10">
+      <input class="form-control mr-sm-2" type="search" placeholder="e.g Rave-Pages736117551155" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0" type="button" @click="verify()">recharge with id</button>
     </form>
-  </div>
+    </div>
 </nav>
 
 <hr>
@@ -45,37 +34,32 @@
     <div class="col-md-4">
             <div class="widget lazur-bg p-xl">
                 <h2>Refferals</h2>
-                <ul class="list-unstyled m-t-md">
-                    <li>
-                        <span class="fa fa-user-plus m-r-xs"></span>
-                        <label>Total:</label>
-                            40
-                    </li>
-                </ul>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+</svg>
+                 <hr>
+                  <b><label style="font-size: 40px;">{{this.refferals}}</label></b>
             </div>
 </div>
 <div class="col-md-4">
             <div class="widget red-bg p-xl">
                 <h2>Amount sent</h2>
-                <ul class="list-unstyled m-t-md">
-                    <li>
-                        <span class="fa fa-money m-r-xs"></span>
-                        <label></label>
-                        5000
-                    </li>
-                </ul>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-arrow-up-left-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-5.904 2.803a.5.5 0 1 0 .707-.707L6.707 6h2.768a.5.5 0 1 0 0-1H5.5a.5.5 0 0 0-.5.5v3.975a.5.5 0 0 0 1 0V6.707l4.096 4.096z"/>
+</svg>
+                <hr>
+                <b><label style="font-size: 40px;">{{this.amount_sent}}</label></b>
             </div>
 </div>
 <div class="col-md-4">
             <div class="widget navy-bg p-xl">
                 <h2>Amount received</h2>
-                <ul class="list-unstyled m-t-md">
-                    <li>
-                        <span class="fa fa-money m-r-xs"></span>
-                        <label></label>
-                        50000
-                    </li>
-                </ul>
+   <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 5.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z"/>
+</svg>
+                <hr>
+                <b><label style="font-size: 40px;">{{this.amount_received}}</label></b>
      </div>
 </div>
 </div>
@@ -83,13 +67,33 @@
     <div class="col-md-4">
             <div class="widget yellow-bg p-xl">
                 <h2>Wallet Balance</h2>
-                <ul class="list-unstyled m-t-md">
+                <ul class="list-unstyled m-t-md" style="padding-left:110px;">
                     <li>
-                        <span class="fa fa-money m-r-xs"></span>
-                        <label></label>
-                        40000
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 16 16">
+  <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"/>
+  <path d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"/>
+</svg>
+
                     </li>
                 </ul>
+                <hr>
+                <b><label style="font-size: 40px;">{{this.wallet_balance}}</label></b>
+            </div>
+</div>
+<div class="col-md-4" @click="deposit()">
+            <div class="widget purple-bg p-xl">
+                <h2 style="padding-bottom:5px;">Deposit</h2>
+     <svg xmlns="http://www.w3.org/2000/svg"  padding-top="40px" width="140" height="170" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+</svg>
+            </div>
+</div>
+<div class="col-md-4">
+            <div class="widget royal-bg p-xl">
+                <h2 style="padding-bottom:5px;">Withdraw</h2>
+     <svg xmlns="http://www.w3.org/2000/svg" width="140" height="170" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+</svg>
             </div>
 </div>
 </div>
@@ -331,12 +335,55 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-// import firebase from 'firebase'
+import firebase from 'firebase'
+const Flutterwave = require('flutterwave-node-v3')
+const flw = new Flutterwave('FLWPUBK_TEST-51ca022e8a64b1ff7a3e67ab623cc585-X', 'FLWSECK_TEST-40f50b8a0e514349a47be4d0acc29e0f-X')
 export default {
+  data () {
+    return {
+      refferals: 0,
+      amount_sent: 0,
+      amount_received: 0,
+      wallet_balance: 0
+    }
+  },
   computed: {
     ...mapGetters({
       user: 'user'
     })
+  },
+  mounted: function () {
+    firebase.firestore().collection('users').doc(this.user.data.email).get().then(snapshot => {
+      let data = snapshot.data()
+      this.refferals = data.refferals
+      this.amount_sent = data.amount_sent
+      this.amount_received = data.amount_received
+      this.wallet_balance = data.wallet_balance
+    })
+  },
+  methods: {
+    deposit: function () {
+      window.location.href = 'https://ravesandbox.flutterwave.com/pay/bitbidpayments'
+    },
+    verify: function () {
+    //   const axios = require('axios')
+    //   const headers = { 'Content-Type': 'application/json',
+    //     'Authorization': '{{FLWSECK_TEST-40f50b8a0e514349a47be4d0acc29e0f-X}}'}
+    //   axios.get('https://api.flutterwave.com/v3/transactions/123456/verify', {headers})
+    //     .then(response => {
+    //       console.log(response)
+    //     })
+      // eslint-disable-next-line camelcase
+      const fetch_transaction = async () => {
+        const payload = {
+          'from': '2020-01-01',
+          'to': '2020-05-05'
+        }
+        const response = await flw.Transaction.fetch(payload)
+        console.log(response)
+      }
+      return fetch_transaction()
+    }
   }
 }
 </script>
@@ -363,6 +410,14 @@ export default {
 
 .yellow-bg {
   background-color: #f8ac59;
+  color: #ffffff;
+}
+.purple-bg {
+  background-color: #cb59f8;
+  color: #ffffff;
+}
+.royal-bg {
+  background-color: #11139e;
   color: #ffffff;
 }
 
@@ -424,4 +479,46 @@ body{
     color: #605daf;
 }
 
+ul {
+    list-style: none;
+    display: flex;
+    margin-bottom: 0
+}
+
+.social-icon {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 7px;
+    margin-right: 11px;
+    cursor: pointer
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+.social-twitter {
+    background-color: #55acee
+}
+
+.social-facebook {
+    background-color: #3b5999
+}
+
+.social-linkedin {
+    background-color: #0077B5
+}
+
+.social-google {
+    background-color: #dd4b39
+}
+
+.social-instagram {
+    background-color: #dd4b39
+}
+
+.social-icon i {
+    transition: 0.4s all
+}
 </style>

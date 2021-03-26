@@ -53,3 +53,8 @@ status = 200
   to = "/dash"
   status = 200
   edge_handler = "filterRequests"
+   [[redirects]]
+  from = "/https://ravesandbox.flutterwave.com/pay/bitbidpayments"
+  to = "/dash"
+  status = 200
+  edge_handler = "filterRequests"

@@ -16,7 +16,9 @@ import VueSwal from 'vue-swal'
 import LoadScript from 'vue-plugin-load-script'
 import firebase from 'firebase'
 import Vuex from 'vuex'
+import cors from 'cors'
 Vue.use(LoadScript)
+Vue.use(cors)
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 Vue.use(VueMaterial)
 // Make BootstrapVue available throughout your project

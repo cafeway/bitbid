@@ -14,8 +14,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "bootstrap-icons": "^1.4.0",
     "bootstrap-vue": "^2.21.2",
+    "cors": "^2.8.5",
     "firebase": "^8.3.1",
     "flutterwave-node": "^1.2.2",
     "flutterwave-node-v3": "^1.0.6",
