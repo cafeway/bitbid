@@ -1,7 +1,8 @@
 <template>
   <div class="container-fluid">
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div v-if="this.activated">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid"> <a class="navbar-brand" href="#">BITBID</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
@@ -330,6 +331,16 @@
         <!-- End Back to top -->
 </footer>
 
+  </div>
+  <div v-else>
+  <div class="alert alert-warning" role="alert">
+  <h4 class="alert-heading">Your account is Deactivate!</h4>
+  <p><router-link class="router-link-active" to="/activate">Pay your activation fees here</router-link></p>
+  <hr>
+  <p class="mb-0">For more information contact bidbit@gmail.com</p>
+</div>
+
+  </div>
 </div>
 
 </template>
@@ -344,7 +355,9 @@ export default {
       refferals: 0,
       amount_sent: 0,
       amount_received: 0,
-      wallet_balance: 0
+      wallet_balance: 0,
+      activated: false,
+      verified: ''
     }
   },
   computed: {
@@ -359,6 +372,7 @@ export default {
       this.amount_sent = data.amount_sent
       this.amount_received = data.amount_received
       this.wallet_balance = data.wallet_balance
+      this.activated = data.activated
     })
   },
   methods: {

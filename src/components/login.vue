@@ -74,19 +74,10 @@ export default {
   },
   methods: {
     submit () {
-      let db = firebase.firestore()
       firebase.auth()
         .signInWithEmailAndPassword(this.form.email, this.form.Password)
         .then(data => {
-          db.collection('users').doc(firebase.auth().currentUser.email).get().then(snapshot => {
-            let activated = snapshot.data().activated
-            this.activated = activated
-            if (activated === true) {
-              this.$router.push('/dash')
-            } else {
-              this.$router.push('/activate')
-            }
-          })
+          this.$router.push('/dash')
         })
         .catch(err => {
           this.error = err.message
