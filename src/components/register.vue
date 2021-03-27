@@ -1,14 +1,18 @@
+/* eslint-disable camelcase */
 <template>
   <div class="container" style="padding-top:150px">
-  <div class="text-center text-secondary alert alert-primary">
-    DONT FORGET TO REFFER FRIENDS
+  <div v-if="referee_id =='' " class="text-center text-secondary alert alert-primary">
+    Dont Forget T0 REFFER FRIEND
+    </div>
+    <div v-else class="text-center text-sucess alert alert-success">
+    <b> {{referee_name}} refered You!Be like {{referee_name}} & earn via your friends</b>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
           <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" style="height:100px;" />
-          <h3 class="text-success">JOIN BITBID</h3>
+          <h3 class="text-success"> Get started Amigos...!</h3>
           </div>
           <div class="card-body">
             <div v-if="error" class="alert alert-danger">{{error}}</div>
@@ -104,18 +108,26 @@ export default {
         refferalcode: ''
       },
       error: null,
-      refereename: ''
+      referee_id: '',
+      referee_name: '',
+      referee: ''
     }
   },
   mounted: function () {
-    const url = require('url')
-    let urlObject = url.parse(window.location.href, true)
-    let queryData = urlObject.query
-    let referee = queryData.email
-    firebase.firestore().collection('users').doc(referee).get().then(snapshot => {
-      this.refereename = this.snapshot.data().username
+    this.referee_uid = ''
+    let url = window.location.href
+    // eslint-disable-next-line camelcase
+    let splitted_urls = url.split('uid=')
+    // eslint-disable-next-line camelcase
+    let referee = splitted_urls[1]
+    // eslint-disable-next-line camelcase
+    this.referee_id = referee
+    firebase.firestore().collection('users').where('uid', '==', this.referee_id).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.referee_name = doc.data().username
+        this.referee = doc.data().email
+      })
     })
-    this.$swal(referee + '  ' + 'reffered you')
   },
   methods: {
     submit () {
@@ -129,10 +141,6 @@ export default {
             phoneNumber: this.form.phone
           })
           user.sendEmailVerification()
-          const url = require('url')
-          let urlObject = url.parse(window.location.href, true)
-          let queryData = urlObject.query
-          let referee = queryData.email
           this.$swal('Account created successfully please check your email to verify your account....')
           this.$router.push('/')
           firebase.firestore().collection('users').doc(this.form.email).set({
@@ -142,14 +150,14 @@ export default {
             username: this.form.name,
             walletbalance: 0,
             verified: 'no',
-            activated: 'no',
+            activated: false,
             role: 'user',
             refferals: 0,
             amount_sent: 0,
             amount_received: 0,
             wallet_balance: 0
           })
-          firebase.firestore().collection('users').doc(referee).collection('invitees').add({
+          firebase.firestore().collection('users').doc(this.referee).collection('invitees').add({
             username: this.form.name,
             email: this.form.email,
             phone: this.form.phone

@@ -17,6 +17,10 @@ import LoadScript from 'vue-plugin-load-script'
 import firebase from 'firebase'
 import Vuex from 'vuex'
 import cors from 'cors'
+import VueRouter from 'vue-router'
+import VueCountdownTimer from 'vuejs-countdown-timer'
+Vue.use(VueCountdownTimer)
+Vue.use(VueRouter)
 Vue.use(LoadScript)
 Vue.use(cors)
 // Import Bootstrap an BootstrapVue CSS files (order is important)

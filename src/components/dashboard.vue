@@ -1,3 +1,5 @@
+/* eslint-disable no-tabs */
+/* eslint-disable no-tabs */
 <template>
   <div class="container-fluid">
   <div v-if="this.activated">
@@ -15,15 +17,59 @@
                </b-list-group>
             </ul>
             <div class="d-flex" style="padding-right:10px">
-                <div class="text-center text-secondary alert alert-primary">
-               ENTER YOUR TRANSACTION ID
+                <div class="text-center text-secondary alert alert-primary" data-toggle="modal" data-target="#verify">
+                click to verify a payment
            </div>
             </div>
         </div>
-        <form class="form-inline my-2 my-lg-0" style="padding-top:-10">
-      <input class="form-control mr-sm-2" type="search" placeholder="e.g Rave-Pages736117551155" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="button" @click="verify()">recharge with id</button>
-    </form>
+      <!-- Modal -->
+<div class="modal fade" id="verify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hold Up!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<div id="loadingIndicator" v-if="transaction_status == 1">
+<div class="loadingBar" id="loadingBar1"></div>
+<div class="loadingBar" id="loadingBar2"></div>
+<div class="loadingBar" id="loadingBar3"></div>
+<div class="loadingBar" id="loadingBar4"></div>
+</div>
+<div v-else-if="transaction_status == 2" class="text-center text-secondary alert alert-success">
+<h4>Transaction id: <b>{{receipt_no}} </b> </h4>
+<h5>Transaction type: <b>{{transaction_type}}</b></h5>
+<h6>Transaction status: <b>Success</b></h6>
+</div>
+<div v-else class="text-center text-danger alert alert-primary">
+  <h3>Transaction: <b>{{receipt_no}} </b> failed due:  </h3>
+  <ol>
+  <li>Duplicate existing transaction</li>
+  <li>The transaction was already verified</li>
+  </ol>
+  <h5>Transaction type: <b>{{transaction_type}}</b></h5>
+  <h6>Transaction status: <b>Failed</b></h6>
+</div>
+<label for="receipt">Verification status of </label>
+<input id="receipt_no" name="receipt" v-model="receipt_no" class="form-control mr-sm-2" type="search" placeholder="ref_no:  5993859372
+" aria-label="Search">
+      </div>
+      <div class="modal-footer" v-if="transaction_status == 1">
+        <button type="button" class="btn btn-outline-danger"  @click="reload()" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-primary" @click="verify()">Verify</button>
+      </div>
+      <div class="modal-footer" v-else-if="transaction_status == 2">
+        <button type="button" class="btn btn-outline-success"  @click="reload()" data-dismiss="modal">Home</button>
+      </div>
+      <div class="modal-footer" v-else-if="transaction_status == 3">
+        <button type="button" class="btn btn-outline-danger"  @click="reload()" data-dismiss="modal">Home</button>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 </nav>
 
@@ -81,22 +127,44 @@
                 <b><label style="font-size: 40px;">{{this.wallet_balance}}</label></b>
             </div>
 </div>
-<div class="col-md-4" @click="deposit()">
-            <div class="widget purple-bg p-xl">
-                <h2 style="padding-bottom:5px;">Deposit</h2>
-     <svg xmlns="http://www.w3.org/2000/svg"  padding-top="40px" width="140" height="170" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-</svg>
-            </div>
+<!-- Modal -->
+<div class="modal fade" id="deposit" tabindex="-1" role="dialog" aria-labelledby="deposit" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Deposit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="form-group">
+    <input type="text" class="form-control" id="number" required autofocus v-model="form.number" aria-describedby="emailHelp" placeholder="Enter phone number">
+  </div>
+  <div class="form-group">
+    <input type="number" required autofocus v-model="form.amount" class="form-control" id="amount" placeholder="amount">
+  </div>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" @click="deposit()">Deposit</button>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="col-md-4">
-            <div class="widget royal-bg p-xl">
-                <h2 style="padding-bottom:5px;">Withdraw</h2>
-     <svg xmlns="http://www.w3.org/2000/svg" width="140" height="170" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+            <div class="widget navy-bg p-xl">
+                <h2>Total Bids</h2>
+  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+  <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
 </svg>
-            </div>
+                <hr>
+                <b><label style="font-size: 40px;">{{this.total_bids}}</label></b>
+     </div>
 </div>
+
 </div>
 </div>
 </div>
@@ -105,75 +173,132 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="header-title pb-3 mt-0">Your bids</h5>
+                    <h5 class="header-title pb-3 mt-0">Bids History</h5>
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">
                             <thead>
                                 <tr class="align-self-center">
-                                    <th>Date</th>
-                                    <th>Amount</th>
+                                    <th>#</th>
+                                    <th>Bid Date</th>
                                     <th>Payment Method</th>
-                                    <th>Paid Date</th>
+                                    <th>Pay Days</th>
                                     <th>Amount</th>
                                     <th>Transaction</th>
+                                    <th>Timer</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Product Devlopment</td>
-                                    <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="thumb-sm rounded-circle mr-2"> Kevin Heal</td>
-                                    <td>Paypal</td>
-                                    <td>5/8/2018</td>
-                                    <td>$15,000</td>
-                                    <td><span class="badge badge-boxed badge-soft-warning">panding</span></td>
-                                </tr>
-                                <tr>
-                                    <td>New Office Building</td>
-                                    <td><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="thumb-sm rounded-circle mr-2"> Frank M. Lyons</td>
-                                    <td>Paypal</td>
-                                    <td>15/7/2018</td>
-                                    <td>$35,000</td>
-                                    <td><span class="badge badge-boxed badge-soft-primary">Success</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Market Research</td>
-                                    <td><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="thumb-sm rounded-circle mr-2"> Angelo Butler</td>
-                                    <td>Pioneer</td>
-                                    <td>30/9/2018</td>
-                                    <td>$45,000</td>
-                                    <td><span class="badge badge-boxed badge-soft-warning">Panding</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Website &amp; Blog</td>
-                                    <td><img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="" class="thumb-sm rounded-circle mr-2"> Phillip Morse</td>
-                                    <td>Paypal</td>
-                                    <td>2/6/2018</td>
-                                    <td>$70,000</td>
-                                    <td><span class="badge badge-boxed badge-soft-warning">Success</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Product Devlopment</td>
-                                    <td><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="thumb-sm rounded-circle mr-2"> Kevin Heal</td>
-                                    <td>Paypal</td>
-                                    <td>5/8/2018</td>
-                                    <td>$15,000</td>
-                                    <td><span class="badge badge-boxed badge-soft-primary">panding</span></td>
-                                </tr>
-                                <tr>
-                                    <td>New Office Building</td>
-                                    <td><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="thumb-sm rounded-circle mr-2"> Frank M. Lyons</td>
-                                    <td>Paypal</td>
-                                    <td>15/7/2018</td>
-                                    <td>$35,000</td>
-                                    <td><span class="badge badge-boxed badge-soft-primary">Success</span></td>
+                                <tr v-for="bid in bids" :key="bid.id">
+                                    <td>{{bid.id}}</td>
+                                    <td>{{bid.date}}</td>
+                                    <td>Local Wallet</td>
+                                    <td>{{bid.period}}</td>
+                                    <td>{{bid.investment}}</td>
+                                    <td v-if="!bid.started"><span class="badge badge-boxed badge-soft-warning">pending</span></td>
+                                    <td v-else><span class="badge badge-boxed badge-soft-running">running</span></td>
+                                    <td>
+                                    <vue-countdown-timer
+      @start_callback="startCallBack('event started')"
+      @end_callback="endCallBack('event ended')"
+      :start-time="bid.startdate"
+      :end-time="bid.stopdate"
+      :interval="1000"
+      :start-label="'Until start:'"
+      :end-label="''"
+      label-position="begin"
+      :end-text="'Bid is mature'"
+      :day-txt="'D'"
+      :hour-txt="'H'"
+      :minutes-txt="'M'"
+      :seconds-txt="'S'">
+    </vue-countdown-timer>
+                                    </td>
+                                    <td><button class="btn btn-sm btn-primary" v-on:click="starttimer(bid.id)">start timer</button></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <!--end table-responsive-->
                     <div class="pt-3 border-top text-right">
-                    <a href="#" class="text-warning">View all <i class="fa fa-eye"></i></a>
-                       <button class="btn btn-outline-success"><i class="fa fa-check-circle-o" aria-hidden="true"></i>Bid</button>
+                    <input type="text" id="invitelink" class="form-control col-md-5" placeholder="your invite link">
+                    <button type="button" class="btn btn-danger btn-md  " data-toggle="modal" data-target="#deposit">
+  Deposit
+</button>
+                  <button type="button" class="btn btn-success btn-md " @click="genaratelink">
+                  get link
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.001 1.001 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 0 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 0 0-4.243-4.243L6.586 4.672z"/>
+</svg>
+</button>
+<!-- Modal -->
+<div class="modal fade" id="withdraw" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Withdraw</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" @click="withdraw()">Withdraw</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="invest" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Investment today is a source of income tomorrow.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form v-if="Investment == 0">
+  <div class="form-group">
+    <input type="number" class="form-control" id="period" required autofocus  aria-describedby="emailHelp" placeholder="number of days">
+  </div>
+  <div class="form-group">
+    <input type="number" required autofocus  class="form-control" id="investment" placeholder="amount">
+  </div>
+</form>
+<div  v-else-if="Investment == 1" class="alert alert-warning" role="alert">
+<h3>Investment Successfull activate it to earn</h3>
+</div>
+<div  v-else-if="Investment == 2" class="alert alert-warning" role="alert">
+<h4>Bid Failed due to insufficient wallet_balance
+<p><a href="https://ravesandbox.flutterwave.com/pay/bitbid">Kindly Top Here</a>Or Try Biding a smaller amount</p>
+</h4>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-primary" @click="invest()">Invest</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                    <!-- <a href="#" class="text-warning">View all <i class="fa fa-eye"></i></a> -->
+                       <button class="btn btn-secondary" data-toggle="modal" data-target="#invest">
+                       Invest
+                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
+  <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+  <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
+</svg>
+                       </button>
+                       <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#withdraw">
+ Withdraw
+</button>
                     </div>
                 </div>
             </div>
@@ -182,137 +307,19 @@
 </div>
 </div>
 <!--footer-->
-<footer id="dk-footer" class="dk-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-4">
-                    <div class="dk-footer-box-info">
-                        <a href="index.html" class="footer-logo">
-                            <!-- <img src="images/footer_logo.png" alt="footer_logo" class="img-fluid"> -->
-                        </a>
-                        <p class="footer-info-text">
-                         Bidbid Invest on Your peers
-                        </p>
-                        <div class="footer-social-link">
-                            <h3>Follow us</h3>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- End Social link -->
-                    </div>
-                    <!-- End Footer info -->
-                    <div class="footer-awarad">
-                        <img src="images/icon/best.png" alt="">
-                        <!-- <p>Best Design Company 2019</p> -->
-                    </div>
-                </div>
-                <!-- End Col -->
-                <div class="col-md-12 col-lg-8">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="contact-us">
-                                <div class="contact-icon">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                </div>
-                                <!-- End contact Icon -->
-                                <div class="contact-info">
-                                    <h3>Email us</h3>
-                                    <p>Bitbid@gmail.com</p>
-                                </div>
-                                <!-- End Contact Info -->
-                            </div>
-                            <!-- End Contact Us -->
-                        </div>
-                        <!-- End Col -->
-                        <div class="col-md-6">
-                            <div class="contact-us contact-us-last">
-                                <div class="contact-icon">
-                                    <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
-                                </div>
-                                <!-- End contact Icon -->
-                                <div class="contact-info">
-                                    <h3>0743126150</h3>
-                                    <p>Give us a call</p>
-                                </div>
-                                <!-- End Contact Info -->
-                            </div>
-                            <!-- End Contact Us -->
-                        </div>
-                        <!-- End Col -->
-                    </div>
-                    <!-- End Contact Row -->
-                    <div class="row" id="address">
-                        <div class="col-md-12 col-lg-6">
-                            <div class="footer-widget footer-left-widget">
-                                <div class="section-heading">
-                                    <h3>NetWorth</h3>
-                                    <span class="animate-border border-black"></span>
-                                </div>
-                            </div>
-                            <!-- End Footer Widget -->
-                        </div>
-                        <!-- End col -->
-                        <div class="col-md-12 col-lg-6">
-                            <div class="footer-widget">
-                                <div class="section-heading">
-                                    <h3>Active bids</h3>
-                                    <span class="animate-border border-black"></span>
-                                </div>
-                                <p><!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
-                                send us your mail and we will get in touch</p>
-                                <form action="#">
-                                    <div class="form-row">
-                                        <div class="col dk-footer-form">
-                                            <input type="email" class="form-control" placeholder="Email Address">
-                                            <button type="submit" lang="btn btn-md btn-success">
-                                              <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- End form -->
-                            </div>
-                            <!-- End footer widget -->
-                        </div>
-                        <!-- End Col -->
-                    </div>
-                    <!-- End Row -->
-                </div>
-                <!-- End Col -->
-            </div>
-            <!-- End Widget Row -->
-        </div>
-        <!-- End Contact Container -->
+<footer>
+        <div class="container-fluid">
         <div class="copyright">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-4">
                         <span>Copyright © 2021, All Right ninja corp</span>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <input type="email" required autofocus id="clientemail" class="form-control" placeholder="email us">
+                    </div>
+                     <div class="col-md-4 form-group">
+                        <button class="btn btn primary">send</button>
                     </div>
                     <!-- End Col -->
                     <!-- End col -->
@@ -329,12 +336,13 @@
             </button>
         </div>
         <!-- End Back to top -->
+        </div>
 </footer>
 
   </div>
   <div v-else>
   <div class="alert alert-warning" role="alert">
-  <h4 class="alert-heading">Your account is Deactivate!</h4>
+  <h4 class="alert-heading">Your account is Deactivated!</h4>
   <p><router-link class="router-link-active" to="/activate">Pay your activation fees here</router-link></p>
   <hr>
   <p class="mb-0">For more information contact bidbit@gmail.com</p>
@@ -347,17 +355,28 @@
 <script>
 import { mapGetters } from 'vuex'
 import firebase from 'firebase'
-const Flutterwave = require('flutterwave-node-v3')
-const flw = new Flutterwave('FLWPUBK_TEST-51ca022e8a64b1ff7a3e67ab623cc585-X', 'FLWSECK_TEST-40f50b8a0e514349a47be4d0acc29e0f-X')
 export default {
   data () {
     return {
+      form: {
+        number: '',
+        amount: 0
+      },
+      receipt_no: '',
       refferals: 0,
       amount_sent: 0,
       amount_received: 0,
       wallet_balance: 0,
       activated: false,
-      verified: ''
+      verified: '',
+      transaction_status: 1,
+      transaction_type: '',
+      invitelink: '',
+      Investment: 0,
+      total_bids: 0,
+      bids: [],
+      now: 0,
+      doc_ref: ''
     }
   },
   computed: {
@@ -365,10 +384,31 @@ export default {
       user: 'user'
     })
   },
+  created () {
+    const script = document.createElement('script')
+    script.src = 'https://checkout.flutterwave.com/v3.js'
+    document.getElementsByTagName('head')[0].appendChild(script)
+  },
   mounted: function () {
+    this.Investment = 0
+    this.invitelink = ''
+    this.receipt_no = ''
+    this.transaction_type = ''
+    this.transaction_status = 1
+    let db = firebase.firestore()
+    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+      this.refferals = snapshot.size
+    })
+    db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
+      this.total_bids = snapshot.size
+    })
+    db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.bids.push(doc.data())
+      })
+    })
     firebase.firestore().collection('users').doc(this.user.data.email).get().then(snapshot => {
       let data = snapshot.data()
-      this.refferals = data.refferals
       this.amount_sent = data.amount_sent
       this.amount_received = data.amount_received
       this.wallet_balance = data.wallet_balance
@@ -376,33 +416,226 @@ export default {
     })
   },
   methods: {
-    deposit: function () {
-      window.location.href = 'https://ravesandbox.flutterwave.com/pay/bitbidpayments'
+    starttimer: function (id) {
+      var countDownDate = new Date()
+      countDownDate.setHours(countDownDate.getHours() + 6)
+      var x = setInterval(() => {
+        var now = new Date().getTime()
+        var distance = countDownDate - now
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
+        document.getElementById('timer').innerHTML = hours + 'h' + minutes + 'm' + seconds + 's'
+        if (distance < 0) {
+          clearInterval(x)
+          document.getElementById('timer').innerHTML = 'Expired'
+        }
+      }, 1000)
+      this.now = id
+      let db = firebase.firestore()
+      console.log(this.now)
+      var startdate = new Date()
+      var period = 2
+      var startdateconverted = new Date().getTime()
+      var maturedate = startdate.setDate(startdate.getDate() + period)
+      console.log(startdateconverted)
+      console.log(maturedate)
+      firebase.firestore().collection('users').doc(this.user.data.email).collection('investments').where('id', '==', id).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          // eslint-disable-next-line camelcase
+          var doc_id = doc.id
+          db.collection('users').doc(this.user.data.email).collection('investments').doc(doc_id).get().then(snapshot => {
+            let data = snapshot.data()
+            if (!data.redeemed) {
+              db.collection('users').doc(this.user.data.email).collection('investments').doc(doc_id).update({
+                startdate: startdateconverted,
+                stopdate: maturedate,
+                redeemed: true,
+                started: true
+              })
+            } else {}
+          })
+        })
+      })
+    },
+    startCallBack: function (x) {
+      console.log(x)
+    },
+    endCallBack: function (x) {
+      console.log(x)
+    },
+    invest: function () {
+      let investment = document.getElementById('investment').value
+      let period = document.getElementById('period').value
+      let db = firebase.firestore()
+      db.collection('users').doc(firebase.auth().currentUser.email).get().then(snapshot => {
+        if (parseFloat(investment) <= snapshot.data().wallet_balance) {
+          this.Investment = 1
+          let balance = snapshot.data().wallet_balance - parseFloat(investment)
+          db.collection('users').doc(firebase.auth().currentUser.email).update({
+            wallet_balance: balance
+          })
+          // eslint-disable-next-line camelcase
+          let cust_id = parseFloat(this.total_bids) + 1
+          db.collection('users').doc(firebase.auth().currentUser.email).collection('investments').add({
+            id: cust_id,
+            investment: parseFloat(investment),
+            period: parseFloat(period),
+            date: new Date().toDateString(),
+            started: false
+          })
+        } else {
+          this.Investment = 2
+          console.log('***')
+        }
+      })
+    },
+    genaratelink () {
+      var urlgenerator = require('urlgenerator')
+      var createURLwithParameters = urlgenerator.createURLwithParameters
+      var baseURL = 'localhost:8080/#/register'
+      var referee = firebase.auth().currentUser.uid
+      var parameters = {'uid': referee}
+      var finalURL = createURLwithParameters(baseURL, parameters)
+      let field = document.getElementById('invitelink')
+      field.value = finalURL
+    },
+    reload: function () {
+      window.location.reload()
     },
     verify: function () {
-    //   const axios = require('axios')
-    //   const headers = { 'Content-Type': 'application/json',
-    //     'Authorization': '{{FLWSECK_TEST-40f50b8a0e514349a47be4d0acc29e0f-X}}'}
-    //   axios.get('https://api.flutterwave.com/v3/transactions/123456/verify', {headers})
-    //     .then(response => {
-    //       console.log(response)
-    //     })
-      // eslint-disable-next-line camelcase
-      const fetch_transaction = async () => {
-        const payload = {
-          'from': '2020-01-01',
-          'to': '2020-05-05'
+      var ref = document.getElementById('receipt_no').value
+      this.receipt_no = ref
+      console.log(ref)
+      let db = firebase.firestore()
+      db.collection('users').doc(firebase.auth().currentUser.email).collection('transactions').doc(this.receipt_no).get().then(snapshot => {
+        if (snapshot.data().redeemed !== true) {
+          // eslint-disable-next-line camelcase
+          let balance_now = this.wallet_balance + snapshot.data().amount
+          console.log(balance_now)
+          this.transaction_status = 2
+          this.transaction_type = snapshot.data().tx_ref
+          db.collection('users').doc(firebase.auth().currentUser.email).collection('transactions').doc(ref).update({
+            redeemed: true
+          })
+          db.collection('users').doc(firebase.auth().currentUser.email).update({
+            wallet_balance: balance_now
+          })
+        } else {
+          this.transaction_status = 3
         }
-        const response = await flw.Transaction.fetch(payload)
-        console.log(response)
-      }
-      return fetch_transaction()
+      })
+    },
+    deposit: function () {
+      window.FlutterwaveCheckout({
+        public_key: 'FLWPUBK_TEST-51ca022e8a64b1ff7a3e67ab623cc585-X',
+        tx_ref: 'Deposit',
+        amount: this.form.amount,
+        currency: 'KES',
+        country: 'KE',
+        payment_option: 'mpesa,card,ussd,account',
+        customer: {
+          email: firebase.auth().currentUser.email,
+          name: this.user.data.displayName,
+          phone_number: this.form.number
+        },
+        callback: function (data) {
+          let db = firebase.firestore()
+          db.collection('users').doc(firebase.auth().currentUser.email).collection('transactions').doc(data.flw_ref).set({
+            transaction_id: data.transaction_id,
+            transaction_status: data.status,
+            date: new Date(),
+            amount: data.amount,
+            redeemed: false,
+            reference: data.flw_ref,
+            tx_ref: data.tx_ref
+          })
+        }
+      })
+    },
+    withdraw: function () {
+      console.log(this.wallet_balance + 3)
     }
   }
 }
 </script>
 <style scoped>
 @import '../assets/footer.css';
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+#description {
+position: absolute;
+left: 50%;
+top: 150px;
+transform: translate(-50%, -50%);
+
+text-align: center;
+font-family: Raleway;
+color: white;
+}
+
+#loadingIndicator {
+position: relative;
+height: 90px;
+width: 150px;
+top: 10px;
+left: 50%;
+transform: translate(-50%, 0%);
+}
+
+.loadingBar {
+position: absolute;
+top: 30px;
+width: 30px;
+height: 30px;
+border-radius: 30px;
+animation: loadingAnimation 3s infinite;
+}
+
+#loadingBar1 {
+background: #1e00ff;
+animation-delay: 0s;
+left: 0px;
+}
+#loadingBar2 {
+background: #ff0061;
+animation-delay: 0.2s;
+left: 40px;
+}
+
+#loadingBar3 {
+background: #e1ff00;
+animation-delay: 0.4s;
+left: 80px;
+}
+#loadingBar4 {
+background: #00ff9e;
+animation-delay: 0.6s;
+left: 120px;
+}
+
+@keyframes loadingAnimation {
+0% {
+top: 30px;
+}
+20% {
+top: 0px;
+}
+50% {
+height: 30px;
+top: 30px;
+border-radius: 5px;
+}
+75% {
+height: 90px;
+top: 0px;
+border-radius: 30px;
+}
+100% {
+height: 30px;
+top: 30px;
+}
+}
+
 .p-xl {
   padding: 40px;
 }
@@ -482,7 +715,7 @@ body{
 }
 .badge-soft-warning {
     background-color: rgba(248,201,85,.2);
-    color: #f8c955;
+    color: #f85555;
 }
 
 .badge {
@@ -491,6 +724,10 @@ body{
 .badge-soft-primary {
     background-color: rgba(96,93,175,.2);
     color: #605daf;
+}
+.badge-soft-running {
+    background-color: rgba(96,93,175,.2);
+    color: #13b135;
 }
 
 ul {

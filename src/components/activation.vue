@@ -76,14 +76,13 @@
                  name="amount"
                  id="amount"
                  class="form-control form-group"
-                  placeholder="$2.50 or ksh 250....."
+                  placeholder="kes:250"
                   required
                   autofocus
                   value=250
                   v-model="form.amount"
                   >
-                <button class="btn btn-md btn-danger  btn-block btn-signin" type="button" @click="pay()">Pay with Card</button>
-                <button class="btn btn-md btn-primary btn-block btn-signin" type="button" @click="redirectToMpesa()">Lipa na mpesa</button>
+                <button class="btn btn-md btn-danger  btn-block btn-signin" type="button" @click="pay()">Pay to activate</button>
             </form><!-- /form -->
         </div>
     </div>
@@ -93,7 +92,7 @@
   </div>
 </template>
 <script>
-
+import firebase from 'firebase'
 export default {
   created () {
     const script = document.createElement('script')
@@ -112,26 +111,36 @@ export default {
   },
   methods: {
     pay: function () {
+      document.getElementById('amount').innerHTML = 250
       window.FlutterwaveCheckout({
         public_key: 'FLWPUBK_TEST-51ca022e8a64b1ff7a3e67ab623cc585-X',
         tx_ref: 'registration fees' + new Date(),
         amount: this.form.amount,
         currency: 'KES',
         country: 'KE',
-        payment_option: 'mobilemoney',
+        payment_option: 'mpesa,card,ussd,account',
         customer: {
           email: this.form.email,
           phone_number: this.form.number,
           name: this.form.name
         },
         callback: function (data) {
-          console.log(data)
+          let db = firebase.firestore()
+          db.collection('users').doc(firebase.auth().currentUser.email).update({
+            activated: true
+          })
+          db.collection('users').doc(firebase.auth().currentUser.email).collection('transactions').doc(data.tx_ref).set({
+            transaction_id: data.transaction_id,
+            transaction_status: data.status,
+            date: new Date(),
+            amount: data.amount
+          })
         },
         onclose: function () {},
         customizations: {
           title: 'BitBid payments',
           description: 'Activation fees',
-          logo: '../assets/payment.png'
+          logo: '../assets/payment.jpg'
         }
 
       })

@@ -5,10 +5,16 @@ import login from '../components/login.vue'
 import reg from '../components/register.vue'
 import activate from '../components/activation.vue'
 import dash from '../components/dashboard.vue'
+import hello from '../components/HelloWorld.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/hello',
+      name: 'name',
+      component: hello
+    },
     {
       path: '/',
       name: 'home',
