@@ -475,6 +475,7 @@ export default {
           console.log('***')
         }
       })
+      window.location.reload()
     },
     genaratelink () {
       var urlgenerator = require('urlgenerator')
