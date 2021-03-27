@@ -214,7 +214,7 @@
       :seconds-txt="'S'">
     </vue-countdown-timer>
                                     </td>
-                                    <td><button class="btn btn-sm btn-primary" v-on:click="starttimer(bid.id)">start timer</button></td>
+                                    <td><button class="btn btn-sm btn-primary" v-on:click="starttimer(bid.id,bid.period)">start timer</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -416,26 +416,11 @@ export default {
     })
   },
   methods: {
-    starttimer: function (id) {
-      var countDownDate = new Date()
-      countDownDate.setHours(countDownDate.getHours() + 6)
-      var x = setInterval(() => {
-        var now = new Date().getTime()
-        var distance = countDownDate - now
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
-        document.getElementById('timer').innerHTML = hours + 'h' + minutes + 'm' + seconds + 's'
-        if (distance < 0) {
-          clearInterval(x)
-          document.getElementById('timer').innerHTML = 'Expired'
-        }
-      }, 1000)
+    starttimer: function (id, period) {
       this.now = id
       let db = firebase.firestore()
       console.log(this.now)
       var startdate = new Date()
-      var period = 2
       var startdateconverted = new Date().getTime()
       var maturedate = startdate.setDate(startdate.getDate() + period)
       console.log(startdateconverted)
@@ -493,7 +478,7 @@ export default {
     genaratelink () {
       var urlgenerator = require('urlgenerator')
       var createURLwithParameters = urlgenerator.createURLwithParameters
-      var baseURL = 'localhost:8080/#/register'
+      var baseURL = 'https://bitbid.netlify.app/#/register'
       var referee = firebase.auth().currentUser.uid
       var parameters = {'uid': referee}
       var finalURL = createURLwithParameters(baseURL, parameters)
