@@ -539,6 +539,7 @@ export default {
           })
         }
       })
+      window.location.reload()
     },
     withdraw: function () {
       console.log(this.wallet_balance + 3)
