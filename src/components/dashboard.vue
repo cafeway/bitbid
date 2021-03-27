@@ -442,6 +442,7 @@ export default {
           })
         })
       })
+      window.location.reload()
     },
     startCallBack: function (x) {
       console.log(x)
