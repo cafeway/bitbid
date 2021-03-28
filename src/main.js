@@ -19,6 +19,8 @@ import Vuex from 'vuex'
 import cors from 'cors'
 import VueRouter from 'vue-router'
 import VueCountdownTimer from 'vuejs-countdown-timer'
+import AxiosPlugin from 'vue-axios-cors'
+Vue.use(AxiosPlugin)
 Vue.use(VueCountdownTimer)
 Vue.use(VueRouter)
 Vue.use(LoadScript)

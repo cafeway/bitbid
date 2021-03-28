@@ -299,6 +299,9 @@
                        <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#withdraw">
  Withdraw
 </button>
+                     <button type="button" class="btn btn-warning btn-md" @click="verify_trans()">
+ Withdraw
+</button>
                     </div>
                 </div>
             </div>
@@ -416,6 +419,21 @@ export default {
     })
   },
   methods: {
+    verify_trans: function () {
+      var request = require('request')
+      var options = {
+        'method': 'GET',
+        'url': 'https://api.flutterwave.com/v3/transactions/123456/verify',
+        'headers': {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer FLWSECK_TEST-40f50b8a0e514349a47be4d0acc29e0f-X'
+        }
+      }
+      request(options, function (error, response) {
+        if (error) throw new Error(error)
+        console.log(response.body)
+      })
+    },
     starttimer: function (id, period) {
       this.now = id
       let db = firebase.firestore()
@@ -442,7 +460,6 @@ export default {
           })
         })
       })
-      window.location.reload()
     },
     startCallBack: function (x) {
       console.log(x)
@@ -475,7 +492,6 @@ export default {
           console.log('***')
         }
       })
-      window.location.reload()
     },
     genaratelink () {
       var urlgenerator = require('urlgenerator')

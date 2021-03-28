@@ -29,6 +29,7 @@
     "url-parse": "^1.5.1",
     "urlgenerator": "^0.7.4",
     "vue": "^2.6.12",
+    "vue-axios-cors": "^1.0.1",
     "vue-material": "^1.0.0-beta-15",
     "vue-plugin-load-script": "^1.3.2",
     "vue-router": "^3.5.1",
