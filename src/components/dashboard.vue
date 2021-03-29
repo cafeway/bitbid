@@ -655,7 +655,7 @@ export default {
     },
     deposit: function () {
       window.FlutterwaveCheckout({
-        public_key: 'FLWPUBK_TEST-111f16b3732133e69898436541909a9b-X',
+        public_key: 'FLWPUBK-dfa1f8026935ce5fdeb76020057e0ec0-X',
         tx_ref: 'Deposit',
         amount: this.form.amount,
         currency: 'KES',

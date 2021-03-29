@@ -115,7 +115,7 @@ export default {
     pay: function () {
       document.getElementById('amount').innerHTML = 250
       window.FlutterwaveCheckout({
-        public_key: 'FLWPUBK_TEST-111f16b3732133e69898436541909a9b-X',
+        public_key: 'FLWPUBK-dfa1f8026935ce5fdeb76020057e0ec0-X',
         tx_ref: 'registration fees' + new Date(),
         amount: 250,
         currency: 'KES',
