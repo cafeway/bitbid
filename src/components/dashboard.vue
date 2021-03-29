@@ -22,6 +22,11 @@
                 click to verify a payment
            </div>
             </div>
+             <div class="d-flex" style="padding-right:10px">
+                <div class="text-center text-secondary alert alert-success" @click="logout()">
+                Sign out
+           </div>
+            </div>
         </div>
       <!-- Modal -->
 <div class="modal fade" id="verify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -607,6 +612,10 @@ export default {
           console.log('***')
         }
       })
+    },
+    logout: function () {
+      firebase.auth().signOut()
+      this.$router.push('/login')
     },
     genaratelink () {
       var urlgenerator = require('urlgenerator')
