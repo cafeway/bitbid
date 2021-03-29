@@ -1,9 +1,9 @@
 <template>
     <vue-countdown-timer
       @start_callback="startCallBack('event started')"
-      @end_callback="endCallBack('event ended')"
-      :start-time="1616861086402"
-      :end-time="1617033746738"
+      @end_callback="endCallBack('bla')"
+      :start-time="1616970184901"
+      :end-time="1617056813087"
       :interval="1000"
       :start-label="'Until start:'"
       :end-label="'Until end:'"

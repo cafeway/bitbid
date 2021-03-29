@@ -1,11 +1,12 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-tabs */
 /* eslint-disable no-tabs */
 <template>
   <div class="container-fluid">
-  <div v-if="this.activated">
+  <div v-if="this.connected">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid"> <a class="navbar-brand" href="#">BITBID</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="container-fluid"> <a class="navbar-brand" href="#">BITBID Investments</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                <b-list-group style="max-width: 300px;">
@@ -173,7 +174,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="header-title pb-3 mt-0">Bids History</h5>
+                    <h5 class="header-title pb-3 mt-0">Cheda Zako!</h5>
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">
                             <thead>
@@ -183,7 +184,7 @@
                                     <th>Payment Method</th>
                                     <th>Pay Days</th>
                                     <th>Amount</th>
-                                    <th>Transaction</th>
+                                    <th>Transaction Status</th>
                                     <th>Timer</th>
                                     <th>Actions</th>
                                 </tr>
@@ -195,26 +196,29 @@
                                     <td>Local Wallet</td>
                                     <td>{{bid.period}}</td>
                                     <td>{{bid.investment}}</td>
-                                    <td v-if="!bid.started"><span class="badge badge-boxed badge-soft-warning">pending</span></td>
-                                    <td v-else><span class="badge badge-boxed badge-soft-running">running</span></td>
+                                    <td v-if="bid.state == 'running'"><span class="badge badge-boxed badge-soft-warning">pending</span></td>
+                                    <td v-else-if="bid.state =='matured'"><span class="badge badge-boxed badge-soft-running">matured</span></td>
+                                    <td v-else><span class="badge badge-boxed badge-soft-primary">cashed out</span></td>
                                     <td>
                                     <vue-countdown-timer
-      @start_callback="startCallBack('event started')"
-      @end_callback="endCallBack('event ended')"
+      @start_callback="startCallBack(bid.id)"
+      @end_callback="endCallBack(bid.id)"
       :start-time="bid.startdate"
       :end-time="bid.stopdate"
       :interval="1000"
       :start-label="'Until start:'"
       :end-label="''"
       label-position="begin"
-      :end-text="'Bid is mature'"
+      :end-text="'timer expired'"
       :day-txt="'D'"
       :hour-txt="'H'"
       :minutes-txt="'M'"
       :seconds-txt="'S'">
     </vue-countdown-timer>
                                     </td>
-                                    <td><button class="btn btn-sm btn-primary" v-on:click="starttimer(bid.id,bid.period)">start timer</button></td>
+                                    <td v-if="bid.state == 'running'"><button class="btn btn-sm btn-default disabled"><strike>running</strike></button></td>
+                                    <td v-else-if="bid.state == 'matured'" ><button  class="btn btn-sm btn-outline-success" @click="cashout(bid.id)">Cash-out</button></td>
+                                     <td v-else><p class="alert alert-success" role="alert">Cashed out</p></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -309,48 +313,102 @@
     </div>
 </div>
 </div>
-<!--footer-->
-<footer>
-        <div class="container-fluid">
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <span>Copyright © 2021, All Right ninja corp</span>
-                    </div>
-                    <div class="col-md-4 form-group">
-                        <input type="email" required autofocus id="clientemail" class="form-control" placeholder="email us">
-                    </div>
-                     <div class="col-md-4 form-group">
-                        <button class="btn btn primary">send</button>
-                    </div>
-                    <!-- End Col -->
-                    <!-- End col -->
-                </div>
-                <!-- End Row -->
+
+<!-- Footer -->
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!--social media-->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example2" class="form-control" />
             </div>
-            <!-- End Copyright Container -->
-        </div>
-        <!-- End Copyright -->
-        <!-- Back to top -->
-        <div class="back-to-top">
-            <button class="btn btn-dark" title="Back to Top" style="display: block;">
-                <a href="#/"><i class="fa fa-angle-up"></i></a>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Holla at us!
             </button>
+          </div>
+          <!--Grid column-->
         </div>
-        <!-- End Back to top -->
-        </div>
-</footer>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
 
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+        Invest with us to secure tomorrow!
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
   </div>
-  <div v-else>
-  <div class="alert alert-warning" role="alert">
-  <h4 class="alert-heading">Your account is Deactivated!</h4>
-  <p><router-link class="router-link-active" to="/activate">Pay your activation fees here</router-link></p>
-  <hr>
-  <p class="mb-0">For more information contact bidbit@gmail.com</p>
-</div>
+  <!-- Grid container -->
 
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright:
+     BitBid
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+  </div>
+  <div v-else  class="container-fluid" style="padding-left:500px">
+  <p></p>
+    <div class="load">
+        <div class="fingers">
+            <div class="nails"></div>
+        </div>
+
+        <div class="fingers">
+            <div class="nails"></div>
+        </div>
+
+        <div class="fingers">
+            <div class="nails"></div>
+        </div>
+
+        <div class="fingers">
+            <div class="nails"></div>
+        </div>
+
+        <div class="pollex"></div>
+
+    </div>
   </div>
 </div>
 
@@ -379,7 +437,8 @@ export default {
       total_bids: 0,
       bids: [],
       now: 0,
-      doc_ref: ''
+      doc_ref: '',
+      connected: true
     }
   },
   computed: {
@@ -391,6 +450,7 @@ export default {
     const script = document.createElement('script')
     script.src = 'https://checkout.flutterwave.com/v3.js'
     document.getElementsByTagName('head')[0].appendChild(script)
+    this.connected = window.navigator.onLine
   },
   mounted: function () {
     this.Investment = 0
@@ -419,6 +479,30 @@ export default {
     })
   },
   methods: {
+    // eslint-disable-next-line camelcase
+    cashout: function (bid_id) {
+      let db = firebase.firestore()
+      db.collection('users').doc(this.user.data.email).collection('investments').where('id', '==', bid_id).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).get().then(snapshot => {
+            let cashout = snapshot.data().investment
+            db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+              // eslint-disable-next-line camelcase
+              let amount_received = snapshot.data().amount_received + cashout
+              let wb = snapshot.data().wallet_balance + cashout
+              db.collection('users').doc(this.user.data.email).update({
+                wallet_balance: wb,
+                amount_received: amount_received
+              })
+              db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).update({
+                state: 'cashed',
+                matured: true
+              })
+            })
+          })
+        })
+      })
+    },
     verify_trans: function () {
       var request = require('request')
       var options = {
@@ -461,11 +545,29 @@ export default {
         })
       })
     },
-    startCallBack: function (x) {
-      console.log(x)
+    // eslint-disable-next-line camelcase
+    startCallBack: function (bid_id) {
+      console.log(bid_id)
     },
-    endCallBack: function (x) {
-      console.log(x)
+    // eslint-disable-next-line camelcase
+    endCallBack: function (bid_id) {
+      let db = firebase.firestore()
+      db.collection('users').doc(this.user.data.email).collection('investments').where('id', '==', bid_id).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          let db = firebase.firestore()
+          db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).get().then(snapshot => {
+            let ifmatured = snapshot.data().matured
+            if (ifmatured) {
+              console.log(snapshot.data().state)
+            } else {
+              console.log('......')
+              db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).update({
+                state: 'matured'
+              })
+            }
+          })
+        })
+      })
     },
     invest: function () {
       let investment = document.getElementById('investment').value
@@ -474,18 +576,31 @@ export default {
       db.collection('users').doc(firebase.auth().currentUser.email).get().then(snapshot => {
         if (parseFloat(investment) <= snapshot.data().wallet_balance) {
           this.Investment = 1
+          let db = firebase.firestore()
           let balance = snapshot.data().wallet_balance - parseFloat(investment)
           db.collection('users').doc(firebase.auth().currentUser.email).update({
             wallet_balance: balance
           })
+          console.log(balance)
           // eslint-disable-next-line camelcase
           let cust_id = parseFloat(this.total_bids) + 1
+          console.log(this.now)
+          var startdate = new Date()
+          var startdateconverted = new Date().getTime()
+          var maturedate = startdate.setDate(startdate.getDate() + parseFloat(period))
+          console.log(startdateconverted)
+          console.log(maturedate)
           db.collection('users').doc(firebase.auth().currentUser.email).collection('investments').add({
             id: cust_id,
             investment: parseFloat(investment),
             period: parseFloat(period),
             date: new Date().toDateString(),
-            started: false
+            started: false,
+            state: 'running',
+            cashed: false,
+            startdate: startdateconverted,
+            stopdate: maturedate
+
           })
         } else {
           this.Investment = 2
@@ -531,12 +646,12 @@ export default {
     },
     deposit: function () {
       window.FlutterwaveCheckout({
-        public_key: 'FLWPUBK_TEST-51ca022e8a64b1ff7a3e67ab623cc585-X',
+        public_key: 'FLWPUBK_TEST-111f16b3732133e69898436541909a9b-X',
         tx_ref: 'Deposit',
         amount: this.form.amount,
         currency: 'KES',
         country: 'KE',
-        payment_option: 'mpesa,card,ussd,account',
+        payment_option: 'mpesa,card,ussd,account,paypal',
         customer: {
           email: firebase.auth().currentUser.email,
           name: this.user.data.displayName,
@@ -555,7 +670,6 @@ export default {
           })
         }
       })
-      window.location.reload()
     },
     withdraw: function () {
       console.log(this.wallet_balance + 3)
@@ -566,6 +680,109 @@ export default {
 <style scoped>
 @import '../assets/footer.css';
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+        .load{
+            width: 330px;
+            height: 330px;
+            display: flex;
+            position:absolute;
+            top: 35%;
+            justify-content: center;
+            align-items: center;
+            background-color: #f35430;
+            border-radius: 50%;
+            animation: shadow 1.4s ease-in-out infinite;
+        }
+        .fingers{
+            background-color: #f7c86b;
+            width: 45px;
+            margin-right: 5px;
+            border-radius: 15px 15px 25px 25px;
+            position: relative;
+            animation: move 1.5s ease-in-out infinite;
+        }
+        .fingers:nth-child(1){
+            height: 130px;
+            top: 5px;
+            margin-left: 24px;
+        }
+        .fingers:nth-child(2){
+            height: 150px;
+            animation-delay: .1s;
+        }
+        .fingers:nth-child(3){
+            height: 170px;
+            top: -5px;
+            animation-delay: .2s;
+        }
+        .fingers:nth-child(4){
+            height: 150px;
+            animation-delay: .3s;
+        }
+        .pollex{
+            width: 60px;
+            height: 45px;
+            position: relative;
+            top: 5px;
+            background-color: #f7c86b;
+            border-radius: 5px 15px 45px 5px;
+            animation: move2 1.5s linear infinite;
+            animation-delay: .4s;
+        }
+        .nails{
+            width: 30px;
+            height: 30px;
+            border-radius: 50px 50px 20px 20px;
+            background-color: #faf5c3;
+            position: absolute;
+            bottom: 13px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .fingers::before,.fingers::after{
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 5px;
+            background-color: #e69b4c;
+            border-radius: 5px;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .fingers::before{
+            top: 20px;
+        }
+        @keyframes move{
+            0%{transform: scaleY(1) translateY(0px)}
+            20%{transform: scaleY(.8) translateY(-30px)}
+            30%{transform: scaleY(.8) translateY(-30px)}
+            40%{transform: scaleY(1) translateY(0px)}
+            100%{transform: scaleY(1) translateY(0px)}
+        }
+        @keyframes move2{
+            0%{transform: scaleY(1) translateY(0px)}
+            20%{transform: scaleY(.9) translateY(-20px)}
+            30%{transform: scaleY(.9) translateY(-20px)}
+            40%{transform: scaleY(1) translateY(0px)}
+            100%{transform: scaleY(1) translateY(0px)}
+        }
+        @keyframes shadow{
+            0%{box-shadow: 0 0 0 5px #fff}
+            100%{box-shadow: 0 0 0 20px #f35430}
+        }
+.hover {
+  animation: hover 2s alternate ease-in-out infinite;
+}
+
+@keyframes hover {
+  to {
+    transform: translate(0, 0);
+  }
+  from {
+    transform: translate(0, 8px);
+  }
+}
+
 #description {
 position: absolute;
 left: 50%;
@@ -727,7 +944,7 @@ body{
 }
 .badge-soft-primary {
     background-color: rgba(96,93,175,.2);
-    color: #605daf;
+    color: #3c39d4;
 }
 .badge-soft-running {
     background-color: rgba(96,93,175,.2);

@@ -2,7 +2,7 @@
 <div class="container-fluid">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand disabled" href="">BITBID-P2P</a>
+  <a class="navbar-brand disabled" href="">BITBID Investments</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -69,7 +69,8 @@ export default {
         Password: ''
       },
       error: null,
-      activated: false
+      activated: false,
+      loading: true
     }
   },
   methods: {
@@ -77,7 +78,15 @@ export default {
       firebase.auth()
         .signInWithEmailAndPassword(this.form.email, this.form.Password)
         .then(data => {
-          this.$router.push('/dash')
+          let db = firebase.firestore()
+          db.collection('users').doc(this.form.email).get().then(snapshot => {
+            let activated = snapshot.data().activated
+            if (activated) {
+              this.$router.push('/dash')
+            } else {
+              this.$router.push('/activate')
+            }
+          })
         })
         .catch(err => {
           this.error = err.message
