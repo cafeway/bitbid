@@ -621,7 +621,7 @@ export default {
     genaratelink () {
       var urlgenerator = require('urlgenerator')
       var createURLwithParameters = urlgenerator.createURLwithParameters
-      var baseURL = 'https://bitbid.netlify.app/#/register'
+      var baseURL = 'https://bitbidltd.com/#/register'
       var referee = firebase.auth().currentUser.uid
       var parameters = {'uid': referee}
       var finalURL = createURLwithParameters(baseURL, parameters)
