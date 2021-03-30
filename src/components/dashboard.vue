@@ -274,14 +274,14 @@
       <div class="modal-body">
       <form v-if="Investment == 0">
   <div class="form-group">
-    <input type="number" class="form-control" id="period" required autofocus  aria-describedby="emailHelp" placeholder="number of days">
+    <input type="number" class="form-control" id="period"  readonly required autofocus  aria-describedby="emailHelp" placeholder="number of days" value="1">
   </div>
   <div class="form-group">
     <input type="number" required autofocus  class="form-control" id="investment" placeholder="amount">
   </div>
 </form>
 <div  v-else-if="Investment == 1" class="alert alert-warning" role="alert">
-<h3>Investment Successfull activate it to earn</h3>
+<h3>Your Investment Successfull...!</h3>
 </div>
 <div  v-else-if="Investment == 2" class="alert alert-warning" role="alert">
 <h4>Bid Failed due to insufficient wallet_balance
@@ -493,8 +493,10 @@ export default {
             let cashout = snapshot.data().investment
             db.collection('users').doc(this.user.data.email).get().then(snapshot => {
               // eslint-disable-next-line camelcase
-              let amount_received = snapshot.data().amount_received + cashout
-              let wb = snapshot.data().wallet_balance + cashout
+              let profit = cashout * 0.15
+              // eslint-disable-next-line camelcase
+              let amount_received = snapshot.data().amount_received + cashout + profit
+              let wb = snapshot.data().wallet_balance + cashout + profit
               db.collection('users').doc(this.user.data.email).update({
                 wallet_balance: wb,
                 amount_received: amount_received
@@ -594,7 +596,6 @@ export default {
           var startdateconverted = new Date().getTime()
           var maturedate = startdate.setDate(startdate.getDate() + parseFloat(period))
           console.log(startdateconverted)
-          console.log(maturedate)
           db.collection('users').doc(firebase.auth().currentUser.email).collection('investments').add({
             id: cust_id,
             investment: parseFloat(investment),
