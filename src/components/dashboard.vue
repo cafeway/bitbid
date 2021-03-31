@@ -697,9 +697,7 @@ export default {
       })
     },
     withdraw: function () {
-      let db = firebase.firestore()
-      db.collection('users').doc(this.user.data.email).get().then(snapshot => {
-      })
+      this.$swal('contact admin for direct withdrawals')
     }
   }
 }
