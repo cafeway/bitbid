@@ -43,18 +43,9 @@ status = 200
   to = "https://flutterwave.com/pay/4cb6328plnky"
   status = 200
   edge_handler = "filterRequests"
-   [[redirects]]
-  from = "/login"
-  to = "/activate"
-  status = 200
   edge_handler = "filterRequests"
    [[redirects]]
   from = "/login"
   to = "/dash"
-  status = 200
-  edge_handler = "filterRequests"
-   [[redirects]]
-  from = "/https://ravesandbox.flutterwave.com/pay/bitbidpayments"
-  to = "https://bitbid.netlify.app/#/dash"
   status = 200
   edge_handler = "filterRequests"
