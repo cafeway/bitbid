@@ -24,27 +24,6 @@ status = 200
   status = 200
   edge_handler = "filterRequests"
   [[redirects]]
-  from = "/"
-  to = "/register"
-  status = 200
-  edge_handler = "filterRequests"
-  [[redirects]]
-  from = "/"
-  to = "/register"
-  status = 200
-  edge_handler = "filterRequests"
-  [[redirects]]
-  from = "/"
-  to = "/activate"
-  status = 200
-  edge_handler = "filterRequests"
- [[redirects]]
-  from = "/activate"
-  to = "https://flutterwave.com/pay/4cb6328plnky"
-  status = 200
-  edge_handler = "filterRequests"
-  edge_handler = "filterRequests"
-   [[redirects]]
   from = "/login"
   to = "/dash"
   status = 200
