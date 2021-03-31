@@ -45,9 +45,31 @@
                         <td>{{user.activated}}</td>
                         <td>{{user.wallet_balance}}</td>
                         <td>
-                            <a href="#" class="view" v-on:click="verifyUser(user.email)" title="View" data-toggle="tooltip"><i class="fa fa-check"></i></a>
-                            <a href="#" class="edit" v-on:click="deleteUser(user.email)" title="Edit" data-toggle="tooltip"><i class="fa fa-power-off"></i></a>
-                            <a href="#" class="delete"  title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                         <ul>
+                         <li data-toggle="modal" data-target="#exampleModal" class="alert alert-success">withdraw</li>
+                         <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{user.username}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" id="amount" placeholder="amount" type="number" v-model="form.amount">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" @click="withdraw(user.email)" >Withdraw</button>
+      </div>
+    </div>
+  </div>
+</div>
+                         </ul>
                         </td>
                     </tr>
                 </tbody>
@@ -195,15 +217,13 @@ export default {
       users: [],
       availableshares: 0,
       form: {
-        username: ''
+        username: '',
+        amount: 0
       }
     }
   },
   mounted: function () {
     var db = firebase.firestore()
-    db.collection('shares').doc('available').get().then(snapshot => {
-      this.availableshares = snapshot.data().total
-    })
     db.collection('users').get().then(snapshot => {
       snapshot.forEach(doc => {
         this.users.push(doc.data())
@@ -211,6 +231,19 @@ export default {
     })
   },
   methods: {
+    withdraw: function (email) {
+      let db = firebase.firestore()
+      console.log(email)
+      db.collection('users').doc(email).collection('withdrawals').where('amount', '==', this.form.amount).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          if (!doc.data().status) {
+            db.collection('users').doc(email).collection('withdrawals').doc(doc.id).update({
+              cashed: true
+            })
+          }
+        })
+      })
+    },
     deleteUser: function (email) {
       let db = firebase.firestore()
       db.collection('users').doc(email).update({

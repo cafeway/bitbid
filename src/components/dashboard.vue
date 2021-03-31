@@ -297,7 +297,7 @@
 </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-secondary" @click="refresh()" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-outline-primary" @click="invest()">Invest</button>
       </div>
     </div>
@@ -465,6 +465,9 @@ export default {
     document.getElementsByTagName('head')[0].appendChild(script)
     this.connected = window.navigator.onLine
   },
+  updated: function () {
+    window.location.href('/dash')
+  },
   mounted: function () {
     this.Investment = 0
     this.invitelink = ''
@@ -492,6 +495,9 @@ export default {
     })
   },
   methods: {
+    refresh: function () {
+      window.location.reload()
+    },
     // eslint-disable-next-line camelcase
     cashout: function (bid_id) {
       let db = firebase.firestore()
@@ -516,9 +522,11 @@ export default {
                   matured: true,
                   cashed: true
                 })
+                window.location.reload()
               })
             } else {
               this.$swal('cashed out .... please refresh')
+              window.location.reload()
             }
           })
         })
@@ -700,7 +708,7 @@ export default {
       let db = firebase.firestore()
       db.collection('users').doc(this.user.data.email).collection('withdrawals').add({
         amount: parseFloat(this.form.withdrawal),
-        status: 'pending'
+        status: false
       })
     }
   }
