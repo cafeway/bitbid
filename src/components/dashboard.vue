@@ -697,7 +697,11 @@ export default {
       })
     },
     withdraw: function () {
-      this.$swal('contact admin for direct withdrawals')
+      let db = firebase.firestore()
+      db.collection('users').doc(this.user.data.email).collection('withdrawals').add({
+        amount: parseFloat(this.form.withdrawal),
+        status: 'pending'
+      })
     }
   }
 }

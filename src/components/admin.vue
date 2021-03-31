@@ -14,57 +14,17 @@
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
-               <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" >Admin</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Search Users</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">SetShares <span class="sr-only">(current)</span></a>
-      </li>
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">amount</label>
 
-                <div class="col-md-6">
-                  <input
-                    id="transferamount"
-                    type="number"
-                    class="form-control"
-                    name="password"
-                    required
-                    v-model="form.amount"
-                  />
-                </div>
-              </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" v-on:click="setshares" data-dismiss="modal">Set Shares</button>
-      </div>
-    </div>
-  </div>
-</div>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline col-md-6">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search"  id="username" v-model="form.username" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+    </form>
   </div>
 </nav>
             </div>
@@ -73,7 +33,6 @@
                     <tr>
                         <th>User<i class="fa fa-user-circle-o"></i></th>
                         <th>PhoneNumber <i class="fa fa-mobile"></i></th>
-                        <th>Investments<i class="fa fa-sort"></i></th>
                         <th>Activated<i class="fa fa-certificate"></i></th>
                         <th>Balance<i class="fa fa-money"></i></th>
                         <th>Actions</th>
@@ -83,10 +42,8 @@
                     <tr v-for="user in users" :key="user.uid">
                         <td>{{user.username}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.investments}}</td>
                         <td>{{user.activated}}</td>
                         <td>{{user.wallet_balance}}</td>
-                        <td>{{user.shares}}</td>
                         <td>
                             <a href="#" class="view" v-on:click="verifyUser(user.email)" title="View" data-toggle="tooltip"><i class="fa fa-check"></i></a>
                             <a href="#" class="edit" v-on:click="deleteUser(user.email)" title="Edit" data-toggle="tooltip"><i class="fa fa-power-off"></i></a>
@@ -238,7 +195,7 @@ export default {
       users: [],
       availableshares: 0,
       form: {
-        amount: ''
+        username: ''
       }
     }
   },

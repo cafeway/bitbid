@@ -7,10 +7,16 @@ import activate from '../components/activation.vue'
 import dash from '../components/dashboard.vue'
 import hello from '../components/HelloWorld.vue'
 import admin from '../components/admin.vue'
+import search from '../components/localdbsearch.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/search',
+      name: 'search',
+      component: search
+    },
     {
       path: '/admin',
       name: 'admin',
