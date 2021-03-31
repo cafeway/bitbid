@@ -252,7 +252,14 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <input
+        type="number"
+        value="200"
+        placeholder="amount"
+        id="withdrawal"
+        v-model="form.withdrawal"
+        class="form-control"
+        />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -426,7 +433,8 @@ export default {
     return {
       form: {
         number: '',
-        amount: 0
+        amount: 0,
+        withdrawal: 0
       },
       receipt_no: '',
       refferals: 0,
@@ -490,22 +498,28 @@ export default {
       db.collection('users').doc(this.user.data.email).collection('investments').where('id', '==', bid_id).get().then(snapshot => {
         snapshot.forEach(doc => {
           db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).get().then(snapshot => {
-            let cashout = snapshot.data().investment
-            db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+            let data = snapshot.data()
+            if (!data.cashed) {
+              let cashout = snapshot.data().investment
+              db.collection('users').doc(this.user.data.email).get().then(snapshot => {
               // eslint-disable-next-line camelcase
-              let profit = cashout * 0.15
-              // eslint-disable-next-line camelcase
-              let amount_received = snapshot.data().amount_received + cashout + profit
-              let wb = snapshot.data().wallet_balance + cashout + profit
-              db.collection('users').doc(this.user.data.email).update({
-                wallet_balance: wb,
-                amount_received: amount_received
+                let profit = cashout * 0.15
+                // eslint-disable-next-line camelcase
+                let amount_received = snapshot.data().amount_received + cashout + profit
+                let wb = snapshot.data().wallet_balance + cashout + profit
+                db.collection('users').doc(this.user.data.email).update({
+                  wallet_balance: wb,
+                  amount_received: amount_received
+                })
+                db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).update({
+                  state: 'cashed',
+                  matured: true,
+                  cashed: true
+                })
               })
-              db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).update({
-                state: 'cashed',
-                matured: true
-              })
-            })
+            } else {
+              this.$swal('cashed out .... please refresh')
+            }
           })
         })
       })
@@ -612,6 +626,7 @@ export default {
           this.Investment = 2
           console.log('***')
         }
+        window.location.href('/dash')
       })
     },
     logout: function () {
@@ -682,7 +697,9 @@ export default {
       })
     },
     withdraw: function () {
-      console.log(this.wallet_balance + 3)
+      let db = firebase.firestore()
+      db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+      })
     }
   }
 }

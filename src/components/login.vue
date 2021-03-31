@@ -78,7 +78,6 @@ export default {
       firebase.auth()
         .signInWithEmailAndPassword(this.form.email, this.form.Password)
         .then(data => {
-          let db = firebase.firestore()
           this.$router.push('/dash')
         })
         .catch(err => {

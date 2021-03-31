@@ -6,10 +6,16 @@ import reg from '../components/register.vue'
 import activate from '../components/activation.vue'
 import dash from '../components/dashboard.vue'
 import hello from '../components/HelloWorld.vue'
+import admin from '../components/admin.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/admin',
+      name: 'admin',
+      component: admin
+    },
     {
       path: '/hello',
       name: 'name',
