@@ -36,6 +36,16 @@
 <script>
 import firebase from 'firebase'
 export default {
+  mounted: function () {
+    let user = firebase.auth().currentUser.email
+    let db = firebase.firestore()
+    db.collection('users').doc(user).get().then(snapshot => {
+      let data = snapshot.data()
+      if (data.role !== 'admin') {
+        window.location.href('/dash')
+      }
+    })
+  },
   methods: {
     showuserdata: function () {
       alert('....')
@@ -62,6 +72,7 @@ export default {
   },
   data () {
     return {
+      role: '',
       userinfo: [],
       form: {
         email: '',
