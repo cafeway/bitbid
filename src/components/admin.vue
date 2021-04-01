@@ -229,6 +229,13 @@ export default {
         this.users.push(doc.data())
       })
     })
+    let user = firebase.auth().currentUser.email
+    db.collection('users').doc(user).get().then(snapshot => {
+      let data = snapshot.data()
+      if (!data.admin) {
+        window.location.href('/dash')
+      }
+    })
   },
   methods: {
     withdraw: function (email) {
