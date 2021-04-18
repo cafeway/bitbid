@@ -678,30 +678,17 @@ export default {
       })
     },
     deposit: function () {
-      window.FlutterwaveCheckout({
-        public_key: 'FLWPUBK-dfa1f8026935ce5fdeb76020057e0ec0-X',
-        tx_ref: 'Deposit',
-        amount: this.form.amount,
-        currency: 'KES',
-        country: 'KE',
-        payment_option: 'mpesa,card,ussd,account,paypal',
-        customer: {
-          email: firebase.auth().currentUser.email,
-          name: this.user.data.displayName,
-          phone_number: this.form.number
-        },
-        callback: function (data) {
-          let db = firebase.firestore()
-          db.collection('users').doc(firebase.auth().currentUser.email).collection('transactions').doc(data.flw_ref).set({
-            transaction_id: data.transaction_id,
-            transaction_status: data.status,
-            date: new Date(),
-            amount: data.amount,
-            redeemed: false,
-            reference: data.flw_ref,
-            tx_ref: data.tx_ref
-          })
+      var axios = require('axios').default
+      axios({
+        method: 'GET',
+        url: 'https://api.proxyapi.co.ke/sandbox/mpesa/v1/auth',
+        headers: {
+          'X-Authorization': 'Basic 40ca323c8f19bd3c34df48320881110de55fc3f48344e0000d1c0144fb66235b',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
         }
+      }).then(function (response) {
+        console.log(response)
       })
     },
     withdraw: function () {
