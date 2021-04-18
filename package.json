@@ -24,6 +24,7 @@
     "flutterwave-node": "^1.2.2",
     "flutterwave-node-v3": "^1.0.6",
     "jquery": "^3.6.0",
+    "node-fetch": "^2.6.1",
     "open": "^8.0.4",
     "swal": "^0.1.0",
     "url-parse": "^1.5.1",
