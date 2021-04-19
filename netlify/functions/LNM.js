@@ -4,7 +4,6 @@ import cors from 'cors'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import compression from 'compression'
-import customLogger from '../utils/logger'
 
 /* My express App */
 export default function expressApp (functionName) {
@@ -77,7 +76,6 @@ export default function expressApp (functionName) {
   })
 
   // Attach logger
-  app.use(morgan(customLogger))
 
   // Setup routes
   app.use(routerBasePath, router)
