@@ -155,6 +155,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <div id="pvp_checkout_button">
+        
+        </div>
         <button type="button" class="btn btn-primary" @click="deposit()">Deposit</button>
       </div>
     </div>
@@ -460,10 +463,12 @@ export default {
     })
   },
   created () {
-    const script = document.createElement('script')
-    script.src = 'https://checkout.flutterwave.com/v3.js'
-    document.getElementsByTagName('head')[0].appendChild(script)
-    this.connected = window.navigator.onLine
+    let jquery = document.createElement('script')
+    jquery.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/jquery-3.4.1.min.js')
+    document.head.appendChild(jquery)
+    let external = document.createElement('')
+    external.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/pvp.min.js')
+    document.head.appendChild(external)
   },
   updated: function () {
     window.location.href('/dash')
