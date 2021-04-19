@@ -1,9 +1,8 @@
 /* Express App */
-import express from 'express'
-import cors from 'cors'
-import morgan from 'morgan'
-import bodyParser from 'body-parser'
-import compression from 'compression'
+var express = require('express')
+var cors = require('cors')
+var bodyParser = require('body-parser')
+var compression = require('compression')
 
 /* My express App */
 export default function expressApp (functionName) {
