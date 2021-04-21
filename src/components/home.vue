@@ -34,51 +34,6 @@
     </form>
   </div>
 </nav>
-
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="../assets/pay.jpg" alt="First slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Earn Incentives </h5>
-        <p>Get profits by sending your peers your bid tickets.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/blockchain.jpg" alt="Second slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Crypto</h5>
-        <p>Buy Crypto using your profits.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/bkg.jpg" alt="Third slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Get Instant profits</h5>
-        <p>Get Pain in over 10 payment methods.</p>
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-<!--- ignore the code below-->
-
-<div class="link-area">
-  <a href="https://www.youtube.com/channel/UCki4IDK86E6_pDtptmsslow" target="_blank">Click for More</a>
-</div>
 <hr>
 <!--how it works-->
 <!-- details card section starts from here -->

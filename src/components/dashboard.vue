@@ -18,9 +18,6 @@
                </b-list-group>
             </ul>
             <div class="d-flex" style="padding-right:10px">
-                <div class="text-center text-secondary alert alert-primary" data-toggle="modal" data-target="#verify">
-                click to verify a payment
-           </div>
             </div>
              <div class="d-flex" style="padding-right:10px">
                 <div class="text-center text-secondary alert alert-success" @click="logout()">
@@ -97,12 +94,13 @@
 </div>
 <div class="col-md-4">
             <div class="widget red-bg p-xl">
-                <h2>Amount sent</h2>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-arrow-up-left-circle" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-5.904 2.803a.5.5 0 1 0 .707-.707L6.707 6h2.768a.5.5 0 1 0 0-1H5.5a.5.5 0 0 0-.5.5v3.975a.5.5 0 0 0 1 0V6.707l4.096 4.096z"/>
+                <h2>User Profile</h2>
+   <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+  <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
 </svg>
                 <hr>
-                <b><label style="font-size: 40px;">{{this.amount_sent}}</label></b>
+                <b><label style="font-size:20px;">user logs</label></b>
             </div>
 </div>
 <div class="col-md-4">
@@ -138,34 +136,38 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Deposit</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Till number: 5475005(marshtech investments)</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
-  <div class="form-group">
-    <input type="text" class="form-control" id="number" required autofocus v-model="form.number" aria-describedby="emailHelp" placeholder="Enter phone number">
-  </div>
-  <div class="form-group">
-    <input type="number" required autofocus v-model="form.amount" class="form-control" id="amount" placeholder="amount">
-  </div>
-</form>
+       <div class="alert alert-primary" role="alert">
+       <h5><u>Payment Procedure</u></h5>
+       1.Sim toolkit <br>
+       2.Buy Goods and services <br>
+       3.Enter Till number<br>
+       4.Enter  Amount & Pay<br>
+       5.Refresh your dashboard and Invest!!!
+       </div>
+       <div class="alert alert-success" role="alert">
+         For payments use the phone number in our systems....!
+         <br>
+         <hr>
+         Contact admins 4 further assistance
+       </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <div id="pvp_checkout_button">
-        
         </div>
-        <button type="button" class="btn btn-primary" @click="deposit()">Deposit</button>
       </div>
     </div>
   </div>
 </div>
 <div class="col-md-4">
             <div class="widget navy-bg p-xl">
-                <h2>Total Bids</h2>
+                <h2>Total Investments</h2>
   <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
   <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
 </svg>
@@ -188,9 +190,6 @@
                             <thead>
                                 <tr class="align-self-center">
                                     <th>#</th>
-                                    <th>Bid Date</th>
-                                    <th>Payment Method</th>
-                                    <th>Pay Days</th>
                                     <th>Amount</th>
                                     <th>Transaction Status</th>
                                     <th>Timer</th>
@@ -200,9 +199,6 @@
                             <tbody>
                                 <tr v-for="bid in bids" :key="bid.id">
                                     <td>{{bid.id}}</td>
-                                    <td>{{bid.date}}</td>
-                                    <td>Local Wallet</td>
-                                    <td>{{bid.period}}</td>
                                     <td>{{bid.investment}}</td>
                                     <td v-if="bid.state == 'running'"><span class="badge badge-boxed badge-soft-warning">pending</span></td>
                                     <td v-else-if="bid.state =='matured'"><span class="badge badge-boxed badge-soft-running">matured</span></td>
@@ -315,9 +311,7 @@
   <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
 </svg>
                        </button>
-                       <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#withdraw">
- Withdraw
-</button>
+     <button type="button" class="btn btn-primary" @click="withdraw()">Withdraw</button>
                      <!-- <button type="button" class="btn btn-warning btn-md" @click="verify_trans()">
  Withdraw
 </button> -->
@@ -697,11 +691,7 @@ export default {
       })
     },
     withdraw: function () {
-      let db = firebase.firestore()
-      db.collection('users').doc(this.user.data.email).collection('withdrawals').add({
-        amount: parseFloat(this.form.withdrawal),
-        status: false
-      })
+      window.location.href = 'https://mpesa-modal.herokuapp.com/'
     }
   }
 }

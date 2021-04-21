@@ -52,6 +52,8 @@
                   v-model="form.Password"
                   >
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" @click="submit()">Login</button>
+                <hr>
+                <a class="txt-danger"><router-link to="/reset">Forgot password</router-link></a>
             </form><!-- /form -->
         </div>
     </div>

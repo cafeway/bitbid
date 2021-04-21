@@ -8,10 +8,16 @@ import dash from '../components/dashboard.vue'
 import hello from '../components/HelloWorld.vue'
 import admin from '../components/admin.vue'
 import search from '../components/localdbsearch.vue'
+import reset from '../components/resetpassword.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/reset',
+      name: 'reset',
+      component: reset
+    },
     {
       path: '/search',
       name: 'search',
