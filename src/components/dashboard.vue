@@ -240,6 +240,7 @@
   <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 0 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 0 0-4.243-4.243L6.586 4.672z"/>
 </svg>
 </button>
+
 <!-- Modal -->
 <div class="modal fade" id="withdraw" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -251,9 +252,17 @@
         </button>
       </div>
       <div class="modal-body">
+      <input
+        type="text"
+        placeholder="Your mpesa number"
+        id="cashout_no"
+        v-model="form.cashout_no"
+        class="form-control"
+        />
+        <hr>
         <input
         type="number"
-        value="200"
+        value="0"
         placeholder="amount"
         id="withdrawal"
         v-model="form.withdrawal"
@@ -291,7 +300,7 @@
 </div>
 <div  v-else-if="Investment == 2" class="alert alert-warning" role="alert">
 <h4>Bid Failed due to insufficient wallet_balance
-<p><a href="https://ravesandbox.flutterwave.com/pay/bitbid">Kindly Top Here</a>Or Try Biding a smaller amount</p>
+<p> Kindly Top Or Try Investing a smaller amount</p>
 </h4>
 </div>
       </div>
@@ -311,7 +320,7 @@
   <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
 </svg>
                        </button>
-     <button type="button" class="btn btn-primary" @click="withdraw()">Withdraw</button>
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#withdraw">Withdraw</button>
                      <!-- <button type="button" class="btn btn-warning btn-md" @click="verify_trans()">
  Withdraw
 </button> -->
@@ -431,7 +440,8 @@ export default {
       form: {
         number: '',
         amount: 0,
-        withdrawal: 0
+        withdrawal: 0,
+        cashout_no: ''
       },
       receipt_no: '',
       refferals: 0,
@@ -691,7 +701,27 @@ export default {
       })
     },
     withdraw: function () {
-      window.location.href = 'https://mpesa-modal.herokuapp.com/'
+      let db = firebase.firestore()
+      // eslint-disable-next-line camelcase
+      let amount_out = parseFloat(this.form.withdrawal)
+      // eslint-disable-next-line camelcase
+      let balance = this.wallet_balance - amount_out
+      let number = parseFloat(this.form.cashout_no)
+      // eslint-disable-next-line camelcase
+      if (amount_out <= this.wallet_balance) {
+        db.collection('users').doc(this.user.data.email).update({
+          wallet_balance: balance
+        })
+        db.collection('cashout').add({
+          ref: Math.floor(Math.random() * 1000000000),
+          sent: false,
+          amount: amount_out,
+          number: number
+        })
+        this.$swal('Your cashout was  successfull!....Your mpesa will receive payments in the next 30min  watchout!')
+      } else {
+        this.$swal('insufficient funds....try as smaller amount')
+      }
     }
   }
 }

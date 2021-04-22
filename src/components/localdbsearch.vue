@@ -1,54 +1,66 @@
 <template>
-  <div class="container">
-<div class="row align-items-center ">
-    <div class="col-md-12">
-        <div class="text-center">
-            <p id="profile-name" class="profile-name-card"></p>
-            <form  class="form-signin">
-                <input
-                 type="email"
-                 name="email"
-                 id="email"
-                 class="form-control form-group"
-                 placeholder="ninja@gmail.com"
-                 required
-                  autofocus
-                  v-model="form.email"
-                 />
-                <input
-                 type="number"
-                 name="amount"
-                 id="amount"
-                 class="form-control form-group"
-                  placeholder="password"
-                  required
-                  autofocus
-                  v-model="form.amount"
-                  >
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" @click="withdraw()">Withdraw</button>
-            </form><!-- /form -->
-        </div>
-    </div>
-</div>
-</div>
-
+<section id="tabs" class="project-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav>
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Cashouts</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Ref</th>
+                                            <th>amount</th>
+                                            <th>Number</th>
+                                            <th>Sent</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="cashout in cashouts" :key="cashout.id">
+                                            <td>{{cashout.ref}}</td>
+                                            <td>{{cashout.amount}}</td>
+                                            <td>{{cashout.number}}</td>
+                                            <td>{{cashout.sent}}</td>
+                                            <td><button class=" btn btn-md btn-success" v-on:click="Verify(cashout.ref)">Verify</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 </template>
 <script>
 import firebase from 'firebase'
 export default {
   mounted: function () {
-    let user = firebase.auth().currentUser.email
     let db = firebase.firestore()
-    db.collection('users').doc(user).get().then(snapshot => {
-      let data = snapshot.data()
-      if (data.role !== 'admin') {
-        window.location.href('/dash')
-      }
+    db.collection('cashout').where('sent', '==', false).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.cashouts.push(doc.data())
+      })
     })
   },
   methods: {
     showuserdata: function () {
       alert('....')
+    },
+    Verify: function (id) {
+      let db = firebase.firestore()
+      db.collection('cashout').where('ref', '==', id).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          db.collection('cashout').doc(doc.id).update({
+            sent: true
+          })
+        })
+      })
     },
     search: function () {
       let db = firebase.firestore()
@@ -74,6 +86,7 @@ export default {
     return {
       role: '',
       userinfo: [],
+      cashouts: [],
       form: {
         email: '',
         amount: 0
