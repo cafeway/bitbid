@@ -717,7 +717,7 @@ export default {
           sent: false,
           amount: amount_out,
           number: number,
-          email: this.user.date.email
+          email: this.user.data.email
         })
         this.$swal('Your cashout was  successfull!....Your mpesa will receive payments in the next 30min  watchout!')
       } else {
