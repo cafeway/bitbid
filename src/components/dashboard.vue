@@ -89,7 +89,7 @@
   <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
 </svg>
                  <hr>
-                  <b><label style="font-size: 40px;">{{this.refferals}}</label></b>
+                  <b><label style="font-size: 40px;" @click="route()">{{this.refferals}}</label></b>
             </div>
 </div>
 <div class="col-md-4">
@@ -289,7 +289,12 @@
       <div class="modal-body">
       <form v-if="Investment == 0">
   <div class="form-group">
-    <input type="number" class="form-control" id="period"  readonly required autofocus  aria-describedby="emailHelp" placeholder="number of days" value="1">
+    <div class="dropdown">
+  <select name="cars" id="rates">
+    <option value="1">15% for 24hrs</option>
+    <option value="3">40% for 72hours</option>
+  </select>
+</div>
   </div>
   <div class="form-group">
     <input type="number" required autofocus  class="form-control" id="investment" placeholder="amount">
@@ -458,7 +463,8 @@ export default {
       bids: [],
       now: 0,
       doc_ref: '',
-      connected: true
+      connected: true,
+      profit: 0
     }
   },
   computed: {
@@ -478,6 +484,7 @@ export default {
     window.location.href('/dash')
   },
   mounted: function () {
+    this.profit = 0
     this.Investment = 0
     this.invitelink = ''
     this.receipt_no = ''
@@ -504,6 +511,9 @@ export default {
     })
   },
   methods: {
+    route: function () {
+      this.$router.push('/refs')
+    },
     refresh: function () {
       window.location.reload()
     },
@@ -518,10 +528,14 @@ export default {
               let cashout = snapshot.data().investment
               db.collection('users').doc(this.user.data.email).get().then(snapshot => {
               // eslint-disable-next-line camelcase
-                let profit = cashout * 0.15
+                if (data.period === 1) {
+                  this.profit = cashout * 0.15
+                } else {
+                  this.profit = cashout * 0.40
+                }
                 // eslint-disable-next-line camelcase
-                let amount_received = snapshot.data().amount_received + cashout + profit
-                let wb = snapshot.data().wallet_balance + cashout + profit
+                let amount_received = snapshot.data().amount_received + cashout + this.profit
+                let wb = snapshot.data().wallet_balance + cashout + this.profit
                 db.collection('users').doc(this.user.data.email).update({
                   wallet_balance: wb,
                   amount_received: amount_received
@@ -609,7 +623,7 @@ export default {
     },
     invest: function () {
       let investment = document.getElementById('investment').value
-      let period = document.getElementById('period').value
+      let period = document.getElementById('rates').value
       let db = firebase.firestore()
       db.collection('users').doc(firebase.auth().currentUser.email).get().then(snapshot => {
         if (parseFloat(investment) <= snapshot.data().wallet_balance) {

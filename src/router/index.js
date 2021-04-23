@@ -5,10 +5,10 @@ import login from '../components/login.vue'
 import reg from '../components/register.vue'
 import activate from '../components/activation.vue'
 import dash from '../components/dashboard.vue'
-import hello from '../components/HelloWorld.vue'
 import admin from '../components/admin.vue'
 import search from '../components/localdbsearch.vue'
 import reset from '../components/resetpassword.vue'
+import refferals from '../components/refferals'
 Vue.use(Router)
 
 export default new Router({
@@ -29,9 +29,9 @@ export default new Router({
       component: admin
     },
     {
-      path: '/hello',
-      name: 'name',
-      component: hello
+      path: '/refs',
+      name: 'refs',
+      component: refferals
     },
     {
       path: '/',

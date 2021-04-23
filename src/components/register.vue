@@ -160,7 +160,8 @@ export default {
           firebase.firestore().collection('users').doc(this.referee).collection('invitees').add({
             username: this.form.name,
             email: this.form.email,
-            phone: this.form.phone
+            phone: this.form.phone,
+            redeemed: false
           })
         })
         .catch(err => {
