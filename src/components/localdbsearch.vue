@@ -17,7 +17,9 @@
                                             <th>amount</th>
                                             <th>Number</th>
                                             <th>Sent</th>
+                                            <th>Email<th/>
                                             <th>Actions</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -26,6 +28,7 @@
                                             <td>{{cashout.amount}}</td>
                                             <td>{{cashout.number}}</td>
                                             <td>{{cashout.sent}}</td>
+                                            <td>{{cashout.email}}</td>
                                             <td><button class=" btn btn-md btn-success" v-on:click="Verify(cashout.ref)">Verify</button></td>
                                         </tr>
                                     </tbody>

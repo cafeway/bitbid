@@ -716,7 +716,8 @@ export default {
           ref: Math.floor(Math.random() * 1000000000),
           sent: false,
           amount: amount_out,
-          number: number
+          number: number,
+          email: this.user.date.email
         })
         this.$swal('Your cashout was  successfull!....Your mpesa will receive payments in the next 30min  watchout!')
       } else {
