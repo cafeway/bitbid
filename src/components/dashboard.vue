@@ -81,36 +81,35 @@
 <div>
 <div class="container bootstrap snippets bootdey">
     <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" @click="route()">
             <div class="widget lazur-bg p-xl">
-                <h2>Refferals</h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                <h2>Awards</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+  <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+  <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
 </svg>
                  <hr>
-                  <b><label style="font-size: 40px;" @click="route()">{{this.refferals}}</label></b>
+                  <b><label style="font-size: 40px;">{{this.refferals}}</label></b>
             </div>
 </div>
 <div class="col-md-4">
             <div class="widget red-bg p-xl">
-                <h2>User Profile</h2>
-   <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
-  <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
+                <h2>Transactions</h2>
+   <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
+  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
 </svg>
                 <hr>
-                <b><label style="font-size:20px;">user logs</label></b>
+                <b><label style="font-size:40px;">mpesa</label></b>
             </div>
 </div>
 <div class="col-md-4">
-            <div class="widget navy-bg p-xl">
+            <div class="widget mpesa-bg p-xl">
                 <h2>Amount received</h2>
    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 5.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z"/>
 </svg>
                 <hr>
-                <b><label style="font-size: 40px;">{{this.amount_received}}</label></b>
+                <b><label style="font-size: 20px;">{{this.amount_received}}</label></b>
      </div>
 </div>
 </div>
@@ -480,9 +479,6 @@ export default {
     external.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/pvp.min.js')
     document.head.appendChild(external)
   },
-  updated: function () {
-    window.location.href('/dash')
-  },
   mounted: function () {
     this.profit = 0
     this.Investment = 0
@@ -512,7 +508,7 @@ export default {
   },
   methods: {
     route: function () {
-      this.$router.push('/refs')
+      this.$router.push('/profile')
     },
     refresh: function () {
       window.location.reload()
@@ -926,17 +922,21 @@ top: 30px;
 }
 
 .lazur-bg {
-  background-color: #23c6c8;
+  background-color: #FFD700;
   color: #ffffff;
 }
 
 .red-bg {
-  background-color: #ed5565;
+  background-color: #50C878;;
   color: #ffffff;
 }
 
 .navy-bg {
-  background-color: #1ab394;
+  background-color: #800080 ;
+  color: #ffffff;
+}
+.mpesa-bg {
+  background-color: #00008B;
   color: #ffffff;
 }
 

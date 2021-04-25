@@ -9,10 +9,16 @@ import admin from '../components/admin.vue'
 import search from '../components/localdbsearch.vue'
 import reset from '../components/resetpassword.vue'
 import refferals from '../components/refferals'
+import profile from '../components/profile'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/profile',
+      name: 'profile',
+      component: profile
+    },
     {
       path: '/reset',
       name: 'reset',
