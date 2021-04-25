@@ -73,7 +73,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Non-Redeemed Refferals</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Your Awards</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="reload()">
           <span aria-hidden="true">&times;</span>
         </button>
