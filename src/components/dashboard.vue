@@ -79,103 +79,56 @@
 <hr>
 <div>
 <div>
-<div class="container bootstrap snippets bootdey">
-    <div class="row">
-    <div class="col-md-4" @click="route()">
-            <div class="widget lazur-bg p-xl">
-                <h2>Awards</h2>
-      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
-  <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
-  <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-</svg>
-                 <hr>
-                  <b><label style="font-size: 40px;">{{this.refferals}}</label></b>
-            </div>
-</div>
-<div class="col-md-4">
-            <div class="widget red-bg p-xl">
-                <h2>Transactions</h2>
-   <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
-  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
-</svg>
-                <hr>
-                <b><label style="font-size:40px;">mpesa</label></b>
-            </div>
-</div>
-<div class="col-md-4">
-            <div class="widget mpesa-bg p-xl">
-                <h2>Amount received</h2>
-   <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 5.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z"/>
-</svg>
-                <hr>
-                <b><label style="font-size: 20px;">{{this.amount_received}}</label></b>
-     </div>
-</div>
-</div>
-    <div class="row">
-    <div class="col-md-4">
-            <div class="widget yellow-bg p-xl">
-                <h2>Wallet Balance</h2>
-                <ul class="list-unstyled m-t-md" style="padding-left:110px;">
-                    <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 16 16">
-  <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"/>
-  <path d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"/>
-</svg>
-
-                    </li>
-                </ul>
-                <hr>
-                <b><label style="font-size: 40px;">{{this.wallet_balance}}</label></b>
-            </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="deposit" tabindex="-1" role="dialog" aria-labelledby="deposit" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Till number: 5475005</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div id="root">
+  <div class="container pt-5">
+    <div class="row align-items-stretch">
+      <div class="c-dashboardInfo col-lg-3 col-md-6">
+        <div class="wrap">
+          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Portfolio Balance<svg
+              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+              </path>
+            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€10,500</span>
+        </div>
       </div>
-      <div class="modal-body">
-       <div class="alert alert-primary" role="alert">
-       <h5><u>Payment Procedure</u></h5>
-       1.Sim toolkit <br>
-       2.Buy Goods and services <br>
-       3.Enter Till number<br>
-       4.Enter  Amount & Pay<br>
-       5.Refresh your dashboard and Invest!!!
-       </div>
-       <div class="alert alert-success" role="alert">
-         For payments use the phone number in our systems....!
-         <br>
-         <hr>
-         Contact admins 4 further assistance
-       </div>
+      <div class="c-dashboardInfo col-lg-3 col-md-6">
+        <div class="wrap">
+          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Rental income<svg
+              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+              </path>
+            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€500</span><span
+            class="hind-font caption-12 c-dashboardInfo__subInfo">Last month: €30</span>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        <div id="pvp_checkout_button">
+      <div class="c-dashboardInfo col-lg-3 col-md-6">
+        <div class="wrap">
+          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Available funds<svg
+              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+              </path>
+            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€5000</span>
+        </div>
+      </div>
+      <div class="c-dashboardInfo col-lg-3 col-md-6">
+        <div class="wrap">
+          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Rental return<svg
+              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+              </path>
+            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">6,40%</span>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="col-md-4">
-            <div class="widget navy-bg p-xl">
-                <h2>Total Investments</h2>
-  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
-  <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
-</svg>
-                <hr>
-                <b><label style="font-size: 40px;">{{this.total_bids}}</label></b>
-     </div>
-</div>
-
-</div>
 </div>
 </div>
 <div class="container">

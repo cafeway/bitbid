@@ -23,41 +23,41 @@
 </head>
 <body>
     <!--header-area start-->
-    <header>
-        <div class="header_area sticky-menu">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-2 col-md-3">
-                        <div class="header_logo">
-                            <a href="index-2.html" style="color: white"><strong>WELCOME TO HORIZON INVESTORS</strong></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-10">
-                        <div class="main-menu ">
-                            <nav id="mobile-menu">
-                                <ul>
-                                    <li><a href="index-2.html">Home</a>
-                                        <ul class="submenu">
-                                            <li><a href="index-2.html">Home</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#about">About</a></li>
-                                    <li><a href="#token">Features</a></li>
-                                    <li><a href="#faq">Faq</a></li>
-                                    <li><a href="#contact">Contact</a></li>
-                                    <li><a><router-link to="login">Login</router-link></a></li>
-                                    <li><a><router-link to="/register">Register</router-link></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="mobile-menu"></div>
-                    </div>
-                </div>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-    </header>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
     <!--header-area end-->
     <!--banner-area start-->
     <section class="banner_area" id="particles-js">
@@ -68,9 +68,9 @@
                         <h1 class="wow fadeInLeft animated"> <span>A Futuristic Deisgned Digital Investment  Portal</span><br>
                           </h1>
                           <ul class="btn_list">
-                              <li><a class="theme_btn wow fadeInUp animated" href="system/membership_signup.html">
+                              <li><a class="theme_btn wow fadeInUp animated">
                                 <i class="flaticon-user"></i><router-link to="/register">Register now</router-link></a></li>
-                              <li><a class="theme_btn b-btn wow fadeInUp animated" data-wow-delay="0.3s"  href="system/index.html">
+                              <li><a class="theme_btn b-btn wow fadeInUp animated" data-wow-delay="0.3s" >
                                   <i class="flaticon-lock"></i><router-link  to="/login">Login</router-link></a></li>
                           </ul>
                     </div>
@@ -234,7 +234,7 @@
                             <h5>Contact us</h5>
                             <ul class="cta_list">
                                 <li><a href="#"><i class="flaticon-call"></i> +254xxxxxxxx</a></li>
-                                <li><a href="#"><i class="flaticon-envelope"></i> info@toplinerinvestor.com</a></li>
+                                <li><a href="#"><i class="flaticon-envelope"></i> info@horizoninvestor.com</a></li>
                                 <li><a href="#"><i class="flaticon-paper-plane"></i> Nairobi,Kenya</a></li>
                             </ul>
                          </div>
