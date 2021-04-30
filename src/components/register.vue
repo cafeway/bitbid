@@ -2,31 +2,28 @@
 <template>
   <div class="container" style="padding-top:150px">
   <div v-if="referee_id =='' " class="text-center text-secondary alert alert-primary">
-    Dont Forget T0 REFFER FRIEND
+    Reffer More Friends To Earn
     </div>
-    <div v-else class="text-center text-sucess alert alert-success">
-    <b> {{referee_name}} refered You!Be like {{referee_name}} & earn via your friends</b>
+    <div v-else class="text-center text-primary alert alert-primary">
+    <b>You were reffered by: {{referee_name}}</b>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-          <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" style="height:100px;" />
-          <h3 class="text-success"> Get started Amigos...!</h3>
+          <a href="https://capitalcell.co.uk/investor-terms-and-conditions/">Terms & Conditions</a>
           </div>
           <div class="card-body">
             <div v-if="error" class="alert alert-danger">{{error}}</div>
             <form action="#" @submit.prevent="submit">
               <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-
-                <div class="col-md-6">
+                <div class="col-md-12 text-center">
                   <input
                     id="name"
                     type="name"
-                    class="form-control"
+                    class="form-control text-center"
                     name="name"
-                    placeholder="jane doe"
+                    placeholder="Pick A Username"
                     value
                     required
                     autofocus
@@ -36,55 +33,58 @@
               </div>
 
               <div class="form-group row">
-                <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
-                <div class="col-md-6">
+                <div class="col-md-10">
                   <input
                     id="email"
                     type="email"
-                    class="form-control"
+                    class="form-control text-center"
                     name="email"
                     value
                     required
                     autofocus
-                    placeholder=" enter a legit email"
+                    placeholder="Enter Your Email"
                     v-model="form.email"
                   />
                 </div>
               </div>
 
               <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-                <div class="col-md-6">
+                <div class="col-md-8">
                   <input
                     id="password"
                     type="password"
-                    class="form-control"
+                    class="form-control text-center"
                     name="password"
                     required
+                    placeholder="Choose A Password"
                     v-model="form.password"
                   />
                 </div>
               </div>
 
               <div class="form-group row">
-                <label for="phone" class="col-md-4 col-form-label text-md-right">Phone</label>
-
                 <div class="col-md-6">
                   <input
                     id="phone"
                     type="text"
-                    class="form-control"
+                    class="form-control text-center"
                     name="phone"
                     required
-                    placeholder="0743***1*0"
+                    placeholder="Enter Your Mpesa Number"
                     v-model="form.phone"
                   />
                 </div>
               </div>
               <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
-                  <button type="submit" class="btn btn-primary">Register</button>
+                <div class="col-md-10">
+                <div style="padding-left:20px;">
+                       <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+    i agree to to your terms and conditions
+  </label>
+                </div>
+  <hr>
+                  <button type="button" @click="submit()" class="btn" style="background-color:#ffdb58; color:#4545b9;">Register</button>
                    <a class="text-success"><b><router-link to="login">Login</router-link></b></a>
                 </div>
               </div>
@@ -141,8 +141,7 @@ export default {
             phoneNumber: this.form.phone
           })
           user.sendEmailVerification()
-          this.$swal('Account created successfully please check your email to verify your account....')
-          this.$router.push('/')
+          this.$swal('Welcome!!!....Login To Explore')
           firebase.firestore().collection('users').doc(this.form.email).set({
             uid: firebase.auth().currentUser.uid,
             email: this.form.email,
@@ -160,9 +159,9 @@ export default {
           firebase.firestore().collection('users').doc(this.referee).collection('invitees').add({
             username: this.form.name,
             email: this.form.email,
-            phone: this.form.phone,
-            redeemed: false
+            phone: this.form.phone
           })
+          this.$router.push('/login')
         })
         .catch(err => {
           this.error = err.message
