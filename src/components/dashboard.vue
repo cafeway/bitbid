@@ -5,158 +5,157 @@
   <div class="container-fluid">
   <div v-if="this.connected">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid"> <a class="navbar-brand" href="#">BITBID Investments</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+  <header class="header">
+     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                <b-list-group style="max-width: 300px;">
                  <b-list-group-item class="d-flex align-items-center">
                     <b-avatar class="mr-3"></b-avatar>
-                 <span class="mr-auto">{{this.user.data.displayName}}</span>
+                 <span class="mr-auto text-success"> Welcome back ...   {{this.user.data.displayName}}!</span>
                 <b-badge></b-badge>
                </b-list-group-item>
                </b-list-group>
             </ul>
-            <div class="d-flex" style="padding-right:10px">
-            </div>
-             <div class="d-flex" style="padding-right:10px">
-                <div class="text-center text-secondary alert alert-success" @click="logout()">
-                Sign out
-           </div>
-            </div>
-        </div>
-      <!-- Modal -->
-<div class="modal fade" id="verify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li><a>How it Works </a></li>
+    <li><a href="#about"  data-toggle="modal" data-target="#invest">Invest</a></li>
+    <li><a href="#careers" data-toggle="modal" data-target="#deposit">Deposit</a></li>
+    <li><a href="#contact">Withdraw</a></li>
+     <li><a href="#contact">Get help</a></li>
+  </ul>
+</header>
+
+<hr>
+<div>
+<div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css
+">
+<div class="modal fade" id="invest" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Hold Up!</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">How to Invest  </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" v-if="Investment == 0">
+        <div>
+    <md-steppers md-vertical>
+      <md-step id="first" md-label="Enter Amount" md-description="min 500 max 50000">
+        <div>
+        <input type="number" class="form-control" id="investment" name="amount" v-model="form.amount">
+        </div>
+      </md-step>
+      <hr>
+      <md-step id="second" md-label="Second Step" md-description="Choose between 1-3 days">
+   <div>
+        <input type="number" class="form-control" id="period" name="amount" v-model="form.duration">
+        </div>
+      </md-step>
+      <hr>
+      <md-step id="third" md-label="Third Step">
+      <div>
+        <button class="btn btn-primary btn-block" @click="invest()">Invest</button>
+      </div>
+      </md-step>
+    </md-steppers>
+  </div>
+      </div>
+      <div v-else class="modal-body alert alert-danger" role="alert">
+      <h4>Insufficient Balance</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deposit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-<div id="loadingIndicator" v-if="transaction_status == 1">
-<div class="loadingBar" id="loadingBar1"></div>
-<div class="loadingBar" id="loadingBar2"></div>
-<div class="loadingBar" id="loadingBar3"></div>
-<div class="loadingBar" id="loadingBar4"></div>
-</div>
-<div v-else-if="transaction_status == 2" class="text-center text-secondary alert alert-success">
-<h4>Transaction id: <b>{{receipt_no}} </b> </h4>
-<h5>Transaction type: <b>{{transaction_type}}</b></h5>
-<h6>Transaction status: <b>Success</b></h6>
-</div>
-<div v-else class="text-center text-danger alert alert-primary">
-  <h3>Transaction: <b>{{receipt_no}} </b> failed due:  </h3>
-  <ol>
-  <li>Duplicate existing transaction</li>
-  <li>The transaction was already verified</li>
-  </ol>
-  <h5>Transaction type: <b>{{transaction_type}}</b></h5>
-  <h6>Transaction status: <b>Failed</b></h6>
-</div>
-<label for="receipt">Verification status of </label>
-<input id="receipt_no" name="receipt" v-model="receipt_no" class="form-control mr-sm-2" type="search" placeholder="ref_no:  5993859372
-" aria-label="Search">
+        <div id="pvp_checkout_button"></div>
       </div>
-      <div class="modal-footer" v-if="transaction_status == 1">
-        <button type="button" class="btn btn-outline-danger"  @click="reload()" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-outline-primary" @click="verify()">Verify</button>
-      </div>
-      <div class="modal-footer" v-else-if="transaction_status == 2">
-        <button type="button" class="btn btn-outline-success"  @click="reload()" data-dismiss="modal">Home</button>
-      </div>
-      <div class="modal-footer" v-else-if="transaction_status == 3">
-        <button type="button" class="btn btn-outline-danger"  @click="reload()" data-dismiss="modal">Home</button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-    </div>
-</nav>
-
-<hr>
-<div>
-<div>
-<div id="root">
-  <div class="container pt-5">
-    <div class="row align-items-stretch">
-      <div class="c-dashboardInfo col-lg-3 col-md-6">
-        <div class="wrap">
-          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Portfolio Balance<svg
-              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
-              </path>
-            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€10,500</span>
+<div class="jumbotron">
+<div class="row w-100">
+        <div class="col-md-3">
+            <div class="card border-info mx-sm-1 p-3">
+                <div class="card border-info shadow text-info p-3 my-card" ><i class="fa fa-usd" aria-hidden="true"></i></div>
+                <div class="text-info text-center mt-3"><h4>Balance</h4></div>
+                <div class="text-info text-center mt-2"><h1>{{this.wallet_balance}}</h1></div>
+            </div>
         </div>
-      </div>
-      <div class="c-dashboardInfo col-lg-3 col-md-6">
-        <div class="wrap">
-          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Rental income<svg
-              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
-              </path>
-            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€500</span><span
-            class="hind-font caption-12 c-dashboardInfo__subInfo">Last month: €30</span>
+        <div class="col-md-3">
+            <div class="card border-danger mx-sm-1 p-3">
+                <div class="card border-danger shadow text-danger p-3 my-card" ><i class="fa fa-money" aria-hidden="true"></i>
+</div>
+                <div class="text-danger text-center mt-3"><h4>cashout </h4></div>
+                <div class="text-danger text-center mt-2"><h1>346</h1></div>
+            </div>
         </div>
-      </div>
-      <div class="c-dashboardInfo col-lg-3 col-md-6">
-        <div class="wrap">
-          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Available funds<svg
-              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
-              </path>
-            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€5000</span>
+        <div class="col-md-3">
+            <div class="card border-success mx-sm-1 p-3">
+                <div class="card border-success shadow text-success p-3 my-card"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+                <div class="text-success text-center mt-3"><h4>Invitees</h4></div>
+                <div class="text-success text-center mt-2"><h1>{{this.refferals}}</h1></div>
+            </div>
         </div>
-      </div>
-      <div class="c-dashboardInfo col-lg-3 col-md-6">
-        <div class="wrap">
-          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Rental return<svg
-              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-              <path fill="none" d="M0 0h24v24H0z"></path>
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
-              </path>
-            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">6,40%</span>
+        <div class="col-md-3">
+            <div class="card border-warning mx-sm-1 p-3">
+                <div class="card border-warning shadow text-warning p-3 my-card" ><i class="fa fa-btc" aria-hidden="true"></i></div>
+                <div class="text-warning text-center mt-3"><h4>Investments</h4></div>
+                <div class="text-warning text-center mt-2"><h1>{{this.total_bids}}</h1></div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+     </div>
 </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="header-title pb-3 mt-0">Cheda Zako!</h5>
-                    <div class="table-responsive">
-                        <table class="table table-hover mb-0">
-                            <thead>
-                                <tr class="align-self-center">
-                                    <th>#</th>
-                                    <th>Amount</th>
-                                    <th>Transaction Status</th>
-                                    <th>Timer</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="bid in bids" :key="bid.id">
-                                    <td>{{bid.id}}</td>
-                                    <td>{{bid.investment}}</td>
-                                    <td v-if="bid.state == 'running'"><span class="badge badge-boxed badge-soft-warning">pending</span></td>
-                                    <td v-else-if="bid.state =='matured'"><span class="badge badge-boxed badge-soft-running">matured</span></td>
-                                    <td v-else><span class="badge badge-boxed badge-soft-primary">cashed out</span></td>
-                                    <td>
-                                    <vue-countdown-timer
+</div>
+<section id="tabs" class="project-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav>
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Running</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Matured</a>
+                                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">CashedOut</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Timer</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="bid in bids" :key="bid.id">
+                                            <td>{{bid.investment}}</td>
+                                            <td>{{bid.state}}</td>
+                                            <td>
+                                              <vue-countdown-timer
       @start_callback="startCallBack(bid.id)"
       @end_callback="endCallBack(bid.id)"
       :start-time="bid.startdate"
@@ -172,194 +171,53 @@
       :seconds-txt="'S'">
     </vue-countdown-timer>
                                     </td>
-                                    <td v-if="bid.state == 'running'"><button class="btn btn-sm btn-default disabled"><strike>running</strike></button></td>
-                                    <td v-else-if="bid.state == 'matured'" ><button  class="btn btn-sm btn-outline-success" @click="cashout(bid.id)">Cash-out</button></td>
-                                     <td v-else><p class="alert alert-success" role="alert">Cashed out</p></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!--end table-responsive-->
-                    <div class="pt-3 border-top text-right">
-                    <input type="text" id="invitelink" class="form-control col-md-5" placeholder="your invite link">
-                    <button type="button" class="btn btn-danger btn-md  " data-toggle="modal" data-target="#deposit">
-  Deposit
-</button>
-                  <button type="button" class="btn btn-success btn-md " @click="genaratelink">
-                  get link
-                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-  <path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.001 1.001 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 0 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 0 0-4.243-4.243L6.586 4.672z"/>
-</svg>
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="withdraw" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Withdraw</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <input
-        type="text"
-        placeholder="Your mpesa number"
-        id="cashout_no"
-        v-model="form.cashout_no"
-        class="form-control"
-        />
-        <hr>
-        <input
-        type="number"
-        value="0"
-        placeholder="amount"
-        id="withdrawal"
-        v-model="form.withdrawal"
-        class="form-control"
-        />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" @click="withdraw()">Withdraw</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="invest" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Investment today is a source of income tomorrow.</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form v-if="Investment == 0">
-  <div class="form-group">
-    <div class="dropdown">
-  <select name="cars" id="rates">
-    <option value="1">15% for 24hrs</option>
-    <option value="3">40% for 72hours</option>
-  </select>
-</div>
-  </div>
-  <div class="form-group">
-    <input type="number" required autofocus  class="form-control" id="investment" placeholder="amount">
-  </div>
-</form>
-<div  v-else-if="Investment == 1" class="alert alert-warning" role="alert">
-<h3>Your Investment Successfull...!</h3>
-</div>
-<div  v-else-if="Investment == 2" class="alert alert-warning" role="alert">
-<h4>Bid Failed due to insufficient wallet_balance
-<p> Kindly Top Or Try Investing a smaller amount</p>
-</h4>
-</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" @click="refresh()" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-outline-primary" @click="invest()">Invest</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-                    <!-- <a href="#" class="text-warning">View all <i class="fa fa-eye"></i></a> -->
-                       <button class="btn btn-secondary" data-toggle="modal" data-target="#invest">
-                       Invest
-                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
-  <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
-  <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
-</svg>
-                       </button>
-     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#withdraw">Withdraw</button>
-                     <!-- <button type="button" class="btn btn-warning btn-md" @click="verify_trans()">
- Withdraw
-</button> -->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Timer</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="mat in matured" :key="mat.id">
+                                            <td>{{mat.investment}}</td>
+                                            <td>{{mat.state}}</td>
+                                                     <td class="text-danger"><b><h5>Expired</h5></b></td>
+                                    <td><button type="button" class="btn btn-md btn-warning" @click="cashout(mat.id)">Redeem</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="cash in cashed" :key="cash.id">
+                                            <td>{{cash.investment}}</td>
+                                            <td>{{cash.state}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-dark text-center text-white">
-  <!-- Grid container -->
-  <div class="container p-4">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!--social media-->
-    </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline form-white mb-4">
-              <input type="email" id="form5Example2" class="form-control" />
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-outline-light mb-4">
-              Holla at us!
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
-    <!-- Section: Form -->
-
-    <!-- Section: Text -->
-    <section class="mb-4">
-      <p>
-        Invest with us to secure tomorrow!
-      </p>
-    </section>
-    <!-- Section: Text -->
-
-    <!-- Section: Links -->
-    <section class="">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-    </section>
-    <!-- Section: Links -->
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2021 Copyright:
-     BitBid
-  </div>
-  <!-- Copyright -->
-</footer>
+        </section>
+        <hr>
+        <button class="btn btn-block btn-primary" @click="logout()">log out</button>
 <!-- Footer -->
   </div>
   <div v-else  class="container-fluid" style="padding-left:500px">
@@ -389,6 +247,7 @@
 
 </template>
 <script>
+import store from '../store'
 import { mapGetters } from 'vuex'
 import firebase from 'firebase'
 export default {
@@ -397,8 +256,7 @@ export default {
       form: {
         number: '',
         amount: 0,
-        withdrawal: 0,
-        cashout_no: ''
+        withdrawal: 0
       },
       receipt_no: '',
       refferals: 0,
@@ -413,27 +271,33 @@ export default {
       Investment: 0,
       total_bids: 0,
       bids: [],
+      matured: [],
+      cashed: [],
       now: 0,
       doc_ref: '',
-      connected: true,
-      profit: 0
+      connected: true
     }
   },
   computed: {
+    userdata () {
+      return store.state.userdata
+    },
     ...mapGetters({
       user: 'user'
     })
   },
   created () {
-    let jquery = document.createElement('script')
-    jquery.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/jquery-3.4.1.min.js')
-    document.head.appendChild(jquery)
-    let external = document.createElement('')
-    external.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/pvp.min.js')
-    document.head.appendChild(external)
+    let jqueryScript = document.createElement('script')
+    jqueryScript.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/jquery-3.4.1.min.js')
+    document.head.appendChild(jqueryScript)
+    let externalScript = document.createElement('script')
+    externalScript.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/pvp.min.js')
+    document.head.appendChild(externalScript)
+  },
+  updated: function () {
+    window.location.href('/dash')
   },
   mounted: function () {
-    this.profit = 0
     this.Investment = 0
     this.invitelink = ''
     this.receipt_no = ''
@@ -446,9 +310,19 @@ export default {
     db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
       this.total_bids = snapshot.size
     })
-    db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
+    db.collection('users').doc(this.user.data.email).collection('investments').where('state', '==', 'running').get().then(snapshot => {
       snapshot.forEach(doc => {
         this.bids.push(doc.data())
+      })
+    })
+    db.collection('users').doc(this.user.data.email).collection('investments').where('state', '==', 'matured').get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.matured.push(doc.data())
+      })
+    })
+    db.collection('users').doc(this.user.data.email).collection('investments').where('state', '==', 'cashed').get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.cashed.push(doc.data())
       })
     })
     firebase.firestore().collection('users').doc(this.user.data.email).get().then(snapshot => {
@@ -460,31 +334,56 @@ export default {
     })
   },
   methods: {
-    route: function () {
-      this.$router.push('/profile')
-    },
     refresh: function () {
       window.location.reload()
     },
-    // eslint-disable-next-line camelcase
-    cashout: function (bid_id) {
+    // // eslint-disable-next-line camelcase
+    // cashout: function (bid_id) {
+    //   let db = firebase.firestore()
+    //   db.collection('users').doc(this.user.data.email).collection('investments').where('id', '==', bid_id).get().then(snapshot => {
+    //     snapshot.forEach(doc => {
+    //       db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).get().then(snapshot => {
+    //         let data = snapshot.data()
+    //         if (!data.cashed) {
+    //           let cashout = snapshot.data().investment
+    //           db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+    //           // eslint-disable-next-line camelcase
+    //             let profit = cashout * 0.15
+    //             // eslint-disable-next-line camelcase
+    //             let amount_received = snapshot.data().amount_received + cashout + profit
+    //             let wb = snapshot.data().wallet_balance + cashout + profit
+    //             db.collection('users').doc(this.user.data.email).update({
+    //               wallet_balance: wb,
+    //               amount_received: amount_received
+    //             })
+    //             db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).update({
+    //               state: 'cashed',
+    //               matured: true,
+    //               cashed: true
+    //             })
+    //             window.location.reload()
+    //           })
+    //         } else {
+    //           this.$swal('cashed out .... please refresh')
+    //           window.location.reload()
+    //         }
+    //       })
+    //     })
+    //   })
+    // },
+    cashout: function (id) {
       let db = firebase.firestore()
-      db.collection('users').doc(this.user.data.email).collection('investments').where('id', '==', bid_id).get().then(snapshot => {
+      db.collection('users').doc(this.user.data.email).collection('investments').where('id', '==', id).get().then(snapshot => {
         snapshot.forEach(doc => {
           db.collection('users').doc(this.user.data.email).collection('investments').doc(doc.id).get().then(snapshot => {
-            let data = snapshot.data()
+            let data = snapshot.data
             if (!data.cashed) {
               let cashout = snapshot.data().investment
               db.collection('users').doc(this.user.data.email).get().then(snapshot => {
-              // eslint-disable-next-line camelcase
-                if (data.period === 1) {
-                  this.profit = cashout * 0.15
-                } else {
-                  this.profit = cashout * 0.40
-                }
+                let profit = cashout * 0.16
                 // eslint-disable-next-line camelcase
-                let amount_received = snapshot.data().amount_received + cashout + this.profit
-                let wb = snapshot.data().wallet_balance + cashout + this.profit
+                let amount_received = snapshot.data().amount_received + cashout + profit
+                let wb = snapshot.data().wallet_balance + cashout + profit
                 db.collection('users').doc(this.user.data.email).update({
                   wallet_balance: wb,
                   amount_received: amount_received
@@ -494,29 +393,10 @@ export default {
                   matured: true,
                   cashed: true
                 })
-                window.location.reload()
               })
-            } else {
-              this.$swal('cashed out .... please refresh')
-              window.location.reload()
             }
           })
         })
-      })
-    },
-    verify_trans: function () {
-      var request = require('request')
-      var options = {
-        'method': 'GET',
-        'url': 'https://api.flutterwave.com/v3/transactions/123456/verify',
-        'headers': {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer FLWSECK_TEST-40f50b8a0e514349a47be4d0acc29e0f-X'
-        }
-      }
-      request(options, function (error, response) {
-        if (error) throw new Error(error)
-        console.log(response.body)
       })
     },
     starttimer: function (id, period) {
@@ -572,7 +452,7 @@ export default {
     },
     invest: function () {
       let investment = document.getElementById('investment').value
-      let period = document.getElementById('rates').value
+      let period = document.getElementById('period').value
       let db = firebase.firestore()
       db.collection('users').doc(firebase.auth().currentUser.email).get().then(snapshot => {
         if (parseFloat(investment) <= snapshot.data().wallet_balance) {
@@ -586,10 +466,8 @@ export default {
           // eslint-disable-next-line camelcase
           let cust_id = parseFloat(this.total_bids) + 1
           console.log(this.now)
-          var startdate = new Date()
-          var startdateconverted = new Date().getTime()
-          var maturedate = startdate.setDate(startdate.getDate() + parseFloat(period))
-          console.log(startdateconverted)
+          var startdate = firebase.firestore.Timestamp.now().seconds
+          var maturedate = startdate + 86400
           db.collection('users').doc(firebase.auth().currentUser.email).collection('investments').add({
             id: cust_id,
             investment: parseFloat(investment),
@@ -598,7 +476,7 @@ export default {
             started: false,
             state: 'running',
             cashed: false,
-            startdate: startdateconverted,
+            startdate: startdate,
             stopdate: maturedate
 
           })
@@ -616,15 +494,18 @@ export default {
     genaratelink () {
       var urlgenerator = require('urlgenerator')
       var createURLwithParameters = urlgenerator.createURLwithParameters
-      var baseURL = 'https://bitbidltd.com/#/register'
+      var baseURL = 'https://wise-fex.com/#/register'
       var referee = firebase.auth().currentUser.uid
       var parameters = {'uid': referee}
       var finalURL = createURLwithParameters(baseURL, parameters)
-      let field = document.getElementById('invitelink')
+      let field = document.getElementById('code')
       field.value = finalURL
     },
     reload: function () {
       window.location.reload()
+    },
+    To_investments: function () {
+      this.$router.push('/info')
     },
     verify: function () {
       var ref = document.getElementById('receipt_no').value
@@ -650,364 +531,278 @@ export default {
       })
     },
     deposit: function () {
-      var axios = require('axios').default
-      axios({
-        method: 'GET',
-        url: 'https://api.proxyapi.co.ke/sandbox/mpesa/v1/auth',
-        headers: {
-          'X-Authorization': 'Basic 40ca323c8f19bd3c34df48320881110de55fc3f48344e0000d1c0144fb66235b',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      }).then(function (response) {
-        console.log(response)
-      })
+      let jqueryScript = document.createElement('script')
+      jqueryScript.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/jquery-3.4.1.min.js')
+      document.head.appendChild(jqueryScript)
+      let externalScript = document.createElement('script')
+      externalScript.setAttribute('src', 'https://pvp.proxyapi.co.ke/dist/pvp.min.js')
+      document.head.appendChild(externalScript)
     },
     withdraw: function () {
       let db = firebase.firestore()
-      // eslint-disable-next-line camelcase
-      let amount_out = parseFloat(this.form.withdrawal)
-      // eslint-disable-next-line camelcase
-      let balance = this.wallet_balance - amount_out
-      let number = parseFloat(this.form.cashout_no)
-      // eslint-disable-next-line camelcase
-      if (amount_out <= this.wallet_balance) {
-        db.collection('users').doc(this.user.data.email).update({
-          wallet_balance: balance
-        })
-        db.collection('cashout').add({
-          ref: Math.floor(Math.random() * 1000000000),
-          sent: false,
-          amount: amount_out,
-          number: number,
-          email: this.user.data.email
-        })
-        this.$swal('Your cashout was  successfull!....Your mpesa will receive payments in the next 30min  watchout!')
-      } else {
-        this.$swal('insufficient funds....try as smaller amount')
-      }
+      db.collection('users').doc(this.user.data.email).collection('withdrawals').add({
+        amount: parseFloat(this.form.withdrawal),
+        status: false
+      })
     }
   }
 }
 </script>
 <style scoped>
 @import '../assets/footer.css';
-@import url("https://fonts.googleapis.com/css?family=Raleway");
-        .load{
-            width: 330px;
-            height: 330px;
-            display: flex;
-            position:absolute;
-            top: 35%;
-            justify-content: center;
-            align-items: center;
-            background-color: #f35430;
-            border-radius: 50%;
-            animation: shadow 1.4s ease-in-out infinite;
-        }
-        .fingers{
-            background-color: #f7c86b;
-            width: 45px;
-            margin-right: 5px;
-            border-radius: 15px 15px 25px 25px;
-            position: relative;
-            animation: move 1.5s ease-in-out infinite;
-        }
-        .fingers:nth-child(1){
-            height: 130px;
-            top: 5px;
-            margin-left: 24px;
-        }
-        .fingers:nth-child(2){
-            height: 150px;
-            animation-delay: .1s;
-        }
-        .fingers:nth-child(3){
-            height: 170px;
-            top: -5px;
-            animation-delay: .2s;
-        }
-        .fingers:nth-child(4){
-            height: 150px;
-            animation-delay: .3s;
-        }
-        .pollex{
-            width: 60px;
-            height: 45px;
-            position: relative;
-            top: 5px;
-            background-color: #f7c86b;
-            border-radius: 5px 15px 45px 5px;
-            animation: move2 1.5s linear infinite;
-            animation-delay: .4s;
-        }
-        .nails{
-            width: 30px;
-            height: 30px;
-            border-radius: 50px 50px 20px 20px;
-            background-color: #faf5c3;
-            position: absolute;
-            bottom: 13px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .fingers::before,.fingers::after{
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 5px;
-            background-color: #e69b4c;
-            border-radius: 5px;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .fingers::before{
-            top: 20px;
-        }
-        @keyframes move{
-            0%{transform: scaleY(1) translateY(0px)}
-            20%{transform: scaleY(.8) translateY(-30px)}
-            30%{transform: scaleY(.8) translateY(-30px)}
-            40%{transform: scaleY(1) translateY(0px)}
-            100%{transform: scaleY(1) translateY(0px)}
-        }
-        @keyframes move2{
-            0%{transform: scaleY(1) translateY(0px)}
-            20%{transform: scaleY(.9) translateY(-20px)}
-            30%{transform: scaleY(.9) translateY(-20px)}
-            40%{transform: scaleY(1) translateY(0px)}
-            100%{transform: scaleY(1) translateY(0px)}
-        }
-        @keyframes shadow{
-            0%{box-shadow: 0 0 0 5px #fff}
-            100%{box-shadow: 0 0 0 20px #f35430}
-        }
-.hover {
-  animation: hover 2s alternate ease-in-out infinite;
+.bg-mine {
+ background-color:#4545b9;
+}
+.bg-footer {
+ background-color:#BC427F;
+}
+.c-dashboardInfo {
+  margin-bottom: 15px;
+}
+.c-dashboardInfo .wrap {
+  background: #ffffff;
+  box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 25px 20px;
+  height: 100%;
+}
+.c-dashboardInfo__title,
+.c-dashboardInfo__subInfo {
+  color: #6c6c6c;
+  font-size: 1.18em;
+}
+.c-dashboardInfo span {
+  display: block;
+}
+.c-dashboardInfo__count {
+  font-weight: 600;
+  font-size: 2.5em;
+  line-height: 64px;
+  color: #323c43;
+}
+.c-dashboardInfo .wrap:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  content: "";
 }
 
-@keyframes hover {
-  to {
-    transform: translate(0, 0);
-  }
-  from {
-    transform: translate(0, 8px);
-  }
+.c-dashboardInfo:nth-child(1) .wrap:after {
+  background: linear-gradient(82.59deg, #00c48c 0%, #00a173 100%);
+}
+.c-dashboardInfo:nth-child(2) .wrap:after {
+  background: linear-gradient(81.67deg, #0084f4 0%, #1a4da2 100%);
+}
+.c-dashboardInfo:nth-child(3) .wrap:after {
+  background: linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%);
+}
+.c-dashboardInfo:nth-child(4) .wrap:after {
+  background: linear-gradient(81.67deg, #ff647c 0%, #1f5dc5 100%);
+}
+.c-dashboardInfo__title svg {
+  color: #d7d7d7;
+  margin-left: 5px;
+}
+.MuiSvgIcon-root-19 {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 24px;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  user-select: none;
+  flex-shrink: 0;
+}
+.my-card
+{
+    position:absolute;
+    left:40%;
+    top:-20px;
+    border-radius:50%;
+}
+body {
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+  background-color: #f4f4f4;
 }
 
-#description {
-position: absolute;
-left: 50%;
-top: 150px;
-transform: translate(-50%, -50%);
-
-text-align: center;
-font-family: Raleway;
-color: white;
+a {
+  color: #000;
 }
-
-#loadingIndicator {
-position: relative;
-height: 90px;
-width: 150px;
-top: 10px;
-left: 50%;
-transform: translate(-50%, 0%);
+.project-tab {
+    padding: 10%;
+    margin-top: -8%;
 }
-
-.loadingBar {
-position: absolute;
-top: 30px;
-width: 30px;
-height: 30px;
-border-radius: 30px;
-animation: loadingAnimation 3s infinite;
+.project-tab #tabs{
+    background: #007b5e;
+    color: #eee;
 }
-
-#loadingBar1 {
-background: #1e00ff;
-animation-delay: 0s;
-left: 0px;
+.project-tab #tabs h6.section-title{
+    color: #eee;
 }
-#loadingBar2 {
-background: #ff0061;
-animation-delay: 0.2s;
-left: 40px;
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
 }
-
-#loadingBar3 {
-background: #e1ff00;
-animation-delay: 0.4s;
-left: 80px;
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
 }
-#loadingBar4 {
-background: #00ff9e;
-animation-delay: 0.6s;
-left: 120px;
-}
-
-@keyframes loadingAnimation {
-0% {
-top: 30px;
-}
-20% {
-top: 0px;
-}
-50% {
-height: 30px;
-top: 30px;
-border-radius: 5px;
-}
-75% {
-height: 90px;
-top: 0px;
-border-radius: 30px;
-}
-100% {
-height: 30px;
-top: 30px;
-}
-}
-
-.p-xl {
-  padding: 40px;
-}
-
-.lazur-bg {
-  background-color: #FFD700;
-  color: #ffffff;
-}
-
-.red-bg {
-  background-color: #50C878;;
-  color: #ffffff;
-}
-
-.navy-bg {
-  background-color: #800080 ;
-  color: #ffffff;
-}
-.mpesa-bg {
-  background-color: #00008B;
-  color: #ffffff;
-}
-
-.yellow-bg {
-  background-color: #f8ac59;
-  color: #ffffff;
-}
-.purple-bg {
-  background-color: #cb59f8;
-  color: #ffffff;
-}
-.royal-bg {
-  background-color: #11139e;
-  color: #ffffff;
-}
-
-.widget {
-  border-radius: 5px;
-  padding: 15px 20px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
-}
-
-.widget h2, .widget h3 {
-  margin-top: 5px;
-  margin-bottom: 0;
-  border-bottom:1px dotted white;
-}
-
-.m-t-md {
-  margin-top: 20px;
-}
-body{
-    background:#f5f5f5;
-    margin-top:20px;
-}
-.card {
+.project-tab .nav-link:hover {
     border: none;
-    -webkit-box-shadow: 1px 0 20px rgba(96,93,175,.05);
-    box-shadow: 1px 0 20px rgba(96,93,175,.05);
-    margin-bottom: 30px;
 }
-.table th {
-    font-weight: 500;
-    color: #827fc0;
+.project-tab thead{
+    background: #f3f3f3;
+    color: #333;
 }
-.table thead {
-    background-color: #f3f2f7;
-}
-.table>tbody>tr>td, .table>tfoot>tr>td, .table>thead>tr>td {
-    padding: 14px 12px;
-    vertical-align: middle;
-}
-.table tr td {
-    color: #8887a9;
-}
-.thumb-sm {
-    height: 32px;
-    width: 32px;
-}
-.badge-soft-warning {
-    background-color: rgba(248,201,85,.2);
-    color: #f85555;
+.project-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
 }
 
-.badge {
-    font-weight: 500;
-}
-.badge-soft-primary {
-    background-color: rgba(96,93,175,.2);
-    color: #3c39d4;
-}
-.badge-soft-running {
-    background-color: rgba(96,93,175,.2);
-    color: #13b135;
+/* header */
+
+.header {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+  position: sticky;
+  width: 100%;
+  z-index: 3;
 }
 
-ul {
-    list-style: none;
-    display: flex;
-    margin-bottom: 0
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
 }
 
-.social-icon {
-    height: 30px;
-    width: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 14px;
-    border-radius: 7px;
-    margin-right: 11px;
-    cursor: pointer
-}
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
-.social-twitter {
-    background-color: #55acee
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
 }
 
-.social-facebook {
-    background-color: #3b5999
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #f4f4f4;
 }
 
-.social-linkedin {
-    background-color: #0077B5
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
 }
 
-.social-google {
-    background-color: #dd4b39
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
 }
 
-.social-instagram {
-    background-color: #dd4b39
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
 }
 
-.social-icon i {
-    transition: 0.4s all
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
 }
 </style>

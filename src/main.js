@@ -34,16 +34,18 @@ Vue.use(VueSwal)
 Vue.use(Vuex)
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
-const configOptions = {
-  apiKey: 'AIzaSyCOV7DEnom-HdWz3mO-CGtSX_at2rBZBtU',
-  authDomain: 'hustlebidders.firebaseapp.com',
-  projectId: 'hustlebidders',
-  storageBucket: 'hustlebidders.appspot.com',
-  messagingSenderId: '1045831540548',
-  appId: '1:1045831540548:web:e9be5fd96b6240c3fe4111',
-  measurementId: 'G-EQC5JY6CQ7'
+var firebaseConfig = {
+  apiKey: 'AIzaSyB6wVfaBipavCfL_h4bHIFFAHO_dlga7Bo',
+  authDomain: 'horizoninvestors-3a7d4.firebaseapp.com',
+  projectId: 'horizoninvestors-3a7d4',
+  storageBucket: 'horizoninvestors-3a7d4.appspot.com',
+  messagingSenderId: '856885748509',
+  appId: '1:856885748509:web:e086a68abd2289263937f4',
+  measurementId: 'G-V8KPCK0X1T'
 }
-firebase.initializeApp(configOptions)
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig)
+firebase.analytics()
 firebase.auth().onAuthStateChanged(user => {
   store.dispatch('fetchUser', user)
 })

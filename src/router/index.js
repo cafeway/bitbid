@@ -10,10 +10,22 @@ import search from '../components/localdbsearch.vue'
 import reset from '../components/resetpassword.vue'
 import refferals from '../components/refferals'
 import profile from '../components/profile'
+import userData from '../components/sharesdash.vue'
+import invest from '../components/invest.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/invest',
+      name: invest,
+      component: invest
+    },
+    {
+      path: '/info',
+      name: 'profile',
+      component: userData
+    },
     {
       path: '/profile',
       name: 'profile',

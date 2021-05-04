@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
-    invites: 0,
+    userdata: [],
     user: {
       loggedIn: false,
       data: null
@@ -48,6 +48,9 @@ export default new Vuex.Store({
     },
     bindAvailShares: firestoreAction(({bindFirestoreRef}) => {
       return bindFirestoreRef('sharesAvail', firebase.firestore.collection('shares').doc('available'))
+    }),
+    bindUsers: firestoreAction(({bindFirestoreRef}) => {
+      return bindFirestoreRef('userdata', firebase.firestore().collection('users').doc(firebase.auth().currentUser.email))
     })
   }
 })
