@@ -1,6 +1,8 @@
+/* eslint-disable no-tabs */
 /* eslint-disable camelcase */
 /* eslint-disable no-tabs */
 /* eslint-disable no-tabs */
+ /* eslint-disable */
 <template>
   <div class="container-fluid">
   <div v-if="this.connected">
@@ -64,8 +66,11 @@
     </md-steppers>
   </div>
       </div>
-      <div v-else class="modal-body alert alert-danger" role="alert">
+      <div v-else-if="Investment == 2" class="modal-body alert alert-danger" role="alert">
       <h4>Insufficient Balance</h4>
+      </div>
+      <div v-else class="modal-body alert alert-success" role="alert">
+      <h4>Investment Was Successfull</h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -94,39 +99,57 @@
     </div>
   </div>
 </div>
-<div class="jumbotron">
-<div class="row w-100">
-        <div class="col-md-3">
-            <div class="card border-info mx-sm-1 p-3">
-                <div class="card border-info shadow text-info p-3 my-card" ><i class="fa fa-usd" aria-hidden="true"></i></div>
-                <div class="text-info text-center mt-3"><h4>Balance</h4></div>
-                <div class="text-info text-center mt-2"><h1>{{this.wallet_balance}}</h1></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<div class="container">
+ <section class="details-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card-content">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-desc">
+                        <h3>Balance</h3>
+                        <p>{{this.wallet_balance}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-content">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-desc">
+                        <h3>Cashouts</h3>
+                        <p>{{this.amount_received}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-content">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-desc">
+                        <h3>investments</h3>
+                        <p>{{this.total_bids}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-content">
+                    <div class="card-img">
+                    </div>
+                    <div class="card-desc">
+                        <h3>refferals</h3>
+                        <p>{{this.refferals}}</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card border-danger mx-sm-1 p-3">
-                <div class="card border-danger shadow text-danger p-3 my-card" ><i class="fa fa-money" aria-hidden="true"></i>
+    </div>
+</section>
+<!-- details card section starts from here -->
 </div>
-                <div class="text-danger text-center mt-3"><h4>cashout </h4></div>
-                <div class="text-danger text-center mt-2"><h1>346</h1></div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-success mx-sm-1 p-3">
-                <div class="card border-success shadow text-success p-3 my-card"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                <div class="text-success text-center mt-3"><h4>Invitees</h4></div>
-                <div class="text-success text-center mt-2"><h1>{{this.refferals}}</h1></div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-warning mx-sm-1 p-3">
-                <div class="card border-warning shadow text-warning p-3 my-card" ><i class="fa fa-btc" aria-hidden="true"></i></div>
-                <div class="text-warning text-center mt-3"><h4>Investments</h4></div>
-                <div class="text-warning text-center mt-2"><h1>{{this.total_bids}}</h1></div>
-            </div>
-        </div>
-     </div>
-</div>
+
 </div>
 </div>
 <section id="tabs" class="project-tab">
@@ -556,81 +579,6 @@ export default {
 .bg-footer {
  background-color:#BC427F;
 }
-.c-dashboardInfo {
-  margin-bottom: 15px;
-}
-.c-dashboardInfo .wrap {
-  background: #ffffff;
-  box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 7px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  padding: 40px 25px 20px;
-  height: 100%;
-}
-.c-dashboardInfo__title,
-.c-dashboardInfo__subInfo {
-  color: #6c6c6c;
-  font-size: 1.18em;
-}
-.c-dashboardInfo span {
-  display: block;
-}
-.c-dashboardInfo__count {
-  font-weight: 600;
-  font-size: 2.5em;
-  line-height: 64px;
-  color: #323c43;
-}
-.c-dashboardInfo .wrap:after {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  content: "";
-}
-
-.c-dashboardInfo:nth-child(1) .wrap:after {
-  background: linear-gradient(82.59deg, #00c48c 0%, #00a173 100%);
-}
-.c-dashboardInfo:nth-child(2) .wrap:after {
-  background: linear-gradient(81.67deg, #0084f4 0%, #1a4da2 100%);
-}
-.c-dashboardInfo:nth-child(3) .wrap:after {
-  background: linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%);
-}
-.c-dashboardInfo:nth-child(4) .wrap:after {
-  background: linear-gradient(81.67deg, #ff647c 0%, #1f5dc5 100%);
-}
-.c-dashboardInfo__title svg {
-  color: #d7d7d7;
-  margin-left: 5px;
-}
-.MuiSvgIcon-root-19 {
-  fill: currentColor;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  font-size: 24px;
-  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  user-select: none;
-  flex-shrink: 0;
-}
-.my-card
-{
-    position:absolute;
-    left:40%;
-    top:-20px;
-    border-radius:50%;
-}
-body {
-  margin: 0;
-  font-family: Helvetica, sans-serif;
-  background-color: #f4f4f4;
-}
 
 a {
   color: #000;
@@ -805,4 +753,107 @@ a {
     display: none;
   }
 }
+/* card details start  */
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto+Condensed:400,400i,700,700i');
+section{
+    padding: 100px 0;
+}
+.details-card {
+  background: #ecf0f1;
+}
+
+.card-content {
+ background: #ffffff;
+  border: 4px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.card-img {
+  position: relative;
+  overflow: hidden;
+ border-radius: 0;
+ z-index: 1;
+}
+
+.card-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-img span {
+ position: absolute;
+    top: 15%;
+    left: 12%;
+    background: #1ABC9C;
+    padding: 6px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    transform: translate(-50%,-50%);
+}
+.card-img span h4{
+        font-size: 12px;
+        margin:0;
+        padding:10px 5px;
+         line-height: 0;
+}
+.card-desc {
+ padding: 1.25rem;
+}
+
+.card-desc h3 {
+ color: #000000;
+    font-weight: 600;
+    font-size: 1.5em;
+    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.card-desc p {
+  color: #747373;
+   font-size: 14px;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0px;
+  margin-bottom: 20px;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+}
+.btn-card{
+  background-color: #1ABC9C;
+  color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    padding: .84rem 2.14rem;
+    font-size: .81rem;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    -o-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    margin: 0;
+    border: 0;
+    -webkit-border-radius: .125rem;
+    border-radius: .125rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: normal;
+    word-wrap: break-word;
+    color: #fff;
+}
+.btn-card:hover {
+    background: orange;
+}
+a.btn-card {
+    text-decoration: none;
+    color: #fff;
+}
+/* End card section */
 </style>
