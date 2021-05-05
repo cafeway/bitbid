@@ -29,7 +29,7 @@
                                             <td>{{cashout.number}}</td>
                                             <td>{{cashout.sent}}</td>
                                             <td>{{cashout.email}}</td>
-                                            <td><button class=" btn btn-md btn-success" v-on:click="Verify(cashout.ref)">Verify</button></td>
+                                            <td><button class=" btn btn-md btn-success" v-on:click="Verify(cashout.ref)">click here after you send</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 
 <template>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
 
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon" />
     <!-- Theme tittle -->
-    <title>Horizon Investments</title>
+    <title>Hortlite Investments</title>
     <!-- Theme style CSS -->
     <link href="" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -24,7 +25,7 @@
 <body>
     <!--header-area start-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Horizon Investments</a>
+  <a class="navbar-brand" href="#">Hortlite Investments</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -34,6 +35,7 @@
 </nav>
     <!--header-area end-->
     <!--banner-area start-->
+<div id="chartdiv"></div>
     <section class="banner_area" id="particles-js">
         <div class="container">
             <div class="row align-items-center">
@@ -72,13 +74,13 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp animated">
                     <div class="mission_text">
                         <h5>How to Earn</h5>
-                        <p>Simply deposit cash not less than Ksh 500 to our paybill 4025665, account number being your registered phone number. You will be required to invest your amount which will mature after 24 hours with 10% interest.</p>
+                        <p>Simply deposit cash not less than Ksh 500 to our till number 5581293, account number being your registered phone number. You will be required to invest your amount which will mature after 24 hours with 16% interest.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp animated" data-wow-delay="0.3s">
                     <div class="mission_text mt_1">
                         <h5>Referral Money</h5>
-                        <p>When you referr new users to our platform using your assigned referral link and they pay their registration fees(Ksh 500), you are eligible to get Ksh 300 direct into your wallet which you can withdraw.</p>
+                        <p>When you reffer new users to our platform using your assigned referral link and they make their first investment, you are eligible to get 5% downline refferal bonus  into your wallet which you can withdraw after investing    .</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp animated" data-wow-delay="0.6s">
@@ -128,7 +130,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="title">
-                        <h2>What Is HORIZON INVESTORS<br><span>FAQ</span></h2>
+                        <h2>What Is Hortlite INVESTORS<br><span>FAQ</span></h2>
                     </div>
                 </div>
             </div>
@@ -143,32 +145,32 @@
                   <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active wow fadeInLeft animated" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="faq_desc">
-                            <h5>What is HORIZON INVEST ?</h5>
-                            <p>We are a credible company in Kenya that gives you 10% of your investment after 24 hours. You can deposit as low as Ksh 1000 and invest with it and a maximum of Ksh 100,000.</p>
+                            <h5>What is Hortlite INVEST ?</h5>
+                            <p>We are a credible company in Kenya that gives you 16% of your investment after 24 hours. You can deposit as low as Ksh 1000 and invest with it and a maximum of Ksh 100,000.</p>
                             <h5>How can i withdraw my cash?</h5>
                             <p>Withdrawal of cash on our platform is simple and automated. You simply go to the withdraw menu and provide the amount you want to withdraw between 1000-10000 and you receive your funds instantly.</p>
                             <h5>Can i invite my friends?</h5>
-                            <p>Yes you can invite friends to join using your assigned referral link. When they join and pay ksh 500  registration fees, you get Ksh 300 bonus which you can withdraw anytime or invest with it.</p>
+                            <p>Yes you can invite friends to join using your assigned referral link. When they join and deposit after registration fees, you get 5% instant refferal bonus which you can withdraw anytime after investing it.</p>
                         </div>
                     </div>
                     <div class="tab-pane fade wow fadeInLeft animated" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="faq_desc">
-                            <h5>What is HORIZON INVEST ?</h5>
-                             <p>We are a credible company in Kenya that gives you 10% of your investment after 24 hours. You can deposit as low as Ksh 1000 and invest with it and a maximum of Ksh 100,000.</p>
+                            <h5>What is Hortlite INVEST ?</h5>
+                             <p>We are a credible company in Kenya that gives you 16% of your investment after 24 hours. You can deposit as low as Ksh 1000 and invest with it and a maximum of Ksh 100,000.</p>
                             <h5>How can i withdraw my cash?</h5>
                             <p>Withdrawal of cash on our platform is simple and automated. You simply go to the withdraw menu and provide the amount you want to withdraw between 1000-10000 and you receive your funds instantly.</p>
                             <h5>Can i invite my friends?</h5>
-                            <p>Yes you can invite friends to join using your assigned referral link. When they join and pay ksh 500  registration fees, you get Ksh 300 bonus which you can withdraw anytime or invest with it.</p>
+                            <p>Yes you can invite friends to join using your assigned referral link. When they join and deposit after registration fees, you get 5% instant refferal bonus which you can withdraw anytime after investing it.</p>
                         </div>
                     </div>
                     <div class="tab-pane fade wow fadeInLeft animated" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <div class="faq_desc">
-                            <h5>What is HORIZON INVEST ?</h5>
+                            <h5>What is Hortlite INVEST ?</h5>
                              <p>We are a credible company in Kenya that gives you 10% of your investment after 24 hours. You can deposit as low as Ksh 1000 and invest with it and a maximum of Ksh 100,000.</p>
                             <h5>How can i withdraw my cash?</h5>
                             <p>Withdrawal of cash on our platform is simple and automated. You simply go to the withdraw menu and provide the amount you want to withdraw between 1000-10000 and you receive your funds instantly.</p>
                             <h5>Can i invite my friends?</h5>
-                            <p>Yes you can invite friends to join using your assigned referral link. When they join and pay ksh 500  registration fees, you get Ksh 300 bonus which you can withdraw anytime or invest with it.</p>
+                             <p>Yes you can invite friends to join using your assigned referral link. When they join and deposit after registration fees, you get 5% instant refferal bonus which you can withdraw anytime after investing it.</p>
                         </div>
                     </div>
                   </div>
@@ -182,8 +184,8 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 wow fadeInUp animated">
                     <div class="footer_widget">
-                        <a class="fot_logo" href="index-2.html" style="color: white"><strong>HORIZON INVEST</strong></a>
-                        <p>HORIZON INVEST is an outstanding digital investment platform that enables you to earn 10% of your investment after 24 hours.</p>
+                        <a class="fot_logo" href="index-2.html" style="color: white"><strong>Hortlite INVEST</strong></a>
+                        <p>Hortlite INVEST is an outstanding digital investment platform that enables you to earn 10% of your investment after 24 hours.</p>
                         <ul class="fot_list">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -208,7 +210,7 @@
                             <h5>Contact us</h5>
                             <ul class="cta_list">
                                 <li><a href="#"><i class="flaticon-call"></i> +254xxxxxxxx</a></li>
-                                <li><a href="#"><i class="flaticon-envelope"></i> info@horizoninvestor.com</a></li>
+                                <li><a href="#"><i class="flaticon-envelope"></i> info@hortliteinvestor.com</a></li>
                                 <li><a href="#"><i class="flaticon-paper-plane"></i> Nairobi,Kenya</a></li>
                             </ul>
                          </div>
@@ -234,6 +236,57 @@
 <!-- Mirrored from topcashinvest.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Apr 2021 15:21:13 GMT -->
 </html>
 </template>
+<script>
+export default {
+}
+</script>
+
 <style>
-@import '../assets/style.css'
+@import '../assets/style.css';
+html{
+  background:rgb(172, 55, 55);
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;}
+
+#bitcoin{
+  padding-top:80px;
+  width:1000px;
+  height: 400px;
+  margin:0 auto;
+  display:block;
+  text-align:center;
+  color:#888888;
+  background-color: #06092c;
+  }
+
+.path {
+  stroke-dasharray: 2110;
+  stroke-dashoffset: 2110;
+  stroke-width:2;
+  stroke-linecap:round;
+  animation: dash 6s linear infinite;
+  fill-opacity:0;
+  stroke:orange;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 2110;
+    opacity:0;
+    stroke:orange;
+  }
+  15%{
+    opacity:1;
+    stroke:orange;
+  }
+  70%{
+    opacity:1;
+    stroke:orange;
+  }
+  100%{
+    stroke-dashoffset:0;
+    opacity:0;
+    stroke:yellow;
+  }
+}
 </style>

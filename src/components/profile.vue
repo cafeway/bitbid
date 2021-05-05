@@ -29,13 +29,9 @@
                                 </div>
                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">refferals</h6>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <p class="m-b-10 f-w-600">Downlines</p>
                                         <h6 class="text-muted f-w-400">{{this.downlines}}</h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Bonus</p>
-                                        <button  class="btn btn-md btn-success" data-toggle="modal" data-target="#bonus">Redeem invites</button>
                                     </div>
                                 </div>
                                 <ul class="social-link list-unstyled m-t-40 m-b-10">
@@ -79,30 +75,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <div>
-        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <table class="table" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>number</th>
-                                            <th>name</th>
-                                            <th>redeemed</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="ref in refferals" :key="ref.id">
-                                            <td>{{ref.phone}}</td>
-                                            <td>{{ref.username}}</td>
-                                            <td v-if="ref.email !== 'redeemed'"  ><button class=" btn btn-md btn-primary" v-on:click="redeem(ref.email)">Redeem</button></td>
-                                            <td v-else><button class=" btn btn-md btn-success disabled">Redeemed</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-        </div>
       </div>
       <div class="modal-footer">
         <h6>Dont Forget To Reffer More!</h6>

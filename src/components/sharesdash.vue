@@ -8,15 +8,14 @@
                         <nav>
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Your Profile</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Your investments</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Your Transactions</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-records  " role="tab" aria-controls="nav-contact" aria-selected="false">Your Transactions</a>
                                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-refferals" role="tab" aria-controls="nav-contact" aria-selected="false">Your Downlines</a>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <hr>
-                                <button class="btn btn-success btn-block"><router-link to="profile"></router-link>Edit Your Profile</button>
+                                <button class="btn btn-success btn-block" @click="route_to_profile()">Edit Your Profile</button>
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <div>
@@ -68,11 +67,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="sel in sellers" :key="sel">
-                                            <td><a href="#">{{sel.username}}</a></td>
-                                            <td>{{sel.phonenumber}}</td>
-                                            <td>{{sel.shares}}</td>
-                                            <td><button  type="button" v-on:click="sendPair(sel.email)" class="btn btn-warning">Send Pair Request</button></td>
+                                        <tr v-for="ref in refferals" :key="ref.id">
+                                            <td><a href="#">{{ref.username}}</a></td>
+                                            <td>{{ref.phone}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -103,14 +100,14 @@
                                         <tr>
                                             <th class="text-secondary">Amount</th>
                                             <th class="text-success">Date</th>
-                                            <th class="text-danger">Type</th>
+                                            <th class="text-danger">Transaction code</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="rec in records" :key="rec">
-                                            <td><a href="#">{{rec.amount}}</a></td>
-                                            <td>{{rec.date}}</td>
-                                            <td>{{rec.transactionType}}</td>
+                                        <tr v-for="trans in transactions" :key="trans.id">
+                                            <td>{{trans.number}}</td>
+                                            <td>{{trans.time}}</td>
+                                            <td>{{trans.reference}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -144,10 +141,15 @@ export default {
       records: [],
       sellers: [],
       pairRequestSendersNumber: 0,
-      sellerEmail: ''
+      sellerEmail: '',
+      user_phone: '',
+      transactions: []
     }
   },
   methods: {
+    route_to_profile: function () {
+      this.$router.push('/profile')
+    },
     invest: function () {
       let db = firebase.firestore()
       console.log(db)
@@ -201,6 +203,15 @@ export default {
     db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
       snapshot.forEach(doc => {
         this.refferals.push(doc.data())
+      })
+    })
+    db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+      let data = snapshot.data()
+      this.user_phone = data.phonenumber
+    })
+    db.collection('transactions ').where('number', '==', this.user_phone).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.transactions.push(doc.data())
       })
     })
   },
