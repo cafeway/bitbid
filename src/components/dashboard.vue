@@ -39,7 +39,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">How to Invest  </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="reload()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -73,8 +73,7 @@
       <p>Investment Was Successfull</p>
       </div>
       <div class="modal-footer">
-        <button  v-if="Investment !=2" type="button" class="btn btn-primary" data-dismiss="modal" @click="reload()">Save changes</button>
-        <button  v-else type="button" class="btn btn-danger" data-dismiss="modal" @click="reload()">Home</button>
+        Hortlite Investments.com
       </div>
     </div>
   </div>
@@ -449,7 +448,8 @@ export default {
                 let profit = cashout * 0.16
                 // eslint-disable-next-line camelcase
                 let amount_received = snapshot.data().amount_received + cashout + profit
-                let wb = snapshot.data().wallet_balance + cashout + profit
+                let data = snapshot.data()
+                let wb = data.wallet_balance + cashout + profit
                 db.collection('users').doc(this.user.data.email).update({
                   wallet_balance: wb,
                   amount_received: amount_received
