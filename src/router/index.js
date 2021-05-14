@@ -11,15 +11,15 @@ import reset from '../components/resetpassword.vue'
 import refferals from '../components/refferals'
 import profile from '../components/profile'
 import userData from '../components/sharesdash.vue'
-import invest from '../components/invest.vue'
+import help from '@/components/help.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/invest',
-      name: invest,
-      component: invest
+      path: '/help',
+      name: 'help',
+      component: help
     },
     {
       path: '/info',
