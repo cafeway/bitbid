@@ -26,6 +26,7 @@
     "flutterwave-node": "^1.2.2",
     "flutterwave-node-v3": "^1.0.6",
     "jquery": "^3.6.0",
+    "material-icons": "^0.6.3",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.1",
     "open": "^8.0.4",
@@ -39,6 +40,7 @@
     "vue-router": "^3.5.1",
     "vue-swal": "^1.0.0",
     "vuejs-countdown-timer": "^2.1.3",
+    "vuesax": "^3.12.2",
     "vuex": "^3.6.2",
     "vuex-persistedstate": "^4.0.0-beta.3",
     "vuexfire": "^3.2.5"

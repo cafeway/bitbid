@@ -10,6 +10,9 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css' // Vuesax styles
+import 'material-icons/iconfont/material-icons.css'
 import 'bootstrap'
 import store from './store'
 import VueSwal from 'vue-swal'
@@ -21,6 +24,7 @@ import VueRouter from 'vue-router'
 import VueCountdownTimer from 'vuejs-countdown-timer'
 import AxiosPlugin from 'vue-axios-cors'
 Vue.use(AxiosPlugin)
+Vue.use(Vuesax)
 Vue.use(VueCountdownTimer)
 Vue.use(VueRouter)
 Vue.use(LoadScript)
