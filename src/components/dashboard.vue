@@ -1,7 +1,6 @@
 <template>
 <div class="container">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -166,7 +165,7 @@
                                                             </div>
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
-                                                                    <p>Sell Tokens</p>
+                                                                    <p class="text-success">Sell Tokens</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -272,7 +271,7 @@
         </div>
         <df-messenger
   intent="WELCOME"
-  chat-title="Ninja"
+  chat-title="Customer Care"
   agent-id="7b8aa6ce-ff13-4cf0-9ab9-39bee6a1e14a"
   language-code="en"
 ></df-messenger>
@@ -329,10 +328,6 @@ export default {
     console.log('updated')
     var db = firebase.firestore()
     var user = firebase.auth().currentUser
-    db.collection('timer').doc('timer').get().then(snapshot => {
-      let data = snapshot.data().interval
-      this.bidtime = data
-    })
     db.collection('users').doc(this.user.data.email).get().then(snapshot => {
       this.activated = snapshot.data().activated
     })
@@ -341,10 +336,6 @@ export default {
       this.phoneNumber = doc.phonenumber
       this.balance = doc.balance
       this.shares = doc.shares
-    })
-    db.collection('shares').doc('available').get().then(snapshot => {
-      let data = snapshot.data()
-      this.availableshares = data.total
     })
     db.collection('users').doc(user.email).collection('invitees').get().then(snapshot => {
       this.refferalMoney = snapshot.size * 20
