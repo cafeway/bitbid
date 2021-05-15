@@ -51,7 +51,7 @@
                   <br>
                    <a class="text-danger" href="/resetpassword"><b>Reset password</b></a>
                    <hr>
-                   <a class="text-success" href="/register"><b>Create a new Account</b></a>
+                   <a class="text-success" @click="ToRegister()"><b>Create a new Account</b></a>
                 </div>
               </div>
             </form>
@@ -86,6 +86,9 @@ export default {
         .catch(err => {
           this.error = err.message
         })
+    },
+    ToRegister () {
+      this.$router.push('/register')
     }
   }
 }

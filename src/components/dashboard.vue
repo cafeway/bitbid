@@ -124,7 +124,7 @@
                                                                     <i class="fa fa-users"></i>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
+                                                            <div @click="toRefs()" class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
                                                                     <p class="text-success">Downlines</p>
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -182,12 +182,15 @@
                                                         <div class="row">
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="icon-big text-twitter text-center" title="1 new messages">
-                                                                    <i class="fa fa-suitcase  "></i>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="60" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+</svg>
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
-                                                                <h4 class="text-secondary"><b>Records</b></h4>
+                                                                <p class="text-twitter  "><b>Records</b></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -195,7 +198,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-lg-4 col-sm-6">
+                                        <!-- <div class="col-lg-4 col-sm-6">
                                             <a class="member-item" href="/sharesdash">
                                                 <div class="card mb-2 mb-md-5 py-3">
                                                     <div class="content">
@@ -214,8 +217,8 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6">
+                                        </div> -->
+                                        <!-- <div class="col-lg-4 col-sm-6">
                                             <a class="member-item" href="/sharesdash">
                                                 <div class="card mb-2 mb-md-5 py-3">
                                                     <div class="content">
@@ -234,7 +237,7 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -307,6 +310,14 @@
           </div>
 
           <div class="col-xs-6 col-md-3">
+          <h6>Social Sites</h6>
+          <ul>
+              <a href="#" class="btn btn-link btn-facebook"><i class="fab fa-facebook"></i></a>
+                                                        <a href="#" class="btn btn-link btn-twitter"><i class="fab fa-twitter"></i></a>
+                                                        <a href="#" class="btn btn-link btn-gplus"><i class="fab fa-google-plus"></i></a>
+                                                        <a href="#" class="btn btn-link btn-instagram"><i class="fab fa-instagram"></i></a>
+                                                        <a href="#" class="btn btn-link btn-youtube"><i class="fab fa-youtube"></i></a>
+          </ul>
           </div>
         </div>
         <hr>
@@ -362,7 +373,11 @@ export default {
       }
     }
   },
-  created: function () {
+  beforeCreate: function () {
+    this.$vs.loading()
+    setTimeout(() => {
+      this.$vs.loading.close()
+    }, 2000)
   },
   updated: function () {
     console.log('updated')
@@ -383,6 +398,9 @@ export default {
     document.head.appendChild(externalScript)
   },
   methods: {
+    toRefs: function () {
+      this.$router.push('/refs')
+    },
     setMessagesToRead: function (email) {
       var db = firebase.firestore()
       db.collection('users').doc(email).collection('messages').get().then(snapshot => {
