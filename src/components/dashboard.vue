@@ -82,24 +82,27 @@
                                     <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">User Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Deposit</a>
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">How To Deposit</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-withdraw" role="tab" aria-controls="pills-contact" aria-selected="false">Withdraw</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-invest" role="tab" aria-controls="pills-contact" aria-selected="false">Invest</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                     <div class="row">
-                                        <div class="col-lg-4 col-sm-6">
-                                            <a class="member-item" href="/sharesdash">
+                                        <div class="col-lg-4 col-sm-6"  data-toggle="modal" data-target="#transactions">
+                                            <a class="member-item">
                                                 <div class="card mb-2 mb-md-5 py-3">
                                                     <div class="content">
                                                         <div class="row">
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
+                                                            <div  class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="icon-big text-warning text-center">
                                                                     <i class="fa fa-credit-card"></i>
                                                                 </div>
@@ -248,6 +251,7 @@
                                         <p class="text-secondary"><b>Username:  </b>{{this.user.data.displayName}} <i class="fa fa-pencil"></i><p>
                                         <p class="text-secondary"><b>Address:  </b> {{this.user.data.email}}</p>
                                         <p class="text-secondary"><b>Phone:  </b>{{this.phone}}</p>
+                                        <p class="text-secondary"><b>Invite Link:</b><button class="btn btn-primary" type="button" @click="GetLink()">Invite Link</button></p>
                                        </div>
                                        <div class="col-md-6">
                                        <p class="text-danger"><b>Current Balance</b>   <span class="badge badge-danger">{{this.wallet}}</span></p>
@@ -258,22 +262,82 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                              <form>
-                      <div class="mb-3">
-                        <input type="number" name="days" required="required"  v-model="form.days" class="form-control" id="days"  aria-describedby="emailHelp" placeholder="number of days to the bids maturity">
-                      </div>
-                      <hr>
-                      <div class="mb-3">
-                      <input type="number" class="form-control" id="amount" placeholder="enter your bid amount" required="required" name="amount" v-model="form.amount">
-                      </div>
-                     <div class="mb-3 form-check">
-                     </div>
-                     <div class="form-group">
-                     <button type="button" class="btn btn-danger" v-on:click="submit()">Buy and Pair</button>
-                     </div>
-                   </form>
+                                  <div class="container">
+                                  <div class="row">
+                                    <div class="col-md-3">
+                                    <div class="alert alert-success text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">KENYA</h4></div>
+                                      <hr>
+                                    <button class="btn btn-success btn-block">Lipa na Mpesa</button>
+                                    </div>
+                                    </div>
+                                      <div class="col-md-3">
+                                    <div class="alert alert-warning text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">UGANDA</h4></div>
+                                      <hr>
+                                    <h6 class="text-secondary">*165*1*3*1*0743******#</h6>
+                                    </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                    <div class="alert alert-primary text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Tanzania</h4></div>
+                                      <hr>
+
+                                    <h6 class="text-secondary">*150*00#</h6>
+                                    </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                    <div class="alert alert-danger text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">RWANDA</h4></div>
+                                      <hr>
+
+                                    <h6 class="text-secondary">*830#</h6>
+                                    </div>
+                                    </div>
+                                  </div>
+                                  </div>
                                 </div>
                                     <div class="tab-pane fade" id="pills-withdraw" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                </div>
+                                <div class="tab-pane fade" id="pills-invest" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <form>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Amount</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="amount" placeholder="Amount">
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Rates</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+          <label class="form-check-label" for="gridRadios1">
+            First radio
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+          <label class="form-check-label" for="gridRadios2">
+            Second radio
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+          <label class="form-check-label" for="gridRadios3">
+            Third disabled radio
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+  </div>
+</form>
                                 </div>
                                 <!--bot tab-->
                             </div>
@@ -289,6 +353,66 @@
   language-code="en"
 ></df-messenger>
     </div>
+    <div class="modal fade" id="ug-ke" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Uganda-Kenya</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <ul>
+      <p> Dial *165#</p>
+      <p>Select Send Money (1)</p>
+      <p>Select International Transfer (3)</p>
+      <p>Select Safaricom M-Pesa (1)</p>
+      <p>Enter the recipient Number in format 254XXX</p>
+      </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="transactions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Financial History</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+    <div class="row col-md-12 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Amount</th>
+            <th class="text-center">Status</th>
+        </tr>
+    </thead>
+            <tr>
+                <td>1</td>
+                <td>News</td>
+                <td>News Cate</td>
+            </tr>
+    </table>
+    </div>
+</div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 </section>
  <!-- Site footer -->
     <footer class="site-footer">
@@ -350,6 +474,7 @@ import firebase from 'firebase'
 export default {
   data () {
     return {
+      uid: '',
       wallet: 0,
       cashout: 0,
       refferals: 0,
@@ -389,6 +514,7 @@ export default {
       this.wallet = data.wallet_balance
       this.cashout = data.amount_received
       this.phone = data.phonenumber
+      this.uid = data.uid
     })
     db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
       this.refferals = snapshot.size
@@ -427,6 +553,24 @@ export default {
     },
     setBidTime: function () {
       alert('dksj')
+    },
+    genaratelink: function () {
+      var urlgenerator = require('urlgenerator')
+      var createURLwithParameters = urlgenerator.createURLwithParameters
+      var baseURL = 'https://hortlite-investment.com/#/register'
+      var referee = firebase.auth().currentUser.uid
+      var parameters = {'uid': referee}
+      var finalURL = createURLwithParameters(baseURL, parameters)
+      this.$swal(finalURL)
+    },
+    GetLink: function () {
+      var urlgenerator = require('urlgenerator')
+      var createURLwithParameters = urlgenerator.createURLwithParameters
+      var baseURL = 'https://hortlite-investment.com/#/register'
+      var referee = firebase.auth().currentUser.uid
+      var parameters = {'uid': referee}
+      var finalURL = createURLwithParameters(baseURL, parameters)
+      this.$swal(finalURL)
     },
     SetBidder: function () {
       var countdown = require('countdown-js')
@@ -486,21 +630,6 @@ export default {
     logout: function (event) {
       firebase.auth().signOut()
       this.$router.push('/')
-    },
-    genaratelink () {
-      var urlgenerator = require('urlgenerator')
-      var createURLwithParameters = urlgenerator.createURLwithParameters
-      var baseURL = 'https://hustlebidders.netlify.com/register'
-      var useremail = firebase.auth().currentUser.email
-      var parameters = {'email': useremail}
-      var finalURL = createURLwithParameters(baseURL, parameters)
-      console.log('final URL is ', finalURL)
-      const url = require('url')
-      let urlObject = url.parse(finalURL, true)
-      console.log(urlObject.host)
-      let queryData = urlObject.query
-      console.log(queryData.email)
-      this.invitelink = finalURL
     }
   },
   computed: {
