@@ -156,8 +156,8 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-lg-4 col-sm-6">
-                                            <a class="member-item" href="/sell">
+                                        <div class="col-lg-4 col-sm-6" @click="toInvestment()">
+                                            <a class="member-item">
                                                 <div class="card mb-2 mb-md-5 py-3">
                                                     <div class="content">
                                                         <div class="row">
@@ -304,37 +304,17 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Amount</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" id="amount" placeholder="Amount">
+      <input type="number" class="form-control" id="amount" v-model="form.investment" placeholder="Amount">
     </div>
   </div>
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Rates</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
-            First radio
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          <label class="form-check-label" for="gridRadios2">
-            Second radio
-          </label>
-        </div>
-        <div class="form-check disabled">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-          <label class="form-check-label" for="gridRadios3">
-            Third disabled radio
-          </label>
-        </div>
-      </div>
-    </div>
-  </fieldset>
+  <div>
+    <md-radio v-model="radio" :value="16">16% @ 24hrs</md-radio>
+    <md-radio v-model="radio" :value="25">25% @ 48hrs</md-radio>
+    <md-radio v-model="radio" :value="35">35% @ 72hrs</md-radio>
+  </div>
   <div class="form-group row">
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button type="button" @click="submit()" class="btn btn-primary">Invest</button>
     </div>
   </div>
 </form>
@@ -474,6 +454,9 @@ import firebase from 'firebase'
 export default {
   data () {
     return {
+      objA: { name: 'a' },
+      objB: { name: 'b' },
+      radio: false,
       uid: '',
       wallet: 0,
       cashout: 0,
@@ -489,12 +472,14 @@ export default {
       refferalMoney: 0,
       date: '',
       activated: null,
+      total_bids: 0,
       messages: 0,
       form: {
         amount: 0,
         days: 0,
         sharesOnSale: 0,
-        bidhours: 0
+        bidhours: 0,
+        investment: 0
       }
     }
   },
@@ -519,11 +504,17 @@ export default {
     db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
       this.refferals = snapshot.size
     })
+    db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
+      this.total_bids = snapshot.size
+    })
     let externalScript = document.createElement('script')
     externalScript.setAttribute('src', 'https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1')
     document.head.appendChild(externalScript)
   },
   methods: {
+    toInvestment: function () {
+      this.$router.push('/investments')
+    },
     toRefs: function () {
       this.$router.push('/refs')
     },
@@ -534,22 +525,6 @@ export default {
           doc.data().read = true
         })
       })
-    },
-    countdown: function (to) {
-      var countDownDate = new Date()
-      countDownDate.setHours(countDownDate.getHours() + to)
-      var x = setInterval(() => {
-        var now = new Date().getTime()
-        var distance = countDownDate - now
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
-        document.getElementById('timer').innerHTML = hours + 'h' + minutes + 'm' + seconds + 's'
-        if (distance < 0) {
-          clearInterval(x)
-          document.getElementById('timer').innerHTML = 'Expired'
-        }
-      }, 1000)
     },
     setBidTime: function () {
       alert('dksj')
@@ -581,28 +556,37 @@ export default {
       })
       return timer
     },
+    reload: function () {
+      window.navigator.reload()
+    },
     submit () {
-      var db = firebase.firestore()
-      if (this.activated) {
-        db.collection('bids').add({
-          dob: Date(),
-          buyerid: this.phoneNumber,
-          buyeremail: this.user.data.email,
-          sellerid: '',
-          amount: this.form.amount,
-          status: 'pending',
-          paired: false,
-          period: this.form.days,
-          dop: '',
-          phone: this.phoneNumber,
-          transferdate: '',
-          sold: false
+      let db = firebase.firestore()
+      if (this.form.investment <= this.wallet) {
+        let balance = this.wallet - parseFloat(this.form.investment)
+        db.collection('users').doc(this.user.data.email).update({
+          wallet_balance: balance
         })
-        this.$swal('Bid  Placed Successfully')
-        this.$router.push('/sharesdash')
+        // eslint-disable-next-line camelcase
+        let cust_id = parseFloat(this.total_bids) + 1
+        var startdate = firebase.firestore.Timestamp.now().seconds
+        var maturedate = startdate + 86400
+        db.collection('users').doc(this.user.data.email).collection('investments').add({
+          id: cust_id,
+          amount: parseFloat(this.form.investment),
+          rate: this.radio,
+          date: new Date().toDateString(),
+          started: false,
+          state: 'running',
+          cashed: false,
+          startdate: startdate,
+          stopdate: maturedate
+        })
+        this.$vs.notify({title: 'Your investment was successfull and  is worth', text: this.form.investment, color: 'green', position: 'top-center'})
       } else {
-        this.$swal('Activate your Account to bid')
+        this.$vs.notify({title: 'Insufficient Account Balance', text: 'You have invested more than you have!Please Try a smaller amount', color: 'red', position: 'right-bottom'})
       }
+      console.log(this.form.investment)
+      console.log(this.radio)
     },
     Pay: function (event) {
       // mpesa.b2c({

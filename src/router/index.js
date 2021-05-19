@@ -7,15 +7,20 @@ import activate from '../components/activation.vue'
 import dash from '../components/dashboard.vue'
 import admin from '../components/admin.vue'
 import search from '../components/localdbsearch.vue'
-import reset from '../components/resetpassword.vue'
 import refferals from '../components/refferals'
 import profile from '../components/profile'
 import userData from '../components/sharesdash.vue'
 import help from '@/components/help.vue'
+import invest from '../components/investments.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/investments',
+      name: 'investments',
+      component: invest
+    },
     {
       path: '/help',
       name: 'help',
@@ -30,11 +35,6 @@ export default new Router({
       path: '/profile',
       name: 'profile',
       component: profile
-    },
-    {
-      path: '/reset',
-      name: 'reset',
-      component: reset
     },
     {
       path: '/search',
