@@ -4,9 +4,6 @@
   <div v-if="referee_id =='' " class="text-center text-secondary alert alert-primary">
     Reffer More Friends To Earn
     </div>
-    <div v-else class="text-center text-primary alert alert-primary">
-    <b>You were reffered by: {{referee_name}}</b>
-    </div>
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card">
@@ -128,6 +125,7 @@ export default {
         this.referee = doc.data().email
       })
     })
+    this.$vs.notify({title: 'Your Upline', text: this.referee_name, color: 'blue', position: 'top-center'})
   },
   methods: {
     submit () {

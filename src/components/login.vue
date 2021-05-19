@@ -10,7 +10,11 @@
     </v-icon>
        </v-row>
         <div class="card">
-          <div class="card-header">Welcome back</div>
+          <div class="card-header">
+          <div class="container">
+          <img src="https://gle-precision.com/wp-content/uploads/2019/04/fiber-optic-globe.jpg">
+          </div>
+          </div>
           <div class="card-body">
             <div v-if="error" class="alert alert-danger">{{error}}</div>
             <form action="#" @submit.prevent="submit" >
@@ -46,12 +50,14 @@
                 </div>
               </div>
               <div class="form-group row mb-0">
-                <div class="col-md-6 offset-md-4">
-                  <button type="submit" class="btn btn-success  ">Login</button>
-                  <br>
-                   <a class="text-danger" href="/resetpassword"><b>Reset password</b></a>
-                   <hr>
-                   <a class="text-success" @click="ToRegister()"><b>Create a new Account</b></a>
+                <div class="col-md-3">
+                <vs-button color="primary" type="border" @click="login()" icon="login">Login</vs-button>
+                </div>
+                <div class="col-md-5">
+                <vs-button color="danger" type="border" icon="password">Reset Password</vs-button>
+                </div>
+                <div class="col-md-4">
+                <vs-button color="success" type="filled" @click="ToRegister()" icon="favorite">Join</vs-button>
                 </div>
               </div>
             </form>
@@ -76,7 +82,10 @@ export default {
     }
   },
   methods: {
-    submit () {
+    ToRegister () {
+      this.$router.push('/reg')
+    },
+    login () {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
@@ -84,11 +93,8 @@ export default {
           this.$router.push('/dash')
         })
         .catch(err => {
-          this.error = err.message
+          this.$vs.notify({title: 'Invalid email or password', text: err.message, color: 'dark', position: 'bottom-center'})
         })
-    },
-    ToRegister () {
-      this.$router.push('/register')
     }
   }
 }
