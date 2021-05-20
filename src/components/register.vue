@@ -159,6 +159,14 @@ export default {
             email: this.form.email,
             phone: this.form.phone
           })
+          firebase.firestore().collection('users').doc(this.referee).get().then(snapshot => {
+            let data = snapshot.data()
+            let bal = data.wallet_balance + 50
+            let db = firebase.firestore()
+            db.collection('users').doc(this.referee).update({
+              wallet_balance: bal
+            })
+          })
           this.$router.push('/login')
         })
         .catch(err => {

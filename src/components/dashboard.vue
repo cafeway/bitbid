@@ -402,7 +402,7 @@
             <h6>How to Earn</h6>
             <p class="text-justify" style="color:white">
             You can deposit as low as Ksh 1000 and invest with it and a maximum of Ksh 100,000 to our till number 5581293 and your account will be credited.Using the amount deposited click on the invest tab then enter your amount and rate then click invest.
-            We are a credible company in Kenya that gives you 13% of your investment after 24 hours.
+            We are a credible company in Kenya that gives you 16%,25% & 35% of your investment after 24 hours.
             </p>
           </div>
 
@@ -474,6 +474,7 @@ export default {
       activated: null,
       total_bids: 0,
       messages: 0,
+      change: 0,
       form: {
         amount: 0,
         days: 0,
@@ -570,10 +571,16 @@ export default {
         let cust_id = parseFloat(this.total_bids) + 1
         var startdate = firebase.firestore.Timestamp.now().seconds
         var maturedate = startdate + 86400
+        var rate = this.radio / 100
+        var amount = parseFloat(this.form.investment)
+        var profit = rate * amount
+        var total = profit + amount
+        console.log(amount)
+        console.log(profit)
         db.collection('users').doc(this.user.data.email).collection('investments').add({
           id: cust_id,
-          amount: parseFloat(this.form.investment),
-          rate: this.radio,
+          amount: total,
+          rate: rate,
           date: new Date().toDateString(),
           started: false,
           state: 'running',
@@ -581,7 +588,7 @@ export default {
           startdate: startdate,
           stopdate: maturedate
         })
-        this.$vs.notify({title: 'Your investment was successfull and  is worth', text: this.form.investment, color: 'green', position: 'top-center'})
+        this.$vs.notify({title: 'Your investment was successfull kindly refresh!', text: this.form.investment, color: 'green', position: 'top-center'})
       } else {
         this.$vs.notify({title: 'Insufficient Account Balance', text: 'You have invested more than you have!Please Try a smaller amount', color: 'red', position: 'right-bottom'})
       }

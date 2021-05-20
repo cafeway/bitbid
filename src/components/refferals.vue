@@ -9,14 +9,12 @@
   <thead>
     <tr class="text-justify">
       <th class="text-danger">Username</th>
-      <th class="text-primary">1<sup>st</sup>  Investment</th>
       <th class="text-success">Award </th>
     </tr>
   </thead>
   <tbody>
     <tr v-for="ref in refferals" :key="ref.id">
       <td>{{ref.username}}</td>
-      <td>to Do</td>
       <td class="table-success">50ksh</td>
     </tr>
   </tbody>

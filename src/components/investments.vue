@@ -4,17 +4,21 @@
   <table class="table table-bordered" style="padding-top:200px;">
   <thead>
     <tr>
-    <th scope="col">Id</th>
-      <th scope="col">Amount</th>
+      <th scope="col">Amount Earned</th>
       <th scope="col">Status</th>
-      <th scope="col">Timer</th>
+       <th scope="col">Clock</th>
     </tr>
   </thead>
   <tbody>
     <tr v-for="inv in investments" :key="inv.id" >
-      <th scope="row">{{inv.id}}</th>
-      <td>{{inv.amount}}</td>
-      <td>{{inv.state}}</td>
+      <th scope="row">{{inv.amount}}</th>
+      <td v-if="inv.state == 'matured' && inv.cashed == false" class="table-warning">{{inv.state}}
+      <div>
+      <button class="btn btn-primary" @click="withdraw(inv.id)">Cashout</button>
+      </div>
+      </td>
+        <td v-if="inv.state == 'running'" class="table-danger">{{inv.state}}</td>
+        <td v-if="inv.state == 'matured' && inv.cashed == true" class="table-success">Cashout Successfull</td>
       <td>
                                        <vue-countdown-timer
       @start_callback="startCallBack(inv.id)"
@@ -61,6 +65,25 @@ export default {
     })
   },
   methods: {
+    withdraw: function (id) {
+      let db = firebase.firestore()
+      db.collection('users').doc(this.user.data.email).collection('investments').where('id', '==', id).where('cashed', '==', false).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          let DocId = doc.id
+          db.collection('users').doc(this.user.data.email).collection('investments').doc(DocId).update({
+            cashed: true
+          })
+          db.collection('users').doc(this.user.data.email).collection('investment').doc(DocId).get().then(snapshot => {
+            let data = snapshot.data()
+            let amount = data.amount
+            var balance = amount + this.wallet_balance
+            db.collection('users').doc(this.user.data.email).update({
+              wallet_balance: balance
+            })
+          })
+        })
+      })
+    },
     startCallBack: function (id) {
       console.log(id)
     },
