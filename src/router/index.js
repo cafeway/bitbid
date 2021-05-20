@@ -52,7 +52,7 @@ export default new Router({
       component: refferals
     },
     {
-      path: '/',
+      path: '/notthere',
       name: 'home',
       component: home
     },
@@ -62,7 +62,7 @@ export default new Router({
       component: reg
     },
     {
-      path: '/login',
+      path: '/',
       name: 'login',
       component: login
     },
