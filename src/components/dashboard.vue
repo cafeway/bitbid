@@ -47,27 +47,39 @@
                     <div class="row">
                       <a class="position-absolute ml-3 mt-3 text-white" href="setting.html" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit cover images"><i class="fas fa-cog"></i></a>
                         <div class="col-12">
-                            <div class="mb-3" style="background-color: #06092c;">
+                            <div class="mb-3">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row">
-                                            <div class="col-md-6 ml-auto mr-auto">
-                                               <div class="profiles p-3 my-4 rounded text-center shadow-sm">
-                                                    <div class="avatars">
-                                                        <a href="setting.html">
-                                                           <vs-avatar badge />
-                                                        </a>
-                                                    </div>
-                                                    <div class="names">
-                                                        <h3 class="title text-light">{{this.user.data.displayName}}</h3>
-                                                        <hr>
-                                                        <h4 style="color:white;"> <svg style="color:#FFD700;" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
+                                            <div class="col-md-4">
+                                                                        <div class="loader">
+  <div class="loader__image">
+    <div class="loader__coin">
+  <img src="https://www.dropbox.com/s/fzc3fidyxqbqhnj/loader-coin.png?raw=1" alt="">
+  </div>
+    <div class="loader__hand">
+  <img src="https://www.dropbox.com/s/y8uqvjn811z6npu/loader-hand.png?raw=1" alt="">
+    </div>
+  </div>
+</div>
+ <h4>{{this.wallet}}<small><sub>Ksh</sub></small></h4>
+ <p><small>Balance</small></p>
+                                            </div>
+                                              <div class="col-md-4">
+                                              <div class="col-md-6">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="60" fill="blue" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+</svg>
+                                              </div>
+                                              <div class="col-md-6"><h4>{{this.refferals * 50}}<sub><small>ksh</small></sub></h4><sub><small> downline bonus</small></sub></div>
+                                              </div>
+                                            <div class="col-md-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="60" fill="#FFD700" class="bi bi-currency-exchange" viewBox="0 0 16 16">
   <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
 </svg>
-{{this.wallet}}
-</h4>
-                                                      </div>
-                                                </div>
+<h4>{{this.cashout}}<small><sub>Ksh</sub></small></h4>
+ <p><small>Amount Earned</small></p>
                                             </div>
                                         </div>
                                      </div>
@@ -178,29 +190,6 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-lg-4 col-sm-6">
-                                            <a class="member-item" href="/sharesdash">
-                                                <div class="card mb-2 mb-md-5 py-3">
-                                                    <div class="content">
-                                                        <div class="row">
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="icon-big text-twitter text-center" title="1 new messages">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="60" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-</svg>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="numbers">
-                                                                <p class="text-twitter  "><b>Records</b></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
                                         <!-- <div class="col-lg-4 col-sm-6">
                                             <a class="member-item" href="/sharesdash">
                                                 <div class="card mb-2 mb-md-5 py-3">
@@ -298,6 +287,36 @@
                                   </div>
                                 </div>
                                     <div class="tab-pane fade" id="pills-withdraw" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <button class="btn btn-success"  data-toggle="modal" data-target="#withdraw">Withdraw </button>
+                                <!-- Modal -->
+<div class="modal fade" id="withdraw" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Initiate B2C</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form>
+            <div class="form-group">
+              <input type="number" class="form-control" id="number" aria-describedby="emailHelp" placeholder="Enter the Desired amount">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Phone number">
+            </div>
+            <div class="form-check">
+            </div>
+            <button type="submit" class="btn btn-success">Cashout</button>
+          </form>
+      </div>
+      <div class="modal-footer">
+      <h5>Keep it Hortlite!</h5>
+      </div>
+    </div>
+  </div>
+</div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-invest" role="tabpanel" aria-labelledby="pills-contact-tab">
                                 <form>
@@ -979,6 +998,38 @@ export default {
     border-right: 1px solid #e6e7e9;
     margin-left: 0.25rem;
     margin-right: 0.25rem;
+  }
+}
+@keyframes flip {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(-180deg);
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F1F2E6;
+}
+
+.loader {
+  width: 65px;
+  margin: auto;
+  &__image {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__coin {
+    animation: flip .5s ease-in-out infinite alternate-reverse both;
   }
 }
 </style>

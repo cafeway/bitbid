@@ -1,96 +1,56 @@
 /* eslint-disable camelcase */
 <template>
-  <div class="container" style="padding-top:150px">
-  <div v-if="referee_id =='' " class="text-center text-secondary alert alert-primary">
-    Reffer More Friends To Earn
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-          <a href="https://capitalcell.co.uk/investor-terms-and-conditions/">Terms & Conditions</a>
-          </div>
-          <div class="card-body">
-            <div v-if="error" class="alert alert-danger">{{error}}</div>
-            <form action="#" @submit.prevent="submit">
-              <div class="form-group row">
-                <div class="col-md-12 text-center">
-                  <input
-                    id="name"
-                    type="name"
-                    class="form-control text-center"
-                    name="name"
-                    placeholder="Pick A Username"
-                    value
-                    required
-                    autofocus
-                    v-model="form.name"
-                  />
+ <section class="contact-from pt-4">
+<div class="container">
+                <div class="row mt-5">
+                    <div class="col-md-7 mx-auto">
+                      <div class="form-wrapper">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h4>Let Us Know You Better</h4>
+                          </div>
+                        </div>
+                        <form _lpchecked="1">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Username" id="username" v-model="form.name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" id="email" v-model="form.email" class="form-control" placeholder="Email">
+                                    </div>
+                                </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                        <input type="text" v-model="form.phone" id="phone" class="form-control" placeholder="Phone number">
+                                    </div>
+                                </div>
+                               <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" id="password" v-model="form.password" placeholder="password" class="form-control">
+                                    </div>
+                               </div>
+                              <div class="col-md-12">
+                                <select name="countries" class="custom-select" id="country">
+  <option>Select country</option>
+  <option>Kenya</option>
+  <option>Tanzania</option>
+  <option>Uganda</option>
+  <option>Rwanda</option>
+</select>
+                              </div>
+                            </div>
+      <div class="mt-3">
+            <button class="btn btn-primary" type="btn" @click="submit()">Register</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-10">
-                  <input
-                    id="email"
-                    type="email"
-                    class="form-control text-center"
-                    name="email"
-                    value
-                    required
-                    autofocus
-                    placeholder="Enter Your Email"
-                    v-model="form.email"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-8">
-                  <input
-                    id="password"
-                    type="password"
-                    class="form-control text-center"
-                    name="password"
-                    required
-                    placeholder="Choose A Password"
-                    v-model="form.password"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-6">
-                  <input
-                    id="phone"
-                    type="text"
-                    class="form-control text-center"
-                    name="phone"
-                    required
-                    placeholder="Enter Your Mpesa Number"
-                    v-model="form.phone"
-                  />
-                </div>
-              </div>
-              <div class="form-group row mb-0">
-                <div class="col-md-10">
-                <div style="padding-left:20px;">
-                       <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-  <label class="form-check-label" for="flexCheckChecked">
-    i agree to to your terms and conditions
-  </label>
-                </div>
-  <hr>
-                  <button type="button" @click="submit()" class="btn" style="background-color:#ffdb58; color:#4545b9;">Register</button>
-                   <a class="text-success"><b><router-link to="login">Login</router-link></b></a>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+            </div>
   </div>
+  </section>
 </template>
 <script>
 import firebase from 'firebase'
@@ -101,8 +61,7 @@ export default {
         email: '',
         password: '',
         phone: '',
-        name: '',
-        refferalcode: ''
+        name: ''
       },
       error: null,
       referee_id: '',
@@ -139,7 +98,7 @@ export default {
             phoneNumber: this.form.phone
           })
           user.sendEmailVerification()
-          this.$swal('Welcome!!!....Login To Explore')
+          this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
           firebase.firestore().collection('users').doc(this.form.email).set({
             uid: firebase.auth().currentUser.uid,
             email: this.form.email,
@@ -176,3 +135,46 @@ export default {
   }
 }
 </script>
+<style>
+body{
+  font-family: 'Poiret One', cursive;
+  background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQECV7za5N0aLbQHEgmHvQVf8S_SpthQSc-MNZ3DK7DDQECtr_15Ai5N4gkW2nd4u-nU7g&usqp=CAU')
+
+}
+h4{
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+}
+.form-wrapper{
+  background: #fff;
+  border-radius: 5px;
+  padding: 50px;
+}
+.form-control, .custom-select{
+  border-radius: 0px;
+    color: #495057;
+    background-color: #f1f1f1;
+    border-color: none;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #ffffff;
+    border:1px solid #b5b6b3;
+    outline: 0;
+    box-shadow: none;
+
+}
+
+.btn{
+  background: #3494E6;
+  border: #3494E6;
+  padding: 0.6rem 3rem;
+  font-weight: bold;
+}
+.btn:hover, .btn:focus, .btn:active, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  background: #3494E6;
+  border: #3494E6;
+  outline: 0;
+}
+</style>
