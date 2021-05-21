@@ -7,7 +7,7 @@
                       <div class="form-wrapper">
                         <div class="row">
                           <div class="col-md-12">
-                            <h4>Let Us Know You Better</h4>
+                            <h4 class="text-secondary">Let Us Know You Better</h4>
                           </div>
                         </div>
                         <form _lpchecked="1">
