@@ -18,7 +18,7 @@ status = 200
   to = "/register"
   status = 200
   edge_handler = "filterRequests"
-  [[redirects]]
+  [[redirects]] 
   from = "/login"
   to = "/register"
   status = 200
