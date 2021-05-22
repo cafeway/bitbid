@@ -14,7 +14,7 @@ status = 200
   edge_handler = "filterRequests"
 
   [[redirects]]
-  from = "https://bitbid.netlify.com/register"
+  from = "https://hortlite-investments.com/register"
   to = "/register"
   status = 200
   edge_handler = "filterRequests"
