@@ -39,13 +39,13 @@ Vue.use(Vuex)
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 var firebaseConfig = {
-  apiKey: 'AIzaSyB6wVfaBipavCfL_h4bHIFFAHO_dlga7Bo',
-  authDomain: 'horizoninvestors-3a7d4.firebaseapp.com',
-  projectId: 'horizoninvestors-3a7d4',
-  storageBucket: 'horizoninvestors-3a7d4.appspot.com',
-  messagingSenderId: '856885748509',
-  appId: '1:856885748509:web:e086a68abd2289263937f4',
-  measurementId: 'G-V8KPCK0X1T'
+  apiKey: 'AIzaSyDaU5o7T-qVgkXGaxchQZ5B5nXs6gHXCrg',
+  authDomain: 'hortlite-fibre.firebaseapp.com',
+  projectId: 'hortlite-fibre',
+  storageBucket: 'hortlite-fibre.appspot.com',
+  messagingSenderId: '148676762553',
+  appId: '1:148676762553:web:8458eb43b3bc26d0bfb468',
+  measurementId: 'G-Q7HPG4XY5V'
 }
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)

@@ -43,9 +43,9 @@
                               </div>
                             </div>
       <div class="mt-3">
-            <button class="btn btn-primary" type="btn" @click="submit()">Register</button>
+            <button class="btn btn-primary" type="button" @click="submit()">Register</button>
             <hr>
-            <button class="btn btn-warning" @click="tologin()">Login</button>
+            <button class="btn btn-warning" type="button" @click="tologin()">Login</button>
                             </div>
                         </form>
                     </div>
