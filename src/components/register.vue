@@ -127,10 +127,10 @@ export default {
             email: this.form.email,
             phone: this.form.phone
           })
-          this.$router.push('/')
+          this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
+          this.$swal('Account created please login')
         })
         .catch(err => {
-          this.error = err.message
           this.$vs.notify({title: 'Error', text: err.message, color: 'red', position: 'top-center'})
         })
     }
