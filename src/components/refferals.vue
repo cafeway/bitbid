@@ -9,13 +9,15 @@
   <thead>
     <tr class="text-justify">
       <th class="text-danger">Username</th>
-      <th class="text-success">Award </th>
+      <th class="text-success">Bonus </th>
+      <th class="text-primary">status</th>
     </tr>
   </thead>
   <tbody>
     <tr v-for="ref in refferals" :key="ref.id">
       <td>{{ref.username}}</td>
       <td class="table-success">50ksh</td>
+    <td>Status</td>
     </tr>
   </tbody>
 </table>

@@ -44,6 +44,8 @@
                             </div>
       <div class="mt-3">
             <button class="btn btn-primary" type="btn" @click="submit()">Register</button>
+            <hr>
+            <button class="btn btn-warning" @click="tologin()">Login</button>
                             </div>
                         </form>
                     </div>
@@ -69,6 +71,9 @@ export default {
       referee: ''
     }
   },
+  beforeCreate: function () {
+    this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
+  },
   mounted: function () {
     this.referee_uid = ''
     let url = window.location.href
@@ -84,10 +89,13 @@ export default {
         this.referee = doc.data().email
       })
     })
-    this.$vs.notify({title: 'Your Upline', text: this.referee_name, color: 'blue', position: 'top-center'})
+    this.$vs.notify({title: 'Your Upline is', text: this.referee_name, color: 'blue', position: 'top-center'})
   },
   methods: {
-    submit () {
+    tologin: function () {
+      this.$router.push('/')
+    },
+    submit: function () {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
@@ -98,7 +106,7 @@ export default {
             phoneNumber: this.form.phone
           })
           user.sendEmailVerification()
-          this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
+          var country = document.getElementById('country').value
           firebase.firestore().collection('users').doc(this.form.email).set({
             uid: firebase.auth().currentUser.uid,
             email: this.form.email,
@@ -109,27 +117,21 @@ export default {
             activated: false,
             role: 'user',
             refferals: 0,
-            amount_sent: 0,
+            dowmline_bonus: 0,
             amount_received: 0,
-            wallet_balance: 0
+            wallet_balance: 0,
+            country: country
           })
           firebase.firestore().collection('users').doc(this.referee).collection('invitees').add({
             username: this.form.name,
             email: this.form.email,
             phone: this.form.phone
           })
-          firebase.firestore().collection('users').doc(this.referee).get().then(snapshot => {
-            let data = snapshot.data()
-            let bal = data.wallet_balance + 50
-            let db = firebase.firestore()
-            db.collection('users').doc(this.referee).update({
-              wallet_balance: bal
-            })
-          })
-          this.$router.push('/login')
+          this.$router.push('/')
         })
         .catch(err => {
           this.error = err.message
+          this.$vs.notify({title: 'Error', text: err.message, color: 'red', position: 'top-center'})
         })
     }
   }
