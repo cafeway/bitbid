@@ -12,10 +12,16 @@ import profile from '../components/profile'
 import userData from '../components/sharesdash.vue'
 import help from '@/components/help.vue'
 import invest from '../components/investments.vue'
+import main from '../components/main.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/main',
+      name: 'main',
+      component: main
+    },
     {
       path: '/investments',
       name: 'investments',

@@ -44,12 +44,9 @@
             <!--Content-->
             <div class="col-md-12">
                 <div class="dashboard-area">
+                    <div class="container-fluid">
                     <div class="row">
-                      <a class="position-absolute ml-3 mt-3 text-white" href="setting.html" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit cover images"><i class="fas fa-cog"></i></a>
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <div class="row">
-                                    <div class="col-12">
+                                    <div class="container">
                                         <div class="row">
                                             <div class="col-md-4">
                                                                         <div class="loader">
@@ -82,8 +79,6 @@
  <p class="text-secondary"><small>Amount Earned</small></p>
                                             </div>
                                         </div>
-                                     </div>
-                                 </div>
                             </div>
                         </div>
                     </div>
@@ -395,7 +390,7 @@
           <div class="col-sm-12 col-md-6">
             <h6>How to Earn</h6>
             <p class="text-justify" style="color:white">
-            You can deposit as low as Ksh 1000 and invest with it and a maximum of Ksh 100,000 to our till number 5581293 and your account will be credited.Using the amount deposited click on the invest tab then enter your amount and rate then click invest.
+            You can deposit as low as Ksh 500 and invest with it and a maximum of Ksh 50,000 to our till number 5621483 and your account will be credited.Using the amount deposited click on the invest tab then enter your amount and rate then click invest.
             We are a credible company in Kenya that gives you 16%,25% & 35% of your investment after 24 hours.
             </p>
           </div>

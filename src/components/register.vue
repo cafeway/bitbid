@@ -68,7 +68,8 @@ export default {
       error: null,
       referee_id: '',
       referee_name: '',
-      referee: ''
+      referee: '',
+      total_bids: 0
     }
   },
   beforeCreate: function () {
@@ -88,6 +89,10 @@ export default {
         this.referee_name = doc.data().username
         this.referee = doc.data().email
       })
+    })
+    let db = firebase.firestore()
+    db.collection('users').doc(this.referee).collection('investments').get().then(snapshot => {
+      this.total_bids = snapshot.size
     })
     this.$vs.notify({title: 'Your Upline is', text: this.referee_name, color: 'blue', position: 'top-center'})
   },
@@ -127,14 +132,19 @@ export default {
             email: this.form.email,
             phone: this.form.phone
           })
-          firebase.firestore.collection('users').doc(this.referee).get().then(snapshot => {
-            let data = snapshot.data()
-            var UplineBalance = data.wallet_balance
-            var bonus = 50
-            var total = UplineBalance + bonus
-            firebase.firestore.collection('users').doc(this.referee).update({
-              wallet_balance: total
-            })
+          let db = firebase.firestore()
+          let id = this.total_bids + 1
+          var startdate = firebase.firestore.Timestamp.now().seconds
+          var maturedate = startdate + 86400
+          db.collection('users').doc(this.user.data.email).collection('investments').add({
+            id: id,
+            amount: 50,
+            date: new Date().toDateString(),
+            started: false,
+            state: 'running',
+            cashed: false,
+            startdate: startdate,
+            stopdate: maturedate
           })
           this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
           this.$swal('Account created please login')
