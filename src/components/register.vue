@@ -127,6 +127,15 @@ export default {
             email: this.form.email,
             phone: this.form.phone
           })
+          firebase.firestore.collection('users').doc(this.referee).get().then(snapshot => {
+            let data = snapshot.data()
+            var UplineBalance = data.wallet_balance
+            var bonus = 50
+            var total = UplineBalance + bonus
+            firebase.firestore.collection('users').doc(this.referee).update({
+              wallet_balance: total
+            })
+          })
           this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
           this.$swal('Account created please login')
         })
