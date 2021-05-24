@@ -325,7 +325,7 @@
                                 <div class="tab-pane fade" id="pills-invest" role="tabpanel" aria-labelledby="pills-contact-tab">
                                 <form>
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Amount</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label" min="0" oninput="this.value = Math.abs(this.value)">Amount</label>
     <div class="col-sm-10">
       <input type="number" class="form-control" id="amount" v-model="form.investment" placeholder="Amount">
     </div>
@@ -612,7 +612,7 @@ export default {
     },
     submit () {
       let db = firebase.firestore()
-      if (this.form.investment <= this.wallet) {
+      if (this.form.investment <= this.wallet && this.form.investment > 0) {
         let balance = this.wallet - parseFloat(this.form.investment)
         db.collection('users').doc(this.user.data.email).update({
           wallet_balance: balance
@@ -651,7 +651,7 @@ export default {
         })
         this.$vs.notify({title: 'Your investment was successfull kindly refresh!', text: this.form.investment, color: 'green', position: 'top-center'})
       } else {
-        this.$vs.notify({title: 'Insufficient Account Balance', text: 'You have invested more than you have!Please Try a smaller amount', color: 'red', position: 'right-bottom'})
+        this.$vs.notify({title: 'Insufficient Account Balance/ or negative error', text: 'You have invested more than you have!Please Try a smaller amount', color: 'red', position: 'right-bottom'})
       }
       console.log(this.form.investment)
       console.log(this.radio)
