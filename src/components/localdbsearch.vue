@@ -24,12 +24,12 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="cashout in cashouts" :key="cashout.id">
-                                            <td>{{cashout.ref}}</td>
+                                            <td>{{cashout.id}}</td>
                                             <td>{{cashout.amount}}</td>
                                             <td>{{cashout.number}}</td>
                                             <td>{{cashout.sent}}</td>
                                             <td>{{cashout.email}}</td>
-                                            <td><button class=" btn btn-md btn-success" v-on:click="Verify(cashout.ref)">click here after you send</button></td>
+                                            <td><button type="button" class=" btn btn-md btn-success" @click="verify(cashout.id)">click here after you send</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -55,9 +55,9 @@ export default {
     showuserdata: function () {
       alert('....')
     },
-    Verify: function (id) {
+    verify: function (id) {
       let db = firebase.firestore()
-      db.collection('cashout').where('ref', '==', id).get().then(snapshot => {
+      db.collection('cashout').where('id', '==', id).get().then(snapshot => {
         snapshot.forEach(doc => {
           db.collection('cashout').doc(doc.id).update({
             sent: true

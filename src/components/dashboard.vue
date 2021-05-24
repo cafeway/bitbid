@@ -293,7 +293,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Initiate B2C</h5>
+        <h5 class="modal-title text-secondary" id="exampleModalLongTitle">Initiate B2C</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="refresh()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -309,6 +309,7 @@
             <div class="form-check">
             </div>
             <button type="button" @click="withdraw()" class="btn btn-success">Cashout</button>
+            <button type="button" @click="refresh()" class="btn btn-danger">Refresh</button>
           </form>
       </div>
       <div class="modal-footer">
@@ -316,7 +317,7 @@
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
 </svg>
-      <h5>Keep it Hortlite!</h5>
+      <h5 class="text-success">Keep it Hortlite!</h5>
       </div>
     </div>
   </div>
@@ -382,41 +383,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="transactions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Financial History</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-    <div class="row col-md-12 col-md-offset-2 custyle">
-    <table class="table table-striped custab">
-    <thead>
-        <tr>
-            <th>Type</th>
-            <th>Amount</th>
-            <th class="text-center">Status</th>
-        </tr>
-    </thead>
-            <tr>
-                <td>1</td>
-                <td>News</td>
-                <td>News Cate</td>
-            </tr>
-    </table>
-    </div>
-</div>
-      </div>
-      <div class="modal-footer">
       </div>
     </div>
   </div>
@@ -502,7 +468,7 @@ export default {
       activated: null,
       total_bids: 0,
       messages: 0,
-      change: 0,
+      cashouts: 0,
       form: {
         amount: 0,
         days: 0,
@@ -525,6 +491,7 @@ export default {
   },
   mounted: function () {
     var db = firebase.firestore()
+    // get the total cashouts
     db.collection('users').doc(this.user.data.email).get().then(snapshot => {
       let data = snapshot.data()
       this.wallet = data.wallet_balance
@@ -548,19 +515,20 @@ export default {
       let cashout = this.form.cashout
       let number = this.form.number
       let balance = this.wallet - cashout
-      if (cashout <= this.wallet) {
+      if (cashout <= this.wallet && cashout > 0) {
         db.collection('users').doc(this.user.data.email).update({
           wallet_balance: balance
         })
-        this.$vs.notify({title: 'Your Withdrawal was initiated...please wait!', text: this.form.cashout, color: 'blue', position: 'bottom-center'})
+        this.$vs.notify({title: 'Your Withdrawal was initiated..it takes 20 min max for processing!', text: 'kindly refresh asap to complete the transaction ', color: 'blue', position: 'bottom-center'})
         db.collection('cashout').add({
+          id: Math.floor((Math.random() * 1000000) + 1),
           amount: cashout,
           number: number,
           email: this.user.data.email,
           sent: false
         })
       } else {
-        this.$vs.notify({title: 'Your withdrawal exceeds the balance!', text: 'please recharge', color: 'red', position: 'bottom-center'})
+        this.$vs.notify({title: 'Your withdrawal exceeds the balance!', text: 'please recharge or check if you withdrew a negative', color: 'red', position: 'bottom-center'})
       }
     },
     toInvestment: function () {
