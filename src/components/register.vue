@@ -136,7 +136,7 @@ export default {
           let id = this.total_bids + 1
           var startdate = firebase.firestore.Timestamp.now().seconds
           var maturedate = startdate + 86400
-          db.collection('users').doc(this.user.data.email).collection('investments').add({
+          db.collection('users').doc(this.referee).collection('investments').add({
             id: id,
             amount: 50,
             date: new Date().toDateString(),
