@@ -75,10 +75,15 @@ export default {
           })
           db.collection('users').doc(this.user.data.email).collection('investments').doc(DocId).get().then(snapshot => {
             let data = snapshot.data()
-            let amount = data.amount
-            var balance = amount + this.wallet_balance
-            db.collection('users').doc(this.user.data.email).update({
-              wallet_balance: balance
+            let cashout = data.amount
+            console.log(cashout)
+            db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+              let data = snapshot.data()
+              let balance = data.wallet_balance + cashout
+              console.log(balance)
+              db.collection('users').doc(this.user.data.email).update({
+                wallet_balance: balance
+              })
             })
           })
         })
