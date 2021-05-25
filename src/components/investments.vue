@@ -73,7 +73,7 @@ export default {
           db.collection('users').doc(this.user.data.email).collection('investments').doc(DocId).update({
             cashed: true
           })
-          db.collection('users').doc(this.user.data.email).collection('investment').doc(DocId).get().then(snapshot => {
+          db.collection('users').doc(this.user.data.email).collection('investments').doc(DocId).get().then(snapshot => {
             let data = snapshot.data()
             let amount = data.amount
             var balance = amount + this.wallet_balance
