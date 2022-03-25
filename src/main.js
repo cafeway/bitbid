@@ -39,13 +39,14 @@ Vue.use(Vuex)
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 var firebaseConfig = {
-  apiKey: 'AIzaSyDaU5o7T-qVgkXGaxchQZ5B5nXs6gHXCrg',
-  authDomain: 'hortlite-fibre.firebaseapp.com',
-  projectId: 'hortlite-fibre',
-  storageBucket: 'hortlite-fibre.appspot.com',
-  messagingSenderId: '148676762553',
-  appId: '1:148676762553:web:8458eb43b3bc26d0bfb468',
-  measurementId: 'G-Q7HPG4XY5V'
+  apiKey: 'AIzaSyDxMjqb5X6KByJ3DRGSuMKxLmknL8YiA64',
+  authDomain: 'friendlychat-f551c.firebaseapp.com',
+  databaseURL: 'https://friendlychat-f551c.firebaseio.com',
+  projectId: 'friendlychat-f551c',
+  storageBucket: 'friendlychat-f551c.appspot.com',
+  messagingSenderId: '316405385089',
+  appId: '1:316405385089:web:9e82319be025123f1e4a80',
+  measurementId: "G-HG4BQT631D"
 }
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
