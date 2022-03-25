@@ -141,7 +141,7 @@ export default {
             WalletAddress: this.form.wallet,
           })
           let db = firebase.firestore()
-          db.collection('users').where('uid', '==', this.form.sponsor).get().then(snapshot => {
+          db.collection('users').where('uid', '==', 'j7vxgn7IqWcCVciraQIfYG9MRGD2').get().then(snapshot => {
             snapshot.forEach(doc => {
               db.collection('users').doc(doc.id).collection('teams').get().then(snapshot => {
                 snapshot.forEach(doc => {
