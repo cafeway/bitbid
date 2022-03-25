@@ -7,6 +7,7 @@
                       <div class="form-wrapper">
                         <div class="row">
                           <div class="col-md-12">
+                          <h3 class="text-primary">Dream Creation International</h3>
                             <h4 class="text-secondary">Let Us Know You Better</h4>
                           </div>
                         </div>
@@ -32,9 +33,23 @@
                                         <input type="password" id="password" v-model="form.password" placeholder="password" class="form-control">
                                     </div>
                                </div>
+                                 <div class="col-md-6">
+                                  <div class="form-group">
+                                        <input type="text" v-model="form.sponsor" id="sponsor" class="form-control" placeholder="XcFGKKIKLLKII">
+                                    </div>
+                                </div>
+                               <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" id="password" v-model="form.wallet" placeholder="Bitocoin wallet address" class="form-control">
+                                    </div>
+                               </div>
                               <div class="col-md-12">
                                 <select name="countries" class="custom-select" id="country">
   <option>Select country</option>
+   <option>Zambia</option>
+    <option>South Africa</option>
+     <option>Nigeria</option>
+      <option>Ghana</option>
   <option>Kenya</option>
   <option>Tanzania</option>
   <option>Uganda</option>
@@ -63,7 +78,9 @@ export default {
         email: '',
         password: '',
         phone: '',
-        name: ''
+        name: '',
+        sponsor: '',
+        wallet: '',
       },
       error: null,
       referee_id: '',
