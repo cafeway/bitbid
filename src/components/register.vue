@@ -35,7 +35,7 @@
                                </div>
                                  <div class="col-md-6">
                                   <div class="form-group">
-                                        <input type="text" v-model="form.sponsor" id="sponsor" class="form-control" placeholder="Sponsorid">
+                                        <input type="text" v-model="form.sponsor" readonly id="sponsor" class="form-control" placeholder="Sponsorid">
                                     </div>
                                 </div>
                                <div class="col-md-6">
@@ -100,7 +100,12 @@ export default {
     let splitted_urls = url.split('uid=')
     // store uid in an array
     let referee = splitted_urls[1]
-    document.getElementById('sponsor').value = referee
+    if (referee != undefined){
+      document.getElementById('sponsor').value = referee
+    } else if (referee == undefined) {
+      document.getElementById('sponsor').value = j7vxgn7IqWcCVciraQIfYG9MRGD2
+    }
+    
     
   },
   methods: {
@@ -136,7 +141,65 @@ export default {
             WalletAddress: this.form.wallet,
           })
           let db = firebase.firestore()
-         
+          db.collection('users').where('uid', '==', this.form.sponsor).get().then(snapshot => {
+            snapshot.forEach(doc => {
+              db.collection('users').doc(doc.id).collection('teams').get().then(snapshot => {
+                snapshot.forEach(doc => {
+                  let level = doc.data().level
+                  switch(level){
+                    case:1
+                      db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
+                        snapshot.forEach(doc => {
+                          db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
+                            'name': this.form.name,
+                            'amount': 0,
+                            'level': 2,
+                            'email': this.form.email
+                          })
+                        })
+                      })
+                       break;
+                     case:2
+                       db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
+                        snapshot.forEach(doc => {
+                          db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
+                            'name': this.form.name,
+                            'amount': 0,
+                            'level': 3,
+                            'email': this.form.email
+                          })
+                        })
+                      })
+                       break;
+                     case:3
+                      db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
+                        snapshot.forEach(doc => {
+                          db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
+                            'name': this.form.name,
+                            'amount': 0,
+                            'level': 4,
+                            'email': this.form.email
+                          })
+                        })
+                      })
+                       break;
+                     case:4
+                      db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
+                        snapshot.forEach(doc => {
+                          db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
+                            'name': this.form.name,
+                            'amount': 0,
+                            'level': 5,
+                            'email': this.form.email
+                          })
+                        })
+                      })
+                       break;
+                  }
+                })
+              }) 
+            })
+          })
           this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
           this.$swal('Account created please login')
         })
