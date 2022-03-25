@@ -125,7 +125,7 @@ export default {
             amount_received: 0,
             wallet_balance: 0,
             country: country,
-            WalletAddress: wallet,
+            WalletAddress: this.form.wallet,
           })
           let db = firebase.firestore()
          
