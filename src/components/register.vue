@@ -35,12 +35,12 @@
                                </div>
                                  <div class="col-md-6">
                                   <div class="form-group">
-                                        <input type="text" v-model="form.sponsor" id="sponsor" class="form-control" placeholder="XcFGKKIKLLKII">
+                                        <input type="text" v-model="form.sponsor" id="sponsor" class="form-control" placeholder="Sponsorid">
                                     </div>
                                 </div>
                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" id="password" v-model="form.wallet" placeholder="Bitocoin wallet address" class="form-control">
+                                        <input type="text" id="wallet" v-model="form.wallet" placeholder="Bitocoin wallet address" class="form-control">
                                     </div>
                                </div>
                               <div class="col-md-12">
@@ -142,27 +142,11 @@ export default {
             dowmline_bonus: 0,
             amount_received: 0,
             wallet_balance: 0,
-            country: country
-          })
-          firebase.firestore().collection('users').doc(this.referee).collection('invitees').add({
-            username: this.form.name,
-            email: this.form.email,
-            phone: this.form.phone
+            country: country,
+            WalletAddress: wallet,
           })
           let db = firebase.firestore()
-          let id = this.total_bids + 1
-          var startdate = firebase.firestore.Timestamp.now().seconds
-          var maturedate = startdate + 86400
-          db.collection('users').doc(this.referee).collection('investments').add({
-            id: id,
-            amount: 50,
-            date: new Date().toDateString(),
-            started: false,
-            state: 'running',
-            cashed: false,
-            startdate: startdate,
-            stopdate: maturedate
-          })
+         
           this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
           this.$swal('Account created please login')
         })
