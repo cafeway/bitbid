@@ -93,7 +93,15 @@ export default {
     this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
   },
   mounted: function () {
- 
+    // get sponsor id from url
+    let url = window.location.href
+    
+    //split the url to get the uid from it
+    let splitted_urls = url.split('uid=')
+    // store uid in an array
+    let referee = splitted_urls[1]
+    document.getElementById('sponsor').value = referee
+    
   },
   methods: {
     tologin: function () {
