@@ -93,25 +93,7 @@ export default {
     this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
   },
   mounted: function () {
-    this.referee_uid = ''
-    let url = window.location.href
-    // eslint-disable-next-line camelcase
-    let splitted_urls = url.split('uid=')
-    // eslint-disable-next-line camelcase
-    let referee = splitted_urls[1]
-    // eslint-disable-next-line camelcase
-    this.referee_id = referee
-    firebase.firestore().collection('users').where('uid', '==', this.referee_id).get().then(snapshot => {
-      snapshot.forEach(doc => {
-        this.referee_name = doc.data().username
-        this.referee = doc.data().email
-      })
-    })
-    let db = firebase.firestore()
-    db.collection('users').doc(this.referee).collection('investments').get().then(snapshot => {
-      this.total_bids = snapshot.size
-    })
-    this.$vs.notify({title: 'Your Upline is', text: this.referee_name, color: 'blue', position: 'top-center'})
+ 
   },
   methods: {
     tologin: function () {
