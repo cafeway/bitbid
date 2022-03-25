@@ -147,7 +147,7 @@ export default {
                 snapshot.forEach(doc => {
                   let level = doc.data().level
                   switch(level){
-                    case:1
+                    case 1:
                       db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
                         snapshot.forEach(doc => {
                           db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
@@ -159,7 +159,7 @@ export default {
                         })
                       })
                        break;
-                     case:2
+                     case 2:
                        db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
                         snapshot.forEach(doc => {
                           db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
@@ -171,7 +171,7 @@ export default {
                         })
                       })
                        break;
-                     case:3
+                     case 3:
                       db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
                         snapshot.forEach(doc => {
                           db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
@@ -183,7 +183,7 @@ export default {
                         })
                       })
                        break;
-                     case:4
+                     case 4:
                       db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
                         snapshot.forEach(doc => {
                           db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
