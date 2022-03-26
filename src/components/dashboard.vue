@@ -253,32 +253,92 @@
                                       <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Bronze</h4></div>
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $25| Earn $0.25</h6></div>
-                                    <button class="btn btn-success btn-block">Lipa na Mpesa</button>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
                                     </div>
                                     </div>
-                                      <div class="col-md-3">
-                                    <div class="alert alert-warning text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">UGANDA</h4></div>
+                                     <div class="col-md-3">
+                                    <div class="alert alert-success text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Silver</h4></div>
                                       <hr>
-                                    <h6 class="text-secondary">*165*1*3*1*0743******#</h6>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $50| Earn $1</h6></div>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
+                                    </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                    <div class="alert alert-success text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">White</h4></div>
+                                      <hr>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $100| Earn $2</h6></div>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
                                     <div class="alert alert-primary text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Tanzania</h4></div>
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Black</h4></div>
                                       <hr>
-
-                                    <h6 class="text-secondary">*150*00#</h6>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $200| Earn $4</h6></div>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
+                                    </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                    <div class="alert alert-primary text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Gold</h4></div>
+                                      <hr>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $400| Earn $8</h6></div>
+                                         <hr>
+                                    <button class="btn btn-alert btn-block">Invest</button>
+                                    </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                    <div class="alert alert-warning text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Gold Pro</h4></div>
+                                      <hr>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $500| Earn $10</h6></div>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
+                                    </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                    <div class="alert alert-warning text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Platinum</h4></div>
+                                      <hr>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $1000| Earn $21</h6></div>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
+                                    </div>
+                                    </div>
+                                         <div class="col-md-3">
+                                    <div class="alert alert-warning text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">PLatinum Pro</h4></div>
+                                      <hr>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $2000| Earn $43</h6></div>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
                                     <div class="alert alert-danger text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">RWANDA</h4></div>
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Diamond</h4></div>
                                       <hr>
-
-                                    <h6 class="text-secondary">*830#</h6>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $5000| Earn $109/h6></div>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
                                     </div>
                                     </div>
+                                     <div class="col-md-3">
+                                    <div class="alert alert-danger text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Diamond pro</h4></div>
+                                      <hr>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $10000| Earn $219</h6></div>
+                                         <hr>
+                                    <button class="btn btn-success btn-block">Invest</button>
+                                    </div>
+                                    </div>
+                         
                                   </div>
                                   </div>
                                 </div>
