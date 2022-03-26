@@ -8,7 +8,6 @@
                 <form class="form-signin">
                 <input type="email" class="form-control" placeholder="Email" id="email" v-model="form.email" required autofocus>
                 <br/>
-                <br/>
                 <input type="password" id="passsword" v-model="form.password" class="form-control" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="button" @click="login()">
                     Sign in</button>
