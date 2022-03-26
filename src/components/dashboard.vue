@@ -5,7 +5,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" target="_blank" href="">
-                HORTLITE FIBRE
+                BACK OFFICE
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -92,7 +92,7 @@
                                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">User Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">How To Deposit</a>
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Packages</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-withdraw" role="tab" aria-controls="pills-contact" aria-selected="false">Withdraw</a>
@@ -250,8 +250,9 @@
                                   <div class="row">
                                     <div class="col-md-3">
                                     <div class="alert alert-success text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">KENYA</h4></div>
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Bronze</h4></div>
                                       <hr>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $25| Earn $0.25</h6></div>
                                     <button class="btn btn-success btn-block">Lipa na Mpesa</button>
                                     </div>
                                     </div>
@@ -312,7 +313,7 @@
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
 </svg>
-      <h5 class="text-success">Keep it Hortlite!</h5>
+      <h5 class="text-success">Dreams come true here!</h5>
       </div>
     </div>
   </div>
@@ -351,8 +352,8 @@
             </div>
         </div>
         <df-messenger
-  intent="WELCOME"
-  chat-title="Customer Care"
+  intent="Ask For help"
+  chat-title="Dream creation int"
   agent-id="7b8aa6ce-ff13-4cf0-9ab9-39bee6a1e14a"
   language-code="en"
 ></df-messenger>
@@ -390,20 +391,19 @@
           <div class="col-sm-12 col-md-6">
             <h6>How to Earn</h6>
             <p class="text-justify" style="color:white">
-            You can deposit as low as Ksh 500 and invest with it and a maximum of Ksh 50,000 to our till number 5621483 and your account will be credited.Using the amount deposited click on the invest tab then enter your amount and rate then click invest.
-            We are a credible company in Kenya that gives you 16%,25% & 35% of your investment after 24 hours.
+            Choose your desired package from the compensation plan by clicking on packages.Each package offers a 400% turnover for 6 months on a daily basis
             </p>
           </div>
 
           <div class="col-xs-6 col-md-3">
-            <h6>Earn from friends</h6>
+            <h6>Earn from teams</h6>
             <p class="text-justify" style="color:white;">
-              You can earn by inviting friends to join using your assigned referral link to get 50ksh instant refferal bonus.
+              You can earn by inviting friends to join using your assigned referral link and earn 20%,10%,5%,2% and 1% refferal bonus from level 1 to level 5 respectively when a team members investment successfully earns interest and gets approved.
             </p>
           </div>
 
           <div class="col-xs-6 col-md-3">
-          <h6>Social Sites</h6>
+          <h6>Social Media</h6>
           <ul>
               <a href="#" class="btn btn-link btn-facebook"><i class="fab fa-facebook"></i></a>
                                                         <a href="#" class="btn btn-link btn-twitter"><i class="fab fa-twitter"></i></a>
@@ -418,8 +418,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
-         <a href="#">Hortlite inc</a>.
+            <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
+         <a href="#">Dream Creation international</a>.
             </p>
           </div>
         </div>
