@@ -86,7 +86,7 @@
                         <div class="col-12">
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Dashboard</a>
+                                    <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">User Profile</a>
@@ -290,7 +290,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $400| Earn $8</h6></div>
                                          <hr>
-                                    <button class="btn btn-alert btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -324,7 +324,7 @@
                                     <div class="alert alert-danger text-justify" role="alert">
                                       <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Diamond</h4></div>
                                       <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $5000| Earn $109/h6></div>
+                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $5000| Earn $109</h6></div>
                                          <hr>
                                     <button class="btn btn-success btn-block">Invest</button>
                                     </div>
