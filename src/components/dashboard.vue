@@ -137,7 +137,8 @@
                                                             </div>
                                                             <div @click="toRefs()" class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
-                                                                    <p class="text-success">Downlines</p>
+                                                                    <p class="text-success">Your team</p>
+                                                                    <p class="text-success">Members: {{this.refferals}}</p>
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
@@ -612,7 +613,7 @@ export default {
       var referee = firebase.auth().currentUser.uid
       var parameters = {'uid': referee}
       var finalURL = createURLwithParameters(baseURL, parameters)
-      document.getElementById('inviteLink').value = finalUrl
+      document.getElementById('inviteLink').value = finalURL
     },
     SetBidder: function () {
       var countdown = require('countdown-js')
