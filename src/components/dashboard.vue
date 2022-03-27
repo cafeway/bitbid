@@ -389,7 +389,8 @@
                                       <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Copy Invite link</h4></div>
                                       <hr>
                                       <div class="row"><h6 id="inviteLink"class="text-secondary" style="padding-left:50px;"></h6></div>
-                                        
+                                        <hr>
+                                        <button class="btn btn-primary" type="button" @click="GetLink()">Invite Link</button>
                                     </div>
                                     </div>
                                   </div>
