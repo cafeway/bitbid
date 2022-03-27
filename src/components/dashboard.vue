@@ -98,7 +98,7 @@
                                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-withdraw" role="tab" aria-controls="pills-contact" aria-selected="false">Withdraw</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-invest" role="tab" aria-controls="pills-contact" aria-selected="false">Invest</a>
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-invest" role="tab" aria-controls="pills-contact" aria-selected="false">Invite Link</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
@@ -117,6 +117,7 @@
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
                                                                     <p class="text-warning"><b>Transactions</b></p>
+                                                                    <p>100</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -178,6 +179,7 @@
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
                                                                     <p class="text-danger"><b>Investments</b></p>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -349,7 +351,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-secondary" id="exampleModalLongTitle">Initiate B2C</h5>
+        <h5 class="modal-title text-secondary" id="exampleModalLongTitle">Initiate Withdrawal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="refresh()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -380,29 +382,18 @@
 </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-invest" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                <form>
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label" min="0" oninput="this.value = Math.abs(this.value)">Amount</label>
-    <div class="col-sm-10">
-      <input type="number" class="form-control" id="amount" v-model="form.investment" placeholder="Amount">
-    </div>
-  </div>
-  <div>
-    <md-radio v-model="radio" :value="16">16% @ 24hrs</md-radio>
-    <md-radio v-model="radio" :value="25">25% @ 48hrs</md-radio>
-    <md-radio v-model="radio" :value="35">35% @ 72hrs</md-radio>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="button" @click="submit()" class="btn btn-primary">Invest</button>
-      <button type="button" class="btn-secondary btn btn-sm" @click="refresh()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
-  <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/>
-</svg>
-      refresh</button>
-    </div>
-  </div>
-</form>
+                                <div class="container">
+                                  <div class="row">
+                                    <div class="col-md-3">
+                                    <div class="alert alert-danger text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Copy Invite link</h4></div>
+                                      <hr>
+                                      <div class="row"><h6 id="inviteLink"class="text-secondary" style="padding-left:50px;"></h6></div>
+                                        
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
                                 </div>
                                 <!--bot tab-->
                             </div>
@@ -560,6 +551,7 @@ export default {
     db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
       this.total_bids = snapshot.size
     })
+    GetLink()
     let externalScript = document.createElement('script')
     externalScript.setAttribute('src', 'https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1')
     document.head.appendChild(externalScript)
@@ -615,11 +607,11 @@ export default {
     GetLink: function () {
       var urlgenerator = require('urlgenerator')
       var createURLwithParameters = urlgenerator.createURLwithParameters
-      var baseURL = 'https://hortlite-investments.com/#/register'
+      var baseURL = 'https://https://dream-creation-agency.netlify.app//#/register'
       var referee = firebase.auth().currentUser.uid
       var parameters = {'uid': referee}
       var finalURL = createURLwithParameters(baseURL, parameters)
-      this.$swal(finalURL)
+      document.getElementById('inviteLink').value = finalUrl
     },
     SetBidder: function () {
       var countdown = require('countdown-js')
