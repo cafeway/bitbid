@@ -117,7 +117,7 @@
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
                                                                     <p class="text-warning"><b>Transactions</b></p>
-                                                                    <p>100</p>
+                                                                    <p class="text-secondary">Total: {{this.cashout}}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -179,8 +179,8 @@
                                                             </div>
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
-                                                                    <p class="text-danger"><b>Investments</b></p>
-                                                                    
+                                                                    <p class="text-danger"><b>Wallet Balance</b></p>
+                                                                    <p class="text-secondary">Ledger:{{this.wallet}} btc</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -188,26 +188,27 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <!-- <div class="col-lg-4 col-sm-6">
-                                            <a class="member-item" href="/sharesdash">
+                                         <div class="col-lg-4 col-sm-6">
+                                            <a class="member-item" href="#">
                                                 <div class="card mb-2 mb-md-5 py-3">
                                                     <div class="content">
                                                         <div class="row">
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="icon-big text-facebook text-center">
-                                                                    <i class="fa fa-clock-o"></i>
+                                                                    <i class="fa fa-wallet"></i>
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
-                                                                    <p>Running Shares</p>
+                                                                    <p>Investments</p>
+                                                                    <p class="text-secondary">Total: {{this.total_bids}}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </a>
-                                        </div> -->
+                                        </div> 
                                         <!-- <div class="col-lg-4 col-sm-6">
                                             <a class="member-item" href="/sharesdash">
                                                 <div class="card mb-2 mb-md-5 py-3">
@@ -386,12 +387,12 @@
                                 <div class="container">
                                   <div class="row">
                                     <div class="col-md-3">
-                                    <div class="alert alert-danger text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Copy Invite link</h4></div>
+                                    <div class="alert alert-primary text-justify" role="alert">
+                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Your Team link</h4></div>
                                       <hr>
-                                      <div class="row"><h6 id="inviteLink"class="text-secondary" style="padding-left:50px;"></h6></div>
+                                      <div class="row"><h6 id="inviteLink"class="text-secondary" style="padding-left:50px;">https:://https://dream-creation-agency.netlify.app/#/register?uid={{this.uid}}</h6></div>
                                         <hr>
-                                        <button class="btn btn-primary" type="button" @click="GetLink()">Invite Link</button>
+                                        <p>Use this link to create your team</p>
                                     </div>
                                     </div>
                                   </div>
