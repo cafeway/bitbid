@@ -103,7 +103,7 @@ export default {
     if (referee != undefined){
       document.getElementById('sponsor').value = referee
     } else if (referee == undefined) {
-      document.getElementById('sponsor').value = j7vxgn7IqWcCVciraQIfYG9MRGD2
+      document.getElementById('sponsor').value = 'j7vxgn7IqWcCVciraQIfYG9MRGD2'
     }
     
     
