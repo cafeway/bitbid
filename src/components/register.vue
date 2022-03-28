@@ -93,24 +93,27 @@ export default {
     this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
   },
   mounted: function () {
-    // get sponsor id from url
+    this.referee_uid = ''
     let url = window.location.href
-    
-    //split the url to get the uid from it
+    // eslint-disable-next-line camelcase
     let splitted_urls = url.split('uid=')
-    // store uid in an array
+    // eslint-disable-next-line camelcase
     let referee = splitted_urls[1]
-    if (referee != undefined){
-      document.getElementById('sponsor').value = referee
-    } else if (referee == undefined) {
-      document.getElementById('sponsor').value = 'j7vxgn7IqWcCVciraQIfYG9MRGD2'
-    }
-    firebase.firestore().collection('users').where('uid', '==', referee).get().then(snapshot => {
+    // eslint-disable-next-line camelcase
+    this.referee_id = referee
+    firebase.firestore().collection('users').where('uid', '==', this.referee_id).get().then(snapshot => {
       snapshot.forEach(doc => {
-        this.referee_email = doc.id
+        this.referee_name = doc.data().username
+        this.referee = doc.data().email
       })
     })
-    console.log(this.referee_email)
+    let db = firebase.firestore()
+    db.collection('users').doc(this.referee).collection('investments').get().then(snapshot => {
+      this.total_bids = snapshot.size
+    })
+    console.log(this.referee)
+    this.$vs.notify({title: 'Your Upline is', text: this.referee_name, color: 'blue', position: 'top-center'})
+    
   },
   methods: {
     tologin: function () {
