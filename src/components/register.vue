@@ -101,12 +101,7 @@ export default {
     let referee = splitted_urls[1]
     // eslint-disable-next-line camelcase
     this.referee_id = referee
-    firebase.firestore().collection('users').where('uid', '==', this.referee_id).get().then(snapshot => {
-      snapshot.forEach(doc => {
-        this.referee_name = doc.data().username
-        this.referee = doc.data().email
-      })
-    })
+    document.getElementById('sponosr').value = referee
     let db = firebase.firestore()
     db.collection('users').doc(this.referee).collection('investments').get().then(snapshot => {
       this.total_bids = snapshot.size
@@ -148,64 +143,12 @@ export default {
             WalletAddress: this.form.wallet,
           })
           let db = firebase.firestore()
-          db.collection('users').where('uid', '==', 'j7vxgn7IqWcCVciraQIfYG9MRGD2').get().then(snapshot => {
+          db.collection('users').where('uid', '==',  this.form.sposnor).get().then(snapshot => {
+            let email = ''
             snapshot.forEach(doc => {
-              db.collection('users').doc(doc.id).collection('teams').get().then(snapshot => {
-                snapshot.forEach(doc => {
-                  let level = doc.data().level
-                  switch(level){
-                    case 1:
-                      db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
-                        snapshot.forEach(doc => {
-                          db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
-                            'name': this.form.name,
-                            'amount': 0,
-                            'level': 2,
-                            'email': this.form.email
-                          })
-                        })
-                      })
-                       break;
-                     case 2:
-                       db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
-                        snapshot.forEach(doc => {
-                          db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
-                            'name': this.form.name,
-                            'amount': 0,
-                            'level': 3,
-                            'email': this.form.email
-                          })
-                        })
-                      })
-                       break;
-                     case 3:
-                      db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
-                        snapshot.forEach(doc => {
-                          db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
-                            'name': this.form.name,
-                            'amount': 0,
-                            'level': 4,
-                            'email': this.form.email
-                          })
-                        })
-                      })
-                       break;
-                     case 4:
-                      db.collection('users').doc(doc.id).collection('teams').where('level', '==', level).get().then(snapshot => {
-                        snapshot.forEach(doc => {
-                          db.collection('users').doc(doc.data().email).collection('teams').doc(firebase.auth().currentUser.uid).set({
-                            'name': this.form.name,
-                            'amount': 0,
-                            'level': 5,
-                            'email': this.form.email
-                          })
-                        })
-                      })
-                       break;
-                  }
-                })
-              }) 
+              email = doc.id
             })
+            console.log(email)
           })
           this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
           this.$swal('Account created please login')
