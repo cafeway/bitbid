@@ -84,7 +84,7 @@ export default {
       },
       error: null,
       referee_id: '',
-      referee_name: '',
+      referee_email: '',
       referee: '',
       total_bids: 0
     }
@@ -105,8 +105,12 @@ export default {
     } else if (referee == undefined) {
       document.getElementById('sponsor').value = 'j7vxgn7IqWcCVciraQIfYG9MRGD2'
     }
-    
-    
+    firebase.firestore().collection('users').where('uid', '==', referee).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.referee_email = doc.id
+      })
+    })
+    console.log(this.referee_email)
   },
   methods: {
     tologin: function () {
