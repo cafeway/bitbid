@@ -98,7 +98,12 @@ export default {
     // eslint-disable-next-line camelcase
     let splitted_urls = url.split('uid=')
     // eslint-disable-next-line camelcase
-    let referee = splitted_urls[1]
+    if (referee != undefined){
+      let referee = splitted_urls[1]
+    } else if (referee == undefinded){
+      let referee = 'j7vxgn7IqWcCVciraQIfYG9MRGD2'
+    }
+    
     // eslint-disable-next-line camelcase
     this.referee_id = referee
     document.getElementById('sponosr').value = referee
