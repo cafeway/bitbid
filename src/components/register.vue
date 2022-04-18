@@ -103,7 +103,7 @@ export default {
     
     // eslint-disable-next-line camelcase
     this.referee_id = referee
-    document.getElementById('sponosr').value = referee
+    document.getElementById('sponsor').value = referee
     let db = firebase.firestore()
     db.collection('users').doc(this.referee).collection('investments').get().then(snapshot => {
       this.total_bids = snapshot.size
@@ -146,11 +146,13 @@ export default {
           })
           let db = firebase.firestore()
           db.collection('users').where('uid', '==',  this.form.sposnor).get().then(snapshot => {
-            let email = ''
             snapshot.forEach(doc => {
-              email = doc.id
+              db.collection('users').doc(doc.id).collection('invitees').add({
+                'username': this.form.name,
+                'bonus': 0,
+                'status': 'active'
+              })
             })
-            console.log(email)
           })
           this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
           this.$swal('Account created please login')
