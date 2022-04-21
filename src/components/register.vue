@@ -80,7 +80,7 @@ export default {
         phone: '',
         name: '',
         sponsor: '',
-        wallet: '',
+        wallet: ''
       },
       error: null,
       referee_id: '',
@@ -98,9 +98,7 @@ export default {
     // eslint-disable-next-line camelcase
     let splitted_urls = url.split('uid=')
     // eslint-disable-next-line camelcase
-      let referee = splitted_urls[1]
-   
-    
+    let referee = splitted_urls[1]
     // eslint-disable-next-line camelcase
     this.referee_id = referee
     document.getElementById('sponsor').value = referee
@@ -110,7 +108,6 @@ export default {
     })
     console.log(this.referee)
     this.$vs.notify({title: 'Your Upline is', text: this.referee_name, color: 'blue', position: 'top-center'})
-    
   },
   methods: {
     tologin: function () {
@@ -142,10 +139,10 @@ export default {
             amount_received: 0,
             wallet_balance: 0,
             country: country,
-            WalletAddress: this.form.wallet,
+            WalletAddress: this.form.wallet
           })
           let db = firebase.firestore()
-          db.collection('users').where('uid', '==',  this.form.sposnor).get().then(snapshot => {
+          db.collection('users').where('uid', '==', this.form.sposnor).get().then(snapshot => {
             snapshot.forEach(doc => {
               db.collection('users').doc(doc.id).collection('invitees').add({
                 'username': this.form.name,

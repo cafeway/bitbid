@@ -34,7 +34,7 @@
 </header>
 <section id="about-us" class="py-5">
     <div class="container">
-        <div class="row">
+
              <!--left sidebar-->
             <div class="col-md-3 pr-md-4">
                 <div class="sidebar-left">
@@ -45,7 +45,7 @@
             <div class="col-md-12">
                 <div class="dashboard-area">
                     <div class="container-fluid">
-                   
+
                     <div class="row">
                         <div class="col-12">
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -152,7 +152,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                         <div class="col-lg-4 col-sm-6">
+                                         <div class="col-lg-4 col-sm-6"  @click="toInvestment()">
                                             <a class="member-item" href="#">
                                                 <div class="card mb-2 mb-md-5 py-3">
                                                     <div class="content">
@@ -164,7 +164,7 @@
                                                             </div>
                                                             <div class="col-6 d-flex justify-content-center align-items-center">
                                                                 <div class="numbers">
-                                                                    <p>Investments</p>
+                                                                    <p class="text-primary">Investments</p>
                                                                     <p class="text-secondary">Total: {{this.total_bids}}</p>
                                                                 </div>
                                                             </div>
@@ -172,7 +172,7 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </div> 
+                                        </div>
                                         <!-- <div class="col-lg-4 col-sm-6">
                                             <a class="member-item" href="/sharesdash">
                                                 <div class="card mb-2 mb-md-5 py-3">
@@ -203,7 +203,7 @@
                                         <p class="text-secondary"><b>Username:  </b>{{this.user.data.displayName}} <i class="fa fa-pencil"></i><p>
                                         <p class="text-secondary"><b>Address:  </b> {{this.user.data.email}}</p>
                                         <p class="text-secondary"><b>Phone:  </b>{{this.phone}}</p>
-                                        <p class="text-secondary"><b>Invite Link:</b><button class="btn btn-primary" type="button" @click="GetLink()">Invite Link</button></p>
+                                        <p class="text-secondary"><b>Invite Link:</b><button class="btn btn-primary" type="button" @click="Getlink()">Invite Link</button></p>
                                        </div>
                                        <div class="col-md-6">
                                        <p class="text-danger"><b>Current Balance</b>   <span class="badge badge-danger">{{this.wallet}}</span></p>
@@ -222,7 +222,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $25| Earn $0.25</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(25,0.25)">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -231,7 +231,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $50| Earn $1</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(50,1)">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -240,7 +240,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $100| Earn $2</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(100,2)">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -249,7 +249,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $200| Earn $4</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(200,4)">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -258,7 +258,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $400| Earn $8</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(400,8)">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -267,7 +267,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $500| Earn $10</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(500,10)">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -276,7 +276,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $1000| Earn $21</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(1000,21)">Invest</button>
                                     </div>
                                     </div>
                                          <div class="col-md-3">
@@ -285,7 +285,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $2000| Earn $43</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(2000,43)">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -294,7 +294,7 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $5000| Earn $109</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(5000,109)">Invest</button>
                                     </div>
                                     </div>
                                      <div class="col-md-3">
@@ -303,10 +303,10 @@
                                       <hr>
                                       <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $10000| Earn $219</h6></div>
                                          <hr>
-                                    <button class="btn btn-success btn-block">Invest</button>
+                                    <button class="btn btn-success btn-block" @click="Invest(10000,219)">Invest</button>
                                     </div>
                                     </div>
-                         
+
                                   </div>
                                   </div>
                                 </div>
@@ -328,7 +328,7 @@
               <input type="number" class="form-control" id="cashout" v-model="form.cashout" aria-describedby="emailHelp" placeholder="Enter the Desired amount">
             </div>
             <div class="form-group">
-              <input type="text" v-model="form.number" class="form-control" id="number" placeholder="Phone number">
+              <input type="text" v-model="form.number" class="form-control" id="number" placeholder="Btc Wallet">
             </div>
             <div class="form-check">
             </div>
@@ -346,6 +346,27 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-invest" role="tabpanel" aria-labelledby="pills-contact-tab">
                                 <div class="container">
@@ -354,7 +375,7 @@
                                     <div class="alert alert-primary text-justify" role="alert">
                                       <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Your Team link</h4></div>
                                       <hr>
-                                      <div class="row"><h6 id="inviteLink"class="text-secondary" style="padding-left:50px;">https:://https://dream-creation-agency.netlify.app/#/register?uid={{this.uid}}</h6></div>
+                                      <div class="row"><h6 id="inviteLink" class="text-secondary" style="padding-left:50px;">https:://https://dream-creation-agency.netlify.app/#/register?uid={{this.uid}}</h6></div>
                                         <hr>
                                         <p>Use this link to create your team</p>
                                     </div>
@@ -448,16 +469,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import firebase from 'firebase'
-// const Mpesa = require('mpesa-api').Mpesa
-// const credentials = {
-//   clientKey: 'PzYKGrQDH8C75CkzOhn9QEUwNVuKAmpI',
-//   clientSecret: 'h8mZA8Z5zdjgCYge',
-//   initiatorPassword: 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
-//   securityCredential: 'W0lMwNhtwOU3vBnHrrNJUYzr6tKSuIOCZTCCeE4wQ/OE0iTvXoY8Al/EwhHqydzvDh/V7MYXMQ+NFoxbeTTIF4BBW8MnVi6W3TyTUBi9k1Ip9YO5r5Mnjf9PuThgchppO60CgBbCNP0wSfEsmrgqD0L4SIAMHeWQX6DpR7g1RuPQCrmmhU5OTA1fa0dvk3KPb1b8/Fzgh7PscGQV8V2AyDeA3HkL/AHKqUaC3tS7l99AivAoqpeT7N3RtgIiDMiKFa5APPQGYvaOqy1QjduYz9auCneMQOEoQHOoh5yAnj1RmUXjOoiPjtYZF9jk0Us/FseKxbHJwft9BTyzcwu1Mg==',
-//   certificatePath: 'keys/example.cert'
-// }
-// const environment = 'production'
-// const mpesa = new Mpesa(credentials, environment)
 export default {
   data () {
     return {
@@ -518,7 +529,7 @@ export default {
     db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
       this.total_bids = snapshot.size
     })
-    GetLink()
+
     let externalScript = document.createElement('script')
     externalScript.setAttribute('src', 'https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1')
     document.head.appendChild(externalScript)
@@ -571,14 +582,16 @@ export default {
       var finalURL = createURLwithParameters(baseURL, parameters)
       this.$swal(finalURL)
     },
-    GetLink: function () {
+    Getlink: function () {
       var urlgenerator = require('urlgenerator')
       var createURLwithParameters = urlgenerator.createURLwithParameters
-      var baseURL = 'https://https://dream-creation-agency.netlify.app//#/register'
+      var baseURL = 'https://dream-creation-agency.netlify.app/#/register'
       var referee = firebase.auth().currentUser.uid
       var parameters = {'uid': referee}
       var finalURL = createURLwithParameters(baseURL, parameters)
       document.getElementById('inviteLink').value = finalURL
+      navigator.clipboard.writeText(finalURL)
+      alert('Copied link to clipboard')
     },
     SetBidder: function () {
       var countdown = require('countdown-js')
@@ -592,51 +605,19 @@ export default {
     refresh: function () {
       window.location.reload()
     },
-    submit () {
+    Invest: function (amount, dailyPay) {
+      this.$router.push({ path: '/address/:amount', params: { amount: 10 } })
       let db = firebase.firestore()
-      if (this.form.investment <= this.wallet && this.form.investment > 0) {
-        let balance = this.wallet - parseFloat(this.form.investment)
-        db.collection('users').doc(this.user.data.email).update({
-          wallet_balance: balance
-        })
-        // eslint-disable-next-line camelcase
-        let cust_id = parseFloat(this.total_bids) + 1
-        var startdate = firebase.firestore.Timestamp.now().seconds
-        var rate = parseFloat(this.radio / 100)
-        var duration = parseFloat(this.radio)
-        var maturedate = 0
-        console.log(duration)
-        switch (duration) {
-          case 25:
-            maturedate = startdate + 172800
-            break
-          case 35:
-            maturedate = startdate + 259200
-            break
-          default:
-            maturedate = startdate + 86400
-    // code block
-        }
-        var amount = parseFloat(this.form.investment)
-        var profit = rate * amount
-        var total = profit + amount
-        db.collection('users').doc(this.user.data.email).collection('investments').add({
-          id: cust_id,
-          amount: total,
-          rate: rate,
-          date: new Date().toDateString(),
-          started: false,
-          state: 'running',
-          cashed: false,
-          startdate: startdate,
-          stopdate: maturedate
-        })
-        this.$vs.notify({title: 'Your investment was successfull kindly refresh!', text: this.form.investment, color: 'green', position: 'top-center'})
-      } else {
-        this.$vs.notify({title: 'Insufficient Account Balance/ or negative error', text: 'You have invested more than you have!Please Try a smaller amount', color: 'red', position: 'right-bottom'})
-      }
-      console.log(this.form.investment)
-      console.log(this.radio)
+      db.collection('bids').add({
+        'id': Math.floor((Math.random() * 10000) + 1),
+        'email': firebase.auth().currentUser.email,
+        'amount': amount,
+        'verification_status': 'unverified',
+        'startDay': Date.now(),
+        'stopDay': Date.now() + 1.577e+10,
+        'dailyPay': dailyPay,
+        'cashouts': 0
+      })
     },
     Pay: function (event) {
       // mpesa.b2c({

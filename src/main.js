@@ -46,7 +46,7 @@ var firebaseConfig = {
   storageBucket: 'friendlychat-f551c.appspot.com',
   messagingSenderId: '316405385089',
   appId: '1:316405385089:web:9e82319be025123f1e4a80',
-  measurementId: "G-HG4BQT631D"
+  measurementId: 'G-HG4BQT631D'
 }
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)

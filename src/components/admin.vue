@@ -31,22 +31,22 @@
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th>User<i class="fa fa-user-circle-o"></i></th>
-                        <th>PhoneNumber <i class="fa fa-mobile"></i></th>
-                        <th>Activated<i class="fa fa-certificate"></i></th>
-                        <th>Balance<i class="fa fa-money"></i></th>
+                        <th>UserEmail<i class="fa fa-user-circle-o"></i></th>
+                        <th>Amount<i class="fa fa-mobile"></i></th>
+                        <th>BidId<i class="fa fa-certificate"></i></th>
+                        <th>Status<i class="fa fa-money"></i></th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="user in users" :key="user.uid">
-                        <td>{{user.username}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.activated}}</td>
-                        <td>{{user.wallet_balance}}</td>
+                        <td>{{user.amount}}</td>
+                        <td>{{user.id}}</td>
+                        <td>{{user.verification_status}}</td>
                         <td>
                          <ul>
-                         <li data-toggle="modal" data-target="#exampleModal" class="alert alert-success">withdraw</li>
+                        <li class="alert alert-success" @click="verify(user.id)">Verify</li>
                          <!-- Button trigger modal -->
 
 <!-- Modal -->
@@ -64,7 +64,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" @click="withdraw(user.email)" >Withdraw</button>
+        <button type="button" class="btn btn-primary" @click="withdraw(user.email)" >Verify</button>
       </div>
     </div>
   </div>
@@ -224,7 +224,7 @@ export default {
   },
   mounted: function () {
     var db = firebase.firestore()
-    db.collection('users').get().then(snapshot => {
+    db.collection('bids').get().then(snapshot => {
       snapshot.forEach(doc => {
         this.users.push(doc.data())
       })
@@ -270,6 +270,16 @@ export default {
       let db = firebase.firestore()
       db.collection('shares').doc('available').update({
         total: parseFloat(this.form.amount)
+      })
+    },
+    verify: function (id) {
+      let db = firebase.firestore()
+      db.collection('bids').where('id', '==', id).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          db.collection('bids').doc(doc.id).update({
+            'verification_status': 'verified'
+          })
+        })
       })
     }
   }

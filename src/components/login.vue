@@ -21,7 +21,7 @@
             <a class="text-center new-account" @click="ToRegister()">Create an account </a>
         </div>
     </div>
-</div>
+
 </template>
 
 <script>

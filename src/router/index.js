@@ -13,6 +13,7 @@ import userData from '../components/sharesdash.vue'
 import help from '@/components/help.vue'
 import invest from '../components/investments.vue'
 import main from '../components/main.vue'
+import btc from '../components/btc.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -34,7 +35,7 @@ export default new Router({
     },
     {
       path: '/info',
-      name: 'profile',
+      name: 'info',
       component: userData
     },
     {
@@ -81,6 +82,11 @@ export default new Router({
       path: '/dash',
       name: 'dash',
       component: dash
+    },
+    {
+      path: '/address/:amount',
+      name: 'payment',
+      component: btc
     }
   ]
 })
