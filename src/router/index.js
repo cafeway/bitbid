@@ -14,6 +14,7 @@ import help from '@/components/help.vue'
 import invest from '../components/investments.vue'
 import main from '../components/main.vue'
 import btc from '../components/btc.vue'
+import landing from '../components/landingpage.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -69,9 +70,14 @@ export default new Router({
       component: reg
     },
     {
-      path: '/',
+      path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/',
+      name: 'landing',
+      component: landing
     },
     {
       path: '/activate',

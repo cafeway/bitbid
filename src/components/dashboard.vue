@@ -15,15 +15,7 @@
                     <li class="nav-item active">
                         <a class=" nav-link p-3" href="#"><span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class=" text-danger nav-link p-3" id="timer" href="">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-3" href="">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-3" href="">Contact Us</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link p-3" href="/">Sign Out</a>
                     </li>
