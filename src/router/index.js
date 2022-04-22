@@ -70,12 +70,12 @@ export default new Router({
       component: reg
     },
     {
-      path: '/login',
+      path: '/',
       name: 'login',
       component: login
     },
     {
-      path: '/',
+      path: '/landing',
       name: 'landing',
       component: landing
     },
