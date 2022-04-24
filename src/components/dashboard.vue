@@ -1,461 +1,1331 @@
 <template>
-<div class="container">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" target="_blank" href="">
-                BACK OFFICE
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="ml-auto navbar-nav text-uppercase">
-                    <li class="nav-item active">
-                        <a class=" nav-link p-3" href="#"><span class="sr-only">(current)</span></a>
-                    </li>
+<div>
+<html lang="en">
 
-                    <li class="nav-item">
-                        <a class="nav-link p-3" href="/">Sign Out</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-<section id="about-us" class="py-5">
-    <div class="container">
-
-             <!--left sidebar-->
-            <div class="col-md-3 pr-md-4">
-                <div class="sidebar-left">
-                    <!--sidebar menu-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+<link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></head>
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <div class="app-header header-shadow">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <!--Content-->
-            <div class="col-md-12">
-                <div class="dashboard-area">
-                    <div class="container-fluid">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                    </button>
+                </span>
+            </div>    <div class="app-header__content">
+                <div class="app-header-left">
+                    <div class="search-wrapper">
+                        <div class="input-holder">
+                            <input type="text" class="search-input" placeholder="Type to search">
+                            <button class="search-icon"><span></span></button>
+                        </div>
+                        <button class="close"></button>
+                    </div>
+                    <ul class="header-menu nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-database"> </i>
+                                Statistics
+                            </a>
+                        </li>
+                        <li class="btn-group nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-edit"></i>
+                                Projects
+                            </a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-cog"></i>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>        </div>
+                <div class="app-header-right">
+                    <div class="header-btn-lg pr-0">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                            <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                            <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                        </a>
+                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                            <button type="button" tabindex="0" class="dropdown-item">User Account</button>
+                                            <button type="button" tabindex="0" class="dropdown-item">Settings</button>
+                                            <h6 tabindex="-1" class="dropdown-header">Header</h6>
+                                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>
+                                            <div tabindex="-1" class="dropdown-divider"></div>
+                                            <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content-left  ml-3 header-user-info">
+                                    <div class="widget-heading">
+                                        Alina Mclourd
+                                    </div>
+                                    <div class="widget-subheading">
+                                        VP People Manager
+                                    </div>
+                                </div>
+                                <div class="widget-content-right header-user-info ml-3">
+                                    <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                        <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        </div>
+            </div>
+        </div>        <div class="ui-theme-settings">
+            <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
+                <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+            </button>
+            <div class="theme-settings__inner">
+                <div class="scrollbar-container">
+                    <div class="theme-settings__options-wrapper">
+                        <h3 class="themeoptions-heading">Layout Options
+                        </h3>
+                        <div class="p-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left mr-3">
+                                                <div class="switch has-switch switch-container-class" data-class="fixed-header">
+                                                    <div class="switch-animate switch-on">
+                                                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Fixed Header
+                                                </div>
+                                                <div class="widget-subheading">Makes the header top fixed, always visible!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">User Profile</a>
+                                <li class="list-group-item">
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left mr-3">
+                                                <div class="switch has-switch switch-container-class" data-class="fixed-sidebar">
+                                                    <div class="switch-animate switch-on">
+                                                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Fixed Sidebar
+                                                </div>
+                                                <div class="widget-subheading">Makes the sidebar left fixed, always visible!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Packages</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-withdraw" role="tab" aria-controls="pills-contact" aria-selected="false">Withdraw</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-invest" role="tab" aria-controls="pills-contact" aria-selected="false">Invite Link</a>
+                                <li class="list-group-item">
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left mr-3">
+                                                <div class="switch has-switch switch-container-class" data-class="fixed-footer">
+                                                    <div class="switch-animate switch-off">
+                                                        <input type="checkbox" data-toggle="toggle" data-onstyle="success">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Fixed Footer
+                                                </div>
+                                                <div class="widget-subheading">Makes the app footer bottom fixed, always visible!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-sm-6"  data-toggle="modal" data-target="#transactions">
-                                            <a class="member-item">
-                                                <div class="card mb-2 mb-md-5 py-3">
-                                                    <div class="content">
-                                                        <div class="row">
-                                                            <div  class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="icon-big text-warning text-center">
-                                                                    <i class="fa fa-credit-card"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="numbers">
-                                                                    <p class="text-warning"><b>Transactions</b></p>
-                                                                    <p class="text-secondary">Total: {{this.cashout}}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6">
-                                            <a class="member-item" >
-                                                <div class="card mb-2 mb-md-5 py-3">
-                                                    <div class="content">
-                                                        <div class="row">
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="icon-big text-success  text-center" title="1 new comment">
-                                                                    <i class="fa fa-users"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div @click="toRefs()" class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="numbers">
-                                                                    <p class="text-success">Your team</p>
-                                                                    <p class="text-success">Members: {{this.refferals}}</p>
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                   <div class="modal-header">
-             <h5 class="modal-title" id="exampleModalLongTitle">Redeem url!..send it to friends as a refferal</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <a id = "link" class=" text text-success" >{{invitelink}}</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" v-on:click="genaratelink()" >Share link</button>
-      </div>
-    </div>
-  </div>
-</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-6" @click="toInvestment()">
-                                            <a class="member-item">
-                                                <div class="card mb-2 mb-md-5 py-3">
-                                                    <div class="content">
-                                                        <div class="row">
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="icon-big text-danger text-center">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="60" fill="currentColor" class="bi bi-currency-bitcoin" viewBox="0 0 16 16">
-  <path d="M5.5 13v1.25c0 .138.112.25.25.25h1a.25.25 0 0 0 .25-.25V13h.5v1.25c0 .138.112.25.25.25h1a.25.25 0 0 0 .25-.25V13h.084c1.992 0 3.416-1.033 3.416-2.82 0-1.502-1.007-2.323-2.186-2.44v-.088c.97-.242 1.683-.974 1.683-2.19C11.997 3.93 10.847 3 9.092 3H9V1.75a.25.25 0 0 0-.25-.25h-1a.25.25 0 0 0-.25.25V3h-.573V1.75a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25V3l-1.998.011a.25.25 0 0 0-.25.25v.989c0 .137.11.25.248.25l.755-.005a.75.75 0 0 1 .745.75v5.505a.75.75 0 0 1-.75.75l-.748.011a.25.25 0 0 0-.25.25v1c0 .138.112.25.25.25L5.5 13zm1.427-8.513h1.719c.906 0 1.438.498 1.438 1.312 0 .871-.575 1.362-1.877 1.362h-1.28V4.487zm0 4.051h1.84c1.137 0 1.756.58 1.756 1.524 0 .953-.626 1.45-2.158 1.45H6.927V8.539z"/>
-</svg>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="numbers">
-                                                                    <p class="text-danger"><b>Wallet Balance</b></p>
-                                                                    <p class="text-secondary">Ledger:{{this.wallet}} btc</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                         <div class="col-lg-4 col-sm-6"  @click="toInvestment()">
-                                            <a class="member-item" href="#">
-                                                <div class="card mb-2 mb-md-5 py-3">
-                                                    <div class="content">
-                                                        <div class="row">
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="icon-big text-facebook text-center">
-                                                                    <i class="fa fa-wallet"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="numbers">
-                                                                    <p class="text-primary">Investments</p>
-                                                                    <p class="text-secondary">Total: {{this.total_bids}}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <!-- <div class="col-lg-4 col-sm-6">
-                                            <a class="member-item" href="/sharesdash">
-                                                <div class="card mb-2 mb-md-5 py-3">
-                                                    <div class="content">
-                                                        <div class="row">
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="icon-big text-success text-center">
-                                                                    <i class="fa fa-graduation-cap"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                                                <div class="numbers">
-                                                                    <p>Matured Shares</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                    <div class="p-3 border mb-3">
-                                       <div class="row">
-                                       <div class="col-md-6">
-                                          <a class="position-absolute" style="right: 25px" href="setting.html" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit profile"><i class="fas fa-cog"></i></a>
-                                        <p class="text-secondary"><b>Username:  </b>{{this.user.data.displayName}} <i class="fa fa-pencil"></i><p>
-                                        <p class="text-secondary"><b>Address:  </b> {{this.user.data.email}}</p>
-                                        <p class="text-secondary"><b>Phone:  </b>{{this.phone}}</p>
-                                        <p class="text-secondary"><b>Invite Link:</b><button class="btn btn-primary" type="button" @click="Getlink()">Invite Link</button></p>
-                                       </div>
-                                       <div class="col-md-6">
-                                       <p class="text-danger"><b>Current Balance</b>   <span class="badge badge-danger">{{this.wallet}}</span></p>
-                                       <p class="text-success"><b>Cashouts</b>   <span class="badge badge-success">{{this.cashout}}</span></p>
-                                        <p class="text-primary"><b>Refferals</b>   <span class="badge badge-primary">{{this.refferals}}</span></p>
-                                       </div>
-                                       </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                  <div class="container">
-                                  <div class="row">
-                                    <div class="col-md-3">
-                                    <div class="alert alert-success text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Bronze</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $25| Earn $0.25</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(25,0.25)">Invest</button>
-                                    </div>
-                                    </div>
-                                     <div class="col-md-3">
-                                    <div class="alert alert-success text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Silver</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $50| Earn $1</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(50,1)">Invest</button>
-                                    </div>
-                                    </div>
-                                     <div class="col-md-3">
-                                    <div class="alert alert-success text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">White</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $100| Earn $2</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(100,2)">Invest</button>
-                                    </div>
-                                    </div>
-                                     <div class="col-md-3">
-                                    <div class="alert alert-primary text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Black</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $200| Earn $4</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(200,4)">Invest</button>
-                                    </div>
-                                    </div>
-                                     <div class="col-md-3">
-                                    <div class="alert alert-primary text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Gold</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $400| Earn $8</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(400,8)">Invest</button>
-                                    </div>
-                                    </div>
-                                     <div class="col-md-3">
-                                    <div class="alert alert-warning text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Gold Pro</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $500| Earn $10</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(500,10)">Invest</button>
-                                    </div>
-                                    </div>
-                                     <div class="col-md-3">
-                                    <div class="alert alert-warning text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Platinum</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $1000| Earn $21</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(1000,21)">Invest</button>
-                                    </div>
-                                    </div>
-                                         <div class="col-md-3">
-                                    <div class="alert alert-warning text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">PLatinum Pro</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $2000| Earn $43</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(2000,43)">Invest</button>
-                                    </div>
-                                    </div>
-                                     <div class="col-md-3">
-                                    <div class="alert alert-danger text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Diamond</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $5000| Earn $109</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(5000,109)">Invest</button>
-                                    </div>
-                                    </div>
-                                     <div class="col-md-3">
-                                    <div class="alert alert-danger text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Diamond pro</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 class="text-secondary" style="padding-left:50px;">Invest $10000| Earn $219</h6></div>
-                                         <hr>
-                                    <button class="btn btn-success btn-block" @click="Invest(10000,219)">Invest</button>
-                                    </div>
-                                    </div>
-
-                                  </div>
-                                  </div>
-                                </div>
-                                    <div class="tab-pane fade" id="pills-withdraw" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                <button class="btn btn-success"  data-toggle="modal" data-target="#withdraw">Withdraw </button>
-                                <!-- Modal -->
-<div class="modal fade" id="withdraw" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-secondary" id="exampleModalLongTitle">Initiate Withdrawal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="refresh()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         <form>
-            <div class="form-group">
-              <input type="number" class="form-control" id="cashout" v-model="form.cashout" aria-describedby="emailHelp" placeholder="Enter the Desired amount">
-            </div>
-            <div class="form-group">
-              <input type="text" v-model="form.number" class="form-control" id="number" placeholder="Btc Wallet">
-            </div>
-            <div class="form-check">
-            </div>
-            <button type="button" @click="withdraw()" class="btn btn-success">Cashout</button>
-            <button type="button" @click="refresh()" class="btn btn-danger">Refresh</button>
-          </form>
-      </div>
-      <div class="modal-footer">
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="green" class="bi bi-emoji-smile" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
-</svg>
-      <h5 class="text-success">Dreams come true here!</h5>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-invest" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                <div class="container">
-                                  <div class="row">
-                                    <div class="col-md-3">
-                                    <div class="alert alert-primary text-justify" role="alert">
-                                      <div class="row"><h4 class="text-secondary" style="padding-left:50px;">Your Team link</h4></div>
-                                      <hr>
-                                      <div class="row"><h6 id="inviteLink" class="text-secondary" style="padding-left:50px;">https:://https://dream-creation-agency.netlify.app/#/register?uid={{this.uid}}</h6></div>
-                                        <hr>
-                                        <p>Use this link to create your team</p>
-                                    </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                </div>
-                                <!--bot tab-->
+                        </div>
+                        <h3 class="themeoptions-heading">
+                            <div>
+                                Header Options
                             </div>
+                            <button type="button" class="btn-pill btn-shadow btn-wide ml-auto btn btn-focus btn-sm switch-header-cs-class" data-class="">
+                                Restore Default
+                            </button>
+                        </h3>
+                        <div class="p-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <h5 class="pb-2">Choose Color Scheme
+                                    </h5>
+                                    <div class="theme-settings-swatches">
+                                        <div class="swatch-holder bg-primary switch-header-cs-class" data-class="bg-primary header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-secondary switch-header-cs-class" data-class="bg-secondary header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-success switch-header-cs-class" data-class="bg-success header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-info switch-header-cs-class" data-class="bg-info header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-warning switch-header-cs-class" data-class="bg-warning header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-danger switch-header-cs-class" data-class="bg-danger header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-light switch-header-cs-class" data-class="bg-light header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-dark switch-header-cs-class" data-class="bg-dark header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-focus switch-header-cs-class" data-class="bg-focus header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-alternate switch-header-cs-class" data-class="bg-alternate header-text-light">
+                                        </div>
+                                        <div class="divider">
+                                        </div>
+                                        <div class="swatch-holder bg-vicious-stance switch-header-cs-class" data-class="bg-vicious-stance header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-midnight-bloom switch-header-cs-class" data-class="bg-midnight-bloom header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-night-sky switch-header-cs-class" data-class="bg-night-sky header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-slick-carbon switch-header-cs-class" data-class="bg-slick-carbon header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-asteroid switch-header-cs-class" data-class="bg-asteroid header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-royal switch-header-cs-class" data-class="bg-royal header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-warm-flame switch-header-cs-class" data-class="bg-warm-flame header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-night-fade switch-header-cs-class" data-class="bg-night-fade header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-sunny-morning switch-header-cs-class" data-class="bg-sunny-morning header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-tempting-azure switch-header-cs-class" data-class="bg-tempting-azure header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-amy-crisp switch-header-cs-class" data-class="bg-amy-crisp header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-heavy-rain switch-header-cs-class" data-class="bg-heavy-rain header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-mean-fruit switch-header-cs-class" data-class="bg-mean-fruit header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-malibu-beach switch-header-cs-class" data-class="bg-malibu-beach header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-deep-blue switch-header-cs-class" data-class="bg-deep-blue header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-ripe-malin switch-header-cs-class" data-class="bg-ripe-malin header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-arielle-smile switch-header-cs-class" data-class="bg-arielle-smile header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-plum-plate switch-header-cs-class" data-class="bg-plum-plate header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-happy-fisher switch-header-cs-class" data-class="bg-happy-fisher header-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-happy-itmeo switch-header-cs-class" data-class="bg-happy-itmeo header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-mixed-hopes switch-header-cs-class" data-class="bg-mixed-hopes header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-strong-bliss switch-header-cs-class" data-class="bg-strong-bliss header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-grow-early switch-header-cs-class" data-class="bg-grow-early header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-love-kiss switch-header-cs-class" data-class="bg-love-kiss header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-premium-dark switch-header-cs-class" data-class="bg-premium-dark header-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-happy-green switch-header-cs-class" data-class="bg-happy-green header-text-light">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <h3 class="themeoptions-heading">
+                            <div>Sidebar Options</div>
+                            <button type="button" class="btn-pill btn-shadow btn-wide ml-auto btn btn-focus btn-sm switch-sidebar-cs-class" data-class="">
+                                Restore Default
+                            </button>
+                        </h3>
+                        <div class="p-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <h5 class="pb-2">Choose Color Scheme
+                                    </h5>
+                                    <div class="theme-settings-swatches">
+                                        <div class="swatch-holder bg-primary switch-sidebar-cs-class" data-class="bg-primary sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-secondary switch-sidebar-cs-class" data-class="bg-secondary sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-success switch-sidebar-cs-class" data-class="bg-success sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-info switch-sidebar-cs-class" data-class="bg-info sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-warning switch-sidebar-cs-class" data-class="bg-warning sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-danger switch-sidebar-cs-class" data-class="bg-danger sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-light switch-sidebar-cs-class" data-class="bg-light sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-dark switch-sidebar-cs-class" data-class="bg-dark sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-focus switch-sidebar-cs-class" data-class="bg-focus sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-alternate switch-sidebar-cs-class" data-class="bg-alternate sidebar-text-light">
+                                        </div>
+                                        <div class="divider">
+                                        </div>
+                                        <div class="swatch-holder bg-vicious-stance switch-sidebar-cs-class" data-class="bg-vicious-stance sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-midnight-bloom switch-sidebar-cs-class" data-class="bg-midnight-bloom sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-night-sky switch-sidebar-cs-class" data-class="bg-night-sky sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-slick-carbon switch-sidebar-cs-class" data-class="bg-slick-carbon sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-asteroid switch-sidebar-cs-class" data-class="bg-asteroid sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-royal switch-sidebar-cs-class" data-class="bg-royal sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-warm-flame switch-sidebar-cs-class" data-class="bg-warm-flame sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-night-fade switch-sidebar-cs-class" data-class="bg-night-fade sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-sunny-morning switch-sidebar-cs-class" data-class="bg-sunny-morning sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-tempting-azure switch-sidebar-cs-class" data-class="bg-tempting-azure sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-amy-crisp switch-sidebar-cs-class" data-class="bg-amy-crisp sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-heavy-rain switch-sidebar-cs-class" data-class="bg-heavy-rain sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-mean-fruit switch-sidebar-cs-class" data-class="bg-mean-fruit sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-malibu-beach switch-sidebar-cs-class" data-class="bg-malibu-beach sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-deep-blue switch-sidebar-cs-class" data-class="bg-deep-blue sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-ripe-malin switch-sidebar-cs-class" data-class="bg-ripe-malin sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-arielle-smile switch-sidebar-cs-class" data-class="bg-arielle-smile sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-plum-plate switch-sidebar-cs-class" data-class="bg-plum-plate sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-happy-fisher switch-sidebar-cs-class" data-class="bg-happy-fisher sidebar-text-dark">
+                                        </div>
+                                        <div class="swatch-holder bg-happy-itmeo switch-sidebar-cs-class" data-class="bg-happy-itmeo sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-mixed-hopes switch-sidebar-cs-class" data-class="bg-mixed-hopes sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-strong-bliss switch-sidebar-cs-class" data-class="bg-strong-bliss sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-grow-early switch-sidebar-cs-class" data-class="bg-grow-early sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-love-kiss switch-sidebar-cs-class" data-class="bg-love-kiss sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-premium-dark switch-sidebar-cs-class" data-class="bg-premium-dark sidebar-text-light">
+                                        </div>
+                                        <div class="swatch-holder bg-happy-green switch-sidebar-cs-class" data-class="bg-happy-green sidebar-text-light">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <h3 class="themeoptions-heading">
+                            <div>Main Content Options</div>
+                            <button type="button" class="btn-pill btn-shadow btn-wide ml-auto active btn btn-focus btn-sm">Restore Default
+                            </button>
+                        </h3>
+                        <div class="p-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <h5 class="pb-2">Page Section Tabs
+                                    </h5>
+                                    <div class="theme-settings-swatches">
+                                        <div role="group" class="mt-2 btn-group">
+                                            <button type="button" class="btn-wide btn-shadow btn-primary btn btn-secondary switch-theme-class" data-class="body-tabs-line">
+                                                Line
+                                            </button>
+                                            <button type="button" class="btn-wide btn-shadow btn-primary active btn btn-secondary switch-theme-class" data-class="body-tabs-shadow">
+                                                Shadow
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <df-messenger
-  intent="Ask For help"
-  chat-title="Dream creation int"
-  agent-id="7b8aa6ce-ff13-4cf0-9ab9-39bee6a1e14a"
-  language-code="en"
-></df-messenger>
-    </div>
-    <div class="modal fade" id="ug-ke" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Uganda-Kenya</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <ul>
-      <p> Dial *165#</p>
-      <p>Select Send Money (1)</p>
-      <p>Select International Transfer (3)</p>
-      <p>Select Safaricom M-Pesa (1)</p>
-      <p>Enter the recipient Number in format 254XXX</p>
-      </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
- <!-- Site footer -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <h6>How to Earn</h6>
-            <p class="text-justify" style="color:white">
-            Choose your desired package from the compensation plan by clicking on packages.Each package offers a 400% turnover for 6 months on a daily basis
-            </p>
-          </div>
+        </div>        <div class="app-main">
+                <div class="app-sidebar sidebar-shadow">
+                    <div class="app-header__logo">
+                        <div class="logo-src"></div>
+                        <div class="header__pane ml-auto">
+                            <div>
+                                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                                    <span class="hamburger-box">
+                                        <span class="hamburger-inner"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-header__mobile-menu">
+                        <div>
+                            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="app-header__menu">
+                        <span>
+                            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                                <span class="btn-icon-wrapper">
+                                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                                </span>
+                            </button>
+                        </span>
+                    </div>    <div class="scrollbar-sidebar">
+                        <div class="app-sidebar__inner">
+                            <ul class="vertical-nav-menu">
+                                <li class="app-sidebar__heading">Dashboards</li>
+                                <li>
+                                    <a href="index.html" class="mm-active">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        Dashboard Example 1
+                                    </a>
+                                </li>
+                                <li class="app-sidebar__heading">UI Components</li>
+                                <li
+                                >
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        Elements
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul
+                                    >
+                                        <li>
+                                            <a href="elements-buttons-standard.html">
+                                                <i class="metismenu-icon"></i>
+                                                Buttons
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-dropdowns.html">
+                                                <i class="metismenu-icon">
+                                                </i>Dropdowns
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-icons.html">
+                                                <i class="metismenu-icon">
+                                                </i>Icons
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-badges-labels.html">
+                                                <i class="metismenu-icon">
+                                                </i>Badges
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-cards.html">
+                                                <i class="metismenu-icon">
+                                                </i>Cards
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-list-group.html">
+                                                <i class="metismenu-icon">
+                                                </i>List Groups
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-navigation.html">
+                                                <i class="metismenu-icon">
+                                                </i>Navigation Menus
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="elements-utilities.html">
+                                                <i class="metismenu-icon">
+                                                </i>Utilities
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li
+                                >
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-car"></i>
+                                        Components
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul
+                                  >
+                                        <li>
+                                            <a href="components-tabs.html">
+                                                <i class="metismenu-icon">
+                                                </i>Tabs
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-accordions.html">
+                                                <i class="metismenu-icon">
+                                                </i>Accordions
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-notifications.html">
+                                                <i class="metismenu-icon">
+                                                </i>Notifications
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-modals.html">
+                                                <i class="metismenu-icon">
+                                                </i>Modals
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-progress-bar.html">
+                                                <i class="metismenu-icon">
+                                                </i>Progress Bar
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-tooltips-popovers.html">
+                                                <i class="metismenu-icon">
+                                                </i>Tooltips &amp; Popovers
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-carousel.html">
+                                                <i class="metismenu-icon">
+                                                </i>Carousel
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-calendar.html">
+                                                <i class="metismenu-icon">
+                                                </i>Calendar
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-pagination.html">
+                                                <i class="metismenu-icon">
+                                                </i>Pagination
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-scrollable-elements.html">
+                                                <i class="metismenu-icon">
+                                                </i>Scrollable
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="components-maps.html">
+                                                <i class="metismenu-icon">
+                                                </i>Maps
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li  >
+                                    <a href="tables-regular.html">
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                        Tables
+                                    </a>
+                                </li>
+                                <li class="app-sidebar__heading">Widgets</li>
+                                <li>
+                                    <a href="dashboard-boxes.html">
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                        Dashboard Boxes
+                                    </a>
+                                </li>
+                                <li class="app-sidebar__heading">Forms</li>
+                                <li>
+                                    <a href="forms-controls.html">
+                                        <i class="metismenu-icon pe-7s-mouse">
+                                        </i>Forms Controls
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="forms-layouts.html">
+                                        <i class="metismenu-icon pe-7s-eyedropper">
+                                        </i>Forms Layouts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="forms-validation.html">
+                                        <i class="metismenu-icon pe-7s-pendrive">
+                                        </i>Forms Validation
+                                    </a>
+                                </li>
+                                <li class="app-sidebar__heading">Charts</li>
+                                <li>
+                                    <a href="charts-chartjs.html">
+                                        <i class="metismenu-icon pe-7s-graph2">
+                                        </i>ChartJS
+                                    </a>
+                                </li>
+                                <li class="app-sidebar__heading">PRO Version</li>
+                                <li>
+                                    <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/" target="_blank">
+                                        <i class="metismenu-icon pe-7s-graph2">
+                                        </i>
+                                        Upgrade to PRO
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    <div class="app-main__outer">
+                    <div class="app-main__inner">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-car icon-gradient bg-mean-fruit">
+                                        </i>
+                                    </div>
+                                    <div>Analytics Dashboard
+                                        <div class="page-title-subheading">This is an example dashboard created using build-in elements and components.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="page-title-actions">
+                                    <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+                                        <i class="fa fa-star"></i>
+                                    </button>
+                                    <div class="d-inline-block dropdown">
+                                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                                                <i class="fa fa-business-time fa-w-20"></i>
+                                            </span>
+                                            Buttons
+                                        </button>
+                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="javascript:void(0);" class="nav-link">
+                                                        <i class="nav-link-icon lnr-inbox"></i>
+                                                        <span>
+                                                            Inbox
+                                                        </span>
+                                                        <div class="ml-auto badge badge-pill badge-secondary">86</div>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="javascript:void(0);" class="nav-link">
+                                                        <i class="nav-link-icon lnr-book"></i>
+                                                        <span>
+                                                            Book
+                                                        </span>
+                                                        <div class="ml-auto badge badge-pill badge-danger">5</div>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="javascript:void(0);" class="nav-link">
+                                                        <i class="nav-link-icon lnr-picture"></i>
+                                                        <span>
+                                                            Picture
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a disabled href="javascript:void(0);" class="nav-link disabled">
+                                                        <i class="nav-link-icon lnr-file-empty"></i>
+                                                        <span>
+                                                            File Disabled
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>    </div>
+                        </div>            <div class="row">
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content bg-midnight-bloom">
+                                    <div class="widget-content-wrapper text-white">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading">Total Orders</div>
+                                            <div class="widget-subheading">Last year expenses</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span>1896</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content bg-arielle-smile">
+                                    <div class="widget-content-wrapper text-white">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading">Clients</div>
+                                            <div class="widget-subheading">Total Clients Profit</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span>$ 568</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content bg-grow-early">
+                                    <div class="widget-content-wrapper text-white">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading">Followers</div>
+                                            <div class="widget-subheading">People Interested</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span>46%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content bg-premium-dark">
+                                    <div class="widget-content-wrapper text-white">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading">Products Sold</div>
+                                            <div class="widget-subheading">Revenue streams</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-warning"><span>$14M</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="mb-3 card">
+                                    <div class="card-header-tab card-header-tab-animation card-header">
+                                        <div class="card-header-title">
+                                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                            Sales Report
+                                        </div>
+                                        <ul class="nav">
+                                            <li class="nav-item"><a href="javascript:void(0);" class="active nav-link">Last</a></li>
+                                            <li class="nav-item"><a href="javascript:void(0);" class="nav-link second-tab-toggle">Current</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade show active" id="tabs-eg-77">
+                                                <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                                    <div class="widget-chat-wrapper-outer">
+                                                        <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                                            <canvas id="canvas"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Top Authors</h6>
+                                                <div class="scroll-area-sm">
+                                                    <div class="scrollbar-container">
+                                                        <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">
+                                                            <li class="list-group-item">
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left mr-3">
+                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/9.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="widget-content-left">
+                                                                            <div class="widget-heading">Ella-Rose Henry</div>
+                                                                            <div class="widget-subheading">Web Developer</div>
+                                                                        </div>
+                                                                        <div class="widget-content-right">
+                                                                            <div class="font-size-xlg text-muted">
+                                                                                <small class="opacity-5 pr-1">$</small>
+                                                                                <span>129</span>
+                                                                                <small class="text-danger pl-2">
+                                                                                    <i class="fa fa-angle-down"></i>
+                                                                                </small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left mr-3">
+                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/5.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="widget-content-left">
+                                                                            <div class="widget-heading">Ruben Tillman</div>
+                                                                            <div class="widget-subheading">UI Designer</div>
+                                                                        </div>
+                                                                        <div class="widget-content-right">
+                                                                            <div class="font-size-xlg text-muted">
+                                                                                <small class="opacity-5 pr-1">$</small>
+                                                                                <span>54</span>
+                                                                                <small class="text-success pl-2">
+                                                                                    <i class="fa fa-angle-up"></i>
+                                                                                </small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left mr-3">
+                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="widget-content-left">
+                                                                            <div class="widget-heading">Vinnie Wagstaff</div>
+                                                                            <div class="widget-subheading">Java Programmer</div>
+                                                                        </div>
+                                                                        <div class="widget-content-right">
+                                                                            <div class="font-size-xlg text-muted">
+                                                                                <small class="opacity-5 pr-1">$</small>
+                                                                                <span>429</span>
+                                                                                <small class="text-warning pl-2">
+                                                                                    <i class="fa fa-dot-circle"></i>
+                                                                                </small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left mr-3">
+                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="widget-content-left">
+                                                                            <div class="widget-heading">Ella-Rose Henry</div>
+                                                                            <div class="widget-subheading">Web Developer</div>
+                                                                        </div>
+                                                                        <div class="widget-content-right">
+                                                                            <div class="font-size-xlg text-muted">
+                                                                                <small class="opacity-5 pr-1">$</small>
+                                                                                <span>129</span>
+                                                                                <small class="text-danger pl-2">
+                                                                                    <i class="fa fa-angle-down"></i>
+                                                                                </small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left mr-3">
+                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/2.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="widget-content-left">
+                                                                            <div class="widget-heading">Ruben Tillman</div>
+                                                                            <div class="widget-subheading">UI Designer</div>
+                                                                        </div>
+                                                                        <div class="widget-content-right">
+                                                                            <div class="font-size-xlg text-muted">
+                                                                                <small class="opacity-5 pr-1">$</small>
+                                                                                <span>54</span>
+                                                                                <small class="text-success pl-2">
+                                                                                    <i class="fa fa-angle-up"></i>
+                                                                                </small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="mb-3 card">
+                                    <div class="card-header-tab card-header">
+                                        <div class="card-header-title">
+                                            <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+                                            Bandwidth Reports
+                                        </div>
+                                        <div class="btn-actions-pane-right">
+                                            <div class="nav">
+                                                <a href="javascript:void(0);" class="border-0 btn-pill btn-wide btn-transition active btn btn-outline-alternate">Tab 1</a>
+                                                <a href="javascript:void(0);" class="ml-1 btn-pill btn-wide border-0 btn-transition  btn btn-outline-alternate second-tab-toggle-alt">Tab 2</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade active show" id="tab-eg-55">
+                                            <div class="widget-chart p-3">
+                                                <div style="height: 350px">
+                                                    <canvas id="line-chart"></canvas>
+                                                </div>
+                                                <div class="widget-chart-content text-center mt-5">
+                                                    <div class="widget-description mt-0 text-warning">
+                                                        <i class="fa fa-arrow-left"></i>
+                                                        <span class="pl-1">175.5%</span>
+                                                        <span class="text-muted opacity-8 pl-1">increased server resources</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pt-2 card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="widget-content">
+                                                            <div class="widget-content-outer">
+                                                                <div class="widget-content-wrapper">
+                                                                    <div class="widget-content-left">
+                                                                        <div class="widget-numbers fsize-3 text-muted">63%</div>
+                                                                    </div>
+                                                                    <div class="widget-content-right">
+                                                                        <div class="text-muted opacity-6">Generated Leads</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="widget-progress-wrapper mt-1">
+                                                                    <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="63" aria-valuemin="0" aria-valuemax="100" style="width: 63%;"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="widget-content">
+                                                            <div class="widget-content-outer">
+                                                                <div class="widget-content-wrapper">
+                                                                    <div class="widget-content-left">
+                                                                        <div class="widget-numbers fsize-3 text-muted">32%</div>
+                                                                    </div>
+                                                                    <div class="widget-content-right">
+                                                                        <div class="text-muted opacity-6">Submitted Tickers</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="widget-progress-wrapper mt-1">
+                                                                    <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width: 32%;"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="widget-content">
+                                                            <div class="widget-content-outer">
+                                                                <div class="widget-content-wrapper">
+                                                                    <div class="widget-content-left">
+                                                                        <div class="widget-numbers fsize-3 text-muted">71%</div>
+                                                                    </div>
+                                                                    <div class="widget-content-right">
+                                                                        <div class="text-muted opacity-6">Server Allocation</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="widget-progress-wrapper mt-1">
+                                                                    <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" style="width: 71%;"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="widget-content">
+                                                            <div class="widget-content-outer">
+                                                                <div class="widget-content-wrapper">
+                                                                    <div class="widget-content-left">
+                                                                        <div class="widget-numbers fsize-3 text-muted">41%</div>
+                                                                    </div>
+                                                                    <div class="widget-content-right">
+                                                                        <div class="text-muted opacity-6">Generated Leads</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="widget-progress-wrapper mt-1">
+                                                                    <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100" style="width: 41%;"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content">
+                                    <div class="widget-content-outer">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Total Orders</div>
+                                                <div class="widget-subheading">Last year expenses</div>
+                                            </div>
+                                            <div class="widget-content-right">
+                                                <div class="widget-numbers text-success">1896</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content">
+                                    <div class="widget-content-outer">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Products Sold</div>
+                                                <div class="widget-subheading">Revenue streams</div>
+                                            </div>
+                                            <div class="widget-content-right">
+                                                <div class="widget-numbers text-warning">$3M</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content">
+                                    <div class="widget-content-outer">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Followers</div>
+                                                <div class="widget-subheading">People Interested</div>
+                                            </div>
+                                            <div class="widget-content-right">
+                                                <div class="widget-numbers text-danger">45,9%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content">
+                                    <div class="widget-content-outer">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Income</div>
+                                                <div class="widget-subheading">Expected totals</div>
+                                            </div>
+                                            <div class="widget-content-right">
+                                                <div class="widget-numbers text-focus">$147</div>
+                                            </div>
+                                        </div>
+                                        <div class="widget-progress-wrapper">
+                                            <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                <div class="progress-bar bg-info" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;"></div>
+                                            </div>
+                                            <div class="progress-sub-label">
+                                                <div class="sub-label-left">Expenses</div>
+                                                <div class="sub-label-right">100%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main-card mb-3 card">
+                                    <div class="card-header">Active Users
+                                        <div class="btn-actions-pane-right">
+                                            <div role="group" class="btn-group-sm btn-group">
+                                                <button class="active btn btn-focus">Last Week</button>
+                                                <button class="btn btn-focus">All Month</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th>Name</th>
+                                                <th class="text-center">City</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="text-center text-muted">#345</td>
+                                                <td>
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <div class="widget-content-left">
+                                                                    <img width="40" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="widget-content-left flex2">
+                                                                <div class="widget-heading">John Doe</div>
+                                                                <div class="widget-subheading opacity-7">Web Developer</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">Madrid</td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-warning">Pending</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-muted">#347</td>
+                                                <td>
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <div class="widget-content-left">
+                                                                    <img width="40" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="widget-content-left flex2">
+                                                                <div class="widget-heading">Ruben Tillman</div>
+                                                                <div class="widget-subheading opacity-7">Etiam sit amet orci eget</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">Berlin</td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-success">Completed</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-muted">#321</td>
+                                                <td>
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <div class="widget-content-left">
+                                                                    <img width="40" class="rounded-circle" src="assets/images/avatars/2.jpg" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="widget-content-left flex2">
+                                                                <div class="widget-heading">Elliot Huber</div>
+                                                                <div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">London</td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-danger">In Progress</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">Details</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center text-muted">#55</td>
+                                                <td>
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <div class="widget-content-left">
+                                                                    <img width="40" class="rounded-circle" src="assets/images/avatars/1.jpg" alt=""></div>
+                                                            </div>
+                                                            <div class="widget-content-left flex2">
+                                                                <div class="widget-heading">Vinnie Wagstaff</div>
+                                                                <div class="widget-subheading opacity-7">UI Designer</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">Amsterdam</td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-info">On Hold</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-block text-center card-footer">
+                                        <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+                                        <button class="btn-wide btn btn-success">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card-shadow-danger mb-3 widget-chart widget-chart2 text-left card">
+                                    <div class="widget-content">
+                                        <div class="widget-content-outer">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left pr-2 fsize-1">
+                                                    <div class="widget-numbers mt-0 fsize-3 text-danger">71%</div>
+                                                </div>
+                                                <div class="widget-content-right w-100">
+                                                    <div class="progress-bar-xs progress">
+                                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" style="width: 71%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left fsize-1">
+                                                <div class="text-muted opacity-6">Income Target</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card-shadow-success mb-3 widget-chart widget-chart2 text-left card">
+                                    <div class="widget-content">
+                                        <div class="widget-content-outer">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left pr-2 fsize-1">
+                                                    <div class="widget-numbers mt-0 fsize-3 text-success">54%</div>
+                                                </div>
+                                                <div class="widget-content-right w-100">
+                                                    <div class="progress-bar-xs progress">
+                                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left fsize-1">
+                                                <div class="text-muted opacity-6">Expenses Target</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card-shadow-warning mb-3 widget-chart widget-chart2 text-left card">
+                                    <div class="widget-content">
+                                        <div class="widget-content-outer">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left pr-2 fsize-1">
+                                                    <div class="widget-numbers mt-0 fsize-3 text-warning">32%</div>
+                                                </div>
+                                                <div class="widget-content-right w-100">
+                                                    <div class="progress-bar-xs progress">
+                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width: 32%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left fsize-1">
+                                                <div class="text-muted opacity-6">Spendings Target</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card-shadow-info mb-3 widget-chart widget-chart2 text-left card">
+                                    <div class="widget-content">
+                                        <div class="widget-content-outer">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left pr-2 fsize-1">
+                                                    <div class="widget-numbers mt-0 fsize-3 text-info">89%</div>
+                                                </div>
+                                                <div class="widget-content-right w-100">
+                                                    <div class="progress-bar-xs progress">
+                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left fsize-1">
+                                                <div class="text-muted opacity-6">Totals Target</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-wrapper-footer">
+                        <div class="app-footer">
+                            <div class="app-footer__inner">
+                                <div class="app-footer-left">
+                                    <ul class="nav">
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                Footer Link 1
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                Footer Link 2
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="app-footer-right">
+                                    <ul class="nav">
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                Footer Link 3
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                <div class="badge badge-success mr-1 ml-0">
+                                                    <small>NEW</small>
+                                                </div>
+                                                Footer Link 4
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    </div>
 
-          <div class="col-xs-6 col-md-3">
-            <h6>Earn from teams</h6>
-            <p class="text-justify" style="color:white;">
-              You can earn by inviting friends to join using your assigned referral link and earn 20%,10%,5%,2% and 1% refferal bonus from level 1 to level 5 respectively when a team members investment successfully earns interest and gets approved.
-            </p>
-          </div>
+        </div>
+    </div>
+</body>
+</html>
 
-          <div class="col-xs-6 col-md-3">
-          <h6>Social Media</h6>
-          <ul>
-              <a href="#" class="btn btn-link btn-facebook"><i class="fab fa-facebook"></i></a>
-                                                        <a href="#" class="btn btn-link btn-twitter"><i class="fab fa-twitter"></i></a>
-                                                        <a href="#" class="btn btn-link btn-gplus"><i class="fab fa-google-plus"></i></a>
-                                                        <a href="#" class="btn btn-link btn-instagram"><i class="fab fa-instagram"></i></a>
-                                                        <a href="#" class="btn btn-link btn-youtube"><i class="fab fa-youtube"></i></a>
-          </ul>
-          </div>
-        </div>
-        <hr>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
-         <a href="#">Dream Creation international</a>.
-            </p>
-          </div>
-        </div>
-      </div>
-</footer>
 </div>
 </template>
 <script>
@@ -523,7 +1393,7 @@ export default {
     })
 
     let externalScript = document.createElement('script')
-    externalScript.setAttribute('src', 'https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1')
+    externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
     document.head.appendChild(externalScript)
   },
   methods: {
@@ -646,387 +1516,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.site-footer
-{
-  background-color:#06092c;
-  padding:45px 0 20px;
-  font-size:15px;
-  line-height:24px;
-  color:#737373;
-}
-.site-footer hr
-{
-  border-top-color:#bbb;
-  opacity:0.5
-}
-.site-footer hr.small
-{
-  margin:20px 0
-}
-.site-footer h6
-{
-  color:#fff;
-  font-size:16px;
-  text-transform:uppercase;
-  margin-top:5px;
-  letter-spacing:2px
-}
-.site-footer a
-{
-  color:#737373;
-}
-.site-footer a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
-}
-.footer-links
-{
-  padding-left:0;
-  list-style:none
-}
-.footer-links li
-{
-  display:block
-}
-.footer-links a
-{
-  color:#737373
-}
-.footer-links a:active,.footer-links a:focus,.footer-links a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
-}
-.footer-links.inline li
-{
-  display:inline-block
-}
-.site-footer .social-icons
-{
-  text-align:right
-}
-.site-footer .social-icons a
-{
-  width:40px;
-  height:40px;
-  line-height:40px;
-  margin-left:6px;
-  margin-right:0;
-  border-radius:100%;
-  background-color:#33353d
-}
-.copyright-text
-{
-  margin:0
-}
-@media (max-width:991px)
-{
-  .site-footer [class^=col-]
-  {
-    margin-bottom:30px
-  }
-}
-@media (max-width:767px)
-{
-  .site-footer
-  {
-    padding-bottom:0
-  }
-  .site-footer .copyright-text,.site-footer .social-icons
-  {
-    text-align:center
-  }
-}
-.social-icons
-{
-  padding-left:0;
-  margin-bottom:0;
-  list-style:none
-}
-.social-icons li
-{
-  display:inline-block;
-  margin-bottom:4px
-}
-.social-icons li.title
-{
-  margin-right:15px;
-  text-transform:uppercase;
-  color:#96a2b2;
-  font-weight:700;
-  font-size:13px
-}
-.social-icons a{
-  background-color:#eceeef;
-  color:#818a91;
-  font-size:16px;
-  display:inline-block;
-  line-height:44px;
-  width:44px;
-  height:44px;
-  text-align:center;
-  margin-right:8px;
-  border-radius:100%;
-  -webkit-transition:all .2s linear;
-  -o-transition:all .2s linear;
-  transition:all .2s linear
-}
-.social-icons a:active,.social-icons a:focus,.social-icons a:hover
-{
-  color:#fff;
-  background-color:#29aafe
-}
-.social-icons.size-sm a
-{
-  line-height:34px;
-  height:34px;
-  width:34px;
-  font-size:14px
-}
-.social-icons a.facebook:hover
-{
-  background-color:#3b5998
-}
-.social-icons a.twitter:hover
-{
-  background-color:#00aced
-}
-.social-icons a.linkedin:hover
-{
-  background-color:#007bb6
-}
-.social-icons a.dribbble:hover
-{
-  background-color:#ea4c89
-}
-@media (max-width:767px)
-{
-  .social-icons li.title
-  {
-    display:block;
-    margin-right:0;
-    font-weight:600
-  }
-}
-/*------------------------------------
-  Social color
-------------------------------------*/
-.text-facebook, .hover-facebook-text:hover i, .hover-facebook a:hover i {
-  color: #3b5998;
-}
-
-.bg-facebook, .btn-facebook {
-  background-color: #3b5998;
-  color: #fff;
-}
-
-.text-twitter, .hover-twitter-text:hover i, .hover-twitter a:hover i {
-  color: #00aced;
-}
-
-.bg-twitter, .btn-twitter {
-  background-color: #00aced;
-  color: #fff;
-}
-
-.text-instagram, .hover-instagram-text:hover i, .hover-instagram a:hover i {
-  color: #b300ad;
-}
-
-.bg-instagram, .btn-instagram {
-  background-color: #b300ad;
-  color: #fff;
-}
-
-.text-youtube, .hover-youtube-text:hover i, .hover-youtube a:hover i {
-  color: #bd0000;
-}
-
-.bg-youtube, .btn-youtube {
-  background-color: #bd0000;
-  color: #fff;
-}
-
-.text-gplus, .hover-gplus-text:hover i, .hover-gplus a:hover i {
-  color: #eb5e4c;
-}
-
-.bg-gplus, .btn-gplus {
-  background-color: #eb5e4c;
-  color: #fff;
-}
-
-.text-vimeo, .hover-vimeo-text:hover i, .hover-vimeo a:hover i {
-  color: #35c6ea;
-}
-
-.bg-vimeo, .btn-vimeo {
-  background-color: #35c6ea;
-  color: #fff;
-}
-
-.text-envelope, .hover-envelope-text:hover i, .hover-envelope a:hover i {
-  color: #faa33d;
-}
-
-.bg-envelope, .btn-envelope {
-  background-color: #faa33d;
-  color: #fff;
-}
-
-.text-linkedin, .hover-linkedin-text:hover i, .hover-linkedin a:hover i {
-  color: #6697ff;
-}
-
-.bg-linkedin, .btn-linkedin {
-  background-color: #6697ff;
-  color: #fff;
-}
-
-.text-telegram, .hover-telegram-text:hover i, .hover-telegram a:hover i {
-  color: #30a8dc;
-}
-
-.bg-telegram, .btn-telegram {
-  background-color: #30a8dc;
-  color: #fff;
-}
-
-.text-pinterest, .hover-pinterest-text:hover i, .hover-pinterest a:hover i {
-  color: #bd081b;
-}
-
-.bg-pinterest, .btn-pinterest {
-  background-color: #bd081b;
-  color: #fff;
-}
-
-.black a {
-  color: #000;
-}
-
-.post-content ul {
-  color: #474b5f;
-}
-
-.white a {
-  color: #fff;
-}
-.sidebar-item.active, .sidebar-item:hover {
-  background-color: #fff;
-  border: 1px solid #e6e7e9;
-  border-right: 0;
-  margin-right: -1px;
-}
-
-.sidebar-menu {
-  border-bottom: 1px solid #e6e7e9;
-  border-top: 1px solid #e6e7e9;
-  border-right: 1px solid #e6e7e9;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  background-color: #f4f4f4;
-}
-
-.sidebar-item {
-  position: relative;
-  display: block;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0.5rem;
-  border: 1px solid transparent;
-}
-
-.sidebar-item.active:hover {
-  background-color: #fff;
-}
-
-.card .icon-big {
-  font-size: 3rem;
-}
-
-.card .icon-big .notif {
-  position: absolute;
-  min-width: 25px;
-  border-radius: 5rem;
-  font-size: 1rem;
-  background: #0621e8;
-  color: #fff;
-}
-
-.card .numbers {
-  text-align: right;
-}
-
-.card .numbers p {
-  font-size: 1rem;
-  margin: 0;
-}
-
-.card .footer {
-  padding: 0;
-  line-height: 30px;
-}
-
-.side-notif {
-  padding-left: 7px;
-  padding-right: 7px;
-  font-size: 0.8rem;
-  border-radius: 5rem;
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.statistics li {
-  padding: 0.25rem 0;
-}
-
-.member-item:hover .card {
-  background-color: #f4f4f4;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f4f4f4;
-}
-
-@media (max-width: 767.98px) {
-  .sidebar-item.active, .sidebar-item:hover {
-    border-right: 1px solid #e6e7e9;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-  }
-}
-@keyframes flip {
-  0% {
-    transform: rotateY(0);
-  }
-  100% {
-    transform: rotateY(-180deg);
-  }
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: #F1F2E6;
-}
-
-.loader {
-  width: 65px;
-  margin: auto;
-  &__image {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__coin {
-    animation: flip .5s ease-in-out infinite alternate-reverse both;
-  }
-}
-</style>
