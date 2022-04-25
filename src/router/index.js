@@ -55,7 +55,7 @@ export default new Router({
       component: admin
     },
     {
-      path: '/refs',
+      path: '/downlines',
       name: 'refs',
       component: refferals
     },
