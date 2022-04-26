@@ -40,7 +40,12 @@
                                 </div>
                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" id="wallet" v-model="form.wallet" placeholder="Bitocoin wallet address" class="form-control">
+                                        <input type="text" id="wallet" v-model="form.btcwallet" placeholder="Bitocoin wallet address" class="form-control">
+                                    </div>
+                               </div>
+                                      <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" id="wallet" v-model="form.litecoinwallet" placeholder="Litecoin wallet address" class="form-control">
                                     </div>
                                </div>
                               <div class="col-md-12">
@@ -80,7 +85,8 @@ export default {
         phone: '',
         name: '',
         sponsor: '',
-        wallet: ''
+        btcwallet: '',
+        litecoinwallet: ''
       },
       error: null,
       referee_id: '',
@@ -139,7 +145,8 @@ export default {
             amount_received: 0,
             wallet_balance: 0,
             country: country,
-            WalletAddress: this.form.wallet
+            btcaddress: this.form.btcwallet,
+            litecoinaddress: this.form.litecoinwallet
           })
           let db = firebase.firestore()
           db.collection('users').where('uid', '==', this.form.sposnor).get().then(snapshot => {
