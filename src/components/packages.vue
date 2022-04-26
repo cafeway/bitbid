@@ -8,7 +8,8 @@
     <ul>
       <li><strong>Earn</strong>$0.25</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(25,'Bronze')"  class="order-btn">Select</button>
+
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Silver</h3>
@@ -16,7 +17,7 @@
     <ul>
       <li><strong>Earn</strong>$1</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(50,'Silver')"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">White</h3>
@@ -24,7 +25,7 @@
     <ul>
       <li><strong>Earn</strong>$2</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(100,'White')"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Black</h3>
@@ -32,7 +33,7 @@
     <ul>
       <li><strong>Earn</strong>$4</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(200,'Blacl')"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Gold</h3>
@@ -40,7 +41,7 @@
     <ul>
       <li><strong>Earn</strong>$8</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(400,'Gold')"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Gold Pro</h3>
@@ -48,15 +49,15 @@
     <ul>
       <li><strong>Earn</strong>$10</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(500,'GoldPro')"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Platinum</h3>
-    <div class="price"><sup>$</sup>100<span></span></div>
+    <div class="price"><sup>$</sup>1000<span></span></div>
     <ul>
       <li><strong>Earn</strong>$21</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(1000,'Platinum')"   class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Platinium Pro</h3>
@@ -64,7 +65,7 @@
     <ul>
       <li><strong>Earn</strong>$43</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(2000,'PlatinumPro')"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Diamond</h3>
@@ -72,14 +73,14 @@
     <ul>
       <li><strong>Earn</strong>$109</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button @click="invest(5000,'Diamond')"  class="order-btn">Select</button>
   </div><div class="pricing-card">
     <h3 class="pricing-card-header">Diamond pro</h3>
     <div class="price"><sup>$</sup>10000<span></span></div>
     <ul>
       <li><strong>Earn</strong>$209</li>
     </ul>
-    <a href="#" class="order-btn">Order Now</a>
+    <button  @click="invest(10000,'DiamondPro')" class="order-btn">Select</button>
   </div>
 </div>
 </template>
@@ -92,14 +93,6 @@
   text-decoration: none;
   list-style: none;
 }
-
-body{
-  background-color: #30336b;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
 .pricing-table{
   display: flex;
   flex-wrap: wrap;
@@ -182,3 +175,125 @@ body{
   }
 }
 </style>
+<script>
+import firebase from 'firebase'
+import { mapGetters } from 'vuex'
+export default {
+  data () {
+    return {
+      email: '',
+      btcaddress: '',
+      username: '',
+      litecoinaddress: '',
+      package: '',
+      phone: '',
+      role: '',
+      change: 0,
+      downlines: 0,
+      amount: 0,
+      balance: 0,
+      refferals: [],
+      form: {
+        new_number: '',
+        downline: ''
+      }
+    }
+  },
+  mounted: function () {
+    this.change = 0
+    let db = firebase.firestore()
+    db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+      let data = snapshot.data()
+      // eslint-disable-next-line no-unused-expressions
+      this.email = data.email
+      this.phone = data.phonenumber
+      this.role = data.role
+      this.balance = data.wallet_balance
+      this.package = data.package
+    })
+    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+      this.downlines = snapshot.size
+    })
+    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.refferals.push(doc.data())
+      })
+    })
+  },
+  computed: {
+    ...mapGetters({
+      user: 'user'
+    })
+  },
+  methods: {
+    invest: function (amount, pack) {
+      switch (pack) {
+        case 'Bronze':
+          if (this.package === pack) {
+            alert('Your are already enrolled for this package kindly upgrade')
+          } else if (this.pacakge !== pack) {
+            let db = firebase.firestore()
+            db.collection('bids').add({
+              'id': Math.floor((Math.random() * 10000) + 1),
+              'email': firebase.auth().currentUser.email,
+              'amount': amount,
+              'verification_status': 'unverified',
+              'startDay': Date.now(),
+              'stopDay': Date.now() + 1.577e+10,
+              'amountPaid': 0,
+              'cashouts': 0
+            })
+          }
+          break
+        case 'Silver':
+          if (this.package === pack) {
+            alert('Your are already enrolled for this package kindly upgrade')
+          } else if (this.pacakge !== pack && pack === 'Bronze') {
+            let db = firebase.firestore()
+            db.collection('bids').add({
+              'id': Math.floor((Math.random() * 10000) + 1),
+              'email': firebase.auth().currentUser.email,
+              'amount': amount,
+              'verification_status': 'unverified',
+              'startDay': Date.now(),
+              'stopDay': Date.now() + 1.577e+10,
+              'amountPaid': 0,
+              'cashouts': 0
+            })
+          } else {
+            alert('You cannot downgrade your investment')
+          }
+
+          // code block
+          break
+        default:
+    // code block
+      }
+    },
+    save: function () {
+      let db = firebase.firestore()
+      db.collection('users').doc(this.user.data.email).update({
+        phonenumber: this.form.new_number
+      })
+      this.$swal('refersh for changes to take effect')
+    },
+    reload: function () {
+      window.location.reload()
+    },
+    redeem: function (email) {
+      let db = firebase.firestore()
+      db.collection('users').doc(this.user.data.email).collection('invitees').where('email', '==', email).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          db.collection('users').doc(this.user.data.email).collection('invitees').doc(doc.id).update({
+            email: 'redeemed'
+          })
+          let NewBalance = this.balance + 5
+          db.collection('users').doc(this.user.data.email).update({
+            wallet_balance: NewBalance
+          })
+        })
+      })
+    }
+  }
+}
+</script>

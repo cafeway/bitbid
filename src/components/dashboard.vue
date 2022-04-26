@@ -472,7 +472,7 @@
                                     </a>
                                 </li>
                                 <li  >
-                                    <a href="tables-regular.html">
+                                    <a href="/#/packages">
                                         <i class="metismenu-icon pe-7s-diamond"></i>
                                         Packages
                                     </a>
@@ -654,11 +654,11 @@
                                     <div class="widget-content-outer">
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left">
-                                                <div class="widget-heading">Commission</div>
+                                                <div class="widget-heading">Current Package</div>
 
                                             </div>
                                             <div class="widget-content-right">
-                                                <div class="widget-numbers text-warning">$3M</div>
+                                                <div class="text-warning">{{ this.package }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -671,7 +671,7 @@
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left">
                                                 <div class="widget-heading">Income</div>
-                                                <div class="widget-subheading">Expected totals</div>
+                                                <div class="widget-subheading">Total Earned</div>
                                             </div>
                                             <div class="widget-content-right">
                                                 <div class="widget-numbers text-focus">$147</div>
@@ -824,43 +824,7 @@
                         </div>
 
                     </div>
-                    <div class="app-wrapper-footer">
-                        <div class="app-footer">
-                            <div class="app-footer__inner">
-                                <div class="app-footer-left">
-                                    <ul class="nav">
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                Footer Link 1
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                Footer Link 2
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="app-footer-right">
-                                    <ul class="nav">
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                Footer Link 3
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                <div class="badge badge-success mr-1 ml-0">
-                                                    <small>NEW</small>
-                                                </div>
-                                                Footer Link 4
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    </div>
+                    </div>
 
         </div>
     </div>
@@ -882,6 +846,7 @@ export default {
       username: '',
       btcaddress: '',
       litecoinaddress: '',
+      package: '',
       wallet: 0,
       cashout: 0,
       refferals: 0,
@@ -928,6 +893,7 @@ export default {
       this.cashout = data.amount_received
       this.phone = data.phonenumber
       this.uid = data.uid
+      this.package = data.package
     })
     db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
       this.refferals = snapshot.size

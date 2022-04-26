@@ -146,7 +146,8 @@ export default {
             wallet_balance: 0,
             country: country,
             btcaddress: this.form.btcwallet,
-            litecoinaddress: this.form.litecoinwallet
+            litecoinaddress: this.form.litecoinwallet,
+            package: 'none'
           })
           let db = firebase.firestore()
           db.collection('users').where('uid', '==', this.form.sposnor).get().then(snapshot => {
