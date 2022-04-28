@@ -484,12 +484,7 @@
                                         Profile
                                     </a>
                                 </li>
-                                 <li>
-                                    <a href="/#/downlines">
-                                        <i class="metismenu-icon pe-7s-users"></i>
-                                        Your Team
-                                    </a>
-                                </li>
+
                                 <li>
                                     <a href="/#/investments">
                                         <i class="metismenu-icon pe-7s-piggy">
@@ -692,7 +687,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="main-card mb-3 card">
-                                    <div class="card-header">Top Earners
+                                    <div class="card-header">YourTeam
                                         <div class="btn-actions-pane-right">
                                             <div role="group" class="btn-group-sm btn-group">
                                                 <button class="active btn btn-focus">Last Week</button>
@@ -705,14 +700,19 @@
                                             <thead>
                                             <tr>
                                                 <th class="text-center">UserId</th>
-                                                <th>Name</th>
-                                                <th class="text-center">Amount</th>
+                                                <th class="text-center">Username</th>
                                                 <th class="text-center">Commission</th>
-                                                <th class="text-center">Downlines</th>
+                                                <th class="text-center">joined</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-
+                                             <tr>
+                                               <tr v-for="member in refferal" :key="member.id">
+      <td >{{ member.UserId}}</td>
+      <td>{{ member.username }}</td>
+      <td>{{member.bonus }}</td>
+      <td>{{member.joined }}</td>
+    </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -742,6 +742,7 @@ export default {
     return {
       objA: { name: 'a' },
       objB: { name: 'b' },
+      refferal: [],
       bonus: 0,
       expenses: 0,
       amount_received: 0,
@@ -810,7 +811,11 @@ export default {
     db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
       this.total_bids = snapshot.size
     })
-
+    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+      snapshot.forEach(doc => {
+        this.refferal.push(doc.data())
+      })
+    })
     let externalScript = document.createElement('script')
     externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
     document.head.appendChild(externalScript)
