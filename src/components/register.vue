@@ -35,7 +35,7 @@
                                </div>
                                  <div class="col-md-6">
                                   <div class="form-group">
-                                        <input type="text" v-model="form.sponsor" readonly id="sponsor" class="form-control" placeholder="Sponsorid">
+                                        <input type="text"  v-model="form.sponsor" readonly id="sponsor" class="form-control" placeholder="Sponsorid">
                                     </div>
                                 </div>
                                <div class="col-md-6">
@@ -109,11 +109,15 @@ export default {
     this.referee_id = referee
     document.getElementById('sponsor').value = referee
     let db = firebase.firestore()
-    db.collection('users').doc(this.referee).collection('investments').get().then(snapshot => {
-      this.total_bids = snapshot.size
+    db.collection('users').where('uid', '==', referee).get().then(snapshot => {
+      snapshot.forEach(doc => {
+        db.collection('users').doc(doc.id).get().then(doc => {
+          let name = doc.data().username
+          this.$vs.notify({title: 'Your Upline is', text: name, color: 'blue', position: 'top-center'})
+        })
+      })
     })
     console.log(this.referee)
-    this.$vs.notify({title: 'Your Upline is', text: this.referee_name, color: 'blue', position: 'top-center'})
   },
   methods: {
     tologin: function () {
@@ -136,7 +140,9 @@ export default {
             email: this.form.email,
             phonenumber: this.form.phone,
             username: this.form.name,
-            walletbalance: 0,
+            ltcbalance: 0,
+            btcbalance: 0,
+            expenses: 0,
             verified: 'no',
             activated: false,
             role: 'user',
@@ -150,17 +156,17 @@ export default {
             package: 'none'
           })
           let db = firebase.firestore()
-          db.collection('users').where('uid', '==', this.form.sposnor).get().then(snapshot => {
+          db.collection('users').where('uid', '==', this.referee_id).get().then(snapshot => {
             snapshot.forEach(doc => {
               db.collection('users').doc(doc.id).collection('invitees').add({
                 'username': this.form.name,
                 'bonus': 0,
-                'status': 'active'
+                'UserId': firebase.auth().currentUser.uid,
+                'joined': Date.now()
               })
             })
           })
-          this.$vs.notify({title: 'Karibu Hortlite @ ', text: this.form.name, color: 'green', position: 'top-center'})
-          this.$swal('Account created please login')
+          this.$vs.notify({title: 'Welcome Aboard', text: this.form.name, color: 'green', position: 'top-center'})
         })
         .catch(err => {
           this.$vs.notify({title: 'Error', text: err.message, color: 'red', position: 'top-center'})
@@ -172,8 +178,6 @@ export default {
 <style>
 body{
   font-family: 'Poiret One', cursive;
-  background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQECV7za5N0aLbQHEgmHvQVf8S_SpthQSc-MNZ3DK7DDQECtr_15Ai5N4gkW2nd4u-nU7g&usqp=CAU')
-
 }
 h4{
   font-weight: bold;

@@ -16,6 +16,7 @@ import main from '../components/main.vue'
 import btc from '../components/btc.vue'
 import landing from '../components/landingpage.vue'
 import packages from '../components/packages.vue'
+import downlines from '../components/downlines.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +25,11 @@ export default new Router({
       path: '/main',
       name: 'main',
       component: main
+    },
+    {
+      path: '/downlines',
+      name: 'affiliates',
+      component: downlines
     },
     {
       path: '/packages',
@@ -61,7 +67,7 @@ export default new Router({
       component: admin
     },
     {
-      path: '/downlines',
+      path: '/affiliate',
       name: 'refs',
       component: refferals
     },

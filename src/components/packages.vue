@@ -8,7 +8,7 @@
     <ul>
       <li><strong>Earn</strong>$0.25</li>
     </ul>
-    <button @click="invest(25,'Bronze')"  class="order-btn">Select</button>
+    <button  @click="  SetPackage(25,'Bronze')"    data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
 
   </div>
   <div class="pricing-card">
@@ -17,7 +17,7 @@
     <ul>
       <li><strong>Earn</strong>$1</li>
     </ul>
-    <button @click="invest(50,'Silver')"  class="order-btn">Select</button>
+    <button @click="  SetPackage(50,'Silver')"  data-toggle="modal" data-target="#exampleModalCenter" class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">White</h3>
@@ -25,7 +25,7 @@
     <ul>
       <li><strong>Earn</strong>$2</li>
     </ul>
-    <button @click="invest(100,'White')"  class="order-btn">Select</button>
+    <button @click="  SetPackage(100,'White')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Black</h3>
@@ -33,7 +33,7 @@
     <ul>
       <li><strong>Earn</strong>$4</li>
     </ul>
-    <button @click="invest(200,'Blacl')"  class="order-btn">Select</button>
+    <button @click="  SetPackage(200,'Blacl')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Gold</h3>
@@ -41,7 +41,7 @@
     <ul>
       <li><strong>Earn</strong>$8</li>
     </ul>
-    <button @click="invest(400,'Gold')"  class="order-btn">Select</button>
+    <button @click="  SetPackage(400,'Gold')"  data-toggle="modal" data-target="#exampleModalCenter" class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Gold Pro</h3>
@@ -49,7 +49,7 @@
     <ul>
       <li><strong>Earn</strong>$10</li>
     </ul>
-    <button @click="invest(500,'GoldPro')"  class="order-btn">Select</button>
+    <button @click="  SetPackage(500,'GoldPro')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Platinum</h3>
@@ -57,7 +57,7 @@
     <ul>
       <li><strong>Earn</strong>$21</li>
     </ul>
-    <button @click="invest(1000,'Platinum')"   class="order-btn">Select</button>
+    <button @click="  SetPackage(1000,'Platinum')" data-toggle="modal" data-target="#exampleModalCenter"    class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Platinium Pro</h3>
@@ -65,7 +65,7 @@
     <ul>
       <li><strong>Earn</strong>$43</li>
     </ul>
-    <button @click="invest(2000,'PlatinumPro')"  class="order-btn">Select</button>
+    <button @click="  SetPackage(2000,'PlatinumPro')" data-toggle="modal" data-target="#exampleModalCenter"   class="order-btn">Select</button>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Diamond</h3>
@@ -73,15 +73,43 @@
     <ul>
       <li><strong>Earn</strong>$109</li>
     </ul>
-    <button @click="invest(5000,'Diamond')"  class="order-btn">Select</button>
+    <button @click="  SetPackage(5000,'Diamond')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
   </div><div class="pricing-card">
     <h3 class="pricing-card-header">Diamond pro</h3>
     <div class="price"><sup>$</sup>10000<span></span></div>
     <ul>
       <li><strong>Earn</strong>$209</li>
     </ul>
-    <button  @click="invest(10000,'DiamondPro')" class="order-btn">Select</button>
+    <button  @click="  SetPackage(10000,'DiamondPro')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
   </div>
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Pay $ {{this.amount}} for {{this.pack}} pack</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="invest()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <br> <button @click="copybtc()" class="btn btn-block btn-success"> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg></span>Copy btc address</button>
+<hr>
+<button @click="copyltc()" class="btn btn-block btn-danger"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg></span>Copy ltc address</button>
+<br>
+<p>Contact the admin <strong> dreamcreation74@gmail.com</strong> <br>to confirm your pamyment</p>
+      </div>
+      <div class="modal-footer">
+        <p>We Are The  Home To Your Dreams &#128512;</p>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 </template>
 <style>
@@ -191,6 +219,7 @@ export default {
       change: 0,
       downlines: 0,
       amount: 0,
+      pack: '',
       balance: 0,
       refferals: [],
       form: {
@@ -226,49 +255,32 @@ export default {
     })
   },
   methods: {
-    invest: function (amount, pack) {
-      switch (pack) {
-        case 'Bronze':
-          if (this.package === pack) {
-            alert('Your are already enrolled for this package kindly upgrade')
-          } else if (this.pacakge !== pack) {
-            let db = firebase.firestore()
-            db.collection('bids').add({
-              'id': Math.floor((Math.random() * 10000) + 1),
-              'email': firebase.auth().currentUser.email,
-              'amount': amount,
-              'verification_status': 'unverified',
-              'startDay': Date.now(),
-              'stopDay': Date.now() + 1.577e+10,
-              'amountPaid': 0,
-              'cashouts': 0
-            })
-          }
-          break
-        case 'Silver':
-          if (this.package === pack) {
-            alert('Your are already enrolled for this package kindly upgrade')
-          } else if (this.pacakge !== pack && pack === 'Bronze') {
-            let db = firebase.firestore()
-            db.collection('bids').add({
-              'id': Math.floor((Math.random() * 10000) + 1),
-              'email': firebase.auth().currentUser.email,
-              'amount': amount,
-              'verification_status': 'unverified',
-              'startDay': Date.now(),
-              'stopDay': Date.now() + 1.577e+10,
-              'amountPaid': 0,
-              'cashouts': 0
-            })
-          } else {
-            alert('You cannot downgrade your investment')
-          }
-
-          // code block
-          break
-        default:
-    // code block
-      }
+    copybtc: function () {
+      navigator.clipboard.writeText('31r5QreLwu1aFHR7WNdSZVovMXPNyJ4xAf')
+      this.$vs.notify({title: 'Success', text: 'Btc address copied to clipboard', color: 'green', position: 'top-center'})
+    },
+    copyltc: function () {
+      navigator.clipboard.writeText('ltc1qd8sj9x3cvpuy4qulst7zxez07uglxk0tt34js4')
+      this.$vs.notify({title: 'Success', text: 'Ltc address copied to clipboard', color: 'green', position: 'top-center'})
+    },
+    SetPackage: function (amount, pack) {
+      this.amount = amount
+      this.pack = pack
+    },
+    invest: function () {
+      let db = firebase.firestore()
+      db.collection('bids').add({
+        'id': Math.floor((Math.random() * 10000) + 1),
+        'email': firebase.auth().currentUser.email,
+        'amount': this.amount,
+        'verification_status': 'unverified',
+        'startDay': Date.now(),
+        'stopDay': Date.now() + 1.577e+10,
+        'amountPaid': 0,
+        'package': this.pack,
+        'cashouts': 0
+      })
+      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
     },
     save: function () {
       let db = firebase.firestore()

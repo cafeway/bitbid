@@ -1,21 +1,21 @@
 <template>
 <div class="container-fluid" style="padding-top:100px;">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center text-primary login-title"><sup>@</sup>Dream Creation International .<sub>com</sub></h1>
+            <h1 class="text-center text-primary login-title">Welcome Back</h1>
             <div class="account-wall">
-                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                    alt="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="80" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
                 <form class="form-signin">
                 <input type="email" class="form-control" placeholder="Email" id="email" v-model="form.email" required autofocus>
                 <br/>
                 <input type="password" id="passsword" v-model="form.password" class="form-control" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="button" @click="login()">
                     Sign in</button>
-                <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
-                    Remember me
-                </label>
-                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+
+                <br>
+                <a href="#" class="pull-right need-help">Forgot Password? </a><span class="clearfix"></span>
                 </form>
             </div>
             <a class="text-center new-account" @click="ToRegister()">Create an account </a>

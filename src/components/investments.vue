@@ -12,21 +12,20 @@
     <div class="table-container">
       <table class="table-rwd">
         <tr>
-
           <th>Inv Id</th>
           <th>Pack id</th>
           <th>Amount</th>
-          <th>Daily Pay</th>
+          <!-- <th>Daily Pay</th> -->
           <th>StartDay</th>
           <th>StopDay</th>
-          <th>Cashouts</th>
+          <th>Accumulated</th>
           <th>Status</th>
         </tr>
         <tr v-for="inv in investments" :key="inv.id">
           <td>{{inv.id}}</td>
-          <td>{{inv.id}}</td>
+          <td>{{inv.package}}</td>
           <td>{{ inv.amount}}</td>
-          <td>{{ inv.dailyPay }}</td>
+          <!-- <td>{{ inv.dailyPay }}</td> -->
           <td>{{ inv.startDay }}</td>
           <td>{{ inv.stopDay }}</td>
           <td>{{ inv.cashouts }}</td>
@@ -50,11 +49,6 @@ export default {
   },
   mounted: function () {
     let db = firebase.firestore()
-    this.balance = 0
-    db.collection('users').doc(this.user.data.email).get().then(snapshot => {
-      let data = snapshot.data()
-      this.balance = data.wallet_balance
-    })
     db.collection('bids').where('email', '==', firebase.auth().currentUser.email).get().then(snapshot => {
       snapshot.forEach(doc => {
         this.investments.push(doc.data())
