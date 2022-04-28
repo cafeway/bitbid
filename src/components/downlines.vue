@@ -1,7 +1,7 @@
 <template>
 <div>
 <h1>Your Team</h1>
-<table>
+<table id="table">
   <thead>
     <tr>
       <!-- <th scope="col">UserId</th>
@@ -22,7 +22,7 @@
 </div>
 </template>
 <style>
-table {
+#table {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;

@@ -86,7 +86,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Pay $ {{this.amount}} for {{this.pack}} pack</h5>
+        <h5 class="modal-title text-secondary" id="exampleModalLongTitle" >Pay $ {{this.amount}} for {{this.pack}} pack</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="invest()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -102,7 +102,7 @@
   <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
 </svg></span>Copy ltc address</button>
 <br>
-<p>Contact the admin <strong> dreamcreation74@gmail.com</strong> <br>to confirm your pamyment</p>
+<p class="text-secondary">Contact the admin <strong> dreamcreation74@gmail.com</strong> <br>to confirm your pamyment</p>
       </div>
       <div class="modal-footer">
         <p>We Are The  Home To Your Dreams &#128512;</p>
