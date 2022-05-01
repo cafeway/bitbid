@@ -1,16 +1,21 @@
 <template>
 <div class="container-fluid" style="padding-top:100px;">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center text-primary login-title">Welcome Back</h1>
+            <h1 class="text-center text-primary login-title">instant B-2-P</h1>
             <div class="account-wall">
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+           <svg xmlns="http://www.w3.org/2000/svg" width="100" height="80" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
   <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
 </svg>
                 <form class="form-signin">
                 <input type="email" class="form-control" placeholder="Email" id="email" v-model="form.email" required autofocus>
                 <br/>
-                <input type="password" id="passsword" v-model="form.password" class="form-control" placeholder="Password" required>
+                <input type="text" id="passsword" v-model="form.walletaddress" class="form-control" placeholder="Crypto Wallet address" required>
+                <br>
+                <input type="number" id="passsword" v-model="form.amount" class="form-control" placeholder="amount" min="0" required>
+                <br>
+
                 <button class="btn btn-lg btn-primary btn-block" type="button" @click="login()">
+
                     Request Withdrawal</button>
 
                 </form>
@@ -28,7 +33,9 @@ export default {
     return {
       form: {
         email: '',
-        password: ''
+        walletaddress: '',
+        prefferedcoin: 'btc',
+        amount: 0
       },
       error: null
     }
