@@ -1,5 +1,4 @@
 <template>
-<div>
 <html lang="en">
 
 <head>
@@ -7,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>DreamCreation - Home To Crypto Millionaires.</title>
+    <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
@@ -422,82 +421,32 @@
                     </div>    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
-                                <li class="app-sidebar__heading">Dashboard</li>
+                                <li class="app-sidebar__heading">Admin Dashboards</li>
                                 <li>
-                                    <a href="/#/dash" class="mm-active">
+                                    <a href="/#/admin" class="mm-active">
                                         <i class="metismenu-icon pe-7s-home"></i>
-                                        Back Office
+                                        Company dashboard
                                     </a>
                                 </li>
-
-                                <li
-                                >
-
-                                </li>
-                                <li
-                                >
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-wallet"></i>
-                                        Wallet
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul
-                                  >
-                                        <li>
-                                            <a href="components-tabs.html">
-                                                <i class="metismenu-icon">
-                                                </i>Deposit
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="components-accordions.html">
-                                                <i class="metismenu-icon">
-                                                </i>Withdraw
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <i class="metismenu-icon">
-                                                </i>View Transactions
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                                <li >
-
-                                    <a href="/#/affiliate">
-                                        <i class="metismenu-icon pe-7s-link"></i>
-                                        Reffer & Earn
-                                    </a>
-                                </li>
+                                <li class="app-sidebar__heading">User Manager</li>
                                 <li  >
-                                    <a href="/#/packages">
-                                        <i class="metismenu-icon pe-7s-diamond"></i>
-                                        Packages
-                                    </a>
-                                </li>
-                                <li class="app-sidebar__heading">UserData</li>
-                                 <li>
-                                    <a href="/#/investments">
-                                        <i class="metismenu-icon pe-7s-piggy">
-                                        </i>Investments
+                                    <a href="/#/users">
+                                        <i class="metismenu-icon pe-7s-users"></i>
+                                        User Accounts
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/#/" target="_blank">
-                                        <i class="metismenu-icon pe-7s-right-arrow">
-                                        </i>
-                                        Logout
+                                    <a href="/#/verified">
+                                        <i class="metismenu-icon pe-7s-like2"></i>
+                                        verified Deposits
                                     </a>
                                 </li>
-                                <!-- <li>
-                                    <a href="forms-validation.html">
-                                        <i class="metismenu-icon pe-7s-lock">
-                                        </i>Change Password
+                                <li>
+                                    <a href="/#/cashouts">
+                                        <i class="metismenu-icon pe-7s-culture">
+                                        </i>Pending withdrawals
                                     </a>
-                                </li> -->
-
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -510,15 +459,12 @@
                                         <i class="pe-7s-car icon-gradient bg-mean-fruit">
                                         </i>
                                     </div>
-                                    <div>DreamCreation Agency
-                                        <div class="page-title-subheading">We Make Crypto Millionaires.
-                                        </div>
+                                    <div>Admin Dashboard
+
                                     </div>
                                 </div>
                                 <div class="page-title-actions">
-
                                     <div class="d-inline-block dropdown">
-
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item">
@@ -559,122 +505,45 @@
                                         </div>
                                     </div>
                                 </div>    </div>
-                        </div>            <div class="row">
-                            <div class="col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-midnight-bloom">
-                                    <div class="widget-content-wrapper text-white">
-                                        <div class="widget-content-left">
-                                            <div class="widget-heading">Bitcoin</div>
-                                            <div class="page-title-icon"><i class="metismenu-icon pe-7s-users"></i></div>
-                                        </div>
-                                        <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span> $ {{ this.wallet }}</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-arielle-smile">
-                                    <div class="widget-content-wrapper text-white">
-                                        <div class="widget-content-left">
-                                            <div class="widget-heading">Litecoin</div>
-                                            <div class="widget-subheading"><i class="metismenu-icon pe-7s-culture"></i></div>
-                                        </div>
-                                        <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>$ {{this.ltcbalance}}</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-grow-early">
-                                    <div class="widget-content-wrapper text-white">
-                                        <div class="widget-content-left">
-                                            <div class="widget-heading">Downlines</div>
-                                            <div class="widget-subheading"><i class="metismenu-icon pe-7s-add-user"></i></div>
-                                        </div>
-                                        <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>{{ this.refferals }}</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-premium-dark">
-                                    <div class="widget-content-wrapper text-white">
-                                        <div class="widget-content-left">
-                                            <div class="widget-heading">Cashouts</div>
-
-                                        </div>
-                                        <div class="widget-content-right">
-                                            <div class="widget-numbers text-warning"><span> $ {{this.cashout}}</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
                         <div class="row">
-                            <div class="col-md-6 col-xl-4">
+                            <!-- <div class="col-md-6 col-xl-4">
                                 <div class="card mb-3 widget-content">
                                     <div class="widget-content-outer">
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left">
-                                                <div class="widget-heading">Affiliate Commision</div>
-                                                <div class="widget-subheading"></div>
+                                                <div class="widget-heading">Products Sold</div>
+                                                <div class="widget-subheading">Revenue streams</div>
                                             </div>
                                             <div class="widget-content-right">
-                                                <div class="widget-numbers text-success"> <span>$ {{this.bonus}} </span></div>
+                                                <div class="widget-numbers text-warning">$3M</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
+                            </div> -->
+                            <!-- <div class="col-md-6 col-xl-4">
                                 <div class="card mb-3 widget-content">
                                     <div class="widget-content-outer">
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left">
-                                                <div class="widget-heading">Current Package</div>
-
+                                                <div class="widget-heading">Followers</div>
+                                                <div class="widget-subheading">People Interested</div>
                                             </div>
                                             <div class="widget-content-right">
-                                                <div class="text-warning">{{ this.package }}</div>
+                                                <div class="widget-numbers text-danger">45,9%</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            </div> -->
                             <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content">
-                                    <div class="widget-content-outer">
-                                        <div class="widget-content-wrapper">
-                                            <div class="widget-content-left">
-                                                <div class="widget-heading">Income</div>
-                                                <div class="widget-subheading">Total Earned</div>
-                                            </div>
-                                            <div class="widget-content-right">
-                                                <div class="widget-numbers text-focus">${{this.amount_received}} </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget-progress-wrapper">
-                                            <div class="progress-bar-sm progress-bar-animated-alt progress">
-                                                <div class="progress-bar bg-info" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: 54%;"></div>
-                                            </div>
-                                            <div class="progress-sub-label">
-                                                <div class="sub-label-left">Expenses</div>
-                                                <div class="sub-label-right">${{ this.expenses }}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="main-card mb-3 card">
-                                    <div class="card-header">YourTeam
+                                    <div class="card-header">Unconfirmed Withdraws
                                         <div class="btn-actions-pane-right">
                                             <div role="group" class="btn-group-sm btn-group">
                                                 <button class="active btn btn-focus">Last Week</button>
@@ -686,20 +555,28 @@
                                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">UserId</th>
                                                 <th class="text-center">Username</th>
-                                                <th class="text-center">Commission</th>
-                                                <th class="text-center">joined</th>
+                                                <th class="text-center">Email</th>
+                                                <th class="text-center">WalletAddress</th>
+                                                <th class="text-center">Preffered Coin</th>
+                                                <th class="text-center">Amount</th>
+                                                <th class="text-center">Confirmation</th>
+
                                             </tr>
                                             </thead>
                                             <tbody>
-                                             <tr>
-                                               <tr v-for="member in refferal" :key="member.id">
-      <td >{{ member.UserId}}</td>
-      <td>{{ member.username }}</td>
-      <td>{{member.bonus }}</td>
-      <td>{{member.joined }}</td>
-    </tr>
+                                            <tr v-for="bid in bids" :key="bid.id">
+                                                <td class="text-center text-muted">{{ bid.username}}</td>
+                                                   <td class="text-center text-muted">${{ bid.email}}</td>
+                                                <td class="text-center">{{ bid.walletaddress}}</td>
+                                                       <td class="text-center">{{ bid.coin}}</td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-warning">{{ bid.amount}}</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">confirm</button>
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -710,270 +587,257 @@
                                 </div>
                             </div>
                         </div>
-  <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Top Authors</h6>
-                                                <div class="scroll-area-sm">
-                                                    <div class="scrollbar-container">
-                                                        <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">
-                                                            <li class="list-group-item">
-                                                                <div class="widget-content p-0">
-                                                                    <div class="widget-content-wrapper">
-                                                                        <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/9.jpg" alt="">
-                                                                        </div>
-                                                                        <div class="widget-content-left">
-                                                                            <div class="widget-heading">Ella-Rose Henry</div>
-                                                                            <div class="widget-subheading">Web Developer</div>
-                                                                        </div>
-                                                                        <div class="widget-content-right">
-                                                                            <div class="font-size-xlg text-muted">
-                                                                                <small class="opacity-5 pr-1">$</small>
-                                                                                <span>129</span>
-                                                                                <small class="text-danger pl-2">
-                                                                                    <i class="fa fa-angle-down"></i>
-                                                                                </small>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="widget-content p-0">
-                                                                    <div class="widget-content-wrapper">
-                                                                        <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/5.jpg" alt="">
-                                                                        </div>
-                                                                        <div class="widget-content-left">
-                                                                            <div class="widget-heading">Ruben Tillman</div>
-                                                                            <div class="widget-subheading">Bitcoin</div>
-                                                                        </div>
-                                                                        <div class="widget-content-right">
-                                                                            <div class="font-size-xlg text-muted">
-                                                                                <small class="opacity-5 pr-1">$50</small>
-                                                                                <span>54</span>
-                                                                                <small class="text-success pl-2">
-                                                                                    <i class="fa fa-angle-up"></i>
-                                                                                </small>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                    </div>
+                    <div class="app-wrapper-footer">
+                        <div class="app-footer">
+                            <div class="app-footer__inner">
+                                <div class="app-footer-right">
+                                    <ul class="nav">
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                Footer Link 3
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                <div class="badge badge-success mr-1 ml-0">
+                                                    <small>NEW</small>
                                                 </div>
-                    </div>
-                    </div>
-
+                                                Footer Link 4
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    </div>
         </div>
     </div>
 </body>
 </html>
 
-</div>
 </template>
+<style>
+body {
+    color: #566787;
+    background: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+}
+.table-responsive {
+    margin: 30px 0;
+}
+.table-wrapper {
+    min-width: 1000px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+    min-width: 100%;
+}
+.table-title h2 {
+    margin: 8px 0 0;
+    font-size: 22px;
+}
+.search-box {
+    position: relative;
+    float: right;
+}
+.search-box input {
+    height: 34px;
+    border-radius: 20px;
+    padding-left: 35px;
+    border-color: #ddd;
+    box-shadow: none;
+}
+.search-box input:focus {
+    border-color: #3FBAE4;
+}
+.search-box i {
+    color: #a0a5b1;
+    position: absolute;
+    font-size: 19px;
+    top: 8px;
+    left: 10px;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table td:last-child {
+    width: 130px;
+}
+table.table td a {
+    color: #a0a5b1;
+    display: inline-block;
+    margin: 0 5px;
+}
+table.table td a.view {
+    color: #03A9F4;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+.pagination {
+    float: right;
+    margin: 0 0 5px;
+}
+.pagination li a {
+    border: none;
+    font-size: 95%;
+    width: 30px;
+    height: 30px;
+    color: #999;
+    margin: 0 2px;
+    line-height: 30px;
+    border-radius: 30px !important;
+    text-align: center;
+    padding: 0;
+}
+.pagination li a:hover {
+    color: #666;
+}
+.pagination li.active a {
+    background: #03A9F4;
+}
+.pagination li.active a:hover {
+    background: #0397d6;
+}
+.pagination li.disabled i {
+    color: #ccc;
+}
+.pagination li i {
+    font-size: 16px;
+    padding-top: 6px
+}
+.hint-text {
+    float: left;
+    margin-top: 6px;
+    font-size: 95%;
+}
+</style>
 <script>
-import { mapGetters } from 'vuex'
 import firebase from 'firebase'
 export default {
   data () {
     return {
-      objA: { name: 'a' },
-      objB: { name: 'b' },
-      refferal: [],
-      bonus: 0,
-      expenses: 0,
-      amount_received: 0,
-      radio: false,
-      uid: '',
-      username: '',
-      btcaddress: '',
-      litecoinaddress: '',
-      package: '',
-      wallet: 0,
-      cashout: 0,
-      refferals: 0,
-      phone: '',
-      email: '',
-      balance: 0,
-      maturedShares: '',
-      invitelink: '',
-      previewLink: '',
+      totalUsers: 0,
+      orders: 0,
+      btcnetworth: 0,
+      ltcnetworth: 0,
+      btcout: 0,
+      ltcout: 0,
+      gasfee: 0,
+      users: [],
+      bids: [],
       availableshares: 0,
-      shares: 0,
-      refferalMoney: 0,
-      date: '',
-      activated: null,
-      total_bids: 0,
-      messages: 0,
-      ltcbalance: 0,
-      cashouts: 0,
       form: {
-        amount: 0,
-        days: 0,
-        sharesOnSale: 0,
-        bidhours: 0,
-        investment: 0,
-        cashout: 0,
-        number: ''
+        username: '',
+        amount: 0
       }
     }
   },
-  beforeCreate: function () {
-    this.$vs.loading()
-    setTimeout(() => {
-      this.$vs.loading.close()
-    }, 2000)
-  },
-  updated: function () {
-    console.log('updated')
-  },
   mounted: function () {
     var db = firebase.firestore()
-    // get the total cashouts
-    db.collection('users').doc(this.user.data.email).get().then(snapshot => {
-      let data = snapshot.data()
-      this.wallet = data.btcbalance
-      this.cashout = data.amount_received
-      this.phone = data.phonenumber
-      this.uid = data.uid
-      this.package = data.package
-      this.ltcbalance = data.ltcbalance
-      this.bonus = data.downline_bonus
-      this.expense = data.expenses
-      this.amount_received = data.amount_received
-    })
-    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
-      this.refferals = snapshot.size
-    })
-    db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
-      this.total_bids = snapshot.size
-    })
-    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+    db.collection('cashout').where('status', '==', 'unverified').get().then(snapshot => {
       snapshot.forEach(doc => {
-        this.refferal.push(doc.data())
+        this.bids.push(doc.data())
       })
+    })
+    db.collection('users').get().then(snapshot => {
+      this.totalUsers = snapshot.size
+    })
+    db.collection('bids').get().then(snapshot => {
+      this.orders = snapshot.size
+    })
+    let netwoth = db.collection('accountancy').doc('moneyin').get()
+    netwoth.then(data => {
+      this.btcnetworth = data.data().totalbtc
+      this.ltcnetworth = data.data().totalltc
+    })
+    let cashouts = db.collection('accountancy').doc('moneyout').get()
+    cashouts.then(data => {
+      this.btcout = data.data().totalbtc
+      this.ltcout = data.data().totalltc
+    })
+    let gasfee = db.collection('accountancy').doc('gasfee').get()
+    gasfee.then(data => {
+      this.gasfee = data.data().total
     })
     let externalScript = document.createElement('script')
     externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
     document.head.appendChild(externalScript)
+    let user = firebase.auth().currentUser.email
+    db.collection('users').doc(user).get().then(snapshot => {
+      let data = snapshot.data()
+      if (!data.admin) {
+        window.location.href('/dash')
+      }
+    })
   },
   methods: {
-    withdraw: function () {
+    withdraw: function (email) {
       let db = firebase.firestore()
-      let cashout = this.form.cashout
-      let number = this.form.number
-      let balance = this.wallet - cashout
-      if (cashout <= this.wallet && cashout > 0) {
-        db.collection('users').doc(this.user.data.email).update({
-          wallet_balance: balance
-        })
-        this.$vs.notify({title: 'Your Withdrawal was initiated..it takes 20 min max for processing!', text: 'kindly refresh asap to complete the transaction ', color: 'blue', position: 'bottom-center'})
-        db.collection('cashout').add({
-          id: Math.floor((Math.random() * 1000000) + 1),
-          amount: cashout,
-          number: number,
-          email: this.user.data.email,
-          sent: false
-        })
-      } else {
-        this.$vs.notify({title: 'Your withdrawal exceeds the balance!', text: 'please recharge or check if you withdrew a negative', color: 'red', position: 'bottom-center'})
-      }
-    },
-    toInvestment: function () {
-      this.$router.push('/investments')
-    },
-    toRefs: function () {
-      this.$router.push('/refs')
-    },
-    setMessagesToRead: function (email) {
-      var db = firebase.firestore()
-      db.collection('users').doc(email).collection('messages').get().then(snapshot => {
+      console.log(email)
+      db.collection('users').doc(email).collection('withdrawals').where('amount', '==', this.form.amount).get().then(snapshot => {
         snapshot.forEach(doc => {
-          doc.data().read = true
+          if (!doc.data().status) {
+            db.collection('users').doc(email).collection('withdrawals').doc(doc.id).update({
+              cashed: true
+            })
+          }
         })
       })
     },
-    setBidTime: function () {
-      alert('dksj')
-    },
-    genaratelink: function () {
-      var urlgenerator = require('urlgenerator')
-      var createURLwithParameters = urlgenerator.createURLwithParameters
-      var baseURL = 'https://hortlite-investments.com/#/register'
-      var referee = firebase.auth().currentUser.uid
-      var parameters = {'uid': referee}
-      var finalURL = createURLwithParameters(baseURL, parameters)
-      this.$swal(finalURL)
-    },
-    Getlink: function () {
-      var urlgenerator = require('urlgenerator')
-      var createURLwithParameters = urlgenerator.createURLwithParameters
-      var baseURL = 'https://dream-creation-agency.netlify.app/#/register'
-      var referee = firebase.auth().currentUser.uid
-      var parameters = {'uid': referee}
-      var finalURL = createURLwithParameters(baseURL, parameters)
-      document.getElementById('inviteLink').value = finalURL
-      navigator.clipboard.writeText(finalURL)
-      alert('Copied link to clipboard')
-    },
-    SetBidder: function () {
-      var countdown = require('countdown-js')
-      var end = new Date()
-      end.setHours(end.getHours() + 6)
-      var timer = countdown.timer(end, function (timeleft) {
-        document.getElementById('timer').innerHTML = timeleft.hours + 'H:' + timeleft.minutes + 'M:' + timeleft.seconds
-      })
-      return timer
-    },
-    refresh: function () {
-      window.location.reload()
-    },
-    Invest: function (amount, dailyPay) {
-      this.$router.push({ path: '/address/:amount', params: { amount: 10 } })
+    deleteUser: function (email) {
       let db = firebase.firestore()
-      db.collection('bids').add({
-        'id': Math.floor((Math.random() * 10000) + 1),
-        'email': firebase.auth().currentUser.email,
-        'amount': amount,
-        'verification_status': 'unverified',
-        'startDay': Date.now(),
-        'stopDay': Date.now() + 1.577e+10,
-        'dailyPay': dailyPay,
-        'cashouts': 0
+      db.collection('users').doc(email).update({
+        activated: true
+      })
+      this.$swal('activated')
+    },
+    verifyUser: function (email) {
+      let db = firebase.firestore()
+      db.collection('users').doc(email).update({
+        verified: 'Yes'
+      })
+      this.$swal('verified')
+    },
+    setshares: function (event) {
+      alert(this.form.amount)
+      let db = firebase.firestore()
+      db.collection('shares').doc('available').update({
+        total: parseFloat(this.form.amount)
       })
     },
-    Pay: function (event) {
-      // mpesa.b2c({
-      //   Initiator: 'Initiator Name',
-      //   Amount: 1000 /* 1000 is an example amount */,
-      //   PartyA: 'Party A',
-      //   PartyB: 'Party B',
-      //   QueueTimeOutURL: 'Queue Timeout URL',
-      //   ResultURL: 'Result URL'
-      // })
-      //   .then((response) => {
-      //     console.log(response)
-      //   })
-      //   .catch((error) => {
-      //     console.error(error)
-      //   })
-      alert('under maintainance')
-    },
-    redirect: function (event) {
-      window.location = 'https://chat.whatsapp.com/HU3wvCqjXmJ0J0OMSPndyJ'
-    },
-    redirecttg: function (event) {
-      window.location = 'https://t.me/hustlerbidders'
-    },
-    logout: function (event) {
-      firebase.auth().signOut()
-      this.$router.push('/')
+    verify: function (id) {
+      let db = firebase.firestore()
+      db.collection('bids').where('id', '==', id).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          db.collection('bids').doc(doc.id).update({
+            'verification_status': 'verified'
+          })
+        })
+      })
     }
-  },
-  computed: {
-    ...mapGetters({
-      user: 'user'
-    })
   }
 }
 </script>

@@ -86,7 +86,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-secondary" id="exampleModalLongTitle" >Pay $ {{this.amount}} for {{this.pack}} pack</h5>
+        <h5 class="modal-title text-secondary" id="exampleModalLongTitle" >You choose the  {{this.pack}} pack</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="invest()">
           <span aria-hidden="true">&times;</span>
         </button>

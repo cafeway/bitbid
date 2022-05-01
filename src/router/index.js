@@ -17,6 +17,10 @@ import btc from '../components/btc.vue'
 import landing from '../components/landingpage.vue'
 import packages from '../components/packages.vue'
 import downlines from '../components/downlines.vue'
+import users from '../components/useraccounts.vue'
+import cashouts from '../components/cashouts.vue'
+import verified from '../components/verifieddeposits.vue'
+import withdrawal from '../components/withdraw.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +29,26 @@ export default new Router({
       path: '/main',
       name: 'main',
       component: main
+    },
+    {
+      path: '/withdrawal',
+      name: 'main',
+      component: withdrawal
+    },
+    {
+      path: '/users',
+      name: 'users',
+      component: users
+    },
+    {
+      path: '/cashouts',
+      name: 'cashouts',
+      component: cashouts
+    },
+    {
+      path: '/verified',
+      name: 'verfied',
+      component: verified
     },
     {
       path: '/downlines',

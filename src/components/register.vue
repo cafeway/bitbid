@@ -147,7 +147,7 @@ export default {
             activated: false,
             role: 'user',
             refferals: 0,
-            dowmline_bonus: 0,
+            commission: 0,
             amount_received: 0,
             wallet_balance: 0,
             country: country,
