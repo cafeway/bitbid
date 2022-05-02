@@ -443,24 +443,24 @@
                                     </a>
                                     <ul
                                   >
-                                        <li>
+                                        <!-- <li>
                                             <a href="components-tabs.html">
                                                 <i class="metismenu-icon">
                                                 </i>Deposit
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li>
-                                            <a href="components-accordions.html">
+                                            <a href="/#/withdrawal">
                                                 <i class="metismenu-icon">
                                                 </i>Withdraw
                                             </a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="">
                                                 <i class="metismenu-icon">
                                                 </i>View Transactions
                                             </a>
-                                        </li>
+                                        </li> -->
 
                                     </ul>
                                 </li>
@@ -710,7 +710,7 @@
                                 </div>
                             </div>
                         </div>
-  <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Top Authors</h6>
+  <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Top Earnings</h6>
                                                 <div class="scroll-area-sm">
                                                     <div class="scrollbar-container">
                                                         <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">

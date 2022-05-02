@@ -8,7 +8,7 @@
     <ul>
       <li><strong>Earn</strong>$0.25</li>
     </ul>
-    <button  @click="  SetPackage(25,'Bronze')"    data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=5405416068"   class="order-btn">Select</a>
 
   </div>
   <div class="pricing-card">
@@ -17,7 +17,7 @@
     <ul>
       <li><strong>Earn</strong>$1</li>
     </ul>
-    <button @click="  SetPackage(50,'Silver')"  data-toggle="modal" data-target="#exampleModalCenter" class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=5720069193" class="order-btn">Select</a>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">White</h3>
@@ -25,7 +25,7 @@
     <ul>
       <li><strong>Earn</strong>$2</li>
     </ul>
-    <button @click="  SetPackage(100,'White')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=4804149192" class="order-btn">Select </a>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Black</h3>
@@ -33,7 +33,7 @@
     <ul>
       <li><strong>Earn</strong>$4</li>
     </ul>
-    <button @click="  SetPackage(200,'Blacl')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=4310841179"  class="order-btn">Select</a>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Gold</h3>
@@ -41,7 +41,7 @@
     <ul>
       <li><strong>Earn</strong>$8</li>
     </ul>
-    <button @click="  SetPackage(400,'Gold')"  data-toggle="modal" data-target="#exampleModalCenter" class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=5927296550" class="order-btn">Select</a>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Gold Pro</h3>
@@ -49,7 +49,7 @@
     <ul>
       <li><strong>Earn</strong>$10</li>
     </ul>
-    <button @click="  SetPackage(500,'GoldPro')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=5223630849" class="order-btn">Select</a>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Platinum</h3>
@@ -57,7 +57,7 @@
     <ul>
       <li><strong>Earn</strong>$21</li>
     </ul>
-    <button @click="  SetPackage(1000,'Platinum')" data-toggle="modal" data-target="#exampleModalCenter"    class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=5586255459"  class="order-btn">Select</a>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Platinium Pro</h3>
@@ -65,7 +65,7 @@
     <ul>
       <li><strong>Earn</strong>$43</li>
     </ul>
-    <button @click="  SetPackage(2000,'PlatinumPro')" data-toggle="modal" data-target="#exampleModalCenter"   class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=5051260241"   class="order-btn">Select</a>
   </div>
   <div class="pricing-card">
     <h3 class="pricing-card-header">Diamond</h3>
@@ -73,14 +73,14 @@
     <ul>
       <li><strong>Earn</strong>$109</li>
     </ul>
-    <button @click="  SetPackage(5000,'Diamond')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=5530461493" class="order-btn">Select</a>
   </div><div class="pricing-card">
     <h3 class="pricing-card-header">Diamond pro</h3>
     <div class="price"><sup>$</sup>10000<span></span></div>
     <ul>
       <li><strong>Earn</strong>$209</li>
     </ul>
-    <button  @click="  SetPackage(10000,'DiamondPro')" data-toggle="modal" data-target="#exampleModalCenter"  class="order-btn">Select</button>
+    <a href="https://nowpayments.io/payment/?iid=6384069471"  class="order-btn">Select</a>
   </div>
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

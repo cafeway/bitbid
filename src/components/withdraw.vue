@@ -7,12 +7,19 @@
   <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
 </svg>
                 <form class="form-signin">
-                <input type="email" class="form-control" placeholder="Email" id="email" v-model="form.email" required autofocus>
+                <input type="email" class="form-control" placeholder="Email" id="email" v-model="form.email" required autofocus readonly >
                 <br/>
                 <input type="text" id="passsword" v-model="form.walletaddress" class="form-control" placeholder="Crypto Wallet address" required>
                 <br>
-                <input type="number" id="passsword" v-model="form.amount" class="form-control" placeholder="amount" min="0" required>
+                <input type="number" id="amoount" v-model="form.amount" class="form-control" placeholder="amount" min="0" required>
                 <br>
+<div class="select">
+  <select id="coin">
+    <option value="bitcoin">Bitcoin</option>
+    <option value="litecoin">Litecoin</option>
+
+  </select>
+</div>
 
                 <button class="btn btn-lg btn-primary btn-block" type="button" @click="login()">
 
@@ -31,6 +38,8 @@ import firebase from 'firebase'
 export default {
   data () {
     return {
+      btcbalance: 0,
+      ltcbalance: 0,
       form: {
         email: '',
         walletaddress: '',
@@ -40,20 +49,37 @@ export default {
       error: null
     }
   },
+  mounted: function () {
+    document.getElementById('email').value = firebase.auth().currentUser.email
+    let doc = firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get()
+    doc.then(snap => {
+      let data = snap.data()
+      console.log(snap.data().btcbalance)
+      this.btcbalance = data.btcbalance
+      this.ltcbalance = data.ltcbalance
+    })
+  },
   methods: {
     ToRegister () {
       this.$router.push('/register')
     },
     login: function () {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(data => {
-          this.$router.push('/dash')
-        })
-        .catch(err => {
-          this.$vs.notify({title: 'Invalid email or password', text: err.message, color: 'red', position: 'bottom-center'})
-        })
+      // let db = firebase.firestore()
+      if (document.getElementById('coin').value === 'bitcoin') {
+        if (this.amount <= this.btcbalance) {
+
+        } else if (this.amount > this.btcbalance) {
+          this.$vs.notify({title: 'Cashout Error', text: 'You do not have sufficient balance to withdraw the amount entered kindly enter a smalller amount', color: 'red', position: 'top-center'})
+        }
+      } else if (document.getElementById('coin').value === 'litecoin') {
+        if (this.amount <= this.ltcbalance) {
+
+        } else if (this.amount > this.btcbalance) {
+          this.$vs.notify({title: 'Cashout Error', text: 'You do not have sufficient balance to withdraw the amount entered kindly enter a smalller amount', color: 'red', position: 'top-center'})
+        }
+      }
+
+      console.log(this.btcbalance)
     }
   }
 }
@@ -134,4 +160,5 @@ export default {
     display: block;
     margin-top: 10px;
 }
+
 </style>
