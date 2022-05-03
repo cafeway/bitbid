@@ -555,39 +555,25 @@
                                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">OrderID</th>
+                                                <th class="text-center">ID</th>
                                                 <th class="text-center">Amount</th>
-                                                <th class="text-center">StartDate</th>
-                                                <th class="text-center">StopDate</th>
-                                                <th class="text-center">TotalPayouts</th>
-                                                <th class="text-center"> Daily Timer </th>
+                                                <th class="text-center">Confirmation Date</th>
+                                                <th class="text-center">CoinUsed</th>
+                                                <th class="text-center">GasFee</th>
+                                                <th class="text-center">Package</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr v-for="bid in bids" :key="bid.id">
                                                 <td class="text-center text-muted">{{ bid.id}}</td>
                                                    <td class="text-center text-muted">${{ bid.amount}}</td>
-                                                <td class="text-center">{{ bid.startDay}}</td>
-                                                       <td class="text-center">{{ bid.stopDate}}</td>
+                                                <td class="text-center">{{ bid.date}}</td>
+                                                       <td class="text-center">{{ bid.coin}}</td>
                                                        <td class="text-center">
-                                                    <div class="badge badge-success">{{ bid.amountPaid}}</div>
+                                                    <div class="badge badge-success">{{ bid.gas}}</div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <vue-countdown-timer
-      @start_callback="startCallBack('event started')"
-      @end_callback="endCallBack('event ended')"
-      :start-time="'2018-10-10 00:00:00'"
-      :end-time="1481450115"
-      :interval="1000"
-      :start-label="'Until start:'"
-      :end-label="'Until end:'"
-      label-position="begin"
-      :end-text="'Event ended!'"
-      :day-txt="'days'"
-      :hour-txt="'hours'"
-      :minutes-txt="'minutes'"
-      :seconds-txt="'seconds'">
-    </vue-countdown-timer>
+                                                    <div class="badge badge-primary">{{ bid.package}}</div>
                                                 </td>
                                             </tr>
                                             </tbody>

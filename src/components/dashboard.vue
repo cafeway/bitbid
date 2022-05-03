@@ -455,13 +455,18 @@
                                                 </i>Withdraw
                                             </a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="">
+                                        <li>
+                                            <a href="/#/transactions">
                                                 <i class="metismenu-icon">
-                                                </i>View Transactions
+                                                </i>Verify Transactions
                                             </a>
-                                        </li> -->
-
+                                        </li>
+                                        <li>
+                                            <a href="/#/transactionHistory">
+                                                <i class="metismenu-icon">
+                                                </i>Transactions history
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li >

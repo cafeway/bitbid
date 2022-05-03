@@ -21,6 +21,9 @@ import users from '../components/useraccounts.vue'
 import cashouts from '../components/cashouts.vue'
 import verified from '../components/verifieddeposits.vue'
 import withdrawal from '../components/withdraw.vue'
+import transactions from '../components/transactions.vue'
+import logs from '../components/transationsLogs.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +32,16 @@ export default new Router({
       path: '/main',
       name: 'main',
       component: main
+    },
+    {
+      path: '/transactionHistory',
+      name: 'logs',
+      component: logs
+    },
+    {
+      path: '/transactions',
+      name: 'transaction',
+      component: transactions
     },
     {
       path: '/withdrawal',

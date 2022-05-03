@@ -8,7 +8,7 @@
     <ul>
       <li><strong>Earn</strong>$0.25</li>
     </ul>
-    <a href="https://nowpayments.io/payment/?iid=5405416068"   class="order-btn">Select</a>
+    <a href="https://nowpayments.io/payment/?iid=4896525932"   class="order-btn">Select</a>
 
   </div>
   <div class="pricing-card">

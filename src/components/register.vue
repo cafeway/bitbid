@@ -38,16 +38,6 @@
                                         <input type="text"  v-model="form.sponsor" readonly id="sponsor" class="form-control" placeholder="Sponsorid">
                                     </div>
                                 </div>
-                               <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" id="wallet" v-model="form.btcwallet" placeholder="Bitocoin wallet address" class="form-control">
-                                    </div>
-                               </div>
-                                      <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" id="wallet" v-model="form.litecoinwallet" placeholder="Litecoin wallet address" class="form-control">
-                                    </div>
-                               </div>
                               <div class="col-md-12">
                                 <select name="countries" class="custom-select" id="country">
   <option>Select country</option>
@@ -151,8 +141,6 @@ export default {
             amount_received: 0,
             wallet_balance: 0,
             country: country,
-            btcaddress: this.form.btcwallet,
-            litecoinaddress: this.form.litecoinwallet,
             package: 'none'
           })
           let db = firebase.firestore()
