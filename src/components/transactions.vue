@@ -204,6 +204,8 @@ export default {
             this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction has been received and is being verified by the blockchain', color: 'green', position: 'top-center'})
           } else if (response.payment_status === 'partially_funded ') {
             this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction is not complete due to partially paid funds kindly topup ', color: 'red', position: 'top-center'})
+          } else if (response.payment_status === 'expired') {
+            this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction is expired kindly initiate a new one', color: 'red', position: 'top-center'})
           }
 
           console.log(response)
