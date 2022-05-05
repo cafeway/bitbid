@@ -54,6 +54,51 @@ export default {
     ToRegister () {
       this.$router.push('/register')
     },
+    // record money in
+    moneyin: function (amountIn, currency) {
+      // add money to the ledger
+      if (currency === 'btc') {
+        let db = firebase.firestore()
+        let ledger = db.collection('accountancy').doc('moneyin').get()
+        ledger.then(snapshot => {
+          let bal = snapshot.data().totalbtc
+          let NewBalance = bal + amountIn
+          // add the total to admin wallet
+          db.collection('accountancy').doc('moneyin').update({
+            'totalbtc': NewBalance
+          })
+        })
+      } else if (currency === 'ltc') {
+        let db = firebase.firestore()
+        let ledger = db.collection('accountancy').doc('moneyin').get()
+        ledger.then(snapshot => {
+          let bal = snapshot.data().totalbtc
+          let NewBalance = bal + amountIn
+          // add the total to admin wallet
+          db.collection('accountancy').doc('moneyin').update({
+            'totaltc': NewBalance
+          })
+        })
+      }
+    },
+    // awards commission
+    awardSponsor: function (amount, id) {
+      let db = firebase.firestore()
+      let commission = amount * 0.20
+      db.collection('users').where('uid', '==', id).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          let data = doc.data()
+          let oldltcbalance = data.ltcbalance
+          let newltcbalance = oldltcbalance + commission
+          let oldcommission = data.commission
+          let newcommission = oldcommission + commission
+          db.collection.doc(doc.id).update({
+            'ltcbalance': newltcbalance,
+            'commission': newcommission
+          })
+        })
+      })
+    },
     login: function () {
       let url = 'https://api.nowpayments.io/v1/payment/' + this.form.id
       fetch(url, {
@@ -64,150 +109,178 @@ export default {
       })
         .then(res => res.json())
         .then(response => {
-          if (response.payment_status === 'confirmed') {
-            firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('logs').add({
-              'id': response.payment_id,
-              'amount': response.pay_amount,
-              'date': response.created_at,
-              'coin': response.outcome_currency,
-              'package': response.order_id
-            })
-            let db = firebase.firestore()
-            switch (response.order_id) {
-              case 1:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 25,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Bronze',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 2:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 50,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Silver',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 3:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 100,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'White',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 4:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 200,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Black',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 5:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 400,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Gold',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 6:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 500,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Gold Pro',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 7:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 1000,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Platinum',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 8:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 2000,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Platinum pro',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 9:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 5000,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Diamond',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
-              case 10:
-                db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
-                  'id': response.payment_id,
-                  'amount': 10000,
-                  'startDay': Date.now(),
-                  'stopDay': Date.now() + 1.577e+10,
-                  'amountPaid': 0,
-                  'package': 'Diamond Pro',
-                  'cashouts': 0
-                })
-                this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-                break
+          firebase.firestore().collection('logs').get().then(snapshot => {
+            snapshot.forEach(doc => {
+              if (doc.exists) {
+                this.$vs.notify({title: 'Error', text: 'This transaction code has been redeemed', color: 'yellow', position: 'top-center'})
+              } else if (!doc.exists) {
+                if (response.payment_status === 'confirmed') {
+                  firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('logs').add({
+                    'id': response.payment_id,
+                    'amount': response.pay_amount,
+                    'date': response.created_at,
+                    'coin': response.outcome_currency,
+                    'package': response.order_id
+                  })
+                  let db = firebase.firestore()
+                  switch (response.order_id) {
+                    case 1:
+                      db.collection('logs')
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 25,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Bronze',
+                        'cashouts': 0
+                      })
 
-              default:
+                      // log a new transaction
+                      db.collection('logs').add({
+                        'amount': response.pay_amount,
+                        'coin': response.outcome_currency,
+                        'date': response.created_at,
+                        'id': response.payment_id
+                      })
+                      // record transaction
+                      this.moneyin(response.pay_amount, response.outcome_currency)
+
+                      // get sponsor account
+                      let SponsorAccount = db.collection('users').doc(firebase.firestore().currentUser.email).get()
+                      SponsorAccount.then(snapshot => {
+                        let data = snapshot.data()
+                        let uid = data.uid
+
+                        // award sponsor
+                        this.awardSponsor(response.pay_amount, uid)
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 2:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 50,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Silver',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 3:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 100,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'White',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 4:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 200,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Black',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 5:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 400,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Gold',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 6:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 500,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Gold Pro',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 7:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 1000,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Platinum',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 8:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 2000,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Platinum pro',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 9:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 5000,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Diamond',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+                    case 10:
+                      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').add({
+                        'id': response.payment_id,
+                        'amount': 10000,
+                        'startDay': Date.now(),
+                        'stopDay': Date.now() + 1.577e+10,
+                        'amountPaid': 0,
+                        'package': 'Diamond Pro',
+                        'cashouts': 0
+                      })
+                      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
+                      break
+
+                    default:
     // code block
-            }
-          } else if (response.payment_status === 'waiting') {
-            this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction is not complete kindly send the funds to complete the transaction ', color: 'red', position: 'top-center'})
-          } else if (response.payment_status === 'confirming') {
-            this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction has been received and is being verified by the blockchain', color: 'green', position: 'top-center'})
-          } else if (response.payment_status === 'partially_funded ') {
-            this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction is not complete due to partially paid funds kindly topup ', color: 'red', position: 'top-center'})
-          } else if (response.payment_status === 'expired') {
-            this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction is expired kindly initiate a new one', color: 'red', position: 'top-center'})
-          }
-
+                  }
+                } else if (response.payment_status === 'waiting') {
+                  this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction is not complete kindly send the funds to complete the transaction ', color: 'red', position: 'top-center'})
+                } else if (response.payment_status === 'confirming') {
+                  this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction has been received and is being verified by the blockchain', color: 'green', position: 'top-center'})
+                } else if (response.payment_status === 'partially_funded ') {
+                  this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction is not complete due to partially paid funds kindly topup ', color: 'red', position: 'top-center'})
+                } else if (response.payment_status === 'expired') {
+                  this.$vs.notify({title: 'Blockchain Notification!', text: 'The transaction is expired kindly initiate a new one', color: 'red', position: 'top-center'})
+                }
+              }
+            })
+          })
           console.log(response)
         })
     }

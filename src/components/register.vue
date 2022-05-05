@@ -141,7 +141,8 @@ export default {
             amount_received: 0,
             wallet_balance: 0,
             country: country,
-            package: 'none'
+            package: 'none',
+            sponsor: this.referee_id
           })
           let db = firebase.firestore()
           db.collection('users').where('uid', '==', this.referee_id).get().then(snapshot => {
