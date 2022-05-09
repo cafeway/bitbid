@@ -388,7 +388,7 @@
                 </div>
             </div>
         </div>        <div class="app-main">
-                <div class="app-sidebar sidebar-shadow">
+               <div class="app-sidebar sidebar-shadow">
                     <div class="app-header__logo">
                         <div class="logo-src"></div>
                         <div class="header__pane ml-auto">
@@ -421,36 +421,92 @@
                     </div>    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
-                                <li class="app-sidebar__heading">Logs</li>
+                                <li class="app-sidebar__heading">Dashboard</li>
                                 <li>
-                                    <a href="/#/admin" class="mm-active">
+                                    <a href="/#/dash" class="mm-active">
                                         <i class="metismenu-icon pe-7s-home"></i>
-                                        Company dashboard
+                                        Back Office
                                     </a>
                                 </li>
-                                <li class="app-sidebar__heading">User Manager</li>
+
+                                <li
+                                >
+
+                                </li>
+                                <li
+                                >
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-wallet"></i>
+                                        Wallet
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul
+                                  >
+                                        <!-- <li>
+                                            <a href="components-tabs.html">
+                                                <i class="metismenu-icon">
+                                                </i>Deposit
+                                            </a>
+                                        </li> -->
+                                        <li>
+                                            <a href="/#/withdrawal">
+                                                <i class="metismenu-icon">
+                                                </i>Withdraw
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/transactions">
+                                                <i class="metismenu-icon">
+                                                </i>Verify Transactions
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/transactionHistory">
+                                                <i class="metismenu-icon">
+                                                </i>Transactions history
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li >
+
+                                    <a href="/#/affiliate">
+                                        <i class="metismenu-icon pe-7s-link"></i>
+                                        Reffer & Earn
+                                    </a>
+                                </li>
                                 <li  >
-                                    <a href="/#/users">
-                                        <i class="metismenu-icon pe-7s-users"></i>
-                                        User Accounts
+                                    <a href="/#/packages">
+                                        <i class="metismenu-icon pe-7s-diamond"></i>
+                                        Packages
+                                    </a>
+                                </li>
+                                <li class="app-sidebar__heading">UserData</li>
+                                 <li>
+                                    <a href="/#/investments">
+                                        <i class="metismenu-icon pe-7s-piggy">
+                                        </i>Investments
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/#/verified">
-                                        <i class="metismenu-icon pe-7s-like2"></i>
-                                        verified Deposits
+                                    <a href="/#/" target="_blank">
+                                        <i class="metismenu-icon pe-7s-right-arrow">
+                                        </i>
+                                        Logout
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="/#/cashouts">
-                                        <i class="metismenu-icon pe-7s-culture">
-                                        </i>Pending withdrawals
+                                <!-- <li>
+                                    <a href="forms-validation.html">
+                                        <i class="metismenu-icon pe-7s-lock">
+                                        </i>Change Password
                                     </a>
-                                </li>
+                                </li> -->
+
                             </ul>
                         </div>
                     </div>
-                </div>    <div class="app-main__outer">
+                </div>
+               <div class="app-main__outer">
                     <div class="app-main__inner">
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
@@ -543,7 +599,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="main-card mb-3 card">
-                                    <div class="card-header">Confirmed Deposits
+                                    <div class="card-header"> Active Investments
                                         <div class="btn-actions-pane-right">
                                             <div role="group" class="btn-group-sm btn-group">
                                                 <button class="active btn btn-focus">Last Week</button>
@@ -557,36 +613,36 @@
                                             <tr>
                                                 <th class="text-center">OrderID</th>
                                                 <th class="text-center">Amount</th>
-                                                <th class="text-center">StartDate</th>
-                                                <th class="text-center">StopDate</th>
-                                                <th class="text-center">TotalPayouts</th>
-                                                <th class="text-center"> Daily Timer </th>
+                                                <th class="text-center">Currency</th>
+                                                <th class="text-center">Package</th>
+                                                <th class="text-center">Net Earnings</th>
+                                                <th class="text-center"> Daily Mint </th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr v-for="bid in bids" :key="bid.id">
                                                 <td class="text-center text-muted">{{ bid.id}}</td>
                                                    <td class="text-center text-muted">${{ bid.amount}}</td>
-                                                <td class="text-center">{{ bid.startDay}}</td>
-                                                       <td class="text-center">{{ bid.stopDate}}</td>
+                                                <td class="text-center">{{ bid.currency}}</td>
+                                                       <td class="text-center"><div class="badge badge-info">{{ bid.package}}</div></td>
                                                        <td class="text-center">
-                                                    <div class="badge badge-success">{{ bid.amountPaid}}</div>
+                                                    <div class="badge badge-primary">${{ bid.amountPaid}}</div>
                                                 </td>
                                                 <td class="text-center">
                                                     <vue-countdown-timer
       @start_callback="startCallBack('event started')"
-      @end_callback="endCallBack('event ended')"
-      :start-time="'2018-10-10 00:00:00'"
-      :end-time="1481450115"
+      @end_callback="endCallBack(bid.stopDay, bid.startDate, bid.id, bid.amount)"
+      :start-time="bid.startDay"
+      :end-time="bid.temptime"
       :interval="1000"
-      :start-label="'Until start:'"
-      :end-label="'Until end:'"
+      :start-label="'Unti start:'"
+      :end-label="''"
       label-position="begin"
       :end-text="'Event ended!'"
-      :day-txt="'days'"
-      :hour-txt="'hours'"
-      :minutes-txt="'minutes'"
-      :seconds-txt="'seconds'">
+      :day-txt="'D'"
+      :hour-txt="':'"
+      :minutes-txt="':'"
+      :seconds-txt="':'">
     </vue-countdown-timer>
                                                 </td>
                                             </tr>
@@ -603,19 +659,7 @@
                             <div class="app-footer__inner">
                                 <div class="app-footer-right">
                                     <ul class="nav">
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                Footer Link 3
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                <div class="badge badge-success mr-1 ml-0">
-                                                    <small>NEW</small>
-                                                </div>
-                                                Footer Link 4
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -765,9 +809,13 @@ export default {
       }
     }
   },
+  beforeDestroy: function () {
+    this.form.username = firebase.auth().currentUser.email
+  },
   mounted: function () {
+    this.form.username = firebase.auth().currentUser.email
     var db = firebase.firestore()
-    db.collection('users').doc(firebase.auth().currentUser.emailVerified).collection('logs').get().then(snapshot => {
+    db.collection('users').doc(this.form.username).collection('bids').get().then(snapshot => {
       snapshot.forEach(doc => {
         this.bids.push(doc.data())
       })
@@ -787,7 +835,7 @@ export default {
         this.btcout = data.data().totalbtc
         this.ltcout = data.data().totalltc
       })
-      let gasfee = db.collection('accountancy').doc('gasfee').get()
+      let gasfee = db.collection('accountancy').doc('gassfee').get()
       gasfee.then(data => {
         this.gasfee = data.data().total
       })
@@ -795,15 +843,36 @@ export default {
       externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
       document.head.appendChild(externalScript)
     })
-    let user = firebase.auth().currentUser.email
-    db.collection('users').doc(user).get().then(snapshot => {
-      let data = snapshot.data()
-      if (!data.admin) {
-        window.location.href('/dash')
-      }
-    })
   },
   methods: {
+    endCallBack: function (stop, start, id, amount) {
+      console.log(Date.now() > stop)
+      if (Date.now() >= stop) {
+
+      } else if (Date.now() < stop) {
+        console.log('bla')
+        firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('bids').where('id', '==', id).get().then(snapshot => {
+          snapshot.forEach(doc => {
+            let newStart = Date.now()
+            let tempStopDate = newStart + 86400000
+            let AmountPaid = doc.data().amountPaid
+            let cashout = amount * 0.02
+            console.log(cashout + AmountPaid)
+            let newAmount = AmountPaid + cashout
+            firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('bids').doc(doc.id).update({
+              'startDay': newStart,
+              'amountPaid': newAmount,
+              'temptime': tempStopDate
+            })
+          })
+        })
+
+        // add amount to account and record
+      }
+    },
+    startCallBack: function () {
+      console.log('started')
+    },
     withdraw: function (email) {
       let db = firebase.firestore()
       console.log(email)

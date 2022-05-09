@@ -833,34 +833,40 @@ export default {
     console.log('updated')
   },
   mounted: function () {
-    var db = firebase.firestore()
-    // get the total cashouts
-    db.collection('users').doc(this.user.data.email).get().then(snapshot => {
-      let data = snapshot.data()
-      this.wallet = data.btcbalance
-      this.cashout = data.amount_received
-      this.phone = data.phonenumber
-      this.uid = data.uid
-      this.package = data.package
-      this.ltcbalance = data.ltcbalance
-      this.bonus = data.downline_bonus
-      this.expense = data.expenses
-      this.amount_received = data.amount_received
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        var db = firebase.firestore()
+        // get the total cashouts
+        db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+          let data = snapshot.data()
+          this.wallet = data.btcbalance
+          this.cashout = data.amount_received
+          this.phone = data.phonenumber
+          this.uid = data.uid
+          this.package = data.package
+          this.ltcbalance = data.ltcbalance
+          this.bonus = data.downline_bonus
+          this.expense = data.expenses
+          this.amount_received = data.amount_received
+        })
+        db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+          this.refferals = snapshot.size
+        })
+        db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
+          this.total_bids = snapshot.size
+        })
+        db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+          snapshot.forEach(doc => {
+            this.refferal.push(doc.data())
+          })
+        })
+        let externalScript = document.createElement('script')
+        externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
+        document.head.appendChild(externalScript)
+      } else if (!user) {
+        this.$router.push('/')
+      }
     })
-    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
-      this.refferals = snapshot.size
-    })
-    db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
-      this.total_bids = snapshot.size
-    })
-    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
-      snapshot.forEach(doc => {
-        this.refferal.push(doc.data())
-      })
-    })
-    let externalScript = document.createElement('script')
-    externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
-    document.head.appendChild(externalScript)
   },
   methods: {
     withdraw: function () {

@@ -229,25 +229,29 @@ export default {
     }
   },
   mounted: function () {
-    this.change = 0
-    let db = firebase.firestore()
-    db.collection('users').doc(this.user.data.email).get().then(snapshot => {
-      let data = snapshot.data()
-      // eslint-disable-next-line no-unused-expressions
-      this.email = data.email
-      this.phone = data.phonenumber
-      this.role = data.role
-      this.balance = data.wallet_balance
-      this.package = data.package
-    })
-    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
-      this.downlines = snapshot.size
-    })
-    db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
-      snapshot.forEach(doc => {
-        this.refferals.push(doc.data())
+    if (firebase.auth().currentUser == null) {
+      this.$router.push('/')
+    } else if (firebase.auth().currentUser != null) {
+      this.change = 0
+      let db = firebase.firestore()
+      db.collection('users').doc(this.user.data.email).get().then(snapshot => {
+        let data = snapshot.data()
+        // eslint-disable-next-line no-unused-expressions
+        this.email = data.email
+        this.phone = data.phonenumber
+        this.role = data.role
+        this.balance = data.wallet_balance
+        this.package = data.package
       })
-    })
+      db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+        this.downlines = snapshot.size
+      })
+      db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+        snapshot.forEach(doc => {
+          this.refferals.push(doc.data())
+        })
+      })
+    }
   },
   computed: {
     ...mapGetters({
