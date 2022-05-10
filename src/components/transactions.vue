@@ -180,7 +180,7 @@ export default {
       })
         .then((res) => res.json())
         .then((response) => {
-          if (response.payment_status === 'confirmed') {
+          if (response.payment_status === 'waiting') {
             firebase
               .firestore()
               .collection('users')
@@ -210,7 +210,10 @@ export default {
                     temptime: 0,
                     currency: response.outcome_currency
                   })
-
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Bronze'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -245,6 +248,10 @@ export default {
                     currency: response.outcome_currency,
                     temptime: 0
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Silver'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -279,6 +286,10 @@ export default {
                     temptime: 0,
                     currency: response.outcome_currency
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'White'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -313,6 +324,10 @@ export default {
                     cashouts: 0,
                     currency: response.outcome_currency
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Black'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -347,6 +362,10 @@ export default {
                     temptime: 0,
                     currency: response.outcome_currency
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Gold'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -381,6 +400,10 @@ export default {
                     cashouts: 0,
                     currency: response.outcome_currency
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Gold Pro'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -415,6 +438,10 @@ export default {
                     cashouts: 0,
                     currency: response.outcome_currency
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Platinum'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -449,6 +476,10 @@ export default {
                     temptime: 0,
                     currency: response.outcome_currency
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Platinum Pro'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -484,6 +515,10 @@ export default {
                     cashouts: 0,
                     currency: response.outcome_currency
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Diamond'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -519,6 +554,10 @@ export default {
                     temptime: 0,
                     currency: response.outcome_currency
                   })
+                // change package value
+                db.collection('users').doc(firebase.auth().currentUser.email).update({
+                  'package': 'Diamond Pro'
+                })
                 // log a new transaction
                 db.collection('logs').doc(this.form.id).set({
                   amount: response.pay_amount,
@@ -543,7 +582,7 @@ export default {
               default:
               // code block
             }
-          } else if (response.payment_status === 'waiting') {
+          } else if (response.payment_status === 'confirmed') {
             alert('waiting')
             this.$vs.notify({
               title: 'Blockchain Notification!',

@@ -845,7 +845,7 @@ export default {
           this.uid = data.uid
           this.package = data.package
           this.ltcbalance = data.ltcbalance
-          this.bonus = data.downline_bonus
+          this.bonus = data.commission
           this.expense = data.expenses
           this.amount_received = data.amount_received
         })
