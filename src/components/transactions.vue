@@ -207,7 +207,7 @@ export default {
                     amountPaid: 0,
                     package: 'Bronze',
                     cashouts: 0,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     currency: response.outcome_currency
                   })
                 // change package value
@@ -246,7 +246,7 @@ export default {
                     package: 'Silver',
                     cashouts: 0,
                     currency: response.outcome_currency,
-                    temptime: 0
+                    temptime: Date.now() + 86400000
                   })
                 // change package value
                 db.collection('users').doc(firebase.auth().currentUser.email).update({
@@ -283,7 +283,7 @@ export default {
                     amountPaid: 0,
                     package: 'White',
                     cashouts: 0,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     currency: response.outcome_currency
                   })
                 // change package value
@@ -318,7 +318,7 @@ export default {
                     amount: 200,
                     startDay: Date.now(),
                     stopDay: Date.now() + 1.577e10,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     amountPaid: 0,
                     package: 'Black',
                     cashouts: 0,
@@ -359,7 +359,7 @@ export default {
                     amountPaid: 0,
                     package: 'Gold',
                     cashouts: 0,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     currency: response.outcome_currency
                   })
                 // change package value
@@ -392,7 +392,7 @@ export default {
                   .add({
                     id: response.payment_id,
                     amount: 500,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     startDay: Date.now(),
                     stopDay: Date.now() + 1.577e10,
                     amountPaid: 0,
@@ -430,7 +430,7 @@ export default {
                   .add({
                     id: response.payment_id,
                     amount: 1000,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     startDay: Date.now(),
                     stopDay: Date.now() + 1.577e10,
                     amountPaid: 0,
@@ -473,7 +473,7 @@ export default {
                     amountPaid: 0,
                     package: 'Platinum pro',
                     cashouts: 0,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     currency: response.outcome_currency
                   })
                 // change package value
@@ -510,7 +510,7 @@ export default {
                     startDay: Date.now(),
                     stopDay: Date.now() + 1.577e10,
                     amountPaid: 0,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     package: 'Diamond',
                     cashouts: 0,
                     currency: response.outcome_currency
@@ -551,7 +551,7 @@ export default {
                     amountPaid: 0,
                     package: 'Diamond Pro',
                     cashouts: 0,
-                    temptime: 0,
+                    temptime: Date.now() + 86400000,
                     currency: response.outcome_currency
                   })
                 // change package value
