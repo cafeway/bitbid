@@ -434,41 +434,24 @@
                                 >
 
                                 </li>
-                                <li
-                                >
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-wallet"></i>
-                                        logsz
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul
-                                  >
-                                        <!-- <li>
-                                            <a href="components-tabs.html">
-                                                <i class="metismenu-icon">
-                                                </i>Deposit
-                                            </a>
-                                        </li> -->
-                                        <li>
+                               <li>
                                             <a href="/#/withdrawal">
-                                                <i class="metismenu-icon">
+                                                <i class="metismenu-icon pe-7s-wallet">
                                                 </i>Withdraw
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/#/transactions">
-                                                <i class="metismenu-icon">
+                                                <i class="metismenu-icon pe-7s-credit">
                                                 </i>Verify Transactions
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/#/transactionHistory">
-                                                <i class="metismenu-icon">
+                                                <i class="metismenu-icon pe-7s-browser">
                                                 </i>Transactions history
                                             </a>
                                         </li>
-                                    </ul>
-                                </li>
                                 <li >
 
                                     <a href="/#/affiliate">

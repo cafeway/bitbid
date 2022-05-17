@@ -442,7 +442,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/3/cashouts">
+                                    <a href="/#/cashouts">
                                         <i class="metismenu-icon pe-7s-culture">
                                         </i>Pending withdrawals
                                     </a>

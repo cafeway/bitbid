@@ -479,7 +479,7 @@
                                           "
                                           valign="top"
                                         >
-                                          <h3
+                                          <h3 id="link"
                                             class="null"
                                             style="
                                               display: block;
@@ -497,9 +497,7 @@
                                               text-align: center;
                                             "
                                           >
-                                            The&nbsp;more friends you refer,
-                                            the&nbsp;more&nbsp;money
-                                            you&nbsp;make.
+
                                           </h3>
                                         </td>
                                       </tr>
@@ -1313,6 +1311,7 @@ export default {
         var data = snapshot.data()
         this.balance = data.wallet_balance
       })
+    this.Getlink()
   },
   methods: {
     showuserdata: function () {
@@ -1326,6 +1325,7 @@ export default {
       var parameters = {'uid': referee}
       var finalURL = createURLwithParameters(baseURL, parameters)
       navigator.clipboard.writeText(finalURL)
+      document.getElementById('link').value = finalURL
       alert('Your invite link has been copied successfuly')
     },
     Verify: function (id) {

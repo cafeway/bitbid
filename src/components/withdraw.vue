@@ -56,6 +56,8 @@ export default {
       console.log(snap.data().btcbalance)
       this.btcbalance = data.btcbalance
       this.ltcbalance = data.ltcbalance
+      console.log(this.btcbalance)
+      this.form.email = data.email
     })
   },
   methods: {
@@ -63,6 +65,63 @@ export default {
       this.$router.push('/register')
     },
     login: function () {
+      if (document.getElementById('coin').value === 'bitcoin') {
+        if (this.form.amount > this.btcbalance) {
+          this.$vs.notify({title: 'Insufficient funds', text: 'You have insufficient funds,chooose a smaller amount or a different wallet', color: 'red', position: 'top-center'})
+        } else if (this.form.amount <= this.btcbalance) {
+          if (this.form.amount > 50) {
+            let UserDoc = firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get()
+            UserDoc.then(dat => {
+              let data = dat.data()
+              let currentBalance = data.btcbalance
+              let newBalance = currentBalance - this.form.amount
+              firebase.firestore().collection('users').doc(data.id).update({
+                'btcbalance': newBalance
+              })
+            })
+            this.$vs.notify({title: 'Success', text: 'Your withdrawal was successful,your funds will be sent to your wallet soon', color: 'green', position: 'top-center'})
+            firebase.firestore().collection('cashouts').add({
+              'amount': this.form.amount,
+              'user': this.form.email,
+              'wallet': this.form.walletaddress,
+              'date': Date.now(),
+              'coin': document.getElementById('coin').value,
+              'verified': false,
+              'id': Math.floor((Math.random() * 10000) + 1)
+            })
+          } else if (this.form.amount < 50) {
+            this.$vs.notify({title: 'Minimum withdrawal exceeded', text: 'The minimum amount you can cashout is $50', color: 'red', position: 'top-center'})
+          }
+        }
+      } else if (document.getElementById('coin').value === 'litecoin') {
+        if (this.form.amount > this.ltcbalance) {
+          this.$vs.notify({title: 'Insufficient funds', text: 'You have insufficient funds,chooose a smaller amount or a different wallet', color: 'red', position: 'top-center'})
+        } else if (this.form.amount <= this.btcbalance) {
+          if (this.form.amount > 50) {
+            let UserDoc = firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get()
+            UserDoc.then(dat => {
+              let data = dat.data()
+              let currentBalance = data.ltcbalance
+              let newBalance = currentBalance - this.form.amount
+              firebase.firestore().collection('users').doc(data.id).update({
+                'ltcbalance': newBalance
+              })
+            })
+            this.$vs.notify({title: 'Success', text: 'Your withdrawal was successful,your funds will be sent to your wallet soon', color: 'green', position: 'top-center'})
+            firebase.firestore().collection('cashouts').add({
+              'amount': this.form.amount,
+              'user': this.form.email,
+              'wallet': this.form.walletaddress,
+              'date': Date.now(),
+              'coin': document.getElementById('coin').value,
+              'verified': false,
+              'id': Math.floor((Math.random() * 10000) + 1)
+            })
+          } else if (this.form.amount < 50) {
+            this.$vs.notify({title: 'Minimum withdrawal exceeded', text: 'The minimum amount you can cashout is $50', color: 'red', position: 'top-center'})
+          }
+        }
+      }
     }
   }
 }
