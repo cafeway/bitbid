@@ -35,7 +35,7 @@
                                </div>
                                  <div class="col-md-6">
                                   <div class="form-group">
-                                        <input type="text"  v-model="form.sponsor" readonly id="sponsor" class="form-control" placeholder="Sponsorid">
+                                        <input type="text"  v-model="form.sponsor" readonly id="sponsor" class="form-control" placeholder="Sponsorid" hidden>
                                     </div>
                                 </div>
                               <div class="col-md-12">
