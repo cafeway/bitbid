@@ -49,6 +49,8 @@
   <option>Tanzania</option>
   <option>Uganda</option>
   <option>Rwanda</option>
+   <option>Usa</option>
+    <option>Great Britain</option>
 </select>
                               </div>
                             </div>
