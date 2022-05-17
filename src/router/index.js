@@ -23,7 +23,7 @@ import verified from '../components/verifieddeposits.vue'
 import withdrawal from '../components/withdraw.vue'
 import transactions from '../components/transactions.vue'
 import logs from '../components/transationsLogs.vue'
-
+import pwdreset from '../components/resetPassword.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -32,6 +32,11 @@ export default new Router({
       path: '/main',
       name: 'main',
       component: main
+    },
+    {
+      path: '/resetpassword',
+      name: 'main',
+      component: pwdreset
     },
     {
       path: '/transactionHistory',

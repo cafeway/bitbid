@@ -617,6 +617,7 @@
                                                 <th class="text-center">Package</th>
                                                 <th class="text-center">Net Earnings</th>
                                                 <th class="text-center"> Daily Mint </th>
+                                                <th class="text-center"> Daily Refresh </th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -645,7 +646,8 @@
       :seconds-txt="':'">
     </vue-countdown-timer>
                                                 </td>
-                                            </tr>
+
+          <td class="text-center"><button class="btn btn-primary" @click="refresh()">refresh</button></td>                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -869,6 +871,9 @@ export default {
 
         // add amount to account and record
       }
+    },
+    refresh: function () {
+      window.location.href = '/#/investments'
     },
     startCallBack: function () {
       console.log('started')

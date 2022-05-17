@@ -34,7 +34,6 @@
 
 <script>
 import firebase from 'firebase'
-
 export default {
   data () {
     return {
@@ -64,22 +63,6 @@ export default {
       this.$router.push('/register')
     },
     login: function () {
-      // let db = firebase.firestore()
-      if (document.getElementById('coin').value === 'bitcoin') {
-        if (this.amount <= this.btcbalance) {
-
-        } else if (this.amount > this.btcbalance) {
-          this.$vs.notify({title: 'Cashout Error', text: 'You do not have sufficient balance to withdraw the amount entered kindly enter a smalller amount', color: 'red', position: 'top-center'})
-        }
-      } else if (document.getElementById('coin').value === 'litecoin') {
-        if (this.amount <= this.ltcbalance) {
-
-        } else if (this.amount > this.btcbalance) {
-          this.$vs.notify({title: 'Cashout Error', text: 'You do not have sufficient balance to withdraw the amount entered kindly enter a smalller amount', color: 'red', position: 'top-center'})
-        }
-      }
-
-      console.log(this.btcbalance)
     }
   }
 }

@@ -1,24 +1,17 @@
 <template>
 <div class="container-fluid" style="padding-top:100px;">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center text-primary login-title">Welcome Back</h1>
+            <h1 class="text-center text-primary login-title">Enter your email address</h1>
             <div class="account-wall">
-              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="80" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-</svg>
                 <form class="form-signin">
                 <input type="email" class="form-control" placeholder="Email" id="email" v-model="form.email" required autofocus>
                 <br/>
-                <input type="password" id="passsword" v-model="form.password" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="button" @click="login()">
-                    Sign in</button>
+                <button class="btn btn-lg btn-success btn-block" type="button" @click="login()">
 
-                <br>
-                <a href="/#/resetpassword" class="pull-right need-help">Forgot Password? </a><span class="clearfix"></span>
+                    Request reset</button>
+
                 </form>
             </div>
-            <a class="text-center new-account" @click="ToRegister()">Create an account </a>
         </div>
     </div>
 
@@ -30,9 +23,13 @@ import firebase from 'firebase'
 export default {
   data () {
     return {
+      btcbalance: 0,
+      ltcbalance: 0,
       form: {
         email: '',
-        password: ''
+        walletaddress: '',
+        prefferedcoin: 'btc',
+        amount: 0
       },
       error: null
     }
@@ -42,15 +39,8 @@ export default {
       this.$router.push('/register')
     },
     login: function () {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(data => {
-          this.$router.push('/dash')
-        })
-        .catch(err => {
-          this.$vs.notify({title: 'Invalid email or password', text: err.message, color: 'red', position: 'top-center'})
-        })
+      firebase.auth().sendPasswordResetEmail(this.form.email)
+      this.$vs.notify({title: 'Password reset Successfully', text: 'A password reset link has been sent to your email address', color: 'red', position: 'top-center'})
     }
   }
 }
@@ -131,4 +121,5 @@ export default {
     display: block;
     margin-top: 10px;
 }
+
 </style>
