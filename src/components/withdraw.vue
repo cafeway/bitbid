@@ -75,7 +75,7 @@ export default {
               let data = dat.data()
               let currentBalance = data.btcbalance
               let newBalance = currentBalance - this.form.amount
-              firebase.firestore().collection('users').doc(data.id).update({
+              firebase.firestore().collection('users').doc(dat.id).update({
                 'btcbalance': newBalance
               })
             })
@@ -103,7 +103,7 @@ export default {
               let data = dat.data()
               let currentBalance = data.ltcbalance
               let newBalance = currentBalance - this.form.amount
-              firebase.firestore().collection('users').doc(data.id).update({
+              firebase.firestore().collection('users').doc(dat.id).update({
                 'ltcbalance': newBalance
               })
             })
