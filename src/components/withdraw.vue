@@ -64,6 +64,8 @@ export default {
     ToRegister () {
       this.$router.push('/register')
     },
+    checkMinimum: function (amount, balance) {
+    },
     login: function () {
       if (document.getElementById('coin').value === 'bitcoin') {
         if (this.form.amount > this.btcbalance) {
@@ -96,7 +98,7 @@ export default {
       } else if (document.getElementById('coin').value === 'litecoin') {
         if (this.form.amount > this.ltcbalance) {
           this.$vs.notify({title: 'Insufficient funds', text: 'You have insufficient funds,chooose a smaller amount or a different wallet', color: 'red', position: 'top-center'})
-        } else if (this.form.amount <= this.btcbalance) {
+        } else if (this.form.amount <= this.ltcbalance) {
           if (this.form.amount > 50) {
             let UserDoc = firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get()
             UserDoc.then(dat => {
