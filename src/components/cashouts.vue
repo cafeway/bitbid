@@ -555,7 +555,7 @@
                                         <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">ID</th>
+                                                <th class="text-center">Username</th>
                                                 <th class="text-center">Email</th>
                                                 <th class="text-center">WalletAddress</th>
                                                 <th class="text-center">Preffered Coin</th>
@@ -566,15 +566,15 @@
                                             </thead>
                                             <tbody>
                                             <tr v-for="bid in bids" :key="bid.id">
-                                fc
+                                                <td class="text-center text-muted">{{ bid.id}}</td>
                                                    <td class="text-center text-muted">{{ bid.user}}</td>
                                                 <td class="text-center">{{ bid.wallet}}</td>
                                                        <td class="text-center">{{ bid.coin}}</td>
                                                 <td class="text-center">
-                                                    <div class="badge badge-warning">$ {{ bid.amount}}</div>
+                                                    <div class="badge badge-warning">${{ bid.amount}}</div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm" @click="confirm(bid.id,bid.user,bid,amount)">confirm</button>
+                                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm" @click="cashout(bid.amount,bid.id,bid.user)">confirm</button>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -736,7 +736,7 @@ table.table td i {
 </style>
 <script>
 import firebase from 'firebase'
-import mail from 'emailjs-com'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -758,7 +758,7 @@ export default {
   },
   mounted: function () {
     var db = firebase.firestore()
-    db.collection('cashouts').where('verified', '==', false).where('user', '==', firebase.auth().currentUser.email).get().then(snapshot => {
+    db.collection('cashouts').where('verified', '==', false).get().then(snapshot => {
       snapshot.forEach(doc => {
         this.bids.push(doc.data())
       })
@@ -786,16 +786,29 @@ export default {
     let externalScript = document.createElement('script')
     externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
     document.head.appendChild(externalScript)
+    let user = firebase.auth().currentUser.email
+    db.collection('users').doc(user).get().then(snapshot => {
+      let data = snapshot.data()
+      if (!data.admin) {
+        window.location.href('/dash')
+      }
+    })
   },
   methods: {
-    confirm: function (id, email, amount) {
-      var server = mail.server.connect({
-        user: 'dreamcreationcoin@gmail.com',
-        password: '@DreamCreationAgency2022',
-        host: 'smtp.gmail.com',
-        tls: true
+    cashout: function (amount, id, email) {
+      let body = {
+        id: id,
+        amount: amount,
+        email: email
+      }
+      axios({
+        method: 'post',
+        url: 'https://mpesa-modal.herokuapp.com/sendmail',
+        data: body
+      }).then(function (response) {
+        console.log(response)
       })
-      console.log(server)
+      console.log(id)
     },
     withdraw: function (email) {
       let db = firebase.firestore()
