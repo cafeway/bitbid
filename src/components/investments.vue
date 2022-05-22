@@ -632,7 +632,7 @@
                                                 <td class="text-center">
                                                     <vue-countdown-timer
       @start_callback="startCallBack('event started')"
-      @end_callback="endCallBack(bid.stopDay, bid.startDate, bid.id, bid.amount)"
+      @end_callback="endCallBack(bid.tempdtime, bid.startDate, bid.id, bid.amount, bid.currency)"
       :start-time="bid.startDay"
       :end-time="bid.temptime"
       :interval="1000"
@@ -815,63 +815,58 @@ export default {
     this.form.username = firebase.auth().currentUser.email
   },
   mounted: function () {
-    this.form.username = firebase.auth().currentUser.email
-    var db = firebase.firestore()
-    db.collection('users').doc(this.form.username).collection('bids').get().then(snapshot => {
-      snapshot.forEach(doc => {
-        this.bids.push(doc.data())
+    try {
+      var db = firebase.firestore()
+      db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').get().then(snapshot => {
+        snapshot.forEach(doc => {
+          this.bids.push(doc.data())
+        })
       })
-      db.collection('users').get().then(snapshot => {
-        this.totalUsers = snapshot.size
-      })
-      db.collection('bids').get().then(snapshot => {
-        this.orders = snapshot.size
-      })
-      let netwoth = db.collection('accountancy').doc('moneyin').get()
-      netwoth.then(data => {
-        this.btcnetworth = data.data().totalbtc
-        this.ltcnetworth = data.data().totalltc
-      })
-      let cashouts = db.collection('accountancy').doc('moneyout').get()
-      cashouts.then(data => {
-        this.btcout = data.data().totalbtc
-        this.ltcout = data.data().totalltc
-      })
-      let gasfee = db.collection('accountancy').doc('gassfee').get()
-      gasfee.then(data => {
-        this.gasfee = data.data().total
-      })
-      let externalScript = document.createElement('script')
-      externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
-      document.head.appendChild(externalScript)
-    })
+    } catch (e) {
+      console.log(e)
+    }
   },
   methods: {
-    endCallBack: function (stop, start, id, amount) {
-      console.log(Date.now() > stop)
-      if (Date.now() >= stop) {
-
-      } else if (Date.now() < stop) {
-        console.log('bla')
-        firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('bids').where('id', '==', id).get().then(snapshot => {
-          snapshot.forEach(doc => {
-            let newStart = Date.now()
-            let tempStopDate = newStart + 86400000
-            let AmountPaid = doc.data().amountPaid
-            let cashout = amount * 0.02
-            console.log(cashout + AmountPaid)
-            let newAmount = AmountPaid + cashout
-            firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('bids').doc(doc.id).update({
-              'startDay': newStart,
-              'amountPaid': newAmount,
-              'temptime': tempStopDate
-            })
+    endCallBack: function (tempdate, start, id, amount, currency) {
+      console.log('bla')
+      firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('bids').where('id', '==', id).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          let newStart = Date.now()
+          let tempStopDate = newStart + 86400000
+          let AmountPaid = doc.data().amountPaid
+          let cashout = amount * 0.02
+          console.log(cashout + AmountPaid)
+          let newAmount = AmountPaid + cashout
+          firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('bids').doc(doc.id).update({
+            'startDay': newStart,
+            'amountPaid': newAmount,
+            'temptime': tempStopDate
           })
         })
+      })
 
-        // add amount to account and record
-      }
+      let doc = firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get()
+      doc.then(snapshot => {
+        let data = snapshot.data()
+        let oldbtcbalance = data.btcbalance
+        let ltcbalance = data.ltcbalance
+        let amountToAward = amount * 0.2
+        let newbtcbalance = oldbtcbalance + amountToAward
+        let newltcbalance = ltcbalance + amountToAward
+        if (currency === 'btc') {
+          firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).update({
+            'btcbalance': newbtcbalance
+          })
+        } else if (currency === 'ltc') {
+          firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).update({
+            'ltcbalance': newltcbalance
+          })
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
     },
+
     refresh: function () {
       window.location.href = '/#/investments'
     },

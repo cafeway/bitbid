@@ -77,8 +77,12 @@ export default {
               let data = dat.data()
               let currentBalance = data.btcbalance
               let newBalance = currentBalance - this.form.amount
+              let oldCashout = data.amount_received
+              let newCashout = oldCashout + parseInt(this.form.amount)
+
               firebase.firestore().collection('users').doc(dat.id).update({
-                'btcbalance': newBalance
+                'btcbalance': newBalance,
+                'amount_received': newCashout
               })
             })
             this.$vs.notify({title: 'Success', text: 'Your withdrawal was successful,your funds will be sent to your wallet soon', color: 'green', position: 'top-center'})
@@ -105,8 +109,11 @@ export default {
               let data = dat.data()
               let currentBalance = data.ltcbalance
               let newBalance = currentBalance - this.form.amount
+              let oldCashout = data.amount_received
+              let newCashout = oldCashout + this.form.amount
               firebase.firestore().collection('users').doc(dat.id).update({
-                'ltcbalance': newBalance
+                'ltcbalance': newBalance,
+                'amount_received': newCashout
               })
             })
             this.$vs.notify({title: 'Success', text: 'Your withdrawal was successful,your funds will be sent to your wallet soon', color: 'green', position: 'top-center'})
