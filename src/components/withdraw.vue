@@ -99,7 +99,7 @@ export default {
             firebase.firestore().collection('accountancy').doc('moneyout').get().then(snapshot => {
               let data = snapshot.data()
               let currentTotalCashout = data.totalbtc
-              let newTotalCashout = currentTotalCashout + parseInt(this.form.id)
+              let newTotalCashout = currentTotalCashout + parseInt(this.form.amount)
               firebase.firestore().collection('accountancy').doc('moneyout').update({
                 'totalbtc': newTotalCashout
               })
@@ -139,7 +139,7 @@ export default {
             firebase.firestore().collection('accountancy').doc('moneyout').get().then(snapshot => {
               let data = snapshot.data()
               let currentTotalCashout = data.totalltc
-              let newTotalCashout = currentTotalCashout + parseInt(this.form.id)
+              let newTotalCashout = currentTotalCashout + parseInt(this.form.amount)
               firebase.firestore().collection('accountancy').doc('moneyout').update({
                 'totalltc': newTotalCashout
               })
