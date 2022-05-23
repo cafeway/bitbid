@@ -104,6 +104,7 @@ export default {
                 'totalbtc': newTotalCashout
               })
             })
+            this.$router.push('/dash')
           } else if (this.form.amount < 50) {
             this.$vs.notify({title: 'Minimum withdrawal exceeded', text: 'The minimum amount you can cashout is $50', color: 'red', position: 'top-center'})
           }
@@ -144,6 +145,7 @@ export default {
                 'totalltc': newTotalCashout
               })
             })
+            this.$router.push('/dash')
           } else if (this.form.amount < 50) {
             this.$vs.notify({title: 'Minimum withdrawal exceeded', text: 'The minimum amount you can cashout is $50', color: 'red', position: 'top-center'})
           }
