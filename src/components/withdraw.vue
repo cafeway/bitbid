@@ -79,7 +79,6 @@ export default {
               let newBalance = currentBalance - this.form.amount
               let oldCashout = data.amount_received
               let newCashout = oldCashout + parseInt(this.form.amount)
-
               firebase.firestore().collection('users').doc(dat.id).update({
                 'btcbalance': newBalance,
                 'amount_received': newCashout
@@ -94,6 +93,16 @@ export default {
               'coin': document.getElementById('coin').value,
               'verified': false,
               'id': Math.floor((Math.random() * 10000) + 1)
+            })
+
+            // Recording Money Cashed out in btc
+            firebase.firestore().collection('accountancy').doc('moneyout').get().then(snapshot => {
+              let data = snapshot.data()
+              let currentTotalCashout = data.totalbtc
+              let newTotalCashout = currentTotalCashout + parseInt(this.form.id)
+              firebase.firestore().collection('accountancy').doc('moneyout').update({
+                'totalbtc': newTotalCashout
+              })
             })
           } else if (this.form.amount < 50) {
             this.$vs.notify({title: 'Minimum withdrawal exceeded', text: 'The minimum amount you can cashout is $50', color: 'red', position: 'top-center'})
@@ -110,7 +119,7 @@ export default {
               let currentBalance = data.ltcbalance
               let newBalance = currentBalance - this.form.amount
               let oldCashout = data.amount_received
-              let newCashout = oldCashout + this.form.amount
+              let newCashout = oldCashout + parseInt(this.form.amount)
               firebase.firestore().collection('users').doc(dat.id).update({
                 'ltcbalance': newBalance,
                 'amount_received': newCashout
@@ -125,6 +134,15 @@ export default {
               'coin': document.getElementById('coin').value,
               'verified': false,
               'id': Math.floor((Math.random() * 10000) + 1)
+            })
+            // Recording Money Cashed out in ltc
+            firebase.firestore().collection('accountancy').doc('moneyout').get().then(snapshot => {
+              let data = snapshot.data()
+              let currentTotalCashout = data.totalltc
+              let newTotalCashout = currentTotalCashout + parseInt(this.form.id)
+              firebase.firestore().collection('accountancy').doc('moneyout').update({
+                'totalltc': newTotalCashout
+              })
             })
           } else if (this.form.amount < 50) {
             this.$vs.notify({title: 'Minimum withdrawal exceeded', text: 'The minimum amount you can cashout is $50', color: 'red', position: 'top-center'})
