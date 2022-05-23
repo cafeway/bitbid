@@ -868,7 +868,7 @@ export default {
     },
 
     refresh: function () {
-      window.location.href = '/#/investments'
+      this.$router.push('/dash')
     },
     startCallBack: function () {
       console.log('started')
