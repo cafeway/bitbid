@@ -104,6 +104,19 @@ export default {
                 'totalbtc': newTotalCashout
               })
             })
+            // send email
+            let data = {'email': 'bcaranja@gmail.com'}
+            fetch('https://mpesa-modal.herokuapp.com/sendmail', {
+              method: 'POST',
+              headers: {
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
+                'Access-Control-Allow-Origin': 'http://localhost:8080'
+              },
+              body: JSON.stringify(data)
+            }).then(res => {
+              console.log(res)
+            })
             this.$router.push('/dash')
           } else if (this.form.amount < 50) {
             this.$vs.notify({title: 'Minimum withdrawal exceeded', text: 'The minimum amount you can cashout is $50', color: 'red', position: 'top-center'})
