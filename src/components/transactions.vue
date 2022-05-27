@@ -180,7 +180,7 @@ export default {
       })
         .then((res) => res.json())
         .then((response) => {
-          if (response.payment_status === 'waiting') {
+          if (response.payment_status === 'confirmed') {
             firebase
               .firestore()
               .collection('users')
@@ -582,7 +582,7 @@ export default {
               default:
               // code block
             }
-          } else if (response.payment_status === 'confirmed') {
+          } else if (response.payment_status === 'waiting') {
             this.$vs.notify({
               title: 'Blockchain Notification!',
               text: 'The transaction is not complete kindly send the funds to complete the transaction ',
