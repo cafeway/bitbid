@@ -815,6 +815,9 @@ export default {
     this.form.username = firebase.auth().currentUser.email
   },
   mounted: function () {
+    let externalScript = document.createElement('script')
+    externalScript.setAttribute('src', 'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js')
+    document.head.appendChild(externalScript)
     try {
       var db = firebase.firestore()
       db.collection('users').doc(firebase.auth().currentUser.email).collection('bids').get().then(snapshot => {
@@ -827,6 +830,29 @@ export default {
     }
   },
   methods: {
+    getAmount: function (amount) {
+      if (amount === 25) {
+        return 0.25
+      } else if (amount === 50) {
+        return 1
+      } else if (amount === 100) {
+        return 2
+      } else if (amount === 200) {
+        return 4
+      } else if (amount === 400) {
+        return 8
+      } else if (amount === 500) {
+        return 10
+      } else if (amount === 1000) {
+        return 21
+      } else if (amount === 2000) {
+        return 43
+      } else if (amount === 5000) {
+        return 109
+      } else if (amount === 10000) {
+        return 218
+      }
+    },
     endCallBack: function (tempdate, start, id, amount, currency) {
       console.log('bla')
       firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).collection('bids').where('id', '==', id).get().then(snapshot => {
@@ -844,13 +870,13 @@ export default {
           })
         })
       })
-
+      // award user the balance
       let doc = firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get()
       doc.then(snapshot => {
         let data = snapshot.data()
         let oldbtcbalance = data.btcbalance
         let ltcbalance = data.ltcbalance
-        let amountToAward = amount * 0.2
+        let amountToAward = this.getAmount(amount)
         let newbtcbalance = oldbtcbalance + amountToAward
         let newltcbalance = ltcbalance + amountToAward
         if (currency === 'btc') {

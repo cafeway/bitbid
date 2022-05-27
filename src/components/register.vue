@@ -46,11 +46,18 @@
      <option>Nigeria</option>
       <option>Ghana</option>
   <option>Kenya</option>
-  <option>Tanzania</option>
-  <option>Uganda</option>
-  <option>Rwanda</option>
+  <option>United Kingdom</option>
+  <option>Singapore</option>
+  <option>Malawi</option>
    <option>Usa</option>
-    <option>Great Britain</option>
+    <option>UK</option>
+        <option>UK</option>
+            <option>Canada</option>
+                <option>Botswana</option>
+                <option>Thailand</option>
+                <option>netherlands</option>
+                <option>Namibia</option>
+                 <option>Lesotho</option>
 </select>
                               </div>
                             </div>

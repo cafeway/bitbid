@@ -1,314 +1,1497 @@
-/* eslint-disable no-tabs */
-/* eslint-disable no-tabs */
 <template>
-<div class="pricing-table">
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">Bronze</h3>
-    <div class="price"><sup>$</sup>25<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$0.25</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=4896525932"   class="order-btn">Select</a>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta http-equiv="Content-Language" content="en" />
+      <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>
+        Analytics Dashboard - This is an example dashboard created using
+        build-in elements and components.
+      </title>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+      />
+      <meta
+        name="description"
+        content="This is an example dashboard created using build-in elements and components."
+      />
+      <meta name="msapplication-tap-highlight" content="no" />
+      <link
+        href="https://demo.dashboardpack.com/architectui-html-free/main.css"
+        rel="stylesheet"
+      />
+    </head>
+    <body>
+      <div
+        class="
+          app-container app-theme-white
+          body-tabs-shadow
+          fixed-sidebar fixed-header
+        "
+      >
+        <div class="app-header header-shadow">
+          <div class="app-header__logo">
+            <div class="logo-src"></div>
+            <div class="header__pane ml-auto">
+              <div>
+                <button
+                  type="button"
+                  class="hamburger close-sidebar-btn hamburger--elastic"
+                  data-class="closed-sidebar"
+                >
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="app-header__mobile-menu">
+            <div>
+              <button
+                type="button"
+                class="hamburger hamburger--elastic mobile-toggle-nav"
+              >
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="app-header__menu">
+            <span>
+              <button
+                type="button"
+                class="
+                  btn-icon btn-icon-only btn btn-primary btn-sm
+                  mobile-toggle-header-nav
+                "
+              >
+                <span class="btn-icon-wrapper">
+                  <i class="fa fa-ellipsis-v fa-w-6"></i>
+                </span>
+              </button>
+            </span>
+          </div>
+          <div class="app-header__content">
+            <div class="app-header-left">
+              <div class="search-wrapper">
+                <div class="input-holder">
+                  <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Type to search"
+                  />
+                  <button class="search-icon"><span></span></button>
+                </div>
+                <button class="close"></button>
+              </div>
+              <ul class="header-menu nav">
+                <li class="nav-item">
+                  <a href="javascript:void(0);" class="nav-link">
+                    <i class="nav-link-icon fa fa-database"> </i>
+                    Statistics
+                  </a>
+                </li>
+                <li class="btn-group nav-item">
+                  <a href="javascript:void(0);" class="nav-link">
+                    <i class="nav-link-icon fa fa-edit"></i>
+                    Projects
+                  </a>
+                </li>
+                <li class="dropdown nav-item">
+                  <a href="javascript:void(0);" class="nav-link">
+                    <i class="nav-link-icon fa fa-cog"></i>
+                    Settings
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="app-header-right">
+              <div class="header-btn-lg pr-0">
+                <div class="widget-content p-0">
+                  <div class="widget-content-wrapper">
+                    <div class="widget-content-left">
+                      <div class="btn-group">
+                        <a
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          class="p-0 btn"
+                        >
+                          <img
+                            width="42"
+                            class="rounded-circle"
+                            src="assets/images/avatars/1.jpg"
+                            alt=""
+                          />
+                          <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                        </a>
+                        <div
+                          tabindex="-1"
+                          role="menu"
+                          aria-hidden="true"
+                          class="dropdown-menu dropdown-menu-right"
+                        >
+                          <button
+                            type="button"
+                            tabindex="0"
+                            class="dropdown-item"
+                          >
+                            User Account
+                          </button>
+                          <button
+                            type="button"
+                            tabindex="0"
+                            class="dropdown-item"
+                          >
+                            Settings
+                          </button>
+                          <h6 tabindex="-1" class="dropdown-header">Header</h6>
+                          <button
+                            type="button"
+                            tabindex="0"
+                            class="dropdown-item"
+                          >
+                            Actions
+                          </button>
+                          <div tabindex="-1" class="dropdown-divider"></div>
+                          <button
+                            type="button"
+                            tabindex="0"
+                            class="dropdown-item"
+                          >
+                            Dividers
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="widget-content-left ml-3 header-user-info">
+                      <div class="widget-heading">Alina Mclourd</div>
+                      <div class="widget-subheading">VP People Manager</div>
+                    </div>
+                    <div class="widget-content-right header-user-info ml-3">
+                      <button
+                        type="button"
+                        class="
+                          btn-shadow
+                          p-1
+                          btn btn-primary btn-sm
+                          show-toastr-example
+                        "
+                      >
+                        <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-theme-settings">
+          <button
+            type="button"
+            id="TooltipDemo"
+            class="btn-open-options btn btn-warning"
+          >
+            <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+          </button>
+          <div class="theme-settings__inner">
+            <div class="scrollbar-container">
+              <div class="theme-settings__options-wrapper">
+                <h3 class="themeoptions-heading">Layout Options</h3>
+                <div class="p-3">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                          <div class="widget-content-left mr-3">
+                            <div
+                              class="switch has-switch switch-container-class"
+                              data-class="fixed-header"
+                            >
+                              <div class="switch-animate switch-on">
+                                <input
+                                  type="checkbox"
+                                  checked
+                                  data-toggle="toggle"
+                                  data-onstyle="success"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="widget-content-left">
+                            <div class="widget-heading">Fixed Header</div>
+                            <div class="widget-subheading">
+                              Makes the header top fixed, always visible!
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                          <div class="widget-content-left mr-3">
+                            <div
+                              class="switch has-switch switch-container-class"
+                              data-class="fixed-sidebar"
+                            >
+                              <div class="switch-animate switch-on">
+                                <input
+                                  type="checkbox"
+                                  checked
+                                  data-toggle="toggle"
+                                  data-onstyle="success"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="widget-content-left">
+                            <div class="widget-heading">Fixed Sidebar</div>
+                            <div class="widget-subheading">
+                              Makes the sidebar left fixed, always visible!
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                          <div class="widget-content-left mr-3">
+                            <div
+                              class="switch has-switch switch-container-class"
+                              data-class="fixed-footer"
+                            >
+                              <div class="switch-animate switch-off">
+                                <input
+                                  type="checkbox"
+                                  data-toggle="toggle"
+                                  data-onstyle="success"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="widget-content-left">
+                            <div class="widget-heading">Fixed Footer</div>
+                            <div class="widget-subheading">
+                              Makes the app footer bottom fixed, always visible!
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <h3 class="themeoptions-heading">
+                  <div>Header Options</div>
+                  <button
+                    type="button"
+                    class="
+                      btn-pill btn-shadow btn-wide
+                      ml-auto
+                      btn btn-focus btn-sm
+                      switch-header-cs-class
+                    "
+                    data-class=""
+                  >
+                    Restore Default
+                  </button>
+                </h3>
+                <div class="p-3">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <h5 class="pb-2">Choose Color Scheme</h5>
+                      <div class="theme-settings-swatches">
+                        <div
+                          class="
+                            swatch-holder
+                            bg-primary
+                            switch-header-cs-class
+                          "
+                          data-class="bg-primary header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-secondary
+                            switch-header-cs-class
+                          "
+                          data-class="bg-secondary header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-success
+                            switch-header-cs-class
+                          "
+                          data-class="bg-success header-text-dark"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-info switch-header-cs-class"
+                          data-class="bg-info header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-warning
+                            switch-header-cs-class
+                          "
+                          data-class="bg-warning header-text-dark"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-danger switch-header-cs-class"
+                          data-class="bg-danger header-text-light"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-light switch-header-cs-class"
+                          data-class="bg-light header-text-dark"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-dark switch-header-cs-class"
+                          data-class="bg-dark header-text-light"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-focus switch-header-cs-class"
+                          data-class="bg-focus header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-alternate
+                            switch-header-cs-class
+                          "
+                          data-class="bg-alternate header-text-light"
+                        ></div>
+                        <div class="divider"></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-vicious-stance
+                            switch-header-cs-class
+                          "
+                          data-class="bg-vicious-stance header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-midnight-bloom
+                            switch-header-cs-class
+                          "
+                          data-class="bg-midnight-bloom header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-night-sky
+                            switch-header-cs-class
+                          "
+                          data-class="bg-night-sky header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-slick-carbon
+                            switch-header-cs-class
+                          "
+                          data-class="bg-slick-carbon header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-asteroid
+                            switch-header-cs-class
+                          "
+                          data-class="bg-asteroid header-text-light"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-royal switch-header-cs-class"
+                          data-class="bg-royal header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-warm-flame
+                            switch-header-cs-class
+                          "
+                          data-class="bg-warm-flame header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-night-fade
+                            switch-header-cs-class
+                          "
+                          data-class="bg-night-fade header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-sunny-morning
+                            switch-header-cs-class
+                          "
+                          data-class="bg-sunny-morning header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-tempting-azure
+                            switch-header-cs-class
+                          "
+                          data-class="bg-tempting-azure header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-amy-crisp
+                            switch-header-cs-class
+                          "
+                          data-class="bg-amy-crisp header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-heavy-rain
+                            switch-header-cs-class
+                          "
+                          data-class="bg-heavy-rain header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-mean-fruit
+                            switch-header-cs-class
+                          "
+                          data-class="bg-mean-fruit header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-malibu-beach
+                            switch-header-cs-class
+                          "
+                          data-class="bg-malibu-beach header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-deep-blue
+                            switch-header-cs-class
+                          "
+                          data-class="bg-deep-blue header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-ripe-malin
+                            switch-header-cs-class
+                          "
+                          data-class="bg-ripe-malin header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-arielle-smile
+                            switch-header-cs-class
+                          "
+                          data-class="bg-arielle-smile header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-plum-plate
+                            switch-header-cs-class
+                          "
+                          data-class="bg-plum-plate header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-happy-fisher
+                            switch-header-cs-class
+                          "
+                          data-class="bg-happy-fisher header-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-happy-itmeo
+                            switch-header-cs-class
+                          "
+                          data-class="bg-happy-itmeo header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-mixed-hopes
+                            switch-header-cs-class
+                          "
+                          data-class="bg-mixed-hopes header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-strong-bliss
+                            switch-header-cs-class
+                          "
+                          data-class="bg-strong-bliss header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-grow-early
+                            switch-header-cs-class
+                          "
+                          data-class="bg-grow-early header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-love-kiss
+                            switch-header-cs-class
+                          "
+                          data-class="bg-love-kiss header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-premium-dark
+                            switch-header-cs-class
+                          "
+                          data-class="bg-premium-dark header-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-happy-green
+                            switch-header-cs-class
+                          "
+                          data-class="bg-happy-green header-text-light"
+                        ></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <h3 class="themeoptions-heading">
+                  <div>Sidebar Options</div>
+                  <button
+                    type="button"
+                    class="
+                      btn-pill btn-shadow btn-wide
+                      ml-auto
+                      btn btn-focus btn-sm
+                      switch-sidebar-cs-class
+                    "
+                    data-class=""
+                  >
+                    Restore Default
+                  </button>
+                </h3>
+                <div class="p-3">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <h5 class="pb-2">Choose Color Scheme</h5>
+                      <div class="theme-settings-swatches">
+                        <div
+                          class="
+                            swatch-holder
+                            bg-primary
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-primary sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-secondary
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-secondary sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-success
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-success sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-info switch-sidebar-cs-class"
+                          data-class="bg-info sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-warning
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-warning sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-danger
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-danger sidebar-text-light"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-light switch-sidebar-cs-class"
+                          data-class="bg-light sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-dark switch-sidebar-cs-class"
+                          data-class="bg-dark sidebar-text-light"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-focus switch-sidebar-cs-class"
+                          data-class="bg-focus sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-alternate
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-alternate sidebar-text-light"
+                        ></div>
+                        <div class="divider"></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-vicious-stance
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-vicious-stance sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-midnight-bloom
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-midnight-bloom sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-night-sky
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-night-sky sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-slick-carbon
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-slick-carbon sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-asteroid
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-asteroid sidebar-text-light"
+                        ></div>
+                        <div
+                          class="swatch-holder bg-royal switch-sidebar-cs-class"
+                          data-class="bg-royal sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-warm-flame
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-warm-flame sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-night-fade
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-night-fade sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-sunny-morning
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-sunny-morning sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-tempting-azure
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-tempting-azure sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-amy-crisp
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-amy-crisp sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-heavy-rain
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-heavy-rain sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-mean-fruit
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-mean-fruit sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-malibu-beach
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-malibu-beach sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-deep-blue
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-deep-blue sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-ripe-malin
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-ripe-malin sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-arielle-smile
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-arielle-smile sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-plum-plate
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-plum-plate sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-happy-fisher
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-happy-fisher sidebar-text-dark"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-happy-itmeo
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-happy-itmeo sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-mixed-hopes
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-mixed-hopes sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-strong-bliss
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-strong-bliss sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-grow-early
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-grow-early sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-love-kiss
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-love-kiss sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-premium-dark
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-premium-dark sidebar-text-light"
+                        ></div>
+                        <div
+                          class="
+                            swatch-holder
+                            bg-happy-green
+                            switch-sidebar-cs-class
+                          "
+                          data-class="bg-happy-green sidebar-text-light"
+                        ></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <h3 class="themeoptions-heading">
+                  <div>Main Content Options</div>
+                  <button
+                    type="button"
+                    class="
+                      btn-pill btn-shadow btn-wide
+                      ml-auto
+                      active
+                      btn btn-focus btn-sm
+                    "
+                  >
+                    Restore Default
+                  </button>
+                </h3>
+                <div class="p-3">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <h5 class="pb-2">Page Section Tabs</h5>
+                      <div class="theme-settings-swatches">
+                        <div role="group" class="mt-2 btn-group">
+                          <button
+                            type="button"
+                            class="
+                              btn-wide btn-shadow btn-primary btn btn-secondary
+                              switch-theme-class
+                            "
+                            data-class="body-tabs-line"
+                          >
+                            Line
+                          </button>
+                          <button
+                            type="button"
+                            class="
+                              btn-wide btn-shadow btn-primary
+                              active
+                              btn btn-secondary
+                              switch-theme-class
+                            "
+                            data-class="body-tabs-shadow"
+                          >
+                            Shadow
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-main">
+          <div class="app-sidebar sidebar-shadow">
+            <div class="app-header__logo">
+              <div class="logo-src"></div>
+              <div class="header__pane ml-auto">
+                <div>
+                  <button
+                    type="button"
+                    class="hamburger close-sidebar-btn hamburger--elastic"
+                    data-class="closed-sidebar"
+                  >
+                    <span class="hamburger-box">
+                      <span class="hamburger-inner"></span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="app-header__mobile-menu">
+              <div>
+                <button
+                  type="button"
+                  class="hamburger hamburger--elastic mobile-toggle-nav"
+                >
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="app-header__menu">
+              <span>
+                <button
+                  type="button"
+                  class="
+                    btn-icon btn-icon-only btn btn-primary btn-sm
+                    mobile-toggle-header-nav
+                  "
+                >
+                  <span class="btn-icon-wrapper">
+                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                  </span>
+                </button>
+              </span>
+            </div>
+            <div class="scrollbar-sidebar">
+              <div class="app-sidebar__inner">
+                <ul class="vertical-nav-menu">
+                  <li class="app-sidebar__heading">Dashboard</li>
+                  <li>
+                    <a href="/#/dash" class="mm-active">
+                      <i class="metismenu-icon pe-7s-home"></i>
+                      Back Office
+                    </a>
+                  </li>
 
-  </div>
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">Silver</h3>
-    <div class="price"><sup>$</sup>50<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$1</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=5720069193" class="order-btn">Select</a>
-  </div>
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">White</h3>
-    <div class="price"><sup>$</sup>100<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$2</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=4804149192" class="order-btn">Select </a>
-  </div>
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">Black</h3>
-    <div class="price"><sup>$</sup>200<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$4</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=4310841179"  class="order-btn">Select</a>
-  </div>
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">Gold</h3>
-    <div class="price"><sup>$</sup>400<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$8</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=5927296550" class="order-btn">Select</a>
-  </div>
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">Gold Pro</h3>
-    <div class="price"><sup>$</sup>500<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$10</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=5223630849" class="order-btn">Select</a>
-  </div>
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">Platinum</h3>
-    <div class="price"><sup>$</sup>1000<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$21</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=5586255459"  class="order-btn">Select</a>
-  </div>
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">Platinium Pro</h3>
-    <div class="price"><sup>$</sup>2000<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$43</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=5051260241"   class="order-btn">Select</a>
-  </div>
-  <div class="pricing-card">
-    <h3 class="pricing-card-header">Diamond</h3>
-    <div class="price"><sup>$</sup>5000<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$109</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=5530461493" class="order-btn">Select</a>
-  </div><div class="pricing-card">
-    <h3 class="pricing-card-header">Diamond pro</h3>
-    <div class="price"><sup>$</sup>10000<span></span></div>
-    <ul>
-      <li><strong>Earn</strong>$209</li>
-    </ul>
-    <a href="https://nowpayments.io/payment/?iid=6384069471"  class="order-btn">Select</a>
-  </div>
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-secondary" id="exampleModalLongTitle" >You choose the  {{this.pack}} pack</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="invest()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <br> <button @click="copybtc()" class="btn btn-block btn-success"> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-</svg></span>Copy btc address</button>
-<hr>
-<button @click="copyltc()" class="btn btn-block btn-danger"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-</svg></span>Copy ltc address</button>
-<br>
-<p class="text-secondary">Contact the admin <strong> dreamcreation74@gmail.com</strong> <br>to confirm your pamyment</p>
-      </div>
-      <div class="modal-footer">
-        <p>We Are The  Home To Your Dreams &#128512;</p>
-      </div>
+                  <li></li>
+                  <li>
+                    <a href="#">
+                      <i class="metismenu-icon pe-7s-wallet"></i>
+                      Wallet
+                      <i
+                        class="metismenu-state-icon pe-7s-angle-down caret-left"
+                      ></i>
+                    </a>
+                    <ul>
+                      <!-- <li>
+                                            <a href="components-tabs.html">
+                                                <i class="metismenu-icon">
+                                                </i>Deposit
+                                            </a>
+                                        </li> -->
+                      <li>
+                        <a href="/#/withdrawal">
+                          <i class="metismenu-icon"> </i>Withdraw
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/#/transactions">
+                          <i class="metismenu-icon"> </i>Verify Transactions
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/#/transactionHistory">
+                          <i class="metismenu-icon"> </i>Transactions history
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="/#/affiliate">
+                      <i class="metismenu-icon pe-7s-link"></i>
+                      Reffer & Earn
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/#/packages">
+                      <i class="metismenu-icon pe-7s-diamond"></i>
+                      Packages
+                    </a>
+                  </li>
+                  <li class="app-sidebar__heading">UserData</li>
+                  <li>
+                    <a href="/#/investments">
+                      <i class="metismenu-icon pe-7s-piggy"> </i>Investments
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/#/" target="_blank">
+                      <i class="metismenu-icon pe-7s-right-arrow"> </i>
+                      Logout
+                    </a>
+                  </li>
+                  <!-- <li>
+                                    <a href="forms-validation.html">
+                                        <i class="metismenu-icon pe-7s-lock">
+                                        </i>Change Password
+                                    </a>
+                                </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="app-main__outer">
+            <div class="app-main__inner">
+              <div class="app-page-title">
+                <div class="page-title-wrapper">
+                  <div class="page-title-heading">
+                    <div class="page-title-icon">
+                      <i class="pe-7s-car icon-gradient bg-mean-fruit"> </i>
+                    </div>
+                    <div></div>
+                  </div>
+                  <div class="page-title-actions">
+                    <div class="d-inline-block dropdown">
+                      <div
+                        tabindex="-1"
+                        role="menu"
+                        aria-hidden="true"
+                        class="dropdown-menu dropdown-menu-right"
+                      >
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                              <i class="nav-link-icon lnr-inbox"></i>
+                              <span> Inbox </span>
+                              <div
+                                class="ml-auto badge badge-pill badge-secondary"
+                              >
+                                86
+                              </div>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                              <i class="nav-link-icon lnr-book"></i>
+                              <span> Book </span>
+                              <div
+                                class="ml-auto badge badge-pill badge-danger"
+                              >
+                                5
+                              </div>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                              <i class="nav-link-icon lnr-picture"></i>
+                              <span> Picture </span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              disabled
+                              href="javascript:void(0);"
+                              class="nav-link disabled"
+                            >
+                              <i class="nav-link-icon lnr-file-empty"></i>
+                              <span> File Disabled </span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    <div class="row">
+                             <div class="col-md-12 col-xl-4">
+                                <div class="card mb-6 widget-content">
+                                    <div class="widget-content-outer">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-center">
+                                                <div>Choose Your Desired Currency</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
     </div>
-  </div>
-</div>
-</div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="main-card mb-3 card">
+                    <div class="card-header">
+
+                      <!-- addd some currency conversion logic -->
+    <div class="col-md-6">
+            <select class="form-select" aria-label="Default select example" id="currency">
+  <option selected value="USD">USD</option>
+  <option  value="RUR">RUR</option>
+  <option value="CAD">CAD</option>
+    <option value="KSH">KSH</option>
+      <option value="ZAR">ZAR</option>
+        <option value="NAD">NAD</option>
+          <option value="NGN">NGN</option>
+            <option value="EUR">EUR</option>
+               <option value="LSL">LSL</option>
+                <option value="UGX">UGX</option>
+</select>
+      </div>
+<button class="col-md-6 btn btn-primary btn-lg btn-block" @click="convert()">convert</button>
+                    </div>
+                    <div class="table-responsive">
+                      <table
+                        class="
+                          align-middle
+                          mb-0
+                          table table-borderless table-striped table-hover
+                        "
+                      >
+                        <thead>
+                          <tr>
+                            <th class="text-center">Package Name</th>
+                            <th class="text-center">Amount</th>
+                            <th class="text-center">Daily Roi ({{ getCurrency()}})</th>
+                            <th class="text-center">Weekly Roi ({{ this.currency }})</th>
+                            <th class="text-center">Monthly Roi ({{ this.currency }}) </th>
+                            <th class="text-center">Invest</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td class="text-center">Bronze</td>
+                            <td class="text-center" id="item">25</td>
+                            <td class="text-center">0.25</td>
+                            <td class="text-center">2.5</td>
+                            <td class="text-center">14</td>
+                              <td class="text-center"><a  class="btn btn-success" href="https://nowpayments.io/payment/?iid=4896525932">Select </a></td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">Silver</td>
+                            <td class="text-center">50</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">7</td>
+                            <td class="text-center">30</td>
+                              <td class="text-center"> <a href="https://nowpayments.io/payment/?iid=5720069193" class="btn btn-success">Select</a></td>
+                          </tr>
+                           <tr>
+                            <td class="text-center">White</td>
+                            <td class="text-center">100</td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">14</td>
+                            <td class="text-center">60</td>
+                              <td class="text-center">  <a href="https://nowpayments.io/payment/?iid=4804149192" class="btn btn-success">Select </a></td>
+                          </tr>
+                           <tr>
+                            <td class="text-center">Black</td>
+                            <td class="text-center">200</td>
+                            <td class="text-center">4</td>
+                            <td class="text-center">28</td>
+                            <td class="text-center">120</td>
+                              <td class="text-center">    <a href="https://nowpayments.io/payment/?iid=4310841179"  class="btn btn-success">Select</a></td>
+                          </tr>
+                           <tr>
+                            <td class="text-center">Gold</td>
+                            <td class="text-center">400</td>
+                            <td class="text-center">8</td>
+                            <td class="text-center">56</td>
+                            <td class="text-center">240</td>
+                              <td class="text-center">    <a href="https://nowpayments.io/payment/?iid=5927296550" class="btn btn-success">Select</a></td>
+                          </tr>
+                           <tr>
+                            <td class="text-center">GoldPro</td>
+                            <td class="text-center">500</td>
+                            <td class="text-center">10</td>
+                            <td class="text-center">70</td>
+                            <td class="text-center">300</td>
+                              <td class="text-center">  <a href="https://nowpayments.io/payment/?iid=5223630849" class="btn btn-success">Select</a> </td>
+                          </tr>
+                           <tr>
+                            <td class="text-center">Platinum</td>
+                            <td class="text-center">1000</td>
+                            <td class="text-center">21</td>
+                            <td class="text-center">140</td>
+                            <td class="text-center">630</td>
+                              <td class="text-center">    <a href="https://nowpayments.io/payment/?iid=5586255459"  class="btn btn-success">Select</a></td>
+                          </tr>
+                           <tr>
+                            <td class="text-center">PlatinumPro</td>
+                            <td class="text-center">2000</td>
+                            <td class="text-center">45</td>
+                            <td class="text-center">301</td>
+                            <td class="text-center">1290</td>
+                              <td class="text-center">    <a href="https://nowpayments.io/payment/?iid=5051260241"   class="btn btn-success">Select</a></td>
+                          </tr>
+                           <tr>
+                            <td class="text-center">Diamond</td>
+                            <td class="text-center">5000</td>
+                            <td class="text-center">109</td>
+                            <td class="text-center">763</td>
+                            <td class="text-center">3270</td>
+                              <td class="text-center"> <a href="https://nowpayments.io/payment/?iid=5530461493" class="btn btn-success">Select</a></td>
+                          </tr>
+                           <tr>
+                            <td class="text-center">DiamondPro</td>
+                            <td class="text-center">10000</td>
+                            <td class="text-center">218</td>
+                            <td class="text-center">1563</td>
+                            <td class="text-center">6540</td>
+                              <td class="text-center">   <a href="https://nowpayments.io/payment/?iid=6384069471"  class="btn btn-success">Select</a></td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="app-wrapper-footer">
+              <div class="app-footer">
+                <div class="app-footer__inner">
+                  <div class="app-footer-right">
+                    <ul class="nav"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
 </template>
 <style>
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Open Sans",sans-serif;
-  text-decoration: none;
-  list-style: none;
+body {
+  color: #566787;
+  background: #f5f5f5;
+  font-family: "Roboto", sans-serif;
 }
-.pricing-table{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: min(1600px, 100%);
-  margin: auto;
+.table-responsive {
+  margin: 30px 0;
 }
-
-.pricing-card{
-  flex: 1;
-  max-width: 360px;
-  background-color: #fff;
-  margin: 20px 10px;
-  text-align: center;
-  cursor: pointer;
-  overflow: hidden;
-  color: #2d2d2d;
-  transition: .3s linear;
+.table-wrapper {
+  min-width: 1000px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-
-.pricing-card-header{
-  background-color: #0fbcf9;
-  display: inline-block;
-  color: #fff;
-  padding: 12px 30px;
-  border-radius: 0 0 20px 20px;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: 600;
-  transition: .4s linear;
+.table-title {
+  padding-bottom: 10px;
+  margin: 0 0 10px;
+  min-width: 100%;
 }
-
-.pricing-card:hover .pricing-card-header{
-  box-shadow: 0 0 0 26em #0fbcf9;
-}
-
-.price{
-  font-size: 70px;
-  color: #0fbcf9;
-  margin: 40px 0;
-  transition: .2s linear;
-}
-
-.price sup, .price span{
+.table-title h2 {
+  margin: 8px 0 0;
   font-size: 22px;
-  font-weight: 700;
 }
-
-.pricing-card:hover ,.pricing-card:hover .price{
-  color: #fff;
+.search-box {
+  position: relative;
+  float: right;
 }
-
-.pricing-card li{
-  font-size: 16px;
-  padding: 10px 0;
-  text-transform: uppercase;
+.search-box input {
+  height: 34px;
+  border-radius: 20px;
+  padding-left: 35px;
+  border-color: #ddd;
+  box-shadow: none;
 }
-
-.order-btn{
+.search-box input:focus {
+  border-color: #3fbae4;
+}
+.search-box i {
+  color: #a0a5b1;
+  position: absolute;
+  font-size: 19px;
+  top: 8px;
+  left: 10px;
+}
+table.table tr th,
+table.table tr td {
+  border-color: #e9e9e9;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+  background: #f5f5f5;
+}
+table.table th i {
+  font-size: 13px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+table.table td:last-child {
+  width: 130px;
+}
+table.table td a {
+  color: #a0a5b1;
   display: inline-block;
-  margin-bottom: 40px;
-  margin-top: 80px;
-  border: 2px solid #0fbcf9;
-  color: #0fbcf9;
-  padding: 18px 40px;
-  border-radius: 8px;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: .3s linear;
+  margin: 0 5px;
 }
-
-.order-btn:hover{
-  background-color: #0fbcf9;
-  color: #fff;
+table.table td a.view {
+  color: #03a9f4;
 }
-
-@media screen and (max-width:1100px){
-  .pricing-card{
-    flex: 50%;
-  }
+table.table td a.edit {
+  color: #ffc107;
+}
+table.table td a.delete {
+  color: #e34724;
+}
+table.table td i {
+  font-size: 19px;
+}
+.pagination {
+  float: right;
+  margin: 0 0 5px;
+}
+.pagination li a {
+  border: none;
+  font-size: 95%;
+  width: 30px;
+  height: 30px;
+  color: #999;
+  margin: 0 2px;
+  line-height: 30px;
+  border-radius: 30px !important;
+  text-align: center;
+  padding: 0;
+}
+.pagination li a:hover {
+  color: #666;
+}
+.pagination li.active a {
+  background: #03a9f4;
+}
+.pagination li.active a:hover {
+  background: #0397d6;
+}
+.pagination li.disabled i {
+  color: #ccc;
+}
+.pagination li i {
+  font-size: 16px;
+  padding-top: 6px;
+}
+.hint-text {
+  float: left;
+  margin-top: 6px;
+  font-size: 95%;
 }
 </style>
 <script>
 import firebase from 'firebase'
-import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      email: '',
-      btcaddress: '',
-      username: '',
-      litecoinaddress: '',
-      package: '',
-      phone: '',
-      role: '',
-      change: 0,
-      downlines: 0,
-      amount: 0,
-      pack: '',
-      balance: 0,
-      refferals: [],
-      form: {
-        new_number: '',
-        downline: ''
-      }
+      currency: 'USD'
     }
+  },
+  beforeDestroy: function () {
+    this.form.username = firebase.auth().currentUser.email
+  },
+  updated: function () {
   },
   mounted: function () {
-    if (firebase.auth().currentUser == null) {
-      this.$router.push('/')
-    } else if (firebase.auth().currentUser != null) {
-      this.change = 0
-      let db = firebase.firestore()
-      db.collection('users').doc(this.user.data.email).get().then(snapshot => {
-        let data = snapshot.data()
-        // eslint-disable-next-line no-unused-expressions
-        this.email = data.email
-        this.phone = data.phonenumber
-        this.role = data.role
-        this.balance = data.wallet_balance
-        this.package = data.package
-      })
-      db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
-        this.downlines = snapshot.size
-      })
-      db.collection('users').doc(this.user.data.email).collection('invitees').get().then(snapshot => {
-        snapshot.forEach(doc => {
-          this.refferals.push(doc.data())
+    let externalScript = document.createElement('script')
+    externalScript.setAttribute(
+      'src',
+      'https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js'
+    )
+    document.head.appendChild(externalScript)
+    try {
+      var db = firebase.firestore()
+      db.collection('users')
+        .doc(firebase.auth().currentUser.email)
+        .collection('bids')
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.bids.push(doc.data())
+          })
         })
-      })
+    } catch (e) {
+      console.log(e)
     }
   },
-  computed: {
-    ...mapGetters({
-      user: 'user'
-    })
-  },
   methods: {
-    copybtc: function () {
-      navigator.clipboard.writeText('31r5QreLwu1aFHR7WNdSZVovMXPNyJ4xAf')
-      this.$vs.notify({title: 'Success', text: 'Btc address copied to clipboard', color: 'green', position: 'top-center'})
+    getCurrency: function () {
+      return this.currency
     },
-    copyltc: function () {
-      navigator.clipboard.writeText('ltc1qd8sj9x3cvpuy4qulst7zxez07uglxk0tt34js4')
-      this.$vs.notify({title: 'Success', text: 'Ltc address copied to clipboard', color: 'green', position: 'top-center'})
+    convert: function () {
+      document.getElementById('item').value = document.getElementById('item').value * 100
+      console.log('yes')
+      this.currency = document.getElementById('currency').value
+      this.getCurrency()
     },
-    SetPackage: function (amount, pack) {
-      this.amount = amount
-      this.pack = pack
+    refresh: function () {
+      this.$router.push('/dash')
     },
-    invest: function () {
+    startCallBack: function () {
+      console.log('started')
+    },
+    withdraw: function (email) {
       let db = firebase.firestore()
-      db.collection('bids').add({
-        'id': Math.floor((Math.random() * 10000) + 1),
-        'email': firebase.auth().currentUser.email,
-        'amount': this.amount,
-        'verification_status': 'unverified',
-        'startDay': Date.now(),
-        'stopDay': Date.now() + 1.577e+10,
-        'amountPaid': 0,
-        'package': this.pack,
-        'cashouts': 0
-      })
-      this.$vs.notify({title: 'Investment Queued', text: 'The investment was successfully queud.Kindly Confirm to activate the investment', color: 'green', position: 'top-center'})
-    },
-    save: function () {
-      let db = firebase.firestore()
-      db.collection('users').doc(this.user.data.email).update({
-        phonenumber: this.form.new_number
-      })
-      this.$swal('refersh for changes to take effect')
-    },
-    reload: function () {
-      window.location.reload()
-    },
-    redeem: function (email) {
-      let db = firebase.firestore()
-      db.collection('users').doc(this.user.data.email).collection('invitees').where('email', '==', email).get().then(snapshot => {
-        snapshot.forEach(doc => {
-          db.collection('users').doc(this.user.data.email).collection('invitees').doc(doc.id).update({
-            email: 'redeemed'
-          })
-          let NewBalance = this.balance + 5
-          db.collection('users').doc(this.user.data.email).update({
-            wallet_balance: NewBalance
+      console.log(email)
+      db.collection('users')
+        .doc(email)
+        .collection('withdrawals')
+        .where('amount', '==', this.form.amount)
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            if (!doc.data().status) {
+              db.collection('users')
+                .doc(email)
+                .collection('withdrawals')
+                .doc(doc.id)
+                .update({
+                  cashed: true
+                })
+            }
           })
         })
+    },
+    deleteUser: function (email) {
+      let db = firebase.firestore()
+      db.collection('users').doc(email).update({
+        activated: true
       })
+      this.$swal('activated')
+    },
+    verifyUser: function (email) {
+      let db = firebase.firestore()
+      db.collection('users').doc(email).update({
+        verified: 'Yes'
+      })
+      this.$swal('verified')
+    },
+    setshares: function (event) {
+      alert(this.form.amount)
+      let db = firebase.firestore()
+      db.collection('shares')
+        .doc('available')
+        .update({
+          total: parseFloat(this.form.amount)
+        })
+    },
+    verify: function (id) {
+      let db = firebase.firestore()
+      db.collection('bids')
+        .where('id', '==', id)
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            db.collection('bids').doc(doc.id).update({
+              verification_status: 'verified'
+            })
+          })
+        })
     }
   }
 }
